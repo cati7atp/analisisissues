@@ -1,0 +1,206 @@
+"""Pydantic models for quantum issues analysis."""
+
+from datetime import datetime
+from typing import Any, Dict, List, Optional, Literal
+from pydantic import BaseModel, Field, field_validator
+import re
+
+
+IssueType = Literal["bug", "feature", "question", "discussion", "other"]
+
+
+class RawComment(BaseModel):
+    author: str
+    created_at: str  # ISO8601 string
+    body: str
+
+
+class RawIssue(BaseModel):
+    repo: str  # "owner/repo"
+    issue_number: int
+    title: str
+    body: Optional[str] = None
+    state: Literal["open", "closed"]
+    labels: List[str] = Field(default_factory=list)
+    created_at: str  # ISO8601
+    closed_at: Optional[str] = None
+    author: str
+    comments: List[RawComment] = Field(default_factory=list)
+    assignees: List[str] = Field(default_factory=list)
+    milestone: Optional[str] = None
+    reactions: Dict[str, int] = Field(default_factory=dict)
+
+
+class CleanedComment(BaseModel):
+    author: str
+    created_at: datetime
+    body: str
+    original_body: str
+
+
+class CleanedIssue(BaseModel):
+    repo: str
+    issue_number: int
+    title: str
+    body: Optional[str] = None
+    cleaned_body: str
+    state: Literal["open", "closed"]
+    labels: List[str] = Field(default_factory=list)
+    created_at: datetime
+    closed_at: Optional[datetime] = None
+    author: str
+    comments: List[CleanedComment] = Field(default_factory=list)
+    assignees: List[str] = Field(default_factory=list)
+    milestone: Optional[str] = None
+    reactions: Dict[str, int] = Field(default_factory=dict)
+    issue_type: IssueType = "other"
+    full_text: str = ""  # Combined text for topic modeling
+
+    @property
+    def issue_id(self) -> str:
+        return f"{self.repo}#{self.issue_number}"
+
+
+class TopicInfo(BaseModel):
+    topic_id: int
+    name: str
+    keywords: List[str]
+    count: int
+    representative_docs: List[str] = Field(default_factory=list)
+    probability: Optional[float] = None
+
+
+class DocTopic(BaseModel):
+    issue_id: str
+    topic_id: int
+    probability: float
+
+
+class QuantumPattern(BaseModel):
+    pattern_id: str
+    name: str
+    description: str
+    category: str
+    supporting_issue_ids: List[str]
+    frequency: int
+    example_quotes: List[str] = Field(default_factory=list)
+    keywords_matched: List[str] = Field(default_factory=list)
+
+
+class RepoMetrics(BaseModel):
+    repo: str
+    total_issues: int
+    open_issues: int
+    closed_issues: int
+    issue_types: Dict[str, int]
+    median_resolution_days: Optional[float] = None
+    resolution_by_type: Dict[str, Optional[float]] = Field(default_factory=dict)
+    reopen_rate: float = 0.0
+    label_churn_per_issue: float = 0.0
+    gini_contributors: float = 0.0
+    unique_contributors: int = 0
+    quantum_keyword_ratios: Dict[str, float] = Field(default_factory=dict)
+    topic_entropy: float = 0.0
+    top_topics: List[Dict[str, Any]] = Field(default_factory=list)
+
+
+class AggregatedMetrics(BaseModel):
+    total_repos: int
+    total_issues: int
+    overall_median_resolution_days: Optional[float] = None
+    overall_reopen_rate: float = 0.0
+    overall_gini_contributors: float = 0.0
+    avg_issues_per_repo: float = 0.0
+    quantum_pattern_prevalence: Dict[str, float] = Field(default_factory=dict)
+    category_distribution: Dict[str, int] = Field(default_factory=dict)
+
+
+class MaintainabilityMetrics(BaseModel):
+    per_repo: List[RepoMetrics]
+    aggregated: AggregatedMetrics
+    generated_at: datetime = Field(default_factory=datetime.utcnow)
+
+
+# Regex patterns for cleaning
+CODE_FENCE_PATTERN = re.compile(r"```[\s\S]*?```", re.MULTILINE)
+INLINE_CODE_PATTERN = re.compile(r"`[^`]+`")
+URL_PATTERN = re.compile(r"https?://\S+")
+MENTION_PATTERN = re.compile(r"@\w+")
+ISSUE_REF_PATTERN = re.compile(r"#\d+")
+
+
+def clean_text(text: str, strip_code_fences: bool = True, normalize_whitespace: bool = True) -> str:
+    """Clean markdown text for analysis."""
+    if not text:
+        return ""
+    
+    result = text
+    
+    if strip_code_fences:
+        result = CODE_FENCE_PATTERN.sub("[CODE_BLOCK]", result)
+        result = INLINE_CODE_PATTERN.sub("[CODE]", result)
+    
+    result = URL_PATTERN.sub("[URL]", result)
+    result = MENTION_PATTERN.sub("@user", result)
+    result = ISSUE_REF_PATTERN.sub("#issue", result)
+    
+    if normalize_whitespace:
+        result = re.sub(r"\s+", " ", result).strip()
+    
+    return result
+
+
+def classify_issue_type(title: str, body: Optional[str], labels: List[str]) -> IssueType:
+    """Classify issue type from title, body, and labels."""
+    text = f"{title} {body or ''}".lower()
+    label_text = " ".join(labels).lower()
+    
+    bug_keywords = ["bug", "error", "fail", "crash", "broken", "issue", "problem", "defect", "exception"]
+    feature_keywords = ["feature", "enhancement", "request", "add", "implement", "support", "proposal"]
+    question_keywords = ["question", "how to", "help", "ask", "doubt", "unclear", "confused"]
+    
+    if any(kw in label_text for kw in ["bug", "type:bug", "kind/bug"]):
+        return "bug"
+    if any(kw in label_text for kw in ["feature", "enhancement", "type:feature", "kind/feature"]):
+        return "feature"
+    if any(kw in label_text for kw in ["question", "help wanted", "type:question", "kind/question"]):
+        return "question"
+    if any(kw in label_text for kw in ["discussion", "type:discussion", "kind/discussion"]):
+        return "discussion"
+    
+    # Heuristic from text
+    if any(kw in text for kw in bug_keywords):
+        return "bug"
+    if any(kw in text for kw in feature_keywords):
+        return "feature"
+    if any(kw in text for kw in question_keywords):
+        return "question"
+    
+    return "discussion"
+
+
+def is_bot_user(username: str, bot_users: List[str]) -> bool:
+    """Check if a username is a known bot."""
+    username_lower = username.lower()
+    return any(bot in username_lower for bot in bot_users)
+
+
+def parse_datetime(dt_str: str) -> datetime:
+    """Parse ISO8601 datetime string."""
+    # Handle various GitHub datetime formats
+    for fmt in [
+        "%Y-%m-%dT%H:%M:%SZ",
+        "%Y-%m-%dT%H:%M:%S.%fZ",
+        "%Y-%m-%dT%H:%M:%S%z",
+        "%Y-%m-%dT%H:%M:%S.%f%z",
+    ]:
+        try:
+            return datetime.strptime(dt_str, fmt)
+        except ValueError:
+            continue
+    # Fallback: try dateutil parser if available
+    try:
+        from dateutil import parser
+        return parser.isoparse(dt_str)
+    except Exception:
+        raise ValueError(f"Unable to parse datetime: {dt_str}")

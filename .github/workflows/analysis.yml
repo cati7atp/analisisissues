@@ -1,0 +1,53 @@
+name: Quantum Issues Analysis
+
+on:
+  workflow_dispatch:
+    inputs:
+      data_artifact:
+        description: 'Name of the data artifact to analyze (uploaded as issues.jsonl)'
+        required: true
+        type: string
+  schedule:
+    - cron: '0 0 * * 0'  # Weekly on Sunday
+
+jobs:
+  analysis:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt
+      
+      - name: Download data artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ github.event.inputs.data_artifact || 'issues-data' }}
+          path: data/raw/
+      
+      - name: Run analysis pipeline
+        run: |
+          python -m src.cli run-pipeline --input data/raw/issues.jsonl --config config.yaml
+      
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: analysis-results
+          path: |
+            reports/
+            data/analysis/
+            models/bertopic/
+      
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        with:
+          name: quantum-maintainability-report
+          path: reports/quantum_maintainability_report.md

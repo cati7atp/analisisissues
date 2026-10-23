@@ -1,0 +1,123 @@
+"""Configuration management for quantum issues analysis."""
+
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+import yaml
+from pydantic import BaseModel, Field
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+class PathsConfig(BaseModel):
+    raw_data: Path = Path("data/raw/issues.jsonl")
+    processed_data: Path = Path("data/processed/issues_clean.jsonl")
+    topics_output: Path = Path("data/analysis/topics.jsonl")
+    doc_topics_output: Path = Path("data/analysis/doc_topics.jsonl")
+    patterns_output: Path = Path("data/analysis/quantum_patterns.jsonl")
+    metrics_output: Path = Path("data/analysis/maintainability_metrics.json")
+    metrics_csv: Path = Path("reports/maintainability_summary.csv")
+    model_dir: Path = Path("models/bertopic")
+    visualization_html: Path = Path("reports/topic_visualization.html")
+    report_md: Path = Path("reports/quantum_maintainability_report.md")
+    pattern_summary_csv: Path = Path("reports/pattern_summary.csv")
+
+
+class PreprocessingConfig(BaseModel):
+    bot_users: List[str] = Field(default_factory=lambda: [
+        "dependabot", "renovate", "github-actions", "codecov", "coveralls", "bors", "mergify"
+    ])
+    system_labels: List[str] = Field(default_factory=lambda: ["bot", "automated", "dependencies"])
+    min_body_length: int = 10
+    max_comment_length: int = 50000
+    strip_code_fences: bool = True
+    normalize_whitespace: bool = True
+
+
+class BERTopicConfig(BaseModel):
+    embedding_model: str = "all-MiniLM-L6-v2"
+    min_topic_size: int = 10
+    nr_topics: Optional[int] = None
+    umap_n_neighbors: int = 15
+    umap_n_components: int = 5
+    umap_min_dist: float = 0.0
+    umap_metric: str = "cosine"
+    hdbscan_min_cluster_size: int = 10
+    hdbscan_min_samples: int = 5
+    hdbscan_metric: str = "euclidean"
+    vectorizer_ngram_range: List[int] = Field(default_factory=lambda: [1, 2])
+    vectorizer_stop_words: str = "english"
+    calculate_probabilities: bool = True
+    verbose: bool = True
+
+
+class QuantumPatternsConfig(BaseModel):
+    hardware_backend: List[str]
+    algorithm_convergence: List[str]
+    dependency_version: List[str]
+    sim_vs_hardware: List[str]
+    transpilation_compilation: List[str]
+    gradients_autodiff: List[str]
+    reproducibility: List[str]
+    performance_scaling: List[str]
+
+
+class MetricsConfig(BaseModel):
+    compute_gini: bool = True
+    resolution_time_quantiles: List[float] = Field(default_factory=lambda: [0.25, 0.5, 0.75])
+    anonymize_repos_in_report: bool = True
+
+
+class ReportConfig(BaseModel):
+    include_visualizations: bool = True
+    max_example_quotes: int = 3
+    quote_max_length: int = 200
+    anonymize: bool = True
+
+
+class Config(BaseModel):
+    paths: PathsConfig = Field(default_factory=PathsConfig)
+    preprocessing: PreprocessingConfig = Field(default_factory=PreprocessingConfig)
+    bertopic: BERTopicConfig = Field(default_factory=BERTopicConfig)
+    quantum_patterns: QuantumPatternsConfig
+    metrics: MetricsConfig = Field(default_factory=MetricsConfig)
+    report: ReportConfig = Field(default_factory=ReportConfig)
+
+
+class Settings(BaseSettings):
+    model_config = SettingsConfigDict(
+        env_file=".env",
+        env_file_encoding="utf-8",
+        extra="ignore",
+    )
+    github_token: Optional[str] = None
+    log_level: str = "INFO"
+
+
+def load_config(config_path: Path = Path("config.yaml")) -> Config:
+    """Load configuration from YAML file."""
+    with open(config_path, "r", encoding="utf-8") as f:
+        data = yaml.safe_load(f)
+    return Config(**data)
+
+
+def load_settings() -> Settings:
+    """Load settings from environment."""
+    return Settings()
+
+
+# Global config instance
+_config: Optional[Config] = None
+_settings: Optional[Settings] = None
+
+
+def get_config() -> Config:
+    global _config
+    if _config is None:
+        _config = load_config()
+    return _config
+
+
+def get_settings() -> Settings:
+    global _settings
+    if _settings is None:
+        _settings = load_settings()
+    return _settings

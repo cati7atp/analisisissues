@@ -1,0 +1,147 @@
+# Quantum GitHub Issues Analysis Configuration
+
+# Paths
+paths:
+  raw_data: "data/raw/issues.jsonl"           # Input: JSONL with issues + comments
+  processed_data: "data/processed/issues_clean.jsonl"
+  topics_output: "data/analysis/topics.jsonl"
+  doc_topics_output: "data/analysis/doc_topics.jsonl"
+  patterns_output: "data/analysis/quantum_patterns.jsonl"
+  metrics_output: "data/analysis/maintainability_metrics.json"
+  metrics_csv: "reports/maintainability_summary.csv"
+  model_dir: "models/bertopic"
+  visualization_html: "reports/topic_visualization.html"
+  report_md: "reports/quantum_maintainability_report.md"
+  pattern_summary_csv: "reports/pattern_summary.csv"
+
+# Preprocessing
+preprocessing:
+  bot_users: ["dependabot", "renovate", "github-actions", "codecov", "coveralls", "bors", "mergify"]
+  system_labels: ["bot", "automated", "dependencies"]
+  min_body_length: 10
+  max_comment_length: 50000
+  strip_code_fences: true
+  normalize_whitespace: true
+
+# BERTopic Configuration
+bertopic:
+  embedding_model: "all-MiniLM-L6-v2"
+  min_topic_size: 10
+  nr_topics: null                    # null = auto, or integer to reduce
+  umap_n_neighbors: 15
+  umap_n_components: 5
+  umap_min_dist: 0.0
+  umap_metric: "cosine"
+  hdbscan_min_cluster_size: 10
+  hdbscan_min_samples: 5
+  hdbscan_metric: "euclidean"
+  vectorizer_ngram_range: [1, 2]
+  vectorizer_stop_words: "english"
+  calculate_probabilities: true
+  verbose: true
+
+# Quantum Pattern Keywords (for S5 pattern extraction)
+quantum_patterns:
+  hardware_backend:
+    - "noise"
+    - "calibration"
+    - "queue"
+    - "device availability"
+    - "backend"
+    - "ibm_quantum"
+    - "ionq"
+    - "rigetti"
+    - "quantum hardware"
+    - "quantum processor"
+    - "qubit quality"
+    - "gate fidelity"
+    - "readout error"
+  algorithm_convergence:
+    - "vqe"
+    - "qaoa"
+    - "ansatz"
+    - "barren plateau"
+    - "convergence"
+    - "optimizer"
+    - "cost function"
+    - "variational"
+    - "parameter optimization"
+    - "local minimum"
+  dependency_version:
+    - "qiskit-terra"
+    - "qiskit-aer"
+    - "qiskit-ibmq"
+    - "pennylane"
+    - "numpy"
+    - "version conflict"
+    - "dependency"
+    - "import error"
+    - "module not found"
+    - "compatibility"
+    - "breaking change"
+  sim_vs_hardware:
+    - "simulator"
+    - "hardware"
+    - "noise model"
+    - "shot count"
+    - "discrepancy"
+    - "different results"
+    - "ideal vs real"
+    - "simulation vs hardware"
+    - "fake backend"
+  transpilation_compilation:
+    - "transpile"
+    - "transpilation"
+    - "circuit"
+    - "gate"
+    - "basis gates"
+    - "coupling map"
+    - "routing"
+    - "layout"
+    - "initial layout"
+    - "sabre"
+    - "stochastic swap"
+    - "optimization level"
+  gradients_autodiff:
+    - "gradient"
+    - "autodiff"
+    - "backprop"
+    - "parameter-shift"
+    - "adjoint"
+    - "jax"
+    - "tensorflow"
+    - "pytorch"
+    - "autograd"
+    - "differentiable"
+    - "grad"
+  reproducibility:
+    - "seed"
+    - "deterministic"
+    - "reproducible"
+    - "random"
+    - "non-deterministic"
+    - "different runs"
+    - "stochastic"
+  performance_scaling:
+    - "scaling"
+    - "qubit count"
+    - "circuit depth"
+    - "execution time"
+    - "memory"
+    - "large circuit"
+    - "performance"
+    - "timeout"
+    - "resource"
+
+# Maintainability Metrics
+metrics:
+  compute_gini: true
+  resolution_time_quantiles: [0.25, 0.5, 0.75]
+  anonymize_repos_in_report: true
+
+# Reporting
+report:
+  include_visualizations: true
+  max_example_quotes: 3
+  quote_max_length: 200
+  anonymize: true
