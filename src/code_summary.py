@@ -1,8 +1,8 @@
-"""Summarize code blocks and tracebacks into short, topic-friendly text (S11).
+"""Resume bloques de código y tracebacks en texto corto, útil para los temas (S11).
 
-Code bodies and stack traces add vocabulary noise but their exception names are the
-signal. A block becomes `[CODE_BLOCK] <up to 3 frames> <ExceptionClass: message>`;
-the marker is itself a stop word, so only the summary words reach the vectorizer.
+El cuerpo del código y las trazas agregan ruido de vocabulario, pero los nombres de las
+excepciones son la señal. Un bloque pasa a `[CODE_BLOCK] <hasta 3 frames> <ExceptionClass: message>`;
+el marcador es una stop word, así que al vectorizador solo llegan las palabras del resumen.
 """
 
 import re
@@ -28,7 +28,7 @@ def _frame_name(path: str, func: str) -> str:
 
 
 def summarize_code(block: str) -> str:
-    """Return the marker plus up to 3 frames, the last exception line and exception names."""
+    """Devuelve el marcador más hasta 3 frames, la última línea de excepción y los nombres de excepciones."""
     lines = block.splitlines()
     frames: List[str] = []
     final_line = ""
@@ -52,7 +52,7 @@ def summarize_fenced_code(text: str) -> str:
 
 
 def summarize_tracebacks(text: str) -> str:
-    """Replace unfenced `Traceback (most recent call last):` blocks with their summary."""
+    """Reemplaza los bloques `Traceback (most recent call last):` sin cercos por su resumen."""
     lines = text.split("\n")
     out: List[str] = []
     i = 0
@@ -84,7 +84,7 @@ BUILD_LINE = re.compile(
 
 
 def summarize_build_logs(text: str) -> str:
-    """Replace runs of 3+ consecutive install/build tool lines with one marker."""
+    """Reemplaza series de 3 o más líneas seguidas de herramientas de instalación/build por un marcador."""
     out: List[str] = []
     run: List[str] = []
 

@@ -1,4 +1,4 @@
-"""People are pseudonymized before anything leaves preprocessing."""
+"""Las personas se pseudonimizan antes de que algo salga del preprocesamiento."""
 
 import pytest
 

@@ -1,4 +1,4 @@
-"""Input models are tolerant; rejections are counted by reason."""
+"""Los modelos de entrada son tolerantes; los rechazos se cuentan por motivo."""
 
 from src.models import RawComment, RawIssue, RejectionCounter
 

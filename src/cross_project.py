@@ -1,4 +1,4 @@
-"""Cross-project patterns: topics whose issues recur across several distinct repositories."""
+"""Patrones entre proyectos: temas cuyos issues se repiten en varios repositorios distintos."""
 
 import json
 import math
@@ -15,7 +15,7 @@ CSV_COLUMNS = ["topic_id", "name", "cross_project", "n_repos", "n_supporting_rep
 
 
 def _evenness(counts: List[int]) -> float:
-    """Normalized Shannon entropy of the repo distribution: 1 = spread evenly, 0 = a single repo."""
+    """Entropía de Shannon normalizada de la distribución por repo: 1 = reparto parejo, 0 = un solo repo."""
     total = sum(counts)
     if len(counts) < 2 or total == 0:
         return 0.0
@@ -31,11 +31,11 @@ def find_cross_project_topics(
     min_issues_per_repo: int,
     max_top_repo_share: float,
 ) -> List[Dict[str, Any]]:
-    """One row per topic. A topic is cross-project when at least ``min_repos`` repos each hold
-    ``min_issues_per_repo`` of its issues and no repo exceeds ``max_top_repo_share`` of it. The
-    repo_specific flag (a different, stricter threshold) is informational here: one dominant repo
-    does not stop a topic that recurs in many others from being a cross-project pattern.
-    Outliers (topic -1) never count."""
+    """Una fila por tema. Un tema es entre proyectos cuando al menos ``min_repos`` repos tienen
+    cada uno ``min_issues_per_repo`` de sus issues y ningún repo supera ``max_top_repo_share`` del tema.
+    La marca repo_specific (otro umbral, más estricto) es solo informativa aquí: un repo dominante
+    no impide que un tema que se repite en muchos otros sea un patrón entre proyectos.
+    Los outliers (tema -1) nunca cuentan."""
     repo_of = {i.issue_id: i.repo for i in issues}
     repo_size = Counter(repo_of.values())
     per_topic: Dict[int, Counter] = defaultdict(Counter)

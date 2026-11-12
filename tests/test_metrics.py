@@ -1,4 +1,4 @@
-"""Metrics correctness."""
+"""Corrección de las métricas."""
 
 import json
 import math
@@ -59,7 +59,7 @@ def test_resolution_time_handles_mixed_naive_and_aware_input():
     from datetime import timezone
     from src.metrics import compute_resolution_time
 
-    naive_created = _issue("a/a", 1)  # created 2024-01-01 naive
+    naive_created = _issue("a/a", 1)  # creado el 2024-01-01 sin zona horaria
     naive_created.closed_at = datetime(2024, 1, 3, tzinfo=timezone.utc)
     assert compute_resolution_time(naive_created) == pytest.approx(2.0)
     missing = _issue("a/a", 2)
@@ -120,7 +120,7 @@ def test_state_reason_resolution_outcome_breakdown(config, tmp_path):
         issue = _issue("a/a", n, state_reason=reason)
         issue.state, issue.closed_at = "closed", closed
         issues.append(issue)
-    issues.append(_issue("a/a", 99, state_reason="reopened"))  # open: not an outcome
+    issues.append(_issue("a/a", 99, state_reason="reopened"))  # abierto: no es un resultado
     result = _run_metrics(config, tmp_path, issues)
     expected = {"completed": 2, "not_planned": 1, "duplicate": 1, "unspecified": 1}
     assert result.per_repo[0].resolution_outcomes == expected
@@ -130,14 +130,14 @@ def test_state_reason_resolution_outcome_breakdown(config, tmp_path):
 def test_overall_gini_is_computed_on_pooled_authors(config, tmp_path):
     from src.metrics import compute_contributor_gini
 
-    issues = [_issue("a/a", n) for n in range(4)]  # one author, 4 issues
+    issues = [_issue("a/a", n) for n in range(4)]  # un autor, 4 issues
     for n, name in enumerate("pqrs"):
         issue = _issue("b/b", n)
         issue.author = name
         issues.append(issue)
     result = _run_metrics(config, tmp_path, issues)
     assert result.aggregated.overall_gini_contributors == pytest.approx(compute_contributor_gini(issues))
-    assert result.aggregated.overall_gini_contributors > 0.0  # the mean of the repo Ginis is 0
+    assert result.aggregated.overall_gini_contributors > 0.0  # el promedio de los Gini por repo es 0
 
 
 def test_doc_topics_read_once_as_utf8(config, tmp_path, monkeypatch):

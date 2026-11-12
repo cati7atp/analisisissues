@@ -1,4 +1,4 @@
-"""run-pipeline chains the individual commands over one output directory."""
+"""run-pipeline encadena los comandos individuales sobre un solo directorio de salida."""
 
 from typer.testing import CliRunner
 

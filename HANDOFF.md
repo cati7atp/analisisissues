@@ -1,112 +1,118 @@
-# Handoff: BERTopic results on quantum-software GitHub issues
+# Traspaso: resultados de BERTopic sobre issues de software cuántico en GitHub
 
-Short guide for the team that will analyze the results. Paths are relative to the repository root
-(`C:\Users\catuk\Documents\cuantica\analisisissues`).
+Guía corta para el equipo que va a analizar los resultados. Las rutas son relativas a la raíz del
+repositorio (`C:\Users\catuk\Documents\cuantica\analisisissues`).
 
-## 1. What this project does
+## 1. Qué hace este proyecto
 
-It takes the GitHub **issues** of ~100 repositories with quantum components (Qiskit, PennyLane, Cirq,
-Braket, tket, ...), cleans them, groups them into **topics** with BERTopic, and looks for **patterns that
-repeat across different projects**.
+Toma los **issues** de GitHub de unos 100 repositorios con componentes cuánticos (Qiskit, PennyLane,
+Cirq, Braket, tket, ...), los limpia, los agrupa en **temas** con BERTopic y busca **patrones que se
+repiten entre proyectos distintos**.
 
 ```
-miner.db  ->  preprocess  ->  BERTopic  ->  patterns / cross-project topics  ->  metrics  ->  report
+miner.db  ->  preprocess  ->  BERTopic  ->  patrones / temas entre proyectos  ->  métricas  ->  reporte
 ```
 
-| Step | Command | Writes |
-|------|---------|--------|
-| 1 Clean | `python -m src.cli preprocess` | `data/processed/issues_clean.jsonl` |
-| 2 Topics | `python -m src.cli topic-model --output-dir data/analysis` | `topics.jsonl`, `doc_topics.jsonl`, ... |
-| 3 Patterns | `python -m src.cli extract-patterns --output-dir data/analysis` | `quantum_patterns.jsonl`, `cross_project_patterns.*` |
-| 4 Metrics | `python -m src.cli compute-metrics --output-dir data/analysis` | `maintainability_metrics.json`, `comparisons.json` |
-| 5 Report | `python -m src.cli generate-report` | `reports/quantum_maintainability_report.md` |
+| Paso | Comando | Escribe |
+|------|---------|---------|
+| 1 Limpiar | `python -m src.cli preprocess` | `data/processed/issues_clean.jsonl` |
+| 2 Temas | `python -m src.cli topic-model --output-dir data/analysis` | `topics.jsonl`, `doc_topics.jsonl`, ... |
+| 3 Patrones | `python -m src.cli extract-patterns --output-dir data/analysis` | `quantum_patterns.jsonl`, `cross_project_patterns.*` |
+| 4 Métricas | `python -m src.cli compute-metrics --output-dir data/analysis` | `maintainability_metrics.json`, `comparisons.json` |
+| 5 Reporte | `python -m src.cli generate-report` | `reports/quantum_maintainability_report.md` |
 
-Everything in one go: `python -m src.cli run-pipeline` (about 30 minutes on a GTX 1660 Ti; most of it is
-the temporal views and the outlier reassignment).
+Todo de una vez: `python -m src.cli run-pipeline` (unos 30 minutos en una GTX 1660 Ti; casi todo el
+tiempo se va en las vistas temporales y en la reasignación de outliers).
 
-## 2. Where things are
+## 2. Dónde está cada cosa
 
-| What | Path |
-|------|------|
-| Source dataset (read-only SQLite) | `quantum-gh-dataset-2026-10-22/miner.db` (see `README_DATASET.txt` there) |
-| Settings (thresholds, model, seed) | `config.yaml` |
-| Pattern categories and keywords | `config/quantum_taxonomy.yaml` |
-| Code | `src/` (`topic_model.py`, `cross_project.py`, `patterns.py`, `metrics.py`, `report.py`) |
+| Qué | Ruta |
+|-----|------|
+| Dataset de origen (SQLite, solo lectura) | `quantum-gh-dataset-2026-10-22/miner.db` (ver `README_DATASET.txt` en esa carpeta) |
+| Configuración (umbrales, modelo, semilla) | `config.yaml` |
+| Categorías de patrones y palabras clave | `config/quantum_taxonomy.yaml` |
+| Código | `src/` (`topic_model.py`, `cross_project.py`, `patterns.py`, `metrics.py`, `report.py`) |
 | Tests (182) | `tests/` (`python -m pytest -q`) |
-| Cleaned issues (pseudonymized) | `data/processed/issues_clean.jsonl` |
-| **Results** | `data/analysis/` |
-| Final report | `reports/quantum_maintainability_report.md` |
-| Saved BERTopic model | `data/analysis/model/` |
+| Issues limpios (seudonimizados) | `data/processed/issues_clean.jsonl` |
+| **Resultados** | `data/analysis/` |
+| Reporte final | `reports/quantum_maintainability_report.md` |
+| Modelo BERTopic guardado | `data/analysis/model/` |
 
-`data/` and `reports/` are in `.gitignore`: **they are not in git**, share them separately.
+`data/` y `reports/` están en `.gitignore`: **no viajan por git**, hay que compartirlos aparte.
 
-## 3. The results, file by file (`data/analysis/`)
+## 3. Los resultados, archivo por archivo (`data/analysis/`)
 
-Start with the first three.
+Empieza por los tres primeros.
 
-| File | What it is | Key columns |
-|------|------------|-------------|
-| `cross_project_patterns.csv` | **Main file.** One row per topic, flagged when it recurs across repos | `topic_id, name, cross_project, n_repos, n_supporting_repos, n_issues, top_repo, top_repo_share, evenness, keywords, supporting_repos` |
-| `topics.jsonl` | The 151 topics | `topic_id, name, keywords, count, representative_docs, top_repo, top_repo_share, n_repos, repo_specific` |
-| `doc_topics.jsonl` | Issue -> topic (`-1` = outlier) | `issue_id` (`owner/repo#number`), `topic_id`, `probability` |
-| `cross_project_patterns.jsonl` | Same as the CSV plus `per_repo` (issues and prevalence per repo) and `example_issue_ids` | |
-| `quantum_patterns.jsonl`, `pattern_summary.csv` | Keyword-taxonomy categories (12) with their issues | `pattern_id, frequency, topic_share, supporting_issue_ids, example_quotes` |
-| `candidate_categories.jsonl` | Topics the taxonomy does not explain (new category candidates) | `topic_id, matched_share` |
-| `topics_reduced.jsonl`, `doc_topics_reduced.jsonl` | Same result with outliers reassigned by similarity (more coverage, lower quality) | |
-| `topics_over_time.jsonl`, `topics_per_class.jsonl` | Topic frequency per time bin / per repo | |
-| `maintainability_metrics.json`, `maintainability_summary.csv` | Per-repo metrics (resolution time, Gini, topic entropy, ...) | |
-| `comparisons.json` | Per-repo, per-SDK-family and capped (max 1000 issues/repo) views | |
-| `run_summary.json` | 35 340 issues, 151 topics, 49.9 % outliers, 3 noise topics | |
-| `topic_visualization.html` | Interactive BERTopic charts (open in a browser) | |
+| Archivo | Qué es | Columnas clave |
+|---------|--------|----------------|
+| `cross_project_patterns.csv` | **Archivo principal.** Una fila por tema, marcada si se repite entre repos | `topic_id, name, cross_project, n_repos, n_supporting_repos, n_issues, top_repo, top_repo_share, evenness, keywords, supporting_repos` |
+| `topics.jsonl` | Los 151 temas | `topic_id, name, keywords, count, representative_docs, top_repo, top_repo_share, n_repos, repo_specific` |
+| `doc_topics.jsonl` | Issue -> tema (`-1` = outlier) | `issue_id` (`owner/repo#numero`), `topic_id`, `probability` |
+| `cross_project_patterns.jsonl` | Lo mismo que el CSV más `per_repo` (issues y prevalencia por repo) y `example_issue_ids` | |
+| `quantum_patterns.jsonl`, `pattern_summary.csv` | Categorías de la taxonomía por palabras clave (12) con sus issues | `pattern_id, frequency, topic_share, supporting_issue_ids, example_quotes` |
+| `candidate_categories.jsonl` | Temas que la taxonomía no explica (candidatos a categoría nueva) | `topic_id, matched_share` |
+| `topics_reduced.jsonl`, `doc_topics_reduced.jsonl` | El mismo resultado con los outliers reasignados por similitud (más cobertura, menos calidad) | |
+| `topics_over_time.jsonl`, `topics_per_class.jsonl` | Frecuencia de cada tema por intervalo de tiempo / por repo | |
+| `maintainability_metrics.json`, `maintainability_summary.csv` | Métricas por repo (tiempo de resolución, Gini, entropía de temas, ...) | |
+| `comparisons.json` | Vistas por repo, por familia de SDK y con tope (máx. 1000 issues por repo) | |
+| `run_summary.json` | 35 340 issues, 151 temas, 49,9 % de outliers, 3 temas de ruido | |
+| `topic_visualization.html` | Gráficos interactivos de BERTopic (ábrelo en el navegador) | |
 
-### What "cross-project pattern" means here
+### Qué significa "patrón entre proyectos" aquí
 
-A topic is flagged `cross_project = True` when at least **3 repos each hold 3 or more** of its issues and
-no single repo holds more than **90 %** of it (`cross_project:` in `config.yaml`). Outliers never count.
-This is lenient: 104 of 151 topics qualify. Stricter cuts (computed from `per_repo`):
+Un tema se marca `cross_project = True` cuando al menos **3 repos tienen 3 o más** de sus issues y
+ningún repo concentra más del **90 %** del tema (`cross_project:` en `config.yaml`). Los outliers nunca
+cuentan. Es un criterio generoso: 104 de 151 temas lo cumplen. Cortes más estrictos (calculados desde
+`per_repo`):
 
-| Rule | Topics |
-|------|--------|
-| 3 repos x 3 issues, top repo <= 90 % (default) | 104 |
-| 5 repos x 5 issues, top repo <= 70 % | 38 |
-| 8 repos x 5 issues, top repo <= 60 % | 11 |
+| Regla | Temas |
+|-------|-------|
+| 3 repos x 3 issues, repo principal <= 90 % (por defecto) | 104 |
+| 5 repos x 5 issues, repo principal <= 70 % | 38 |
+| 8 repos x 5 issues, repo principal <= 60 % | 11 |
 
-Changing the thresholds needs no retraining: edit `config.yaml` and run
+Cambiar los umbrales no obliga a reentrenar: edita `config.yaml` y ejecuta
 `python -m src.cli extract-patterns --output-dir data/analysis`.
 
-## 4. Quick start for the analysis
+## 4. Primeros pasos para el análisis
 
 ```python
 import pandas as pd
 cp = pd.read_csv("data/analysis/cross_project_patterns.csv")
-strong = cp[(cp.cross_project) & (cp.n_supporting_repos >= 8) & (cp.top_repo_share <= 0.6)]
-print(strong[["topic_id", "keywords", "n_supporting_repos", "n_issues"]])
+fuertes = cp[(cp.cross_project) & (cp.n_supporting_repos >= 8) & (cp.top_repo_share <= 0.6)]
+print(fuertes[["topic_id", "keywords", "n_supporting_repos", "n_issues"]])
 ```
 
-Read an example issue: take an id from `example_issue_ids`, look it up in
-`data/processed/issues_clean.jsonl` (`repo` + `issue_number`) or in `miner.db`.
+Para leer un issue de ejemplo: toma un id de `example_issue_ids` y búscalo en
+`data/processed/issues_clean.jsonl` (`repo` + `issue_number`) o en `miner.db`.
 
-To rebuild the environment: `py -3.12 -m venv .venv`, install a CUDA build of `torch`, then
-`pip install -r requirements.txt` (the pins `click<8.2` and `hdbscan==0.8.40` matter).
+Para reconstruir el entorno: `py -3.12 -m venv .venv`, instala una versión de `torch` con CUDA y luego
+`pip install -r requirements.txt` (importan los pines `click<8.2` y `hdbscan==0.8.40`).
 
-## 5. Read this before trusting the results
+## 5. Léelo antes de confiar en los resultados
 
-1. **Topics are semantic similarity, not the same bug.** A topic shared by 38 repos means similar wording.
-   Validate by hand: read ~30 issues from topics 4, 2, 10 and 20 before claiming a pattern.
-2. **About half of the issues (49.9 %) are outliers** and belong to no topic, so patterns describe half the
-   corpus. Embedding model: general-purpose `all-MiniLM-L6-v2`, weak on quantum vocabulary.
-3. **Not everything is quantum.** CI/coverage, sphinx, wheels and docstrings topics are general maintenance.
-   Separate them from pulse, noise, Clifford, gradients, transpilation and QASM topics.
-4. **The keyword taxonomy is coarse.** `documentation_examples` matches 6 121 issues (17 %).
-5. **`gdsfactory/gdsfactory` (1 038 issues) is photonic chip design**, probably not quantum, and it is still
-   included (it dominates topic 0). Decide whether to exclude it (`input.exclude_repos` in `config.yaml`).
-6. **Qiskit has by far the most issues**, so topics skew to it; that is why the criteria cap the top-repo share.
-7. **Not verified:** two runs giving identical topics (the seed is fixed, but I did not run it twice), and the
-   GitHub CI on Ubuntu/Python 3.11. The original spec (S19-S29) is not stored in the repo.
+1. **Los temas son similitud de texto, no "el mismo bug".** Un tema compartido por 38 repos significa
+   redacción parecida. Valida a mano: lee unos 30 issues de los temas 4, 2, 10 y 20 antes de afirmar un
+   patrón.
+2. **Cerca de la mitad de los issues (49,9 %) son outliers** y no pertenecen a ningún tema, así que los
+   patrones describen la mitad del corpus. El modelo de embeddings es genérico (`all-MiniLM-L6-v2`) y
+   entiende poco el vocabulario cuántico.
+3. **No todo es cuántico.** Los temas de CI/coverage, sphinx, wheels y docstrings son mantenimiento
+   general. Sepáralos de pulse, ruido, Clifford, gradientes, transpilación y QASM.
+4. **La taxonomía por palabras clave es burda.** `documentation_examples` marca 6 121 issues (17 %).
+5. **`gdsfactory/gdsfactory` (1 038 issues) es diseño de chips fotónicos**, probablemente no cuántico, y
+   sigue incluido (domina el tema 0). Hay que decidir si se excluye (`input.exclude_repos` en
+   `config.yaml`).
+6. **Qiskit tiene muchísimos más issues**, así que los temas se inclinan hacia él; por eso los criterios
+   limitan la proporción del repo principal.
+7. **No verificado:** que dos corridas den temas idénticos (la semilla está fija, pero no corrí dos veces)
+   ni el CI de GitHub en Ubuntu/Python 3.11. La spec original (S19-S29) no está guardada en el repo.
 
-## 6. Privacy
+## 6. Privacidad
 
-Authors, commenters and assignees are replaced by salted pseudonyms (`u_<12 hex>`) and `@mentions` are
-masked, in `issues_clean.jsonl` and every output. Repository names are public projects; the report
-anonymizes them (`report.anonymize`), the CSV and JSONL files do not. Change `preprocessing.author_salt`
-in `config.yaml` to make pseudonyms unlinkable to this release.
+Autores, comentaristas y asignados se reemplazan por seudónimos con sal (`u_<12 hex>`) y las
+`@menciones` se enmascaran, tanto en `issues_clean.jsonl` como en todas las salidas. Los nombres de los
+repositorios son proyectos públicos; el reporte los anonimiza (`report.anonymize`), pero el CSV y los
+JSONL no. Cambia `preprocessing.author_salt` en `config.yaml` para que los seudónimos no se puedan
+enlazar con esta versión.

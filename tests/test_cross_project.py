@@ -1,4 +1,4 @@
-"""Cross-project patterns: a topic that recurs in several distinct repos."""
+"""Patrones entre proyectos: un tema que se repite en varios repos distintos."""
 
 import json
 
@@ -25,15 +25,15 @@ def _world():
         issues.append(_issue(repo, n))
         dts.append(DocTopic(issue_id=f"{repo}#{n}", topic_id=topic, probability=1.0))
 
-    for r in ("a/x", "b/y", "c/z"):          # topic 0: 3 issues in each of 3 repos -> cross-project
+    for r in ("a/x", "b/y", "c/z"):          # tema 0: 3 issues en cada uno de 3 repos -> entre proyectos
         for n in range(3):
             add(r, n, 0)
-    for n in range(20):                      # topic 1: huge repo plus one stray issue -> not cross-project
+    for n in range(20):                      # tema 1: un repo enorme más un issue suelto -> no es entre proyectos
         add("a/x", 100 + n, 1)
     add("b/y", 100, 1)
-    for n in range(5):                       # topic 2: flagged repo_specific upstream
+    for n in range(5):                       # tema 2: marcado como repo_specific antes
         add("a/x", 200 + n, 2)
-    add("a/x", 300, -1)                      # outlier is never a topic
+    add("a/x", 300, -1)                      # un outlier nunca es un tema
     return issues, dts, [_topic(0), _topic(1), _topic(2, repo_specific=True)]
 
 
@@ -55,7 +55,7 @@ def test_topic_spread_over_enough_repos_is_cross_project():
 def test_dominated_or_thin_topics_are_not_cross_project():
     issues, dts, topics = _world()
     rows = _by_id(find_cross_project_topics(topics, dts, issues, min_repos=3, min_issues_per_repo=3, max_top_repo_share=0.8))
-    assert rows[1]["cross_project"] is False      # only one repo reaches min_issues_per_repo
+    assert rows[1]["cross_project"] is False      # solo un repo alcanza min_issues_per_repo
     assert rows[1]["supporting_repos"] == ["a/x"]
 
 
@@ -68,7 +68,7 @@ def test_single_repo_topic_is_not_cross_project_and_outliers_are_skipped():
 
 def test_dominant_repo_alone_does_not_hide_a_topic_that_recurs_elsewhere():
     issues, dts, topics = _world()
-    topics[0].repo_specific = True  # flagged by the stricter upstream threshold
+    topics[0].repo_specific = True  # marcado por el umbral más estricto anterior
     rows = _by_id(find_cross_project_topics(topics, dts, issues, min_repos=3, min_issues_per_repo=3, max_top_repo_share=0.9))
     assert rows[0]["cross_project"] is True
 

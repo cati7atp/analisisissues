@@ -1,4 +1,4 @@
-"""SQLite loader for miner.db."""
+"""Cargador SQLite para miner.db."""
 
 import pytest
 

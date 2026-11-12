@@ -1,4 +1,4 @@
-"""Tests for code and traceback summarization (S11)."""
+"""Tests del resumen de código y tracebacks (S11)."""
 
 from src.models import clean_text
 
@@ -26,7 +26,7 @@ def test_fenced_traceback_keeps_exception_and_drops_body():
 def test_traceback_keeps_at_most_three_frames_without_paths():
     result = clean_text("```\n" + TRACEBACK + "\n```")
     assert "transpile" in result and "_execute" in result
-    assert "do_work" not in result  # the fourth frame is dropped
+    assert "do_work" not in result  # el cuarto frame se descarta
     assert "/home/alice" not in result and "bob" not in result and "300" not in result
 
 
@@ -91,7 +91,7 @@ def test_build_log_marker_is_a_default_stop_word():
 
 
 def test_stray_backtick_does_not_swallow_the_exception_summary():
-    # shape of Qiskit/qiskit#5143: an unbalanced backtick before the fence, double-backtick code after it
+    # forma de Qiskit/qiskit#5143: un backtick sin pareja antes del bloque y código con doble backtick después
     text = ("The transpiler doesn't handle `negative indices\n"
             "```\nTraceback (most recent call last):\n  File \"a.py\", line 1, in f\n    x()\n"
             "TranspilerError: bad layout\n```\n"

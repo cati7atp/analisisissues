@@ -1,4 +1,4 @@
-"""Issue type: dataset `type` first, keyword classifier as a secondary field."""
+"""Tipo de issue: primero el `type` del dataset; el clasificador por palabras clave va como campo secundario."""
 
 from src.models import RawIssue, classify_issue_type
 from src.preprocess import IssuePreprocessor
@@ -18,7 +18,7 @@ def test_item_type_comes_from_dataset_type(config):
 
 
 def test_keywords_match_whole_words_only():
-    # "address" contains "add" and "debugging" contains "bug"; neither is a signal
+    # "address" contiene "add" y "debugging" contiene "bug"; ninguna es una señal
     assert classify_issue_type("Address book", "debugging notes", []) == "discussion"
 
 

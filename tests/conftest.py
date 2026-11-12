@@ -1,4 +1,4 @@
-"""Shared fixtures: config independent of cwd, all outputs under tmp_path."""
+"""Fixtures compartidas: configuración independiente del cwd, todas las salidas en tmp_path."""
 
 from pathlib import Path
 
@@ -32,7 +32,7 @@ def _insert(conn, table, cols, row):
 
 @pytest.fixture
 def make_db(tmp_path):
-    """Build a tiny miner.db-shaped SQLite file; returns its path."""
+    """Crea un archivo SQLite pequeño con forma de miner.db; devuelve su ruta."""
     import sqlite3
 
     def build(items=(), comments=()):

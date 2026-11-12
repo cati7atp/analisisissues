@@ -1,8 +1,8 @@
-# Quantum GitHub Issues Analysis Configuration
+# Configuración del análisis de issues cuánticos de GitHub
 
-# Paths
+# Rutas
 paths:
-  raw_data: "data/raw/issues.jsonl"           # Input: JSONL with issues + comments
+  raw_data: "data/raw/issues.jsonl"           # Entrada: JSONL con issues + comentarios
   processed_data: "data/processed/issues_clean.jsonl"
   topics_output: "data/analysis/topics.jsonl"
   doc_topics_output: "data/analysis/doc_topics.jsonl"
@@ -13,41 +13,41 @@ paths:
   visualization_html: "reports/topic_visualization.html"
   report_md: "reports/quantum_maintainability_report.md"
   pattern_summary_csv: "reports/pattern_summary.csv"
-  cache_dir: "data/cache"                     # embeddings .npy cache
+  cache_dir: "data/cache"                     # caché .npy de embeddings
 
-# Input (read-only SQLite dataset)
+# Entrada (dataset SQLite de solo lectura)
 input:
   db_path: "quantum-gh-dataset-2026-10-22/miner.db"
-  item_types: [issue]            # Phase 1: issues only (values: issue, pr, discussion)
+  item_types: [issue]            # Fase 1: solo issues (valores: issue, pr, discussion)
   include_comment_kinds: [issue_comment]
   exclude_repos: ["QuTech-Delft/OpenQL"]
   max_reject_ratio: 0.005
 
-# Preprocessing
+# Preprocesamiento
 preprocessing:
   bot_users: ["dependabot", "renovate", "github-actions", "codecov", "coveralls", "bors", "mergify",
-              "qiskit-bot", "CLAassistant", "pre-commit-ci", "codecov-commenter", "stale"]  # exact names; also author_type=Bot and "[bot]" suffix
-  # Case-sensitive, per-line regexes for template comments (never free substrings)
+              "qiskit-bot", "CLAassistant", "pre-commit-ci", "codecov-commenter", "stale"]  # nombres exactos; también author_type=Bot y el sufijo "[bot]"
+  # Regex por línea que distinguen mayúsculas, para comentarios de plantilla (nunca subcadenas libres)
   automated_comment_patterns:
     - '^This issue has been automatically marked as stale\b.*$'
     - '^Thank you for your submission, we really appreciate it\. Like many open source projects.*$'
   min_body_length: 10
-  min_chars: 30                  # drop issues with fewer cleaned title+body characters; 0 disables
+  min_chars: 30                  # descarta issues con menos caracteres de título+cuerpo limpios; 0 lo desactiva
   max_comment_length: 50000
   strip_code_fences: true
-  strip_templates: true          # HTML comments and template headings (checklist lines go through the repeated-line filter)
-  repeated_line_min_issues: 20   # remove lines seen in this many distinct issues (two-pass); 0 disables
-  repeated_comment_min_issues: 5 # drop comments seen in this many distinct issues; 0 disables
-  drop_exact_duplicates: true    # keep the first of identical (normalized) title+body documents
+  strip_templates: true          # comentarios HTML y encabezados de plantilla (las líneas de checklist pasan por el filtro de líneas repetidas)
+  repeated_line_min_issues: 20   # elimina líneas vistas en esta cantidad de issues distintos (dos pasadas); 0 lo desactiva
+  repeated_comment_min_issues: 5 # descarta comentarios vistos en esta cantidad de issues distintos; 0 lo desactiva
+  drop_exact_duplicates: true    # conserva el primero de los documentos idénticos (normalizados) de título+cuerpo
   normalize_whitespace: true
-  anonymize_authors: true        # people become salted pseudonyms (u_<12 hex>); bot filtering uses the real name first
-  author_salt: "quantum-issues"  # change it so pseudonyms cannot be linked to a previous release
+  anonymize_authors: true        # las personas pasan a ser pseudónimos con sal (u_<12 hex>); el filtro de bots usa primero el nombre real
+  author_salt: "quantum-issues"  # cámbiala para que los pseudónimos no se puedan vincular con una publicación anterior
 
-# BERTopic Configuration
+# Configuración de BERTopic
 bertopic:
   embedding_model: "all-MiniLM-L6-v2"
-  nr_topics: null                    # null = auto, or integer to reduce
-  embed_max_chars: 2000              # embedded text = title + first N chars of body (no comments)
+  nr_topics: null                    # null = automático, o un entero para reducir
+  embed_max_chars: 2000              # texto embebido = título + primeros N caracteres del cuerpo (sin comentarios)
   embed_batch_size: 64
   embed_device: null                 # null = auto
   embed_normalize: true
@@ -55,39 +55,39 @@ bertopic:
   umap_n_components: 5
   umap_min_dist: 0.0
   umap_metric: "cosine"
-  hdbscan_min_cluster_size: 30           # unvalidated starting value (S18); tune on the first real run
-  hdbscan_min_samples: 10                # unvalidated starting value
+  hdbscan_min_cluster_size: 30           # valor inicial sin validar (S18); ajústalo en la primera corrida real
+  hdbscan_min_samples: 10                # valor inicial sin validar
   hdbscan_metric: "euclidean"
   vectorizer_ngram_range: [1, 2]
   vectorizer_stop_words: "english"
   vectorizer_min_df: 1
-  vectorizer_max_df: 0.85            # fraction of topics (c-TF-IDF fits one doc per topic)
-  domain_stop_words: ["code", "block", "url", "user", "issue", "code_block", "build_log"]  # placeholder tokens left by clean_text
+  vectorizer_max_df: 0.85            # fracción de temas (c-TF-IDF ajusta un documento por tema)
+  domain_stop_words: ["code", "block", "url", "user", "issue", "code_block", "build_log"]  # tokens marcadores que deja clean_text
   noise_lexicon: ["macosx", "aarch64", "ranlib", "travis", "dependabot", "tagbot", "appveyor", "manylinux", "x86_64",
                   "ccache", "cmake", "gcc", "wheel", "wheels", "pip", "ubuntu", "circleci", "jenkins", "github actions",
-                  "workflow", "linux", "darwin", "msvc", "conda", "toolchain", "distutils", "msvccompiler"]  # S20: >= 3 of a topic's top-10 keywords here marks it as noise
-  calculate_probabilities: false      # probabilities come from hdbscan.probabilities_
+                  "workflow", "linux", "darwin", "msvc", "conda", "toolchain", "distutils", "msvccompiler"]  # S20: si >= 3 de las 10 palabras clave principales de un tema están aquí, se marca como ruido
+  calculate_probabilities: false      # las probabilidades vienen de hdbscan.probabilities_
   temporal_nr_bins: 10
-  temporal_views: true               # topics_over_time is slow on ~35k issues (minutes); false skips it
-  reduce_outliers: true              # true also writes *_reduced outputs; the primary result is never reduced
-  seed: 42                           # UMAP random_state
-  reproducible: true                 # true: seeded single-threaded UMAP (same topics every run); false: parallel, unseeded
+  temporal_views: true               # topics_over_time es lento con ~35k issues (minutos); false lo omite
+  reduce_outliers: true              # true también escribe salidas *_reduced; el resultado principal nunca se reduce
+  seed: 42                           # random_state de UMAP
+  reproducible: true                 # true: UMAP con semilla y un solo hilo (mismos temas en cada corrida); false: paralelo, sin semilla
   verbose: true
 
-# Maintainability Metrics
+# Métricas de mantenibilidad
 metrics:
   compute_gini: true
   resolution_time_quantiles: [0.25, 0.5, 0.75]
   anonymize_repos_in_report: true
 
-# Reporting
+# Reportes
 report:
   include_visualizations: true
   max_example_quotes: 3
   quote_max_length: 200
   anonymize: true
 
-# Cross-project patterns: a topic that recurs in several distinct repos
+# Patrones entre proyectos: un tema que se repite en varios repos distintos
 cross_project:
   min_repos: 3
   min_issues_per_repo: 3

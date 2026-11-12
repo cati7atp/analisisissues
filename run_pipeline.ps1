@@ -1,17 +1,17 @@
-# Quantum GitHub Issues Analysis - Pipeline Runner
+# Análisis de issues cuánticos de GitHub - Ejecutor del pipeline
 
 Write-Host "Starting quantum issues analysis pipeline..." -ForegroundColor Cyan
 
-# Check if virtual environment exists
+# Comprueba si existe el entorno virtual
 if (Test-Path "venv\Scripts\Activate.ps1") {
     & "venv\Scripts\Activate.ps1"
 }
 
-# Dataset path comes from config.yaml (input.db_path); pass a miner.db path to override it
+# La ruta del dataset viene de config.yaml (input.db_path); pasa una ruta a miner.db para reemplazarla
 $dbArgs = @()
 if ($args.Count -gt 0) { $dbArgs = @("--db", $args[0]) }
 
-# Run pipeline
+# Ejecuta el pipeline
 python -m src.cli run-pipeline --config config.yaml @dbArgs
 
 if ($LASTEXITCODE -eq 0) {

@@ -1,4 +1,4 @@
-"""Tests for patterns module."""
+"""Tests del módulo patterns."""
 
 import json
 import tempfile
@@ -17,10 +17,10 @@ from src.patterns import (
 
 @pytest.fixture
 def sample_issues():
-    """Sample issues for pattern testing."""
+    """Issues de ejemplo para probar patrones."""
     issues = []
     
-    # Hardware backend issue
+    # Issue de backend de hardware
     issues.append(CleanedIssue(
         repo="test/qiskit-test",
         issue_number=1,
@@ -37,7 +37,7 @@ def sample_issues():
         full_text="VQE fails on IBM Quantum hardware When running VQE on IBM Quantum hardware, calibration drift causes convergence failure. Simulator works fine.",
     ))
     
-    # Transpilation issue
+    # Issue de transpilación
     issues.append(CleanedIssue(
         repo="test/qiskit-test",
         issue_number=2,
@@ -54,7 +54,7 @@ def sample_issues():
         full_text="Transpilation error with coupling map Transpilation fails due to routing issues with the coupling map. Stochastic swap not working.",
     ))
     
-    # Gradient issue
+    # Issue de gradientes
     issues.append(CleanedIssue(
         repo="test/pennylane-test",
         issue_number=3,
@@ -71,7 +71,7 @@ def sample_issues():
         full_text="Gradient computation fails Parameter-shift gradient calculation gives wrong results with JAX backend. Adjoint differentiation not supported.",
     ))
     
-    # Dependency issue
+    # Issue de dependencias
     issues.append(CleanedIssue(
         repo="test/qiskit-test",
         issue_number=4,
@@ -123,7 +123,7 @@ class TestFindPatternMatches:
         matches = find_pattern_matches(sample_issues, keyword_patterns, config)
         assert len(matches) > 0
         
-        # Check that hardware pattern was found
+        # Comprueba que se encontró el patrón de hardware
         categories = {m.category for m in matches}
         assert "hardware_backend" in categories or "algorithm_convergence" in categories
 
@@ -155,7 +155,7 @@ class TestAggregatePatterns:
         patterns = aggregate_patterns(matches)
         
         assert len(patterns) > 0
-        # Each pattern should have required fields
+        # Cada patrón debe tener los campos requeridos
         for p in patterns:
             assert p.pattern_id
             assert p.name
@@ -165,7 +165,7 @@ class TestAggregatePatterns:
 
 class TestExtractQuantumPatterns:
     def test_end_to_end(self, config, sample_issues, tmp_path):
-        # Write sample issues to JSONL
+        # Escribe los issues de ejemplo en JSONL
         issues_file = tmp_path / "issues.jsonl"
         with open(issues_file, "w") as f:
             for issue in sample_issues:
@@ -177,7 +177,7 @@ class TestExtractQuantumPatterns:
                     c["created_at"] = c["created_at"].isoformat()
                 f.write(json.dumps(data) + "\n")
         
-        # Create empty topics file
+        # Crea un archivo de temas vacío
         topics_file = tmp_path / "topics.jsonl"
         topics_file.touch()
         
@@ -187,7 +187,7 @@ class TestExtractQuantumPatterns:
         assert len(patterns) > 0
         assert output_file.exists()
         
-        # Verify CSV was created
+        # Verifica que se creó el CSV
         csv_path = config.paths.pattern_summary_csv
         assert csv_path.exists() or Path("reports/pattern_summary.csv").exists()
 
@@ -283,7 +283,7 @@ class TestTopicIntegration:
         patterns = extract_quantum_patterns(config, files[1], files[0], out, doc_topics_path=files[2])
         by_cat = {p.category: p for p in patterns}
         assert by_cat["transpilation_compilation"].topic_share == 1.0
-        assert by_cat["pulse_control"].topic_share == 0.0  # its only document is an outlier
+        assert by_cat["pulse_control"].topic_share == 0.0  # su único documento es un outlier
         candidates = [json.loads(l) for l in (tmp_path / "candidate_categories.jsonl").read_text(encoding="utf-8").splitlines()]
         assert [c["topic_id"] for c in candidates] == [1]
         assert candidates[0]["keywords"] == ["recipe", "menu"] and candidates[0]["matched_share"] == 0.0
@@ -295,10 +295,10 @@ class TestTopicIntegration:
                             [(0, ["transpile"], 2, True), (1, ["transpile", "slow"], 1), (2, ["pyrpl"], 3, True)])
         patterns = extract_quantum_patterns(config, files[1], files[0], tmp_path / "p.jsonl", doc_topics_path=files[2])
         pattern = {p.category: p for p in patterns}["transpilation_compilation"]
-        assert pattern.topic_share == pytest.approx(1 / 3)  # only topic 1 is cross-project
+        assert pattern.topic_share == pytest.approx(1 / 3)  # solo el tema 1 es entre proyectos
         assert "0_x" not in pattern.description and "1_x" in pattern.description
         candidates = [json.loads(l) for l in (tmp_path / "candidate_categories.jsonl").read_text(encoding="utf-8").splitlines()]
-        assert 2 not in [c["topic_id"] for c in candidates]  # a single-project topic is no new category
+        assert 2 not in [c["topic_id"] for c in candidates]  # un tema de un solo proyecto no es una categoría nueva
 
     def test_without_doc_topics_patterns_still_run(self, config, tmp_path):
         files = self._write(tmp_path, [_issue(1, "transpile fails")], [0], [(0, ["transpile"], 1)])

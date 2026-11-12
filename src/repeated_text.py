@@ -1,7 +1,7 @@
-"""Corpus-level repeated-text detection (S12), data-driven and streaming.
+"""Detección de texto repetido a nivel de corpus (S12), basada en datos y en streaming.
 
-A line that occurs in many distinct issues is template or bot boilerplate. Counts use
-64-bit hashes of normalized lines so the index stays small for a 36k-issue corpus.
+Una línea que aparece en muchos issues distintos es texto de plantilla o de bots. Los conteos usan
+hashes de 64 bits de líneas normalizadas para que el índice sea pequeño en un corpus de 36k issues.
 """
 
 import hashlib
@@ -19,7 +19,7 @@ _SPACE = re.compile(r"\s+")
 
 
 def normalize_line(line: str) -> str:
-    """Lowercase, collapse whitespace, mask URLs and digits so version bumps collapse."""
+    """Pasa a minúsculas, colapsa espacios y enmascara URLs y dígitos para que los cambios de versión coincidan."""
     text = _URL.sub("url", line.lower())
     return _SPACE.sub(" ", _NUMBER.sub("0", text)).strip()
 
@@ -36,7 +36,7 @@ def _key(text: str) -> int:
 
 
 class RepeatedTextIndex:
-    """Counts distinct issues per normalized line, then filters lines at or above a threshold."""
+    """Cuenta issues distintos por línea normalizada y filtra las líneas que alcanzan un umbral."""
 
     def __init__(self, min_line_issues: int, min_comment_issues: int = 0):
         self.min_line_issues = min_line_issues
@@ -88,5 +88,5 @@ class RepeatedTextIndex:
 
 
 def document_key(title: str, body: str) -> int:
-    """Hash of the normalized title plus cleaned body, for exact-duplicate detection."""
+    """Hash del título normalizado más el cuerpo limpio, para detectar duplicados exactos."""
     return _key(_SPACE.sub(" ", f"{title} {body}".lower()).strip())

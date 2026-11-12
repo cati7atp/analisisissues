@@ -1,4 +1,4 @@
-"""BERTopic topic modeling for quantum GitHub issues."""
+"""Modelado de temas con BERTopic para issues cuánticos de GitHub."""
 
 import json
 import re
@@ -31,7 +31,7 @@ MODEL_SUBDIR = "model"  # safetensors directory; UMAP/HDBSCAN are not serialized
 
 
 def load_cleaned_issues(input_path: Path) -> List[CleanedIssue]:
-    """Load cleaned issues from JSONL."""
+    """Carga los issues limpios desde JSONL."""
     issues = []
     logger.info("Loading cleaned issues", path=str(input_path))
     
@@ -41,7 +41,7 @@ def load_cleaned_issues(input_path: Path) -> List[CleanedIssue]:
             if not line:
                 continue
             data = json.loads(line)
-            # Convert datetime strings back to datetime objects
+            # Convierte los textos de fecha otra vez a objetos datetime
             data["created_at"] = datetime.fromisoformat(data["created_at"])
             if data.get("closed_at"):
                 data["closed_at"] = datetime.fromisoformat(data["closed_at"])
@@ -54,9 +54,9 @@ def load_cleaned_issues(input_path: Path) -> List[CleanedIssue]:
 
 
 def prepare_documents(issues: List[CleanedIssue], embed_max_chars: int = 2000):
-    """Prepare aligned lists, one entry per issue.
+    """Prepara listas alineadas, una entrada por issue.
 
-    docs: title + body + comments (c-TF-IDF text); embed_texts: title + start of body (S17).
+    docs: título + cuerpo + comentarios (texto para c-TF-IDF); embed_texts: título + inicio del cuerpo (S17).
     """
     docs = []
     embed_texts = []
@@ -78,7 +78,7 @@ def prepare_documents(issues: List[CleanedIssue], embed_max_chars: int = 2000):
 
 
 def build_vectorizer(config) -> CountVectorizer:
-    """CountVectorizer for c-TF-IDF; English plus domain stop words, bigrams."""
+    """CountVectorizer para c-TF-IDF; stop words en inglés y del dominio, bigramas."""
     cfg = config.bertopic
     base = ENGLISH_STOP_WORDS if cfg.vectorizer_stop_words == "english" else frozenset()
     return CountVectorizer(
@@ -90,10 +90,10 @@ def build_vectorizer(config) -> CountVectorizer:
 
 
 def create_bertopic_model(config, embedding_model=None, umap_model=None) -> BERTopic:
-    """Create BERTopic model with configured parameters.
+    """Crea el modelo BERTopic con los parámetros configurados.
 
-    `embedding_model` and `umap_model` can be injected (tests use fakes); embeddings
-    themselves are always passed explicitly to `fit_transform`.
+    `embedding_model` y `umap_model` se pueden inyectar (los tests usan falsos); los embeddings
+    siempre se pasan de forma explícita a `fit_transform`.
     """
     if umap_model is None:
         umap_model = umap.UMAP(
@@ -117,7 +117,7 @@ def create_bertopic_model(config, embedding_model=None, umap_model=None) -> BERT
     )
 
     ctfidf_model = ClassTfidfTransformer(reduce_frequent_words=True, bm25_weighting=True)
-    # Aspects only: with no "Main" key the main label stays the c-TF-IDF words.
+    # Solo aspectos: sin clave "Main", la etiqueta principal sigue siendo las palabras de c-TF-IDF.
     representation_model = {
         "KeyBERT": KeyBERTInspired(),
         "MMR": MaximalMarginalRelevance(diversity=0.3),
@@ -142,21 +142,21 @@ def create_bertopic_model(config, embedding_model=None, umap_model=None) -> BERT
 def run_topic_modeling(
     config, input_path: Path, output_dir: Path, embedding_model=None, umap_model=None, encoder=None
 ) -> BERTopic:
-    """Run the full topic modeling pipeline (injectable models are for tests)."""
-    # Load issues
+    """Ejecuta el pipeline completo de modelado de temas (los modelos inyectables son para tests)."""
+    # Carga los issues
     issues = load_cleaned_issues(input_path)
     
-    # Prepare documents
+    # Prepara los documentos
     docs, embed_texts, issue_ids, timestamps, repos = prepare_documents(issues, config.bertopic.embed_max_chars)
     
     if len(docs) < config.bertopic.hdbscan_min_cluster_size * 2:
         logger.warning("Too few documents for topic modeling", count=len(docs))
-        # Create minimal outputs
+        # Crea salidas mínimas
         output_dir.mkdir(parents=True, exist_ok=True)
         _save_empty_outputs(config, output_dir, issue_ids)
         return None
     
-    # Create and fit model
+    # Crea y ajusta el modelo
     logger.info("Creating BERTopic model")
     topic_model = create_bertopic_model(config, embedding_model=embedding_model, umap_model=umap_model)
 
@@ -174,8 +174,8 @@ def run_topic_modeling(
     try:
         topics, probabilities = topic_model.fit_transform(docs, embeddings=embeddings)
     except ValueError:
-        # With 0 or 1 clusters the c-TF-IDF vectorizer fails (max_df counts topics).
-        # Decide from the clusterer's own labels, never from the error message.
+        # Con 0 o 1 clusters el vectorizador c-TF-IDF falla (max_df cuenta temas).
+        # Se decide según las etiquetas del propio clusterer, nunca por el mensaje de error.
         found = _clusters_found(topic_model)
         if found is None or found > 1:
             raise
@@ -185,7 +185,7 @@ def run_topic_modeling(
         _write_run_summary(output_dir, [-1] * len(docs), outcome="no_topics", clusters_found=found)
         return None
 
-    # Save model
+    # Guarda el modelo
     output_dir.mkdir(parents=True, exist_ok=True)
     model_path = output_dir / MODEL_SUBDIR
     topic_model.save(
@@ -196,20 +196,20 @@ def run_topic_modeling(
     )
     logger.info("Saved model", path=str(model_path))
     
-    # Extract topic info
+    # Extrae la información de los temas
     topic_info = topic_model.get_topic_info()
     noise = _noise_summary(config, topic_model)
     repo_stats = topic_repo_stats(topics, repos, config.bertopic.repo_specific_share)
     noise["repo_specific_topics"] = sum(s["repo_specific"] for s in repo_stats.values())
     _write_run_summary(output_dir, topics, **noise)
     
-    # Save topics.jsonl
+    # Guarda topics.jsonl
     _save_topics(config, topic_model, topic_info, output_dir, repo_stats=repo_stats)
     
-    # Save doc_topics.jsonl
+    # Guarda doc_topics.jsonl
     _save_doc_topics(config, issue_ids, topics, probabilities, output_dir)
     
-    # Generate visualization
+    # Genera la visualización
     _generate_visualization(config, topic_model, docs, output_dir)
 
     if config.bertopic.temporal_views:
@@ -222,7 +222,7 @@ def run_topic_modeling(
 
 
 def topic_repo_stats(topics: List[int], repos: List[str], threshold: float) -> Dict[int, Dict[str, Any]]:
-    """Per topic: dominant repo, its share, repo count and the repo_specific flag (outliers excluded)."""
+    """Por tema: repo dominante, su proporción, cantidad de repos y la marca repo_specific (sin outliers)."""
     per_topic: Dict[int, Counter] = defaultdict(Counter)
     for topic_id, repo in zip(topics, repos):
         if topic_id != -1:
@@ -237,7 +237,7 @@ def topic_repo_stats(topics: List[int], repos: List[str], threshold: float) -> D
 
 
 def _save_frame(frame: pd.DataFrame, path: Path, rename: Dict[str, str]) -> None:
-    """Write a BERTopic result frame as JSONL, without the outlier topic."""
+    """Escribe un resultado de BERTopic como JSONL, sin el tema de outliers."""
     frame = frame[frame["Topic"] != -1].rename(columns=rename)
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w", encoding="utf-8") as f:
@@ -247,7 +247,7 @@ def _save_frame(frame: pd.DataFrame, path: Path, rename: Dict[str, str]) -> None
 
 
 def _save_temporal_views(config, topic_model, docs, timestamps, repos, output_dir: Path) -> None:
-    """Topics over time (document-order timestamps) and per repo class (S25)."""
+    """Temas en el tiempo (marcas de tiempo según el orden de documentos) y por clase de repo (S25)."""
     over_time = topic_model.topics_over_time(docs, timestamps, nr_bins=config.bertopic.temporal_nr_bins)
     _save_frame(over_time, output_dir / "topics_over_time.jsonl", {})
     per_class = topic_model.topics_per_class(docs, repos)
@@ -255,7 +255,7 @@ def _save_temporal_views(config, topic_model, docs, timestamps, repos, output_di
 
 
 def _save_reduced_result(config, topic_model, docs, issue_ids, topics, probabilities, embeddings, output_dir, noise, repos=None):
-    """Second, separate result with outliers reassigned; call only after the primary outputs are saved."""
+    """Segundo resultado, separado, con los outliers reasignados; llámalo solo después de guardar las salidas principales."""
     if -1 not in topics:
         logger.info("No outliers to reduce; skipping the reduced result")
         _write_run_summary(output_dir, topics, reduced_topics=list(topics), reduced_outcome="no_outliers", **noise)
@@ -286,7 +286,7 @@ def _topic_counts(topics: List[int]) -> Dict[str, Any]:
 
 
 def noise_topic_ids(topic_keywords: Dict[int, List[str]], lexicon: List[str], min_hits: int = 3) -> List[int]:
-    """Topics with at least `min_hits` of their top-10 keywords containing a lexicon term as whole words."""
+    """Temas con al menos `min_hits` de sus 10 palabras clave principales que contienen un término del léxico como palabra completa."""
     patterns = [re.compile(r"(?<![a-z0-9_])" + re.escape(term.lower()) + r"(?![a-z0-9_])") for term in lexicon]
     if not patterns:
         return []
@@ -308,7 +308,7 @@ def _noise_summary(config, topic_model: BERTopic) -> Dict[str, Any]:
 
 
 def _clusters_found(topic_model: BERTopic) -> Optional[int]:
-    """Clusters (excluding outliers) in the fitted clusterer's labels, or None if it never fit."""
+    """Clusters (sin outliers) en las etiquetas del clusterer ajustado, o None si nunca se ajustó."""
     labels = getattr(topic_model.hdbscan_model, "labels_", None)
     if labels is None:
         return None
@@ -319,7 +319,7 @@ def _write_run_summary(
     output_dir: Path, topics: List[int], reduced_topics: Optional[List[int]] = None,
     outcome: str = "ok", **extra: Any,
 ) -> Dict[str, Any]:
-    """Log and persist document, topic and (unreduced) outlier counts."""
+    """Registra y guarda los conteos de documentos, temas y outliers (sin reducir)."""
     summary = {"n_documents": len(topics), **_topic_counts(topics), "outcome": outcome, **extra}
     if reduced_topics is not None:
         summary["reduced"] = _topic_counts(reduced_topics)
@@ -332,7 +332,7 @@ def _save_topics(
     config, topic_model: BERTopic, topic_info: pd.DataFrame, output_dir: Path, output_path: Optional[Path] = None,
     repo_stats: Optional[Dict[int, Dict[str, Any]]] = None,
 ):
-    """Save topic information to JSONL."""
+    """Guarda la información de los temas en JSONL."""
     output_path = output_path or config.paths.topics_output
     output_path.parent.mkdir(parents=True, exist_ok=True)
     
@@ -342,11 +342,11 @@ def _save_topics(
             if topic_id == -1:
                 continue  # Skip outlier topic
             
-            # Get representative documents
+            # Obtiene los documentos representativos
             rep_docs = topic_model.get_representative_docs(topic_id)
             rep_docs_short = [doc[:500] for doc in (rep_docs or [])]
             
-            # Get keywords
+            # Obtiene las palabras clave
             topic_words = topic_model.get_topic(topic_id)
             keywords = [word for word, _ in (topic_words or [])[:10]]
             
@@ -367,7 +367,7 @@ def _save_doc_topics(
     config, issue_ids: List[str], topics: List[int], probabilities: np.ndarray, output_dir: Path,
     output_path: Optional[Path] = None,
 ):
-    """Save document-topic assignments to JSONL."""
+    """Guarda las asignaciones documento-tema en JSONL."""
     output_path = output_path or config.paths.doc_topics_output
     output_path.parent.mkdir(parents=True, exist_ok=True)
     
@@ -389,18 +389,18 @@ def _save_doc_topics(
 
 
 def _generate_visualization(config, topic_model: BERTopic, docs: List[str], output_dir: Path):
-    """Generate interactive HTML visualization."""
+    """Genera la visualización HTML interactiva."""
     output_path = config.paths.visualization_html
     output_path.parent.mkdir(parents=True, exist_ok=True)
     
     try:
-        # Create visualizations
+        # Crea las visualizaciones
         fig_topics = topic_model.visualize_topics()
         fig_hierarchy = topic_model.visualize_hierarchy()
         fig_barchart = topic_model.visualize_barchart(top_n_topics=20)
         fig_heatmap = topic_model.visualize_heatmap()
         
-        # Combine into single HTML with tabs
+        # Combina todo en un solo HTML con pestañas
         html_content = f"""
 <!DOCTYPE html>
 <html>
@@ -456,25 +456,25 @@ def _generate_visualization(config, topic_model: BERTopic, docs: List[str], outp
 
 
 def _save_empty_outputs(config, output_dir: Path, issue_ids: List[str]):
-    """Save empty output files when too few documents."""
+    """Guarda archivos de salida vacíos cuando hay muy pocos documentos."""
     for path in (config.paths.topics_output, config.paths.doc_topics_output, config.paths.visualization_html):
         path.parent.mkdir(parents=True, exist_ok=True)
-    # Empty topics
+    # Temas vacíos
     with open(config.paths.topics_output, "w") as f:
         pass
-    # Empty doc_topics (all outliers)
+    # doc_topics vacío (todos outliers)
     with open(config.paths.doc_topics_output, "w", encoding="utf-8") as f:
         for issue_id in issue_ids:
             doc_topic = DocTopic(issue_id=issue_id, topic_id=-1, probability=0.0)
             f.write(doc_topic.model_dump_json() + "\n")
-    # Empty visualization
+    # Visualización vacía
     output_dir.mkdir(parents=True, exist_ok=True)
     with open(config.paths.visualization_html, "w") as f:
         f.write("<html><body><h1>Insufficient data for topic modeling</h1></body></html>")
 
 
 def load_topic_model(model_dir: Path, embedding_model=None) -> Optional[BERTopic]:
-    """Load a model saved by run_topic_modeling (safetensors directory), or None if absent."""
+    """Carga un modelo guardado por run_topic_modeling (directorio safetensors), o None si no existe."""
     model_path = model_dir / MODEL_SUBDIR
     if not model_path.exists():
         return None

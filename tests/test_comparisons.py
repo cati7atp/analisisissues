@@ -1,4 +1,4 @@
-"""Cross-repo comparison views control for repo imbalance (S24)."""
+"""Las vistas de comparación entre repos controlan el desbalance entre repos (S24)."""
 
 import sqlite3
 from datetime import datetime
@@ -34,7 +34,7 @@ def test_views_per_repo_and_family_report_pattern_and_topic_shares(matcher):
     assert out["per_repo"]["big/sdk"]["n_issues"] == 100
     assert out["per_repo"]["big/sdk"]["patterns"]["transpilation_compilation"] == pytest.approx(0.5)
     assert out["per_repo"]["small/lib"]["topics"] == {"1": 1.0}
-    assert out["per_family"]["Compilers"]["n_issues"] == 104  # a repo counts in each of its families
+    assert out["per_family"]["Compilers"]["n_issues"] == 104  # un repo cuenta en cada una de sus familias
     assert out["per_family"]["Pulse"]["n_issues"] == 4
     assert out["per_family"]["Pulse"]["patterns"]["pulse_control"] == 1.0
 
@@ -48,10 +48,10 @@ def test_capped_sensitivity_run_limits_each_repo_and_reports_the_shift(matcher):
     out = compare_groups(_corpus(), matcher, {}, {}, cap=10)
     assert out["global"]["n_issues"] == 104
     assert out["capped"]["cap"] == 10 and out["capped"]["n_issues"] == 14
-    # uncapped the big repo dominates; capped the small repo's pulse share rises
+    # sin tope domina el repo grande; con tope sube la parte de pulse del repo pequeño
     assert out["capped"]["patterns"]["pulse_control"] > out["global"]["patterns"]["pulse_control"]
     again = compare_groups(_corpus(), matcher, {}, {}, cap=10)
-    assert again["capped"] == out["capped"]  # deterministic
+    assert again["capped"] == out["capped"]  # determinista
 
 
 def test_load_repo_families_splits_catalog_categories(make_db):

@@ -1,4 +1,4 @@
-"""Tests for explicit embedding computation and the .npy cache (S17)."""
+"""Tests del cálculo explícito de embeddings y del caché .npy (S17)."""
 
 import numpy as np
 

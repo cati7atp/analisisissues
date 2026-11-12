@@ -3,16 +3,16 @@ set -e
 
 echo "Starting quantum issues analysis pipeline..."
 
-# Check if virtual environment exists
+# Comprueba si existe el entorno virtual
 if [ -f "venv/bin/activate" ]; then
     source venv/bin/activate
 fi
 
-# Check dataset (path comes from config.yaml: input.db_path, or pass --db)
+# Comprueba el dataset (la ruta viene de config.yaml: input.db_path, o pasa --db)
 DB_ARG=()
 if [ -n "$1" ]; then DB_ARG=(--db "$1"); fi
 
-# Run pipeline
+# Ejecuta el pipeline
 python -m src.cli run-pipeline --config config.yaml "${DB_ARG[@]}"
 
 if [ $? -eq 0 ]; then

@@ -1,4 +1,4 @@
-"""Tests for the corpus-level repeated-line and repeated-comment filters (S12)."""
+"""Tests de los filtros de líneas y comentarios repetidos a nivel de corpus (S12)."""
 
 import json
 
@@ -110,7 +110,7 @@ def test_comment_seen_in_5_issues_is_dropped(config, tmp_path):
     assert all("registry bot" not in r["full_text"] for r in rows)
     assert stats["repeated_comments"] == 1
     assert stats["repeated_comment_drops"] == 5
-    assert len(rows) == 25  # the issues themselves are kept
+    assert len(rows) == 25  # los issues en sí se conservan
 
 
 def test_comment_seen_in_4_issues_is_kept(config, tmp_path):

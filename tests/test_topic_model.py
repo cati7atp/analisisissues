@@ -1,4 +1,4 @@
-"""Tests for the BERTopic configuration, using fake embeddings and a synthetic corpus."""
+"""Tests de la configuración de BERTopic, con embeddings falsos y un corpus sintético."""
 
 import numpy as np
 import pytest
@@ -19,7 +19,7 @@ NOISY_TAIL = "```python\nx = 1\n``` see https://example.com/a thanks @someone fi
 
 
 class FakeEmbedder(BaseEmbedder):
-    """Deterministic embedder so no real model is ever loaded."""
+    """Embedder determinista para no cargar nunca un modelo real."""
 
     def embed(self, documents, verbose=False):
         out = []
@@ -153,7 +153,7 @@ def test_doc_topic_probabilities_come_from_hdbscan(small_config, tmp_path):
 
 
 class ThemeEncoder:
-    """Sentence-encoder stand-in: one cluster centre per theme plus per-text noise."""
+    """Sustituto del codificador de oraciones: un centro de clúster por tema más ruido por texto."""
 
     def __init__(self):
         self.calls = 0
@@ -168,7 +168,7 @@ class ThemeEncoder:
         for text in texts:
             rng = np.random.default_rng(sum(map(ord, text)))
             theme = next((k for k, words in THEMES.items() if words.split()[0] in text), None)
-            if theme is None:  # isolated point: becomes an outlier
+            if theme is None:  # punto aislado: se vuelve outlier
                 rows.append(rng.normal(scale=15, size=16))
             else:
                 rows.append(self.centres[theme] + rng.normal(scale=0.3, size=16))
@@ -219,7 +219,7 @@ def test_run_uses_cached_embeddings_and_decoupled_texts(small_config, issues_fil
     model = run(small_config, issues_file, tmp_path / "out", enc)
     assert model is not None
     assert len(list(small_config.paths.cache_dir.glob("*.npy"))) == 1
-    # embedding text excludes comments; c-TF-IDF text includes them
+    # el texto para embeddings excluye comentarios; el de c-TF-IDF los incluye
     assert not any("COMMENTMARKER" in t for t in enc.texts)
     assert any("commentmarker" in w for w in model.vectorizer_model.get_feature_names_out())
     calls = enc.calls
@@ -282,7 +282,7 @@ def test_reduce_outliers_writes_a_separate_second_result(small_config, tmp_path)
     reduced = [json.loads(l) for l in (out / "doc_topics_reduced.jsonl").read_text(encoding="utf-8").splitlines()]
     assert sum(r["topic_id"] == -1 for r in primary) == summary["n_outliers"] > 0
     n_reduced = sum(r["topic_id"] == -1 for r in reduced)
-    assert n_reduced < summary["n_outliers"]  # similarity threshold 0 may leave a few unassigned
+    assert n_reduced < summary["n_outliers"]  # un umbral de similitud 0 puede dejar algunos sin asignar
     assert summary["reduced"]["n_outliers"] == n_reduced
     assert (out / "topics_reduced.jsonl").exists()
 
@@ -292,7 +292,7 @@ def test_model_saved_as_safetensors_directory_and_loads_back(small_config, issue
 
     from src.topic_model import load_topic_model
 
-    def no_real_model(*args, **kwargs):  # BERTopic.load would otherwise instantiate the saved model name
+    def no_real_model(*args, **kwargs):  # BERTopic.load, si no, instanciaría el nombre del modelo guardado
         raise RuntimeError("real embedding model must not load in tests")
 
     monkeypatch.setattr(sentence_transformers, "SentenceTransformer", no_real_model)
@@ -353,7 +353,7 @@ def test_cli_output_dir_redirects_every_output(tmp_path, monkeypatch):
 
 
 class StubClusterer:
-    """HDBSCAN stand-in that forces a fixed number of clusters (0 or 1)."""
+    """Sustituto de HDBSCAN que fuerza un número fijo de clústeres (0 o 1)."""
 
     clusters = 0
 
@@ -408,10 +408,10 @@ def test_noise_topic_ids_match_whole_words_and_need_three_hits():
 
     lexicon = ["pip", "travis", "github actions"]
     keywords = {
-        0: ["pip", "travis", "github actions", "circuit"],  # 3 hits (multi-word term counts)
-        1: ["pip install", "travis ci", "pipeline", "circuit"],  # 2 hits: "pipeline" is not "pip"
-        2: ["Travis", "circuit", "noise"],  # 1 hit, case-insensitive
-        3: ["x"] * 9 + ["pip", "travis", "github actions"],  # hits beyond the top 10 are ignored
+        0: ["pip", "travis", "github actions", "circuit"],  # 3 aciertos (cuenta el término de varias palabras)
+        1: ["pip install", "travis ci", "pipeline", "circuit"],  # 2 aciertos: "pipeline" no es "pip"
+        2: ["Travis", "circuit", "noise"],  # 1 acierto, sin distinguir mayúsculas
+        3: ["x"] * 9 + ["pip", "travis", "github actions"],  # se ignoran los aciertos fuera del top 10
     }
     assert noise_topic_ids(keywords, lexicon) == [0]
     assert noise_topic_ids(keywords, lexicon, min_hits=2) == [0, 1]
@@ -508,7 +508,7 @@ def test_reduce_outliers_with_no_outliers_finishes_with_an_explicit_outcome(smal
 
     small_config.bertopic.reduce_outliers = True
     out = tmp_path / "out"
-    run(small_config, issues_file, out, ThemeEncoder())  # must not raise "No outliers to reduce"
+    run(small_config, issues_file, out, ThemeEncoder())  # no debe lanzar "No outliers to reduce"
     summary = json.loads((out / "run_summary.json").read_text(encoding="utf-8"))
     assert summary["n_outliers"] == 0
     assert summary["reduced_outcome"] == "no_outliers"
@@ -523,7 +523,7 @@ def test_topics_report_top_repo_and_flag_repo_specific(small_config, tmp_path):
     from src.preprocess import IssuePreprocessor
 
     issues = write_issues()
-    minority = {0: 0, 1: 15, 2: 3, 3: 6}  # per theme: docs given to c/d (of 30)
+    minority = {0: 0, 1: 15, 2: 3, 3: 6}  # por tema: documentos asignados a c/d (de 30)
     for it in issues:
         theme, j = divmod(it.issue_number, 1000)
         it.repo = "c/d" if j < minority[theme] else "a/b"

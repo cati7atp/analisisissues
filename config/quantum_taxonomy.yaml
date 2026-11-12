@@ -1,7 +1,7 @@
-# Versioned taxonomy for quantum-software issue patterns (S21).
-# Terms are matched case-insensitively on word boundaries, with an optional plural.
-# negative_terms veto the category when they appear in the same text.
-# Generic words (circuit, gate, backend, memory, performance) are not standalone triggers.
+# Taxonomía versionada de patrones de issues de software cuántico (S21).
+# Los términos se buscan sin distinguir mayúsculas, por palabra completa, con plural opcional.
+# negative_terms vetan la categoría cuando aparecen en el mismo texto.
+# Las palabras genéricas (circuit, gate, backend, memory, performance) no activan una categoría por sí solas.
 version: 1
 categories:
   transpilation_compilation:

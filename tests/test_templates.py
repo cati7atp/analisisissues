@@ -1,4 +1,4 @@
-"""Tests for issue-template stripping (S12)."""
+"""Tests de la eliminación de plantillas de issues (S12)."""
 
 from src.models import clean_text
 

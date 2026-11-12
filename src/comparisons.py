@@ -1,4 +1,4 @@
-"""Cross-repo comparison views that control for repo imbalance (S24)."""
+"""Vistas de comparación entre repos que controlan el desbalance entre repos (S24)."""
 
 import random
 import sqlite3
@@ -13,7 +13,7 @@ UNCATEGORIZED = "uncategorized"
 
 
 def load_repo_families(db_path: Path) -> Dict[str, List[str]]:
-    """repo -> SDK families from ``repo_catalog.categories`` (pipe separated); {} if unavailable."""
+    """repo -> familias de SDK desde ``repo_catalog.categories`` (separadas por |); {} si no está disponible."""
     if not Path(db_path).exists():
         return {}
     conn = sqlite3.connect(f"{Path(db_path).resolve().as_uri()}?mode=ro", uri=True)
@@ -56,7 +56,7 @@ def compare_groups(
     cap: int,
     seed: int = 0,
 ) -> Dict[str, Any]:
-    """Pattern and topic prevalence per repo, per SDK family, global and with at most ``cap`` issues per repo."""
+    """Prevalencia de patrones y temas por repo, por familia de SDK, global y con máximo ``cap`` issues por repo."""
     hits = {i.issue_id: list(matcher.match(i.full_text)) for i in issues}
     by_repo: Dict[str, List[CleanedIssue]] = defaultdict(list)
     for issue in issues:

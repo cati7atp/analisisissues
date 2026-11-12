@@ -1,4 +1,4 @@
-"""Config loading and test fixtures must not depend on the current directory."""
+"""La carga de configuración y los fixtures de test no deben depender del directorio actual."""
 
 from pathlib import Path
 

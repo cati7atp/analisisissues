@@ -1,4 +1,4 @@
-"""CLI `preprocess` reads from the SQLite dataset."""
+"""El CLI `preprocess` lee del dataset SQLite."""
 
 import json
 

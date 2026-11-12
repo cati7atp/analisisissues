@@ -1,4 +1,4 @@
-"""Explicit embedding computation with an on-disk .npy cache (S17)."""
+"""Cálculo explícito de embeddings con caché .npy en disco (S17)."""
 
 import hashlib
 import os
@@ -12,14 +12,14 @@ logger = structlog.get_logger()
 
 
 def build_embedding_text(title: str, body: Optional[str], max_chars: int = 2000) -> str:
-    """Embedding text: title plus the first `max_chars` characters of the body."""
+    """Texto para el embedding: título más los primeros `max_chars` caracteres del cuerpo."""
     title = (title or "").strip()
     body = (body or "").strip()[:max_chars]
     return f"{title} {body}".strip()
 
 
 def corpus_key(texts: Sequence[str], model_name: str, normalize: bool) -> str:
-    """Stable key over the exact encoded strings, the model name and the normalize flag."""
+    """Clave estable según los textos exactos, el nombre del modelo y la opción normalize."""
     digest = hashlib.sha256()
     digest.update(f"{model_name}\x00{int(normalize)}\x00".encode("utf-8"))
     for text in texts:
@@ -37,7 +37,7 @@ def compute_embeddings(
     device: Optional[str] = None,
     normalize: bool = True,
 ) -> np.ndarray:
-    """Encode `texts` once and cache the matrix as .npy keyed by model and corpus."""
+    """Codifica `texts` una vez y guarda la matriz como .npy, con clave por modelo y corpus."""
     cache_dir = Path(cache_dir)
     cache_path = cache_dir / f"embeddings_{corpus_key(texts, model_name, normalize)}.npy"
     if cache_path.exists():
@@ -64,7 +64,7 @@ def compute_embeddings(
 
 
 def _save_atomic(path: Path, array: np.ndarray) -> None:
-    """Write to a temporary file, then rename, so an interrupted run never leaves a corrupt cache."""
+    """Escribe en un archivo temporal y luego lo renombra, para que una ejecución interrumpida no deje un caché dañado."""
     tmp_path = path.with_name(path.name + ".tmp")
     try:
         with open(tmp_path, "wb") as handle:  # a file handle stops np.save appending ".npy"

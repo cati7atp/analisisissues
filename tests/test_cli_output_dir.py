@@ -1,4 +1,4 @@
-"""--output-dir redirects the patterns and metrics outputs together (S19)."""
+"""--output-dir redirige juntas las salidas de patterns y metrics (S19)."""
 
 import json
 from datetime import datetime
@@ -51,6 +51,6 @@ def test_patterns_and_metrics_outputs_follow_output_dir(tmp_path):
     for name in ["quantum_patterns.jsonl", "pattern_summary.csv", "candidate_categories.jsonl",
                  "maintainability_metrics.json", "maintainability_summary.csv", "comparisons.json"]:
         assert (out / name).exists(), name
-    assert not defaults.exists()  # nothing leaked to the configured paths
+    assert not defaults.exists()  # nada se filtró a las rutas configuradas
     metrics = json.loads((out / "maintainability_metrics.json").read_text(encoding="utf-8"))
     assert metrics["per_repo"][0]["top_topics"] == [{"topic_id": 0, "count": 1, "percentage": 100.0}]

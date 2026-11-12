@@ -1,4 +1,4 @@
-"""Tests for exact duplicate document removal (S12)."""
+"""Tests de la eliminación de documentos duplicados exactos (S12)."""
 
 import json
 

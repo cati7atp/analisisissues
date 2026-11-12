@@ -1,4 +1,4 @@
-"""Tests for author-based bot filtering (S9)."""
+"""Tests del filtrado de bots por autor (S9)."""
 
 import pytest
 

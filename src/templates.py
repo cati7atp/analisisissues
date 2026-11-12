@@ -1,9 +1,9 @@
-"""Strip untouched issue-template boilerplate (S12).
+"""Quita el texto de plantilla de issues que no fue modificado (S12).
 
-Only structural markers are removed: HTML comments and known template headings that
-occupy a whole line. Checklist lines are not removed here, because a unique checklist
-line is real content; template checklists and per-repo templates are handled by the
-data-driven repeated-line filter, not by name lists.
+Solo se quitan marcadores estructurales: comentarios HTML y encabezados de plantilla
+conocidos que ocupan una línea completa. Las listas de verificación no se quitan aquí,
+porque una línea única de checklist es contenido real; las checklists de plantilla y las
+plantillas por repo las maneja el filtro de líneas repetidas basado en datos, no listas de nombres.
 """
 
 import re

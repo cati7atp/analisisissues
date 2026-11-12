@@ -1,4 +1,4 @@
-"""Versioned quantum pattern taxonomy and the single matcher shared by patterns and metrics (S21, S22)."""
+"""Taxonomía versionada de patrones cuánticos y el único matcher compartido por patrones y métricas (S21, S22)."""
 
 import re
 from pathlib import Path
@@ -25,13 +25,13 @@ def load_taxonomy(path: Path) -> Taxonomy:
 
 
 def _alternation(terms: List[str]) -> "re.Pattern":
-    """One case-insensitive alternation; each term sits in its own group so the hit maps back to it."""
+    """Una alternancia sin distinguir mayúsculas; cada término va en su propio grupo para saber cuál coincidió."""
     body = "|".join(f"({re.escape(t.lower())})" for t in terms)
     return re.compile(rf"\b(?:{body})(?:s|es)?\b", re.IGNORECASE)
 
 
 class TaxonomyMatcher:
-    """Compiled word-boundary matcher, one alternation per category."""
+    """Matcher compilado con límites de palabra, una alternancia por categoría."""
 
     def __init__(self, taxonomy: Taxonomy) -> None:
         self.taxonomy = taxonomy
@@ -44,7 +44,7 @@ class TaxonomyMatcher:
         }
 
     def match(self, text: str) -> Dict[str, List[str]]:
-        """Return {category: matched terms} for the categories that match ``text``."""
+        """Devuelve {categoría: términos encontrados} para las categorías que coinciden con ``text``."""
         found: Dict[str, List[str]] = {}
         if not text:
             return found

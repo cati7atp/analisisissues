@@ -1,4 +1,4 @@
-"""Quantum-specific pattern extraction from topics and issues."""
+"""Extracción de patrones específicos de computación cuántica desde temas e issues."""
 
 import json
 import re
@@ -28,7 +28,7 @@ class PatternMatch:
 
 
 def load_topics(topics_path: Path) -> List[TopicInfo]:
-    """Load topics from JSONL."""
+    """Carga los temas desde JSONL."""
     topics = []
     with open(topics_path, "r", encoding="utf-8") as f:
         for line in f:
@@ -40,7 +40,7 @@ def load_topics(topics_path: Path) -> List[TopicInfo]:
 
 
 def load_doc_topics(doc_topics_path: Path) -> List[DocTopic]:
-    """Load document-topic assignments from JSONL."""
+    """Carga las asignaciones documento-tema desde JSONL."""
     doc_topics = []
     with open(doc_topics_path, "r", encoding="utf-8") as f:
         for line in f:
@@ -52,7 +52,7 @@ def load_doc_topics(doc_topics_path: Path) -> List[DocTopic]:
 
 
 def load_issues(issues_path: Path) -> List[CleanedIssue]:
-    """Load cleaned issues from JSONL."""
+    """Carga los issues limpios desde JSONL."""
     issues = []
     with open(issues_path, "r", encoding="utf-8") as f:
         for line in f:
@@ -71,12 +71,12 @@ def load_issues(issues_path: Path) -> List[CleanedIssue]:
 
 
 def build_keyword_patterns(config) -> TaxonomyMatcher:
-    """Build the shared taxonomy matcher (the same one the metrics use)."""
+    """Construye el matcher de taxonomía compartido (el mismo que usan las métricas)."""
     return TaxonomyMatcher(load_taxonomy(config.quantum_taxonomy))
 
 
 def extract_quotes(text: str, keywords: List[str], max_quotes: int = 3, max_length: int = 200) -> List[str]:
-    """Extract relevant quotes from text containing keywords."""
+    """Extrae citas relevantes de textos que contienen palabras clave."""
     quotes = []
     sentences = re.split(r"[.!?]+", text)
     
@@ -84,10 +84,10 @@ def extract_quotes(text: str, keywords: List[str], max_quotes: int = 3, max_leng
         sentence = sentence.strip()
         if not sentence:
             continue
-        # Check if sentence contains any keyword
+        # Revisa si la oración contiene alguna palabra clave
         sentence_lower = sentence.lower()
         if any(kw.lower() in sentence_lower for kw in keywords):
-            # Truncate if too long
+            # Recorta si es muy larga
             if len(sentence) > max_length:
                 sentence = sentence[:max_length] + "..."
             quotes.append(sentence)
@@ -102,7 +102,7 @@ def find_pattern_matches(
     matcher: TaxonomyMatcher,
     config,
 ) -> List[PatternMatch]:
-    """Find all pattern matches across issues."""
+    """Encuentra todas las coincidencias de patrones en los issues."""
     matches = []
     
     for issue in tqdm(issues, desc="Scanning for patterns"):
@@ -129,15 +129,15 @@ def find_pattern_matches(
 
 
 def aggregate_patterns(matches: List[PatternMatch], names: Optional[Dict[str, str]] = None) -> List[QuantumPattern]:
-    """Aggregate individual matches into pattern summaries."""
-    # Group by category
+    """Agrupa las coincidencias individuales en resúmenes de patrones."""
+    # Agrupa por categoría
     by_category: Dict[str, List[PatternMatch]] = defaultdict(list)
     for match in matches:
         by_category[match.category].append(match)
     
     patterns = []
     for category, cat_matches in by_category.items():
-        # Count unique issues per keyword
+        # Cuenta issues únicos por palabra clave
         keyword_issue_counts: Dict[str, Set[str]] = defaultdict(set)
         all_quotes = []
         all_keywords = []
@@ -149,15 +149,14 @@ def aggregate_patterns(matches: List[PatternMatch], names: Optional[Dict[str, st
             if match.quote:
                 all_quotes.append(match.quote)
         
-        # Create sub-patterns for each keyword that appears in multiple issues
-        # Or create one pattern per category with all keywords
-        # We'll create one pattern per category with top keywords
+        # Se crea un patrón por categoría con sus palabras clave principales
+        # (en vez de subpatrones por palabra clave que aparezca en varios issues)
         
-        # Get top keywords by frequency
+        # Obtiene las palabras clave principales por frecuencia
         keyword_freq = {kw: len(issues) for kw, issues in keyword_issue_counts.items()}
         top_keywords = sorted(keyword_freq.keys(), key=lambda k: keyword_freq[k], reverse=True)[:10]
         
-        # All unique issue IDs for this category
+        # Todos los IDs de issues únicos de esta categoría
         all_issue_ids = set()
         for match in cat_matches:
             all_issue_ids.add(match.issue_id)
@@ -174,7 +173,7 @@ def aggregate_patterns(matches: List[PatternMatch], names: Optional[Dict[str, st
         )
         patterns.append(pattern)
     
-    # Sort by frequency descending
+    # Ordena por frecuencia, de mayor a menor
     patterns.sort(key=lambda p: p.frequency, reverse=True)
     return patterns
 
@@ -186,26 +185,26 @@ def extract_quantum_patterns(
     output_path: Path,
     doc_topics_path: Optional[Path] = None,
 ) -> List[QuantumPattern]:
-    """Extract quantum-specific patterns from topics and issues.
+    """Extrae patrones específicos de computación cuántica desde temas e issues.
 
-    With a doc-topics file the patterns also report the share of their issues that fall in
-    discovered topics, and topics no category covers are written to candidate_categories.jsonl.
+    Con un archivo doc-topics, los patrones también informan la proporción de sus issues que cae en
+    temas descubiertos, y los temas que ninguna categoría cubre se escriben en candidate_categories.jsonl.
     """
     logger.info("Loading data for pattern extraction")
     
-    # Load data
+    # Carga los datos
     topics = load_topics(topics_path)
     issues = load_issues(issues_path)
     
-    # Build keyword patterns from config
+    # Construye los patrones de palabras clave desde la configuración
     matcher = build_keyword_patterns(config)
     
-    # Find matches
+    # Busca coincidencias
     logger.info("Finding pattern matches")
     matches = find_pattern_matches(issues, matcher, config)
     logger.info("Found matches", count=len(matches))
     
-    # Aggregate into patterns
+    # Agrupa en patrones
     logger.info("Aggregating patterns")
     patterns = aggregate_patterns(matches, matcher.names)
     logger.info("Extracted patterns", count=len(patterns))
@@ -224,13 +223,13 @@ def extract_quantum_patterns(
     else:
         logger.info("No doc-topics file; skipping topic analysis", path=str(doc_topics_path))
     
-    # Save patterns JSONL
+    # Guarda los patrones en JSONL
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, "w", encoding="utf-8") as f:
         for pattern in patterns:
             f.write(pattern.model_dump_json() + "\n")
     
-    # Save pattern summary CSV
+    # Guarda el resumen de patrones en CSV
     csv_path = config.paths.pattern_summary_csv
     csv_path.parent.mkdir(parents=True, exist_ok=True)
     df = pd.DataFrame([{
@@ -253,16 +252,16 @@ def enhance_with_topic_analysis(
     doc_topics: List[DocTopic],
     issues: List[CleanedIssue],
 ) -> List[QuantumPattern]:
-    """Enhance patterns with topic model insights."""
-    # Map issue_id -> topic_id
+    """Enriquece los patrones con información del modelo de temas."""
+    # Mapea issue_id -> topic_id
     issue_to_topic = {dt.issue_id: dt.topic_id for dt in doc_topics}
     
-    # Map topic_id -> topic info
+    # Mapea topic_id -> información del tema
     topic_map = {t.topic_id: t for t in topics}
-    # Single-project topics are not evidence of a cross-project pattern (S24).
+    # Los temas de un solo proyecto no son evidencia de un patrón entre proyectos (S24).
     repo_specific = {t.topic_id for t in topics if t.repo_specific}
 
-    # For each pattern, find associated topics
+    # Para cada patrón, busca los temas asociados
     for pattern in patterns:
         topic_counts = Counter()
         for issue_id in pattern.supporting_issue_ids:
@@ -274,7 +273,7 @@ def enhance_with_topic_analysis(
             if pattern.supporting_issue_ids else 0.0
         )
         
-        # Add top topics to pattern description
+        # Agrega los temas principales a la descripción del patrón
         if topic_counts:
             top_topics = topic_counts.most_common(3)
             topic_names = [topic_map[tid].name for tid, _ in top_topics if tid in topic_map]
@@ -290,7 +289,7 @@ def find_candidate_categories(
     doc_topics: List[DocTopic],
     min_share: float = 0.5,
 ) -> List[Dict[str, Any]]:
-    """Topics where fewer than ``min_share`` of the documents match any taxonomy category."""
+    """Temas donde menos de ``min_share`` de los documentos coincide con alguna categoría de la taxonomía."""
     members: Dict[int, List[str]] = defaultdict(list)
     for dt in doc_topics:
         if dt.topic_id != -1:

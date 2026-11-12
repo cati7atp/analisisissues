@@ -1,4 +1,4 @@
-"""Tests for preprocessing module."""
+"""Tests del módulo de preprocesamiento."""
 
 import json
 import tempfile
@@ -132,7 +132,7 @@ class TestIssuePreprocessor:
         assert cleaned.repo == "qiskit/qiskit"
         assert cleaned.issue_number == 1
         assert cleaned.issue_type == "bug"
-        assert len(cleaned.comments) == 1  # bot comment removed
+        assert len(cleaned.comments) == 1  # comentario de bot eliminado
         assert cleaned.comments[0].author == preprocessor.pseudonym("helper")
 
     def test_clean_issue_removes_duplicates(self, preprocessor):
@@ -156,7 +156,7 @@ class TestIssuePreprocessor:
         assert len(cleaned.comments) == 1
 
     def test_process_end_to_end(self, preprocessor, sample_raw_issue, tmp_path):
-        # Write input JSONL
+        # Escribe el JSONL de entrada
         input_file = tmp_path / "input.jsonl"
         with open(input_file, "w") as f:
             f.write(json.dumps(sample_raw_issue) + "\n")
@@ -167,7 +167,7 @@ class TestIssuePreprocessor:
         assert issues["kept"] == 1
         assert output_file.exists()
         
-        # Verify output format
+        # Verifica el formato de salida
         with open(output_file) as f:
             line = f.readline()
             data = json.loads(line)
@@ -208,8 +208,8 @@ class TestMinChars:
 
     def test_title_plus_body_at_threshold_is_kept(self, config, tmp_path):
         config.preprocessing.min_chars = 30
-        keep = self._issue(1, "x" * 10, "y" * 20)  # 10 + 20 = 30 characters
-        drop = self._issue(2, "x" * 10, "y" * 18)  # 28 characters
+        keep = self._issue(1, "x" * 10, "y" * 20)  # 10 + 20 = 30 caracteres
+        drop = self._issue(2, "x" * 10, "y" * 18)  # 28 caracteres
         stats, rows = self._run(config, [keep, drop], tmp_path)
         assert [r["issue_number"] for r in rows] == [1] and stats["empty_content"] == 1
 
