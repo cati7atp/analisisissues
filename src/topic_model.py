@@ -89,7 +89,11 @@ def create_bertopic_model(config, embedding_model=None, umap_model=None) -> BERT
             n_components=config.bertopic.umap_n_components,
             min_dist=config.bertopic.umap_min_dist,
             metric=config.bertopic.umap_metric,
-            random_state=42,
+            **(
+                {"random_state": 42}
+                if config.bertopic.reproducible
+                else {"n_jobs": -1, "low_memory": True}
+            ),
         )
 
     hdbscan_model = hdbscan.HDBSCAN(

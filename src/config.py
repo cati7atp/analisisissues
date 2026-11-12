@@ -52,8 +52,8 @@ class BERTopicConfig(BaseModel):
     umap_n_components: int = 5
     umap_min_dist: float = 0.0
     umap_metric: str = "cosine"
-    hdbscan_min_cluster_size: int = 10
-    hdbscan_min_samples: int = 5
+    hdbscan_min_cluster_size: int = 30  # unvalidated starting value for ~36k issues
+    hdbscan_min_samples: int = 10  # unvalidated starting value
     hdbscan_metric: str = "euclidean"
     vectorizer_ngram_range: List[int] = Field(default_factory=lambda: [1, 2])
     vectorizer_stop_words: str = "english"
@@ -63,7 +63,8 @@ class BERTopicConfig(BaseModel):
     domain_stop_words: List[str] = Field(default_factory=lambda: [
         "code", "block", "url", "user", "issue", "code_block"
     ])
-    calculate_probabilities: bool = True
+    calculate_probabilities: bool = False  # use hdbscan.probabilities_
+    reproducible: bool = False  # True seeds UMAP (random_state=42) but disables parallelism
     verbose: bool = True
 
 

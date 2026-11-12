@@ -107,3 +107,41 @@ def test_cli_min_topic_size_maps_to_hdbscan(tmp_path, monkeypatch):
     )
     assert result.exit_code == 0, result.output
     assert captured["cfg"].bertopic.hdbscan_min_cluster_size == 7
+
+
+def _umap_of(config):
+    return create_bertopic_model(config, embedding_model=FakeEmbedder()).umap_model
+
+
+def test_umap_not_seeded_by_default(config):
+    assert config.bertopic.reproducible is False
+    umap_model = _umap_of(config)
+    assert umap_model.random_state is None
+    assert umap_model.n_jobs == -1
+    assert umap_model.low_memory is True
+
+
+def test_umap_seeded_when_reproducible(config):
+    config.bertopic.reproducible = True
+    umap_model = _umap_of(config)
+    assert umap_model.random_state == 42
+
+
+def test_starting_hdbscan_values_and_probabilities_off(config):
+    assert config.bertopic.hdbscan_min_cluster_size == 30
+    assert config.bertopic.hdbscan_min_samples == 10
+    assert config.bertopic.calculate_probabilities is False
+
+
+def test_doc_topic_probabilities_come_from_hdbscan(small_config, tmp_path):
+    from src.topic_model import _save_doc_topics
+
+    docs, embeddings = make_corpus()
+    model, topics = fit(small_config, docs, embeddings)
+    assert model.probabilities_.shape == (len(docs),)
+    _save_doc_topics(small_config, [str(i) for i in range(len(docs))], topics, model.probabilities_, tmp_path)
+    import json
+
+    rows = [json.loads(line) for line in small_config.paths.doc_topics_output.read_text(encoding="utf-8").splitlines()]
+    assert all(0.0 <= r["probability"] <= 1.0 for r in rows)
+    assert any(r["probability"] > 0 for r in rows)
