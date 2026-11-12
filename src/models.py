@@ -1,6 +1,6 @@
 """Pydantic models for quantum issues analysis."""
 
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import Any, Callable, Dict, List, Optional, Literal
 from pydantic import BaseModel, Field, field_validator
 from collections import Counter
@@ -260,22 +260,28 @@ def is_bot_user(username: Optional[str], bot_users: List[str], author_type: Opti
     return name.endswith("[bot]") or name in {b.lower() for b in bot_users}
 
 
+def to_utc(dt: datetime) -> datetime:
+    """Return ``dt`` as timezone-aware UTC (naive values are taken as UTC)."""
+    if dt.tzinfo is None:
+        return dt.replace(tzinfo=timezone.utc)
+    return dt.astimezone(timezone.utc)
+
+
 def parse_datetime(dt_str: str) -> datetime:
-    """Parse ISO8601 datetime string."""
-    # Handle various GitHub datetime formats
+    """Parse an ISO8601 datetime string into a timezone-aware UTC datetime."""
     for fmt in [
         "%Y-%m-%dT%H:%M:%SZ",
         "%Y-%m-%dT%H:%M:%S.%fZ",
         "%Y-%m-%dT%H:%M:%S%z",
         "%Y-%m-%dT%H:%M:%S.%f%z",
+        "%Y-%m-%dT%H:%M:%S",
     ]:
         try:
-            return datetime.strptime(dt_str, fmt)
+            return to_utc(datetime.strptime(dt_str, fmt))
         except ValueError:
             continue
-    # Fallback: try dateutil parser if available
     try:
         from dateutil import parser
-        return parser.isoparse(dt_str)
+        return to_utc(parser.isoparse(dt_str))
     except Exception:
         raise ValueError(f"Unable to parse datetime: {dt_str}")

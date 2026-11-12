@@ -37,6 +37,7 @@ class IssuePreprocessor:
         self.preprocessing_config = self.config.preprocessing
         self.bot_users = set(u.lower() for u in self.preprocessing_config.bot_users)
         self.last_skip_reason: Optional[str] = None
+        self.datetime_failures = 0
         self.repeated_index: Optional[RepeatedTextIndex] = None
         self.automated_patterns = [
             re.compile(p, re.MULTILINE) for p in self.preprocessing_config.automated_comment_patterns
@@ -148,7 +149,8 @@ class IssuePreprocessor:
             created_at = parse_datetime(created_at_str)
         except Exception as e:
             logger.warning("Failed to parse comment datetime", author=author, error=str(e))
-            created_at = datetime.utcnow()
+            self.datetime_failures += 1
+            return None
         
         return CleanedComment(
             author=author,
@@ -196,14 +198,16 @@ class IssuePreprocessor:
         try:
             created_at = parse_datetime(raw_issue.created_at)
         except Exception:
-            created_at = datetime.utcnow()
-        
+            self.datetime_failures += 1
+            self.last_skip_reason = "bad_created_at"
+            return None
+
         closed_at = None
         if raw_issue.closed_at:
             try:
                 closed_at = parse_datetime(raw_issue.closed_at)
             except Exception:
-                pass
+                self.datetime_failures += 1
         
         # Build full text for topic modeling (title + body + comments)
         text_parts = [raw_issue.title]
@@ -276,7 +280,8 @@ class IssuePreprocessor:
         stats = {"total": 0, "kept": 0, "skipped": 0, "comments_removed": 0, "bot_issues": 0,
                  "repeated_lines": 0, "repeated_line_removals": 0,
                  "repeated_comments": 0, "repeated_comment_drops": 0, "duplicates": 0,
-                 "empty_content": 0}
+                 "empty_content": 0, "datetime_failures": 0}
+        self.datetime_failures = 0
         seen_documents: Set[int] = set()
         chunk: List[str] = []
         with open(output_path, "w", encoding="utf-8") as f:
@@ -306,6 +311,7 @@ class IssuePreprocessor:
                         stats["bot_issues"] += 1
                     stats["comments_removed"] += original_comments
             f.writelines(chunk)
+        stats["datetime_failures"] = self.datetime_failures
         if self.repeated_index:
             stats["repeated_lines"] = self.repeated_index.repeated_lines
             stats["repeated_line_removals"] = self.repeated_index.removed_line_occurrences

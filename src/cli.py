@@ -67,6 +67,7 @@ def preprocess(
     console.print(f"rejected: {load_stats.rejections.total} {dict(load_stats.rejections.by_reason)}")
     console.print(f"skipped (bot-authored issues): {stats['bot_issues']}")
     console.print(f"skipped (exact duplicates): {stats['duplicates']}")
+    console.print(f"unparseable dates: {stats['datetime_failures']}")
     console.print(f"skipped (empty content): {stats['empty_content']}")
     console.print(f"repeated lines: {stats['repeated_lines']} distinct, {stats['repeated_line_removals']} removed")
     console.print(f"repeated comments: {stats['repeated_comments']} distinct, {stats['repeated_comment_drops']} dropped")

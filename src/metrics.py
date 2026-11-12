@@ -15,7 +15,7 @@ import structlog
 from .config import get_config
 from .models import (
     CleanedIssue, RepoMetrics, AggregatedMetrics, 
-    MaintainabilityMetrics, QuantumPattern
+    MaintainabilityMetrics, QuantumPattern, to_utc
 )
 
 logger = structlog.get_logger()
@@ -66,7 +66,7 @@ def compute_gini(values: List[float]) -> float:
 def compute_resolution_time(issue: CleanedIssue) -> Optional[float]:
     """Compute resolution time in days."""
     if issue.closed_at and issue.created_at:
-        delta = issue.closed_at - issue.created_at
+        delta = to_utc(issue.closed_at) - to_utc(issue.created_at)
         return delta.total_seconds() / 86400.0
     return None
 
@@ -86,7 +86,7 @@ def compute_reopen_rate(issues: List[CleanedIssue]) -> float:
         if issue.closed_at:
             # Check if any comment is after close date
             for comment in issue.comments:
-                if comment.created_at > issue.closed_at:
+                if to_utc(comment.created_at) > to_utc(issue.closed_at):
                     reopened += 1
                     break
     
