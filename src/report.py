@@ -223,6 +223,34 @@ def generate_metrics_section(metrics: MaintainabilityMetrics, anonymize: bool) -
     return "\n".join(lines)
 
 
+def load_cross_project(path: Path) -> List[dict]:
+    """Rows written by extract-patterns; [] when the file is absent."""
+    if not path.exists():
+        return []
+    with open(path, "r", encoding="utf-8") as f:
+        return [json.loads(line) for line in f if line.strip()]
+
+
+def generate_cross_project_section(rows: List[dict], anonymize: bool, config, top_n: int = 25) -> str:
+    """Topics that recur across distinct repos, with the thresholds that define them."""
+    cp = config.cross_project
+    selected = [r for r in rows if r["cross_project"]]
+    lines = ["# Cross-Project Patterns\n",
+             f"A topic is a cross-project pattern when at least {cp.min_repos} repositories each hold "
+             f"{cp.min_issues_per_repo} or more of its issues and no single repository holds more than "
+             f"{cp.max_top_repo_share:.0%} of it. Outlier issues are never counted.\n",
+             f"**{len(selected)} of {len(rows)} topics qualify.**\n"]
+    if not selected:
+        return "\n".join(lines)
+    lines.append("| Topic | Keywords | Repos | Issues | Top repo share | Evenness |")
+    lines.append("|-------|----------|-------|--------|----------------|----------|")
+    for r in selected[:top_n]:
+        top = anonymize_repo_name(r["top_repo"]) if anonymize else r["top_repo"]
+        lines.append(f"| {r['topic_id']} | {', '.join(r['keywords'][:6])} | {len(r['supporting_repos'])} "
+                     f"| {r['n_issues']} | {r['top_repo_share']:.0%} ({top}) | {r['evenness']:.2f} |")
+    return "\n".join(lines) + "\n"
+
+
 def generate_comparative_discussion(metrics: MaintainabilityMetrics, patterns: List[QuantumPattern]) -> str:
     """Generate comparative discussion section."""
     agg = metrics.aggregated
@@ -386,6 +414,7 @@ def generate_report(
     metrics = load_metrics(metrics_path)
     topics = load_topics(topics_path)
     patterns = load_patterns(patterns_path)
+    cross_project = load_cross_project(patterns_path.with_name("cross_project_patterns.jsonl"))
     
     # Build report sections
     sections = []
@@ -399,6 +428,8 @@ def generate_report(
     sections.append(generate_pattern_taxonomy(patterns, config))
     sections.append(generate_metrics_section(metrics, anonymize))
     sections.append(generate_comparative_discussion(metrics, patterns))
+    if cross_project:
+        sections.append(generate_cross_project_section(cross_project, anonymize, config))
     
     # Visualization reference
     sections.append("# Topic Model Visualization\n")
