@@ -227,3 +227,14 @@ def test_run_summary_reports_unreduced_outlier_share(small_config, issues_file, 
     assert summary["n_outliers"] == outliers
     assert summary["outlier_share"] == pytest.approx(outliers / len(rows))
     assert summary["n_topics"] == 4
+
+
+def test_keybert_and_mmr_are_aspects_main_label_stays_ctfidf(small_config):
+    docs, embeddings = make_corpus()
+    model, topics = fit(small_config, docs, embeddings)
+    assert {"KeyBERT", "MMR"} <= set(model.topic_aspects_)
+    vocab = set(model.vectorizer_model.get_feature_names_out())
+    main_words = [w for w, _ in model.get_topic(0)]
+    assert main_words and all(w in vocab for w in main_words)
+    keybert = model.topic_aspects_["KeyBERT"][0]
+    assert keybert and all(isinstance(w, tuple) for w in keybert)

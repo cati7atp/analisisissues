@@ -13,7 +13,7 @@ import structlog
 from sentence_transformers import SentenceTransformer
 from bertopic import BERTopic
 from bertopic.vectorizers import ClassTfidfTransformer
-from bertopic.representation import KeyBERTInspired
+from bertopic.representation import KeyBERTInspired, MaximalMarginalRelevance
 from sklearn.feature_extraction.text import CountVectorizer, ENGLISH_STOP_WORDS
 import umap
 import hdbscan
@@ -110,7 +110,11 @@ def create_bertopic_model(config, embedding_model=None, umap_model=None) -> BERT
     )
 
     ctfidf_model = ClassTfidfTransformer(reduce_frequent_words=True, bm25_weighting=True)
-    representation_model = KeyBERTInspired()
+    # Aspects only: with no "Main" key the main label stays the c-TF-IDF words.
+    representation_model = {
+        "KeyBERT": KeyBERTInspired(),
+        "MMR": MaximalMarginalRelevance(diversity=0.3),
+    }
     if embedding_model is None:
         embedding_model = SentenceTransformer(config.bertopic.embedding_model)
 
