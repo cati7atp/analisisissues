@@ -66,7 +66,8 @@ bertopic:
                   "workflow", "linux", "darwin", "msvc", "conda", "toolchain", "distutils", "msvccompiler"]  # S20: >= 3 of a topic's top-10 keywords here marks it as noise
   calculate_probabilities: false      # probabilities come from hdbscan.probabilities_
   reduce_outliers: false             # true also writes *_reduced outputs; the primary result is never reduced
-  reproducible: false                # true seeds UMAP (random_state=42) and disables parallelism
+  seed: 42                           # UMAP random_state
+  reproducible: true                 # true: seeded single-threaded UMAP (same topics every run); false: parallel, unseeded
   verbose: true
 
 # Maintainability Metrics

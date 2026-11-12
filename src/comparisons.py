@@ -29,6 +29,8 @@ def load_repo_families(db_path: Path) -> Dict[str, List[str]]:
 def _shares(issues: List[CleanedIssue], pattern_hits: Mapping[str, List[str]],
             topics: Mapping[str, int]) -> Dict[str, Any]:
     n = len(issues)
+    if n == 0:
+        return {"n_issues": 0, "patterns": {}, "topics": {}}
     patterns: Counter = Counter()
     topic_counts: Counter = Counter()
     for issue in issues:

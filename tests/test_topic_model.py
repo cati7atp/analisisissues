@@ -113,18 +113,23 @@ def _umap_of(config):
     return create_bertopic_model(config, embedding_model=FakeEmbedder()).umap_model
 
 
-def test_umap_not_seeded_by_default(config):
-    assert config.bertopic.reproducible is False
+def test_umap_seeded_by_default(config):
+    assert config.bertopic.reproducible is True
+    umap_model = _umap_of(config)
+    assert umap_model.random_state == config.bertopic.seed == 42
+
+
+def test_umap_parallel_and_unseeded_when_not_reproducible(config):
+    config.bertopic.reproducible = False
     umap_model = _umap_of(config)
     assert umap_model.random_state is None
     assert umap_model.n_jobs == -1
     assert umap_model.low_memory is True
 
 
-def test_umap_seeded_when_reproducible(config):
-    config.bertopic.reproducible = True
-    umap_model = _umap_of(config)
-    assert umap_model.random_state == 42
+def test_umap_seed_is_configurable(config):
+    config.bertopic.seed = 7
+    assert _umap_of(config).random_state == 7
 
 
 def test_starting_hdbscan_values_and_probabilities_off(config):

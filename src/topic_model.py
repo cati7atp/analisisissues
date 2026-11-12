@@ -5,7 +5,7 @@ import re
 from collections import Counter, defaultdict
 from pathlib import Path
 from typing import List, Dict, Any, Optional
-from datetime import datetime
+from datetime import datetime, timezone
 
 import numpy as np
 import pandas as pd
@@ -102,7 +102,7 @@ def create_bertopic_model(config, embedding_model=None, umap_model=None) -> BERT
             min_dist=config.bertopic.umap_min_dist,
             metric=config.bertopic.umap_metric,
             **(
-                {"random_state": 42}
+                {"random_state": config.bertopic.seed}
                 if config.bertopic.reproducible
                 else {"n_jobs": -1, "low_memory": True}
             ),
@@ -417,7 +417,7 @@ def _generate_visualization(config, topic_model: BERTopic, docs: List[str], outp
 </head>
 <body>
     <h1>Quantum GitHub Issues - Topic Model Analysis</h1>
-    <p>Generated: {datetime.utcnow().isoformat()}Z</p>
+    <p>Generated: {datetime.now(timezone.utc).isoformat(timespec="seconds")}</p>
     <p>Documents: {len(docs)} | Topics: {len(topic_model.get_topic_info()) - 1}</p>
     
     <div class="tab">

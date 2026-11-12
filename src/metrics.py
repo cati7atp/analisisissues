@@ -240,7 +240,7 @@ def compute_aggregated_metrics(
     avg_issues = total_issues / total_repos if total_repos > 0 else 0.0
     
     # Quantum pattern prevalence
-    pattern_prevalence = {p.pattern_id: p.frequency / total_issues for p in patterns}
+    pattern_prevalence = {p.pattern_id: (p.frequency / total_issues if total_issues else 0.0) for p in patterns}
     
     # Category distribution (issue types)
     category_dist = Counter()

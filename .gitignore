@@ -26,6 +26,10 @@ Thumbs.db
 
 # Project specific - large/generated files
 *.pdf
+*.db
+*.tar.xz
+quantum-gh-dataset-*/
+.venv/
 data/
 models/
 reports/

@@ -4,7 +4,7 @@ import json
 import base64
 from pathlib import Path
 from typing import List, Dict, Any, Optional
-from datetime import datetime
+from datetime import datetime, timezone
 import hashlib
 
 import pandas as pd
@@ -391,7 +391,7 @@ def generate_report(
     sections = []
     
     sections.append("# Quantum Software Maintainability Analysis Report\n")
-    sections.append(f"*Generated: {datetime.utcnow().isoformat()}Z*")
+    sections.append(f"*Generated: {datetime.now(timezone.utc).isoformat(timespec="seconds")}*")
     sections.append(f"*Anonymized: {anonymize}*\n")
     
     sections.append(generate_executive_summary(metrics, patterns))

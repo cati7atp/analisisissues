@@ -168,7 +168,7 @@ class AggregatedMetrics(BaseModel):
 class MaintainabilityMetrics(BaseModel):
     per_repo: List[RepoMetrics]
     aggregated: AggregatedMetrics
-    generated_at: datetime = Field(default_factory=datetime.utcnow)
+    generated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 
 # Regex patterns for cleaning
