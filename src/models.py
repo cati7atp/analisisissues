@@ -3,16 +3,23 @@
 from datetime import datetime
 from typing import Any, Dict, List, Optional, Literal
 from pydantic import BaseModel, Field, field_validator
+from collections import Counter
 import re
 
 
 IssueType = Literal["bug", "feature", "question", "discussion", "other"]
 
 
+def _none_to_empty(value: Any) -> Any:
+    return "" if value is None else value
+
+
 class RawComment(BaseModel):
-    author: str
+    author: str = ""
     created_at: str  # ISO8601 string
-    body: str
+    body: str = ""
+
+    _null_text = field_validator("author", "body", mode="before")(_none_to_empty)
 
 
 class RawIssue(BaseModel):
@@ -24,11 +31,36 @@ class RawIssue(BaseModel):
     labels: List[str] = Field(default_factory=list)
     created_at: str  # ISO8601
     closed_at: Optional[str] = None
-    author: str
+    author: str = ""
     comments: List[RawComment] = Field(default_factory=list)
     assignees: List[str] = Field(default_factory=list)
     milestone: Optional[str] = None
     reactions: Dict[str, int] = Field(default_factory=dict)
+
+    _null_author = field_validator("author", mode="before")(_none_to_empty)
+
+    @field_validator("state", mode="before")
+    @classmethod
+    def _normalize_state(cls, value: Any) -> Any:
+        return value.strip().lower() if isinstance(value, str) else value
+
+
+class RejectionCounter:
+    """Counts rejected input rows by reason and keeps a bounded sample."""
+
+    def __init__(self, max_samples: int = 1000) -> None:
+        self.by_reason: Counter = Counter()
+        self.samples: List[Dict[str, Any]] = []
+        self._max_samples = max_samples
+
+    @property
+    def total(self) -> int:
+        return sum(self.by_reason.values())
+
+    def add(self, reason: str, row: Dict[str, Any]) -> None:
+        self.by_reason[reason] += 1
+        if len(self.samples) < self._max_samples:
+            self.samples.append({"reason": reason, "row": row})
 
 
 class CleanedComment(BaseModel):
