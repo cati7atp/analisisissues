@@ -1,6 +1,7 @@
 """Explicit embedding computation with an on-disk .npy cache (S17)."""
 
 import hashlib
+import os
 from pathlib import Path
 from typing import Any, List, Optional, Sequence
 
@@ -58,5 +59,17 @@ def compute_embeddings(
         )
     )
     cache_dir.mkdir(parents=True, exist_ok=True)
-    np.save(cache_path, embeddings)
+    _save_atomic(cache_path, embeddings)
     return embeddings
+
+
+def _save_atomic(path: Path, array: np.ndarray) -> None:
+    """Write to a temporary file, then rename, so an interrupted run never leaves a corrupt cache."""
+    tmp_path = path.with_name(path.name + ".tmp")
+    try:
+        with open(tmp_path, "wb") as handle:  # a file handle stops np.save appending ".npy"
+            np.save(handle, array)
+        os.replace(tmp_path, path)
+    except BaseException:
+        tmp_path.unlink(missing_ok=True)
+        raise

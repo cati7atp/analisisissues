@@ -51,3 +51,22 @@ def test_encode_receives_explicit_options(tmp_path):
     assert enc.kwargs["batch_size"] == 7
     assert enc.kwargs["device"] == "cpu"
     assert enc.kwargs["normalize_embeddings"] is True
+
+
+def test_interrupted_write_leaves_no_cache_or_temp_file(tmp_path, monkeypatch):
+    import pytest
+
+    def failing_save(file, arr, *args, **kwargs):
+        file.write(b"partial bytes")
+        raise OSError("disk full")
+
+    monkeypatch.setattr(np, "save", failing_save)
+    with pytest.raises(OSError, match="disk full"):
+        compute_embeddings(["a", "b"], "m", tmp_path, encoder=FakeEncoder())
+    assert list(tmp_path.iterdir()) == []
+
+
+def test_successful_write_leaves_only_the_final_file(tmp_path):
+    compute_embeddings(["a", "b"], "m", tmp_path, encoder=FakeEncoder())
+    names = [p.name for p in tmp_path.iterdir()]
+    assert len(names) == 1 and names[0].endswith(".npy")
