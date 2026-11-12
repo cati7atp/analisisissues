@@ -2,6 +2,7 @@
 
 import json
 import base64
+import os
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 from datetime import datetime, timezone
@@ -390,13 +391,16 @@ This analysis of {agg.total_issues} GitHub issues across {agg.total_repos} quant
 """
 
 
-def embed_visualization(visualization_path: Path) -> str:
-    """Incrusta la visualización en base64 o devuelve un enlace."""
+def embed_visualization(visualization_path: Path, report_dir: Optional[Path] = None) -> str:
+    """Devuelve un enlace a la visualización, relativo a la carpeta del reporte."""
     if not visualization_path.exists():
         return "*Visualization not available*"
-    
-    # Devuelve un enlace al archivo (más práctico que incrustar un HTML grande)
-    return f"[Interactive Topic Visualization]({visualization_path.name})"
+
+    # El enlace se calcula desde la carpeta del reporte para que funcione al abrirlo.
+    target = visualization_path
+    if report_dir is not None:
+        target = Path(os.path.relpath(visualization_path, report_dir))
+    return f"[Interactive Topic Visualization]({target.as_posix()})"
 
 
 def generate_report(
@@ -433,7 +437,7 @@ def generate_report(
     
     # Referencia a la visualización
     sections.append("# Topic Model Visualization\n")
-    sections.append(embed_visualization(config.paths.visualization_html))
+    sections.append(embed_visualization(config.paths.visualization_html, output_path.parent))
     sections.append("")
     
     sections.append(generate_threats_to_validity(config))

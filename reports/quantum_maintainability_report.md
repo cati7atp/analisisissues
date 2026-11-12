@@ -1,6 +1,6 @@
 # Quantum Software Maintainability Analysis Report
 
-*Generated: 2026-11-12T21:18:40+00:00*
+*Generated: 2026-11-12T22:13:46+00:00*
 *Anonymized: True*
 
 # Executive Summary
@@ -424,7 +424,7 @@ A topic is a cross-project pattern when at least 3 repositories each hold 3 or m
 
 # Topic Model Visualization
 
-*Visualization not available*
+[Interactive Topic Visualization](../data/analysis/topic_visualization.html)
 
 # Threats to Validity
 

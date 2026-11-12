@@ -10,7 +10,7 @@ paths:
   metrics_output: "data/analysis/maintainability_metrics.json"
   metrics_csv: "reports/maintainability_summary.csv"
   model_dir: "models/bertopic"
-  visualization_html: "reports/topic_visualization.html"
+  visualization_html: "data/analysis/topic_visualization.html"
   report_md: "reports/quantum_maintainability_report.md"
   pattern_summary_csv: "reports/pattern_summary.csv"
   cache_dir: "data/cache"                     # caché .npy de embeddings

@@ -19,7 +19,7 @@ class PathsConfig(BaseModel):
     metrics_output: Path = Path("data/analysis/maintainability_metrics.json")
     metrics_csv: Path = Path("reports/maintainability_summary.csv")
     model_dir: Path = Path("models/bertopic")
-    visualization_html: Path = Path("reports/topic_visualization.html")
+    visualization_html: Path = Path("data/analysis/topic_visualization.html")
     report_md: Path = Path("reports/quantum_maintainability_report.md")
     pattern_summary_csv: Path = Path("reports/pattern_summary.csv")
     cache_dir: Path = Path("data/cache")
