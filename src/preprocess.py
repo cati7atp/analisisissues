@@ -1,6 +1,7 @@
 """Data preprocessing and cleaning for GitHub issues."""
 
 import json
+import re
 import typer
 from pathlib import Path
 from typing import Any, Dict, Iterable, Iterator, List, Optional
@@ -28,7 +29,9 @@ class IssuePreprocessor:
         self.preprocessing_config = self.config.preprocessing
         self.bot_users = set(u.lower() for u in self.preprocessing_config.bot_users)
         self.last_skip_reason: Optional[str] = None
-        self.system_labels = set(l.lower() for l in self.preprocessing_config.system_labels)
+        self.automated_patterns = [
+            re.compile(p, re.MULTILINE) for p in self.preprocessing_config.automated_comment_patterns
+        ]
     
     def load_raw_issues(self, input_path: Path) -> List[RawIssue]:
         """Load raw issues from JSONL file."""
@@ -71,8 +74,7 @@ class IssuePreprocessor:
             return None
         
         # Skip system-like comments
-        body_lower = body.lower()
-        if any(label in body_lower for label in self.system_labels):
+        if any(p.search(body) for p in self.automated_patterns):
             return None
         
         # Clean the body

@@ -34,7 +34,11 @@ class PreprocessingConfig(BaseModel):
         "dependabot", "renovate", "github-actions", "codecov", "coveralls", "bors", "mergify",
         "qiskit-bot", "CLAassistant", "pre-commit-ci", "codecov-commenter", "stale"
     ])
-    system_labels: List[str] = Field(default_factory=lambda: ["bot", "automated", "dependencies"])
+    # Case-sensitive regexes matched per line (MULTILINE); each must start at the line start.
+    automated_comment_patterns: List[str] = Field(default_factory=lambda: [
+        r"^This issue has been automatically marked as stale\b.*$",
+        r"^Thank you for your submission, we really appreciate it\. Like many open source projects.*$",
+    ])
     min_body_length: int = 10
     max_comment_length: int = 50000
     strip_code_fences: bool = True

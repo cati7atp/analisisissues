@@ -26,7 +26,10 @@ input:
 preprocessing:
   bot_users: ["dependabot", "renovate", "github-actions", "codecov", "coveralls", "bors", "mergify",
               "qiskit-bot", "CLAassistant", "pre-commit-ci", "codecov-commenter", "stale"]  # exact names; also author_type=Bot and "[bot]" suffix
-  system_labels: ["bot", "automated", "dependencies"]
+  # Case-sensitive, per-line regexes for template comments (never free substrings)
+  automated_comment_patterns:
+    - '^This issue has been automatically marked as stale\b.*$'
+    - '^Thank you for your submission, we really appreciate it\. Like many open source projects.*$'
   min_body_length: 10
   max_comment_length: 50000
   strip_code_fences: true

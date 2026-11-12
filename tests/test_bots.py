@@ -60,3 +60,24 @@ class TestPreprocessorBots:
         stats = preprocessor.process_items(issues, tmp_path / "out.jsonl")
         assert stats["kept"] == 1
         assert stats["bot_issues"] == 3
+
+
+class TestAutomatedCommentPatterns:
+    def _comment(self, body, author="human"):
+        return {"author": author, "created_at": "2024-01-02T00:00:00Z", "body": body}
+
+    def test_substring_words_no_longer_drop_comments(self, preprocessor):
+        body = "We need both numpy and the other dependencies automated by a bot script."
+        assert preprocessor.clean_comment(self._comment(body)) is not None
+
+    def test_anchored_stale_template_is_dropped(self, preprocessor):
+        body = "This issue has been automatically marked as stale because it has not had recent activity."
+        assert preprocessor.clean_comment(self._comment(body)) is None
+
+    def test_stale_phrase_inside_a_human_sentence_is_kept(self, preprocessor):
+        body = "Why did you write: This issue has been automatically marked as stale? It is still relevant."
+        assert preprocessor.clean_comment(self._comment(body)) is not None
+
+    def test_patterns_are_case_sensitive(self, preprocessor):
+        body = "this issue has been automatically marked as stale because it has not had recent activity."
+        assert preprocessor.clean_comment(self._comment(body)) is not None
