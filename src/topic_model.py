@@ -1,7 +1,6 @@
 """BERTopic topic modeling for quantum GitHub issues."""
 
 import json
-import pickle
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 from datetime import datetime
@@ -25,6 +24,8 @@ from .embeddings import build_embedding_text, compute_embeddings
 from .models import CleanedIssue, TopicInfo, DocTopic
 
 logger = structlog.get_logger()
+
+MODEL_SUBDIR = "model"  # safetensors directory; UMAP/HDBSCAN are not serialized
 
 
 def load_cleaned_issues(input_path: Path) -> List[CleanedIssue]:
@@ -168,9 +169,13 @@ def run_topic_modeling(
     
     # Save model
     output_dir.mkdir(parents=True, exist_ok=True)
-    model_path = output_dir / "bertopic_model.pkl"
-    with open(model_path, "wb") as f:
-        pickle.dump(topic_model, f)
+    model_path = output_dir / MODEL_SUBDIR
+    topic_model.save(
+        str(model_path),
+        serialization="safetensors",
+        save_embedding_model=config.bertopic.embedding_model,
+        save_ctfidf=True,
+    )
     logger.info("Saved model", path=str(model_path))
     
     # Extract topic info
@@ -356,6 +361,8 @@ def _generate_visualization(config, topic_model: BERTopic, docs: List[str], outp
 
 def _save_empty_outputs(config, output_dir: Path, issue_ids: List[str]):
     """Save empty output files when too few documents."""
+    for path in (config.paths.topics_output, config.paths.doc_topics_output, config.paths.visualization_html):
+        path.parent.mkdir(parents=True, exist_ok=True)
     # Empty topics
     with open(config.paths.topics_output, "w") as f:
         pass
@@ -370,13 +377,12 @@ def _save_empty_outputs(config, output_dir: Path, issue_ids: List[str]):
         f.write("<html><body><h1>Insufficient data for topic modeling</h1></body></html>")
 
 
-def load_topic_model(model_dir: Path) -> Optional[BERTopic]:
-    """Load a saved BERTopic model."""
-    model_path = model_dir / "bertopic_model.pkl"
+def load_topic_model(model_dir: Path, embedding_model=None) -> Optional[BERTopic]:
+    """Load a model saved by run_topic_modeling (safetensors directory), or None if absent."""
+    model_path = model_dir / MODEL_SUBDIR
     if not model_path.exists():
         return None
-    with open(model_path, "rb") as f:
-        return pickle.load(f)
+    return BERTopic.load(str(model_path), embedding_model=embedding_model)
 
 
 if __name__ == "__main__":

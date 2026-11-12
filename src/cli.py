@@ -65,7 +65,7 @@ def preprocess(
 @app.command()
 def topic_model(
     input_file: str = typer.Option(None, "--input", "-i", help="Input cleaned issues JSONL"),
-    output_dir: str = typer.Option(None, "--output-dir", "-o", help="Output directory for model and results"),
+    output_dir: str = typer.Option(None, "--output-dir", "-o", help="Output directory for the model, topics, doc-topic assignments and HTML"),
     min_topic_size: int = typer.Option(None, "--min-topic-size", help="Minimum topic size (sets bertopic.hdbscan_min_cluster_size)"),
     n_topics: int = typer.Option(None, "--n-topics", help="Target number of topics (None=auto)"),
     embedding_model: str = typer.Option(None, "--embedding-model", help="Sentence transformer model"),
@@ -83,6 +83,12 @@ def topic_model(
         console.print(f"[red]Input file not found: {input_path}[/red]")
         raise typer.Exit(1)
     
+    if output_dir:
+        # --output-dir redirects the model and every result file together
+        cfg.paths.topics_output = output_path / cfg.paths.topics_output.name
+        cfg.paths.doc_topics_output = output_path / cfg.paths.doc_topics_output.name
+        cfg.paths.visualization_html = output_path / cfg.paths.visualization_html.name
+
     # Override config with CLI args
     if min_topic_size is not None:
         cfg.bertopic.hdbscan_min_cluster_size = min_topic_size

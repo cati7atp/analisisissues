@@ -140,7 +140,7 @@ quantum-issues-analysis/
 │   ├── processed/          # Cleaned issues
 │   └── analysis/           # Topics, patterns, metrics
 ├── models/
-│   └── bertopic/           # Saved BERTopic model
+│   └── bertopic/           # Saved BERTopic model (model/ = safetensors; --output-dir redirects model and results)
 ├── reports/
 │   ├── quantum_maintainability_report.md
 │   ├── topic_visualization.html

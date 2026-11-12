@@ -278,3 +278,68 @@ def test_reduce_outliers_writes_a_separate_second_result(small_config, tmp_path)
     assert n_reduced < summary["n_outliers"]  # similarity threshold 0 may leave a few unassigned
     assert summary["reduced"]["n_outliers"] == n_reduced
     assert (out / "topics_reduced.jsonl").exists()
+
+
+def test_model_saved_as_safetensors_directory_and_loads_back(small_config, issues_file, tmp_path, monkeypatch):
+    import sentence_transformers
+
+    from src.topic_model import load_topic_model
+
+    def no_real_model(*args, **kwargs):  # BERTopic.load would otherwise instantiate the saved model name
+        raise RuntimeError("real embedding model must not load in tests")
+
+    monkeypatch.setattr(sentence_transformers, "SentenceTransformer", no_real_model)
+
+    out = tmp_path / "out"
+    model = run(small_config, issues_file, out, ThemeEncoder())
+    assert not list(out.rglob("*.pkl"))
+    assert list((out / "model").glob("*.safetensors"))
+    loaded = load_topic_model(out, embedding_model=FakeEmbedder())
+    assert loaded.get_topic_info()["Topic"].tolist() == model.get_topic_info()["Topic"].tolist()
+    assert [w for w, _ in loaded.get_topic(0)] == [w for w, _ in model.get_topic(0)]
+
+
+def test_load_topic_model_missing_dir_returns_none(tmp_path):
+    from src.topic_model import load_topic_model
+
+    assert load_topic_model(tmp_path / "nothing") is None
+
+
+def test_too_few_documents_writes_empty_outputs_creating_parent_dirs(small_config, tmp_path):
+    from src.preprocess import IssuePreprocessor
+
+    path = tmp_path / "tiny.jsonl"
+    IssuePreprocessor(small_config).process_items(write_issues(per_theme=2), path)
+    assert not small_config.paths.topics_output.parent.exists()
+    assert run(small_config, path, tmp_path / "out", ThemeEncoder()) is None
+    assert small_config.paths.topics_output.exists()
+    assert small_config.paths.doc_topics_output.exists()
+    assert small_config.paths.visualization_html.exists()
+
+
+def test_cli_output_dir_redirects_every_output(tmp_path, monkeypatch):
+    from pathlib import Path
+
+    from typer.testing import CliRunner
+
+    import src.topic_model as tm
+    from src.cli import app
+
+    captured = {}
+
+    def fake_run(cfg, inp, out):
+        captured.update(cfg=cfg, out=out)
+
+    monkeypatch.setattr(tm, "run_topic_modeling", fake_run)
+    inp = tmp_path / "issues.jsonl"
+    inp.write_text("", encoding="utf-8")
+    out = tmp_path / "custom"
+    config_path = Path(__file__).resolve().parent.parent / "config.yaml"
+    result = CliRunner().invoke(
+        app, ["topic-model", "--input", str(inp), "--output-dir", str(out), "--config", str(config_path)]
+    )
+    assert result.exit_code == 0, result.output
+    paths = captured["cfg"].paths
+    assert captured["out"] == out
+    for p in (paths.topics_output, paths.doc_topics_output, paths.visualization_html):
+        assert p.parent == out
