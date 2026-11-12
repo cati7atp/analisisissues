@@ -1,6 +1,7 @@
 """BERTopic topic modeling for quantum GitHub issues."""
 
 import json
+import re
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 from datetime import datetime
@@ -192,7 +193,8 @@ def run_topic_modeling(
     
     # Extract topic info
     topic_info = topic_model.get_topic_info()
-    _write_run_summary(output_dir, topics)
+    noise = _noise_summary(config, topic_model)
+    _write_run_summary(output_dir, topics, **noise)
     
     # Save topics.jsonl
     _save_topics(config, topic_model, topic_info, output_dir)
@@ -204,12 +206,12 @@ def run_topic_modeling(
     _generate_visualization(config, topic_model, docs, output_dir)
 
     if config.bertopic.reduce_outliers:
-        _save_reduced_result(config, topic_model, docs, issue_ids, topics, probabilities, embeddings, output_dir)
+        _save_reduced_result(config, topic_model, docs, issue_ids, topics, probabilities, embeddings, output_dir, noise)
 
     return topic_model
 
 
-def _save_reduced_result(config, topic_model, docs, issue_ids, topics, probabilities, embeddings, output_dir):
+def _save_reduced_result(config, topic_model, docs, issue_ids, topics, probabilities, embeddings, output_dir, noise):
     """Second, separate result with outliers reassigned; call only after the primary outputs are saved."""
     reduced = topic_model.reduce_outliers(docs, topics, strategy="embeddings", embeddings=embeddings)
     topic_model.update_topics(
@@ -221,7 +223,7 @@ def _save_reduced_result(config, topic_model, docs, issue_ids, topics, probabili
     )
     _save_topics(config, topic_model, topic_model.get_topic_info(), output_dir, output_dir / "topics_reduced.jsonl")
     _save_doc_topics(config, issue_ids, reduced, probabilities, output_dir, output_dir / "doc_topics_reduced.jsonl")
-    _write_run_summary(output_dir, topics, reduced_topics=reduced)
+    _write_run_summary(output_dir, topics, reduced_topics=reduced, **noise)
 
 
 def _topic_counts(topics: List[int]) -> Dict[str, Any]:
@@ -232,6 +234,28 @@ def _topic_counts(topics: List[int]) -> Dict[str, Any]:
         "n_outliers": n_outliers,
         "outlier_share": n_outliers / n_docs if n_docs else 0.0,
     }
+
+
+def noise_topic_ids(topic_keywords: Dict[int, List[str]], lexicon: List[str], min_hits: int = 3) -> List[int]:
+    """Topics with at least `min_hits` of their top-10 keywords containing a lexicon term as whole words."""
+    patterns = [re.compile(r"(?<![a-z0-9_])" + re.escape(term.lower()) + r"(?![a-z0-9_])") for term in lexicon]
+    if not patterns:
+        return []
+    flagged = []
+    for topic_id, keywords in topic_keywords.items():
+        hits = sum(1 for kw in keywords[:10] if any(p.search(kw.lower()) for p in patterns))
+        if hits >= min_hits:
+            flagged.append(topic_id)
+    return sorted(flagged)
+
+
+def _noise_summary(config, topic_model: BERTopic) -> Dict[str, Any]:
+    keywords = {
+        int(tid): [word for word, _ in (topic_model.get_topic(tid) or [])[:10]]
+        for tid in topic_model.get_topics() if tid != -1
+    }
+    noisy = noise_topic_ids(keywords, config.bertopic.noise_lexicon)
+    return {"noise_topics": noisy, "noise_topic_share": len(noisy) / len(keywords) if keywords else 0.0}
 
 
 def _clusters_found(topic_model: BERTopic) -> Optional[int]:

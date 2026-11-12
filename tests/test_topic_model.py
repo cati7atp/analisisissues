@@ -394,3 +394,55 @@ def test_normal_run_summary_outcome_is_ok(small_config, issues_file, tmp_path):
     out = tmp_path / "out"
     run(small_config, issues_file, out, ThemeEncoder())
     assert json.loads((out / "run_summary.json").read_text(encoding="utf-8"))["outcome"] == "ok"
+
+
+def test_noise_topic_ids_match_whole_words_and_need_three_hits():
+    from src.topic_model import noise_topic_ids
+
+    lexicon = ["pip", "travis", "github actions"]
+    keywords = {
+        0: ["pip", "travis", "github actions", "circuit"],  # 3 hits (multi-word term counts)
+        1: ["pip install", "travis ci", "pipeline", "circuit"],  # 2 hits: "pipeline" is not "pip"
+        2: ["Travis", "circuit", "noise"],  # 1 hit, case-insensitive
+        3: ["x"] * 9 + ["pip", "travis", "github actions"],  # hits beyond the top 10 are ignored
+    }
+    assert noise_topic_ids(keywords, lexicon) == [0]
+    assert noise_topic_ids(keywords, lexicon, min_hits=2) == [0, 1]
+    assert noise_topic_ids(keywords, []) == []
+
+
+def test_default_noise_lexicon_drops_azure_and_adds_build_terms():
+    from src.config import BERTopicConfig
+
+    lexicon = BERTopicConfig().noise_lexicon
+    assert "azure" not in lexicon
+    assert {"distutils", "msvccompiler", "macosx", "aarch64", "ranlib", "travis", "dependabot", "tagbot"} <= set(lexicon)
+
+
+def test_run_summary_lists_noise_topics_from_the_configured_lexicon(small_config, issues_file, tmp_path):
+    import json
+
+    small_config.bertopic.noise_lexicon = ["transpiler", "optimization", "layout"]
+    out = tmp_path / "out"
+    run(small_config, issues_file, out, ThemeEncoder())
+    summary = json.loads((out / "run_summary.json").read_text(encoding="utf-8"))
+    topics = [json.loads(l) for l in small_config.paths.topics_output.read_text(encoding="utf-8").splitlines()]
+    expected = sorted(t["topic_id"] for t in topics if sum(k in {"transpiler", "optimization", "layout"} for k in t["keywords"]) >= 3)
+    assert len(expected) == 1
+    assert summary["noise_topics"] == expected
+    assert summary["noise_topic_share"] == pytest.approx(1 / summary["n_topics"])
+
+
+def test_noise_summary_is_empty_without_a_lexicon_and_survives_reduction(small_config, tmp_path):
+    import json
+    from src.preprocess import IssuePreprocessor
+
+    small_config.bertopic.noise_lexicon = []
+    small_config.bertopic.reduce_outliers = True
+    path = tmp_path / "with_misc.jsonl"
+    IssuePreprocessor(small_config).process_items(write_issues(n_misc=6), path)
+    out = tmp_path / "out"
+    run(small_config, path, out, ThemeEncoder())
+    summary = json.loads((out / "run_summary.json").read_text(encoding="utf-8"))
+    assert summary["noise_topics"] == [] and summary["noise_topic_share"] == 0.0
+    assert "reduced" in summary and summary["outcome"] == "ok"

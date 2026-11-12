@@ -73,6 +73,12 @@ class BERTopicConfig(BaseModel):
     domain_stop_words: List[str] = Field(default_factory=lambda: [
         "code", "block", "url", "user", "issue", "code_block", "build_log"
     ])
+    # Build, install and CI vocabulary (S20): a topic with >= 3 of its top-10 keywords here is reported as noise
+    noise_lexicon: List[str] = Field(default_factory=lambda: [
+        "macosx", "aarch64", "ranlib", "travis", "dependabot", "tagbot", "appveyor", "manylinux", "x86_64",
+        "ccache", "cmake", "gcc", "wheel", "wheels", "pip", "ubuntu", "circleci", "jenkins", "github actions",
+        "workflow", "linux", "darwin", "msvc", "conda", "toolchain", "distutils", "msvccompiler",
+    ])
     calculate_probabilities: bool = False  # use hdbscan.probabilities_
     reduce_outliers: bool = False  # True also writes a separate reduced result (S18)
     reproducible: bool = False  # True seeds UMAP (random_state=42) but disables parallelism

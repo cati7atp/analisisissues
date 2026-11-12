@@ -61,6 +61,9 @@ bertopic:
   vectorizer_min_df: 1
   vectorizer_max_df: 0.85            # fraction of topics (c-TF-IDF fits one doc per topic)
   domain_stop_words: ["code", "block", "url", "user", "issue", "code_block", "build_log"]  # placeholder tokens left by clean_text
+  noise_lexicon: ["macosx", "aarch64", "ranlib", "travis", "dependabot", "tagbot", "appveyor", "manylinux", "x86_64",
+                  "ccache", "cmake", "gcc", "wheel", "wheels", "pip", "ubuntu", "circleci", "jenkins", "github actions",
+                  "workflow", "linux", "darwin", "msvc", "conda", "toolchain", "distutils", "msvccompiler"]  # S20: >= 3 of a topic's top-10 keywords here marks it as noise
   calculate_probabilities: false      # probabilities come from hdbscan.probabilities_
   reduce_outliers: false             # true also writes *_reduced outputs; the primary result is never reduced
   reproducible: false                # true seeds UMAP (random_state=42) and disables parallelism
