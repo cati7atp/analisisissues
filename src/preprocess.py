@@ -27,6 +27,7 @@ class IssuePreprocessor:
         self.config = config or get_config()
         self.preprocessing_config = self.config.preprocessing
         self.bot_users = set(u.lower() for u in self.preprocessing_config.bot_users)
+        self.last_skip_reason: Optional[str] = None
         self.system_labels = set(l.lower() for l in self.preprocessing_config.system_labels)
     
     def load_raw_issues(self, input_path: Path) -> List[RawIssue]:
@@ -51,16 +52,18 @@ class IssuePreprocessor:
     def clean_comment(self, comment) -> Optional[CleanedComment]:
         """Clean a single comment. Accepts dict or RawComment."""
         if isinstance(comment, dict):
-            author = comment.get("author", "").lower()
+            author = (comment.get("author") or "").lower()
+            author_type = comment.get("author_type")
             body = comment.get("body", "") or ""
             created_at_str = comment.get("created_at", "")
         else:
             author = comment.author.lower()
+            author_type = comment.author_type
             body = comment.body or ""
             created_at_str = comment.created_at if isinstance(comment.created_at, str) else str(comment.created_at)
         
         # Skip bot comments
-        if is_bot_user(author, list(self.bot_users)):
+        if is_bot_user(author, list(self.bot_users), author_type):
             return None
         
         # Skip empty or very short comments
@@ -97,6 +100,12 @@ class IssuePreprocessor:
     
     def clean_issue(self, raw_issue: RawIssue) -> Optional[CleanedIssue]:
         """Clean a single issue with all its comments."""
+        if is_bot_user(raw_issue.author, list(self.bot_users), raw_issue.author_type):
+            logger.debug("Skipping bot-authored issue", repo=raw_issue.repo, number=raw_issue.issue_number)
+            self.last_skip_reason = "bot_issue"
+            return None
+        self.last_skip_reason = None
+
         # Clean body
         raw_body = raw_issue.body or ""
         cleaned_body = clean_text(
@@ -190,7 +199,7 @@ class IssuePreprocessor:
         """Clean raw issues as a stream and write JSONL in chunks; return counts."""
         output_path = output_path or self.config.paths.processed_data
         output_path.parent.mkdir(parents=True, exist_ok=True)
-        stats = {"total": 0, "kept": 0, "skipped": 0, "comments_removed": 0}
+        stats = {"total": 0, "kept": 0, "skipped": 0, "comments_removed": 0, "bot_issues": 0}
         chunk: List[str] = []
         with open(output_path, "w", encoding="utf-8") as f:
             for raw_issue in tqdm(raw_issues, desc="Preprocessing issues"):
@@ -206,6 +215,8 @@ class IssuePreprocessor:
                         chunk.clear()
                 else:
                     stats["skipped"] += 1
+                    if self.last_skip_reason == "bot_issue":
+                        stats["bot_issues"] += 1
                     stats["comments_removed"] += original_comments
             f.writelines(chunk)
         logger.info("Preprocessing complete", output=str(output_path), **stats)

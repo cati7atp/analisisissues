@@ -31,7 +31,8 @@ class InputConfig(BaseModel):
 
 class PreprocessingConfig(BaseModel):
     bot_users: List[str] = Field(default_factory=lambda: [
-        "dependabot", "renovate", "github-actions", "codecov", "coveralls", "bors", "mergify"
+        "dependabot", "renovate", "github-actions", "codecov", "coveralls", "bors", "mergify",
+        "qiskit-bot", "CLAassistant", "pre-commit-ci", "codecov-commenter", "stale"
     ])
     system_labels: List[str] = Field(default_factory=lambda: ["bot", "automated", "dependencies"])
     min_body_length: int = 10

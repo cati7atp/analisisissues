@@ -83,7 +83,7 @@ python -m src.cli generate-report
 
 All parameters are configurable via `config.yaml`:
 
-- **Preprocessing**: Bot users to filter, min body length, code fence stripping
+- **Preprocessing**: Bot filtering by author (`author_type` Bot, `[bot]` suffix or exact names in `bot_users`), min body length, code fence stripping
 - **BERTopic**: Embedding model, UMAP/HDBSCAN parameters, min topic size
 - **Quantum Patterns**: 8 categories with 50+ keywords (extensible)
 - **Metrics**: Gini computation, resolution quantiles

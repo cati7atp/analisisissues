@@ -220,10 +220,14 @@ def classify_issue_type(title: str, body: Optional[str], labels: List[str]) -> I
     return "discussion"
 
 
-def is_bot_user(username: str, bot_users: List[str]) -> bool:
-    """Check if a username is a known bot."""
-    username_lower = username.lower()
-    return any(bot in username_lower for bot in bot_users)
+def is_bot_user(username: Optional[str], bot_users: List[str], author_type: Optional[str] = None) -> bool:
+    """Check if an author is a bot: type Bot, a `[bot]` suffix or an exact listed name."""
+    if author_type and author_type.strip().lower() == "bot":
+        return True
+    if not username:
+        return False
+    name = username.strip().lower()
+    return name.endswith("[bot]") or name in {b.lower() for b in bot_users}
 
 
 def parse_datetime(dt_str: str) -> datetime:

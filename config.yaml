@@ -24,7 +24,8 @@ input:
 
 # Preprocessing
 preprocessing:
-  bot_users: ["dependabot", "renovate", "github-actions", "codecov", "coveralls", "bors", "mergify"]
+  bot_users: ["dependabot", "renovate", "github-actions", "codecov", "coveralls", "bors", "mergify",
+              "qiskit-bot", "CLAassistant", "pre-commit-ci", "codecov-commenter", "stale"]  # exact names; also author_type=Bot and "[bot]" suffix
   system_labels: ["bot", "automated", "dependencies"]
   min_body_length: 10
   max_comment_length: 50000
