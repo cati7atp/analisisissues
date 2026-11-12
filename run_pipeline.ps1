@@ -7,19 +7,12 @@ if (Test-Path "venv\Scripts\Activate.ps1") {
     & "venv\Scripts\Activate.ps1"
 }
 
-# Check input file
-$inputFile = "data/raw/issues.jsonl"
-if (-not (Test-Path $inputFile)) {
-    Write-Host "ERROR: Input file not found: $inputFile" -ForegroundColor Red
-    Write-Host "Please place your GitHub issues JSONL file at: $inputFile" -ForegroundColor Yellow
-    Write-Host ""
-    Write-Host "Expected format (one JSON object per line):" -ForegroundColor Yellow
-    Write-Host '{"repo": "owner/repo", "issue_number": 123, "title": "...", "body": "...", "state": "open", "labels": ["bug"], "created_at": "2024-01-01T00:00:00Z", "closed_at": null, "author": "username", "comments": [{"author": "user", "created_at": "2024-01-01T00:00:00Z", "body": "..."}]}' -ForegroundColor Gray
-    exit 1
-}
+# Dataset path comes from config.yaml (input.db_path); pass a miner.db path to override it
+$dbArgs = @()
+if ($args.Count -gt 0) { $dbArgs = @("--db", $args[0]) }
 
 # Run pipeline
-python -m src.cli run-pipeline --input $inputFile --config config.yaml
+python -m src.cli run-pipeline --config config.yaml @dbArgs
 
 if ($LASTEXITCODE -eq 0) {
     Write-Host ""

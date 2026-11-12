@@ -52,12 +52,12 @@ Place your GitHub issues data as a JSONL file at `data/raw/issues.jsonl`. Each l
 
 ```bash
 # Run full pipeline
-python -m src.cli run-pipeline --input data/raw/issues.jsonl
+python -m src.cli run-pipeline   # reads input.db_path (miner.db); --db PATH overrides it, --output-dir DIR redirects every output
 
 # Or step by step:
 python -m src.cli preprocess   # reads input.db_path (miner.db); --input still accepts a legacy JSONL
 python -m src.cli topic-model
-python -m src.cli extract-patterns   # --output-dir DIR reads the topic results from DIR and writes patterns there
+python -m src.cli extract-patterns   # --output-dir DIR reads the topic results from DIR and writes patterns and cross_project_patterns.* there
 python -m src.cli compute-metrics   # --output-dir DIR writes metrics, CSV and comparisons.json there
 python -m src.cli generate-report
 ```
@@ -68,6 +68,7 @@ python -m src.cli generate-report
 - **Visualization**: `reports/topic_visualization.html` (open in browser)
 - **Metrics**: `data/analysis/maintainability_metrics.json`
 - **Patterns**: `data/analysis/quantum_patterns.jsonl`
+- **Cross-project patterns**: `data/analysis/cross_project_patterns.csv` (a topic is cross-project when `cross_project.min_repos` repos each hold `min_issues_per_repo` of its issues and no repo exceeds `max_top_repo_share`)
 
 ## Pipeline Stages
 
@@ -102,16 +103,9 @@ All parameters are configurable via `config.yaml`:
 | Reproducibility | Non-deterministic results | seed, deterministic, random |
 | Performance/Scaling | Large circuit performance | scaling, qubit count, depth |
 
-## Extending Pattern Keywords
+## Extending Pattern Categories
 
-Add new keywords to `config.yaml` under `quantum_patterns`:
-
-```yaml
-quantum_patterns:
-  hardware_backend:
-    - "new keyword"
-    - "another term"
-```
+Categories and their keywords live in `config/quantum_taxonomy.yaml` (the `quantum_patterns` block of `config.yaml` is legacy and ignored).
 
 ## Running Tests
 

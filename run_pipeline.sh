@@ -8,19 +8,12 @@ if [ -f "venv/bin/activate" ]; then
     source venv/bin/activate
 fi
 
-# Check input file
-INPUT_FILE="${1:-data/raw/issues.jsonl}"
-if [ ! -f "$INPUT_FILE" ]; then
-    echo "ERROR: Input file not found: $INPUT_FILE" >&2
-    echo "Please place your GitHub issues JSONL file at: $INPUT_FILE" >&2
-    echo ""
-    echo "Expected format (one JSON object per line):"
-    echo '{"repo": "owner/repo", "issue_number": 123, "title": "...", "body": "...", "state": "open", "labels": ["bug"], "created_at": "2024-01-01T00:00:00Z", "closed_at": null, "author": "username", "comments": [{"author": "user", "created_at": "2024-01-01T00:00:00Z", "body": "..."}]}'
-    exit 1
-fi
+# Check dataset (path comes from config.yaml: input.db_path, or pass --db)
+DB_ARG=()
+if [ -n "$1" ]; then DB_ARG=(--db "$1"); fi
 
 # Run pipeline
-python -m src.cli run-pipeline --input "$INPUT_FILE" --config config.yaml
+python -m src.cli run-pipeline --config config.yaml "${DB_ARG[@]}"
 
 if [ $? -eq 0 ]; then
     echo ""

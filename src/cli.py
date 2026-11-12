@@ -218,52 +218,43 @@ def generate_report(
 
 @app.command()
 def run_pipeline(
-    input_file: str = typer.Option(None, "--input", "-i", help="Input raw issues JSONL"),
     config_file: str = typer.Option("config.yaml", "--config", "-c", help="Config file path"),
+    db_file: str = typer.Option(None, "--db", help="miner.db path (overrides input.db_path)"),
+    output_dir: str = typer.Option(None, "--output-dir", help="Directory for every analysis output (default: the folder of paths.topics_output)"),
     skip_preprocess: bool = typer.Option(False, "--skip-preprocess", help="Skip preprocessing step"),
 ):
-    """Run the full analysis pipeline end-to-end."""
+    """Run the full pipeline end-to-end by chaining the individual commands."""
     cfg = load_config(Path(config_file))
-    
-    input_path = Path(input_file) if input_file else cfg.paths.raw_data
-    
-    if not input_path.exists():
-        console.print(f"[red]Input file not found: {input_path}[/red]")
-        raise typer.Exit(1)
-    
+    out = Path(output_dir) if output_dir else cfg.paths.topics_output.parent
+    cfg_arg = str(config_file)
     console.print("[bold]Starting full analysis pipeline...[/bold]")
-    
-    # Step 1: Preprocess
-    if not skip_preprocess:
-        console.print("[cyan]Step 1/5: Preprocessing...[/cyan]")
-        preprocessor = IssuePreprocessor(cfg)
-        preprocessor.process(input_path, cfg.paths.processed_data)
-    else:
+
+    if skip_preprocess:
         console.print("[cyan]Step 1/5: Preprocessing skipped[/cyan]")
-    
-    # Step 2: Topic modeling
+    else:
+        console.print("[cyan]Step 1/5: Preprocessing...[/cyan]")
+        preprocess(input_file=None, db_file=db_file, output_file=None, config_file=cfg_arg)
+
     console.print("[cyan]Step 2/5: Topic modeling...[/cyan]")
-    from .topic_model import run_topic_modeling
-    run_topic_modeling(cfg, cfg.paths.processed_data, cfg.paths.model_dir)
-    
-    # Step 3: Pattern extraction
+    topic_model(input_file=None, output_dir=str(out), min_topic_size=None, n_topics=None,
+                embedding_model=None, config_file=cfg_arg)
+
     console.print("[cyan]Step 3/5: Pattern extraction...[/cyan]")
-    from .patterns import extract_quantum_patterns
-    extract_quantum_patterns(cfg, cfg.paths.topics_output, cfg.paths.processed_data, cfg.paths.patterns_output)
-    
-    # Step 4: Metrics
+    extract_patterns(topics_file=None, issues_file=None, output_file=None, output_dir=str(out), config_file=cfg_arg)
+
     console.print("[cyan]Step 4/5: Computing metrics...[/cyan]")
-    from .metrics import compute_maintainability_metrics
-    compute_maintainability_metrics(cfg, cfg.paths.processed_data, cfg.paths.patterns_output, cfg.paths.metrics_output, cfg.paths.metrics_csv)
-    
-    # Step 5: Report
+    compute_metrics(issues_file=None, patterns_file=None, output_json=None, output_csv=None,
+                    output_dir=str(out), config_file=cfg_arg)
+
     console.print("[cyan]Step 5/5: Generating report...[/cyan]")
-    from .report import generate_report
-    generate_report(cfg, cfg.paths.metrics_output, cfg.paths.topics_output, cfg.paths.patterns_output, cfg.paths.report_md, cfg.report.anonymize)
-    
+    generate_report(metrics_file=str(out / cfg.paths.metrics_output.name),
+                    topics_file=str(out / cfg.paths.topics_output.name),
+                    patterns_file=str(out / cfg.paths.patterns_output.name),
+                    output_file=None, anonymize=cfg.report.anonymize, config_file=cfg_arg)
+
     console.print("[bold green]Pipeline complete![/bold green]")
+    console.print(f"Outputs: {out}")
     console.print(f"Report: {cfg.paths.report_md}")
-    console.print(f"Visualization: {cfg.paths.visualization_html}")
 
 
 @app.command()
