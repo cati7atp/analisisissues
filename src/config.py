@@ -64,9 +64,9 @@ class BERTopicConfig(BaseModel):
     vectorizer_stop_words: str = "english"
     vectorizer_min_df: int = 1
     vectorizer_max_df: float = 0.85  # fraction of topics: c-TF-IDF fits one document per topic
-    # Placeholder tokens left by clean_text until structured code summaries exist (T2.5)
+    # Placeholder tokens that clean_text leaves in the text (S11)
     domain_stop_words: List[str] = Field(default_factory=lambda: [
-        "code", "block", "url", "user", "issue", "code_block"
+        "code", "block", "url", "user", "issue", "code_block", "build_log"
     ])
     calculate_probabilities: bool = False  # use hdbscan.probabilities_
     reduce_outliers: bool = False  # True also writes a separate reduced result (S18)

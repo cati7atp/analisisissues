@@ -71,3 +71,36 @@ def summarize_tracebacks(text: str) -> str:
             i += 1
         out.append(summarize_code("\n".join(block)))
     return "\n".join(out)
+
+
+BUILD_MARKER = "[BUILD_LOG]"
+MIN_BUILD_RUN = 3
+BUILD_LINE = re.compile(
+    r"^\s*(?:Collecting \S+|Using cached |Downloading |Requirement already satisfied|"
+    r"Successfully (?:installed|built) |running (?:build|install|egg_info|develop|bdist)\w*|"
+    r"building '.*' extension|copying \S+ -> |creating [\w./\-]+$|"
+    r"(?:\S*-)?(?:gcc|g\+\+|clang)\s+-|ranlib\b)"
+)
+
+
+def summarize_build_logs(text: str) -> str:
+    """Replace runs of 3+ consecutive install/build tool lines with one marker."""
+    out: List[str] = []
+    run: List[str] = []
+
+    def flush() -> None:
+        matched = [l for l in run if l.strip()]
+        if len(matched) >= MIN_BUILD_RUN:
+            out.append(BUILD_MARKER)
+        else:
+            out.extend(run)
+        run.clear()
+
+    for line in text.split("\n"):
+        if BUILD_LINE.match(line) or (run and not line.strip()):
+            run.append(line)
+        else:
+            flush()
+            out.append(line)
+    flush()
+    return "\n".join(out)

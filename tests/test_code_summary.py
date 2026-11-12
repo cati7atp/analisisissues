@@ -54,3 +54,37 @@ def test_unfenced_traceback_is_summarized_too():
 def test_prose_mentioning_errors_is_untouched():
     text = "A QiskitError was raised when I call run."
     assert clean_text(text) == text
+
+
+BUILD_LOG = """Collecting dimod
+  Using cached dimod-0.12.tar.gz (5.0 MB)
+running build_ext
+copying build/lib.macosx-10.9-x86_64-3.7/dimod/core.so -> dimod
+creating build/temp.linux-aarch64
+gcc -pthread -O2 -c core.c
+ranlib libdimod.a
+Successfully installed dimod-0.12"""
+
+
+def test_unfenced_build_log_run_becomes_a_stop_word_marker():
+    result = clean_text("Install fails:\n" + BUILD_LOG + "\nAny idea?")
+    assert "[BUILD_LOG]" in result
+    for noise in ("macosx", "ranlib", "aarch64", "copying", "Collecting"):
+        assert noise not in result
+    assert "Install fails:" in result and "Any idea?" in result
+
+
+def test_short_runs_and_prose_are_not_build_logs():
+    text = "Collecting data is slow.\ncopying results is fine.\nCreating a circuit works."
+    assert clean_text(text) == "Collecting data is slow. copying results is fine. Creating a circuit works."
+
+
+def test_two_separate_runs_become_two_markers():
+    result = clean_text(BUILD_LOG + "\nSome text in between\n" + BUILD_LOG)
+    assert result.count("[BUILD_LOG]") == 2
+    assert "Some text in between" in result
+
+
+def test_build_log_marker_is_a_default_stop_word():
+    from src.config import BERTopicConfig
+    assert "build_log" in BERTopicConfig().domain_stop_words

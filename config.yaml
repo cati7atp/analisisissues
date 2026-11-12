@@ -55,7 +55,7 @@ bertopic:
   vectorizer_stop_words: "english"
   vectorizer_min_df: 1
   vectorizer_max_df: 0.85            # fraction of topics (c-TF-IDF fits one doc per topic)
-  domain_stop_words: ["code", "block", "url", "user", "issue", "code_block"]  # placeholders until T2.5
+  domain_stop_words: ["code", "block", "url", "user", "issue", "code_block", "build_log"]  # placeholder tokens left by clean_text
   calculate_probabilities: false      # probabilities come from hdbscan.probabilities_
   reduce_outliers: false             # true also writes *_reduced outputs; the primary result is never reduced
   reproducible: false                # true seeds UMAP (random_state=42) and disables parallelism
