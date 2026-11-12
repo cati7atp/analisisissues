@@ -69,6 +69,7 @@ class BERTopicConfig(BaseModel):
         "code", "block", "url", "user", "issue", "code_block"
     ])
     calculate_probabilities: bool = False  # use hdbscan.probabilities_
+    reduce_outliers: bool = False  # True also writes a separate reduced result (S18)
     reproducible: bool = False  # True seeds UMAP (random_state=42) but disables parallelism
     verbose: bool = True
 

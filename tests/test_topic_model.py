@@ -161,16 +161,23 @@ class ThemeEncoder:
         self.texts.extend(texts)
         rows = []
         for text in texts:
-            theme = next(k for k, words in THEMES.items() if words.split()[0] in text)
-            noise = np.random.default_rng(sum(map(ord, text))).normal(scale=0.3, size=16)
-            rows.append(self.centres[theme] + noise)
+            rng = np.random.default_rng(sum(map(ord, text)))
+            theme = next((k for k, words in THEMES.items() if words.split()[0] in text), None)
+            if theme is None:  # isolated point: becomes an outlier
+                rows.append(rng.normal(scale=15, size=16))
+            else:
+                rows.append(self.centres[theme] + rng.normal(scale=0.3, size=16))
         return np.asarray(rows, dtype="float32")
 
 
-def write_issues(per_theme=30):
+def write_issues(per_theme=30, n_misc=0):
     from src.models import RawIssue
 
-    issues = []
+    issues = [
+        RawIssue(repo="a/b", issue_number=90000 + m, title=f"misc{m} unrelated", body=f"zork{m} blarg{m} flub{m}",
+                 state="open", created_at="2024-01-01T00:00:00Z", author="human")
+        for m in range(n_misc)
+    ]
     for i, (theme, words) in enumerate(THEMES.items()):
         vocab = words.split()
         for j in range(per_theme):
@@ -238,3 +245,36 @@ def test_keybert_and_mmr_are_aspects_main_label_stays_ctfidf(small_config):
     assert main_words and all(w in vocab for w in main_words)
     keybert = model.topic_aspects_["KeyBERT"][0]
     assert keybert and all(isinstance(w, tuple) for w in keybert)
+
+
+def test_outliers_not_reduced_by_default(small_config, tmp_path):
+    import json
+    from src.preprocess import IssuePreprocessor
+
+    path = tmp_path / "with_misc.jsonl"
+    IssuePreprocessor(small_config).process_items(write_issues(n_misc=6), path)
+    out = tmp_path / "out"
+    run(small_config, path, out, ThemeEncoder())
+    summary = json.loads((out / "run_summary.json").read_text(encoding="utf-8"))
+    assert summary["n_outliers"] > 0
+    assert "reduced" not in summary
+    assert not (out / "doc_topics_reduced.jsonl").exists()
+
+
+def test_reduce_outliers_writes_a_separate_second_result(small_config, tmp_path):
+    import json
+    from src.preprocess import IssuePreprocessor
+
+    small_config.bertopic.reduce_outliers = True
+    path = tmp_path / "with_misc.jsonl"
+    IssuePreprocessor(small_config).process_items(write_issues(n_misc=6), path)
+    out = tmp_path / "out"
+    run(small_config, path, out, ThemeEncoder())
+    summary = json.loads((out / "run_summary.json").read_text(encoding="utf-8"))
+    primary = [json.loads(l) for l in small_config.paths.doc_topics_output.read_text(encoding="utf-8").splitlines()]
+    reduced = [json.loads(l) for l in (out / "doc_topics_reduced.jsonl").read_text(encoding="utf-8").splitlines()]
+    assert sum(r["topic_id"] == -1 for r in primary) == summary["n_outliers"] > 0
+    n_reduced = sum(r["topic_id"] == -1 for r in reduced)
+    assert n_reduced < summary["n_outliers"]  # similarity threshold 0 may leave a few unassigned
+    assert summary["reduced"]["n_outliers"] == n_reduced
+    assert (out / "topics_reduced.jsonl").exists()

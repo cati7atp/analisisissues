@@ -185,28 +185,55 @@ def run_topic_modeling(
     
     # Generate visualization
     _generate_visualization(config, topic_model, docs, output_dir)
-    
+
+    if config.bertopic.reduce_outliers:
+        _save_reduced_result(config, topic_model, docs, issue_ids, topics, probabilities, embeddings, output_dir)
+
     return topic_model
 
 
-def _write_run_summary(output_dir: Path, topics: List[int]) -> Dict[str, Any]:
-    """Log and persist document, topic and (unreduced) outlier counts."""
+def _save_reduced_result(config, topic_model, docs, issue_ids, topics, probabilities, embeddings, output_dir):
+    """Second, separate result with outliers reassigned; call only after the primary outputs are saved."""
+    reduced = topic_model.reduce_outliers(docs, topics, strategy="embeddings", embeddings=embeddings)
+    topic_model.update_topics(
+        docs,
+        topics=reduced,
+        vectorizer_model=topic_model.vectorizer_model,
+        ctfidf_model=topic_model.ctfidf_model,
+        representation_model=topic_model.representation_model,
+    )
+    _save_topics(config, topic_model, topic_model.get_topic_info(), output_dir, output_dir / "topics_reduced.jsonl")
+    _save_doc_topics(config, issue_ids, reduced, probabilities, output_dir, output_dir / "doc_topics_reduced.jsonl")
+    _write_run_summary(output_dir, topics, reduced_topics=reduced)
+
+
+def _topic_counts(topics: List[int]) -> Dict[str, Any]:
     n_docs = len(topics)
     n_outliers = sum(1 for t in topics if t == -1)
-    summary = {
-        "n_documents": n_docs,
+    return {
         "n_topics": len({t for t in topics if t != -1}),
         "n_outliers": n_outliers,
         "outlier_share": n_outliers / n_docs if n_docs else 0.0,
     }
+
+
+def _write_run_summary(
+    output_dir: Path, topics: List[int], reduced_topics: Optional[List[int]] = None
+) -> Dict[str, Any]:
+    """Log and persist document, topic and (unreduced) outlier counts."""
+    summary = {"n_documents": len(topics), **_topic_counts(topics)}
+    if reduced_topics is not None:
+        summary["reduced"] = _topic_counts(reduced_topics)
     logger.info("Topic modeling complete", **summary)
     (output_dir / "run_summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
     return summary
 
 
-def _save_topics(config, topic_model: BERTopic, topic_info: pd.DataFrame, output_dir: Path):
+def _save_topics(
+    config, topic_model: BERTopic, topic_info: pd.DataFrame, output_dir: Path, output_path: Optional[Path] = None
+):
     """Save topic information to JSONL."""
-    output_path = config.paths.topics_output
+    output_path = output_path or config.paths.topics_output
     output_path.parent.mkdir(parents=True, exist_ok=True)
     
     with open(output_path, "w", encoding="utf-8") as f:
@@ -235,9 +262,12 @@ def _save_topics(config, topic_model: BERTopic, topic_info: pd.DataFrame, output
     logger.info("Saved topics", path=str(output_path), n_topics=len(topic_info) - 1)
 
 
-def _save_doc_topics(config, issue_ids: List[str], topics: List[int], probabilities: np.ndarray, output_dir: Path):
+def _save_doc_topics(
+    config, issue_ids: List[str], topics: List[int], probabilities: np.ndarray, output_dir: Path,
+    output_path: Optional[Path] = None,
+):
     """Save document-topic assignments to JSONL."""
-    output_path = config.paths.doc_topics_output
+    output_path = output_path or config.paths.doc_topics_output
     output_path.parent.mkdir(parents=True, exist_ok=True)
     
     with open(output_path, "w", encoding="utf-8") as f:
