@@ -113,12 +113,8 @@ class TestExtractQuotes:
 class TestBuildKeywordPatterns:
     def test_builds_patterns_from_config(self, config):
         patterns = build_keyword_patterns(config)
-        assert "hardware_backend" in patterns
-        assert "algorithm_convergence" in patterns
-        assert "transpilation_compilation" in patterns
-        # Each category should have (keyword, pattern) tuples
-        assert len(patterns["hardware_backend"]) > 0
-        assert all(isinstance(p, tuple) for p in patterns["hardware_backend"])
+        assert {"hardware_backend", "algorithm_convergence", "transpilation_compilation"} <= set(patterns.names)
+        assert "hardware_backend" in patterns.names
 
 
 class TestFindPatternMatches:
@@ -194,3 +190,38 @@ class TestExtractQuantumPatterns:
         # Verify CSV was created
         csv_path = config.paths.pattern_summary_csv
         assert csv_path.exists() or Path("reports/pattern_summary.csv").exists()
+
+def _taxonomy(tmp_path, body):
+    path = tmp_path / "taxonomy.yaml"
+    path.write_text(body, encoding="utf-8")
+    return path
+
+
+class TestTaxonomyMatcher:
+    def test_terms_are_anchored_and_accept_plurals(self, tmp_path):
+        from src.taxonomy import TaxonomyMatcher, load_taxonomy
+
+        matcher = TaxonomyMatcher(load_taxonomy(_taxonomy(tmp_path, (
+            "version: 1\ncategories:\n  gates:\n    name: Gates\n    terms: [gate]\n"))))
+        assert matcher.match("We should investigate this") == {}
+        assert matcher.match("Two gates fail") == {"gates": ["gate"]}
+        assert matcher.match("The GATE is wrong") == {"gates": ["gate"]}
+
+    def test_negative_terms_veto_a_category(self, tmp_path):
+        from src.taxonomy import TaxonomyMatcher, load_taxonomy
+
+        matcher = TaxonomyMatcher(load_taxonomy(_taxonomy(tmp_path, (
+            "version: 1\ncategories:\n  noise:\n    name: Noise\n    terms: [noise model]\n"
+            "    negative_terms: [log noise]\n"))))
+        assert matcher.match("the noise model is wrong") == {"noise": ["noise model"]}
+        assert matcher.match("the noise model has log noise") == {}
+
+    def test_default_taxonomy_loads_with_generic_words_not_standalone(self, config):
+        from src.taxonomy import TaxonomyMatcher, load_taxonomy
+
+        taxonomy = load_taxonomy(config.quantum_taxonomy)
+        assert taxonomy.version >= 1 and len(taxonomy.categories) >= 10
+        matcher = TaxonomyMatcher(taxonomy)
+        for text in ["the circuit", "a gate", "the backend", "memory", "performance"]:
+            assert matcher.match(text) == {}, text
+        assert "transpilation_compilation" in matcher.match("transpile fails with a coupling map")

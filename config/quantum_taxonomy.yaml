@@ -1,0 +1,53 @@
+# Versioned taxonomy for quantum-software issue patterns (S21).
+# Terms are matched case-insensitively on word boundaries, with an optional plural.
+# negative_terms veto the category when they appear in the same text.
+# Generic words (circuit, gate, backend, memory, performance) are not standalone triggers.
+version: 1
+categories:
+  transpilation_compilation:
+    name: Transpilation and compilation
+    terms: [transpile, transpiler, transpilation, basis gates, optimization level, pass manager,
+            circuit compilation, gate decomposition, unroller]
+  noise_error_mitigation:
+    name: Noise and error mitigation
+    terms: [noise model, error mitigation, zero noise extrapolation, readout error, depolarizing,
+            decoherence, error correction, gate fidelity, crosstalk, twirling]
+  hardware_backend:
+    name: Backend, hardware access and queues
+    terms: [queue, job queue, calibration, device availability, ibm_quantum, ionq, rigetti,
+            quantum hardware, quantum processor, backend configuration, job failed, runtime session]
+  qubit_mapping_routing:
+    name: Qubit mapping and routing
+    terms: [coupling map, routing, initial layout, layout pass, sabre, stochastic swap, swap insertion,
+            qubit mapping, qubit placement]
+  gradients_autodiff:
+    name: Parameterized circuits and gradients
+    terms: [gradient, autodiff, backprop, parameter-shift, adjoint differentiation, parameter binding,
+            parameterized circuit, parametrized circuit, differentiable, autograd]
+  performance_scaling:
+    name: Simulator performance and memory
+    terms: [qubit count, circuit depth, execution time, out of memory, memory error, memory usage,
+            large circuit, slow simulation, simulation time, timeout, statevector memory]
+  pulse_control:
+    name: Pulse-level control
+    terms: [pulse, pulse schedule, pulse gate, schedule builder, drive channel, calibration pulse,
+            openpulse, waveform]
+  dependency_version:
+    name: SDK, version and dependency breakage
+    terms: [qiskit-terra, qiskit-aer, qiskit-ibmq, version conflict, dependency conflict, import error,
+            module not found, modulenotfounderror, breaking change, deprecation, deprecated, incompatible version]
+  documentation_examples:
+    name: Documentation and examples
+    terms: [documentation, docs, docstring, tutorial, example notebook, typo in docs, broken link,
+            outdated example]
+  algorithm_convergence:
+    name: Algorithm-level questions
+    terms: [vqe, qaoa, ansatz, barren plateau, convergence, optimizer, cost function, variational,
+            local minimum, grover, shor, phase estimation]
+  sim_vs_hardware:
+    name: Simulator vs hardware discrepancy
+    terms: [simulator vs hardware, simulation vs hardware, different results, ideal vs real, shot count,
+            fake backend, discrepancy]
+  reproducibility:
+    name: Reproducibility
+    terms: [seed, deterministic, reproducible, non-deterministic, different runs, stochastic, random seed]

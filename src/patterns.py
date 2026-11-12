@@ -3,7 +3,7 @@
 import json
 import re
 from pathlib import Path
-from typing import List, Dict, Any, Set, Tuple
+from typing import List, Dict, Any, Optional, Set, Tuple
 from collections import Counter, defaultdict
 from dataclasses import dataclass
 
@@ -13,6 +13,7 @@ import structlog
 
 from .config import get_config
 from .models import CleanedIssue, QuantumPattern, TopicInfo, DocTopic
+from .taxonomy import TaxonomyMatcher, load_taxonomy
 
 logger = structlog.get_logger()
 
@@ -24,18 +25,6 @@ class PatternMatch:
     issue_id: str
     matched_keywords: List[str]
     quote: str
-
-
-QUANTUM_PATTERN_CATEGORIES = {
-    "hardware_backend": "Hardware/Backend Issues",
-    "algorithm_convergence": "Algorithm Convergence",
-    "dependency_version": "Dependency/Version Conflicts",
-    "sim_vs_hardware": "Simulator vs Hardware Discrepancy",
-    "transpilation_compilation": "Transpilation/Compilation Failures",
-    "gradients_autodiff": "Gradients/Autodiff Failures",
-    "reproducibility": "Reproducibility Issues",
-    "performance_scaling": "Performance/Scaling Issues",
-}
 
 
 def load_topics(topics_path: Path) -> List[TopicInfo]:
@@ -81,23 +70,9 @@ def load_issues(issues_path: Path) -> List[CleanedIssue]:
     return issues
 
 
-def build_keyword_patterns(config) -> Dict[str, List[re.Pattern]]:
-    """Compile regex patterns for each quantum pattern category."""
-    patterns = {}
-    quantum_patterns = config.quantum_patterns
-    
-    for category, keywords in quantum_patterns.model_dump().items():
-        # Create case-insensitive word-boundary patterns
-        compiled = []
-        for kw in keywords:
-            # Escape special regex chars, allow word boundaries
-            escaped = re.escape(kw)
-            # Match as whole word or part of word
-            pattern = re.compile(rf"\b{escaped}\b", re.IGNORECASE)
-            compiled.append((kw, pattern))
-        patterns[category] = compiled
-    
-    return patterns
+def build_keyword_patterns(config) -> TaxonomyMatcher:
+    """Build the shared taxonomy matcher (the same one the metrics use)."""
+    return TaxonomyMatcher(load_taxonomy(config.quantum_taxonomy))
 
 
 def extract_quotes(text: str, keywords: List[str], max_quotes: int = 3, max_length: int = 200) -> List[str]:
@@ -124,7 +99,7 @@ def extract_quotes(text: str, keywords: List[str], max_quotes: int = 3, max_leng
 
 def find_pattern_matches(
     issues: List[CleanedIssue],
-    keyword_patterns: Dict[str, List[Tuple[str, re.Pattern]]],
+    matcher: TaxonomyMatcher,
     config,
 ) -> List[PatternMatch]:
     """Find all pattern matches across issues."""
@@ -135,34 +110,25 @@ def find_pattern_matches(
         if not full_text:
             continue
         
-        for category, patterns in keyword_patterns.items():
-            matched_keywords = []
-            for keyword, pattern in patterns:
-                if pattern.search(full_text):
-                    matched_keywords.append(keyword)
-            
-            if matched_keywords:
-                # Extract representative quotes
-                quotes = extract_quotes(
-                    full_text,
-                    matched_keywords,
-                    max_quotes=config.report.max_example_quotes,
-                    max_length=config.report.quote_max_length
-                )
-                
-                match = PatternMatch(
-                    pattern_id=f"{category}_{len(matches)}",
-                    category=category,
-                    issue_id=issue.issue_id,
-                    matched_keywords=matched_keywords,
-                    quote=quotes[0] if quotes else "",
-                )
-                matches.append(match)
-    
+        for category, matched_keywords in matcher.match(full_text).items():
+            quotes = extract_quotes(
+                full_text,
+                matched_keywords,
+                max_quotes=config.report.max_example_quotes,
+                max_length=config.report.quote_max_length,
+            )
+            matches.append(PatternMatch(
+                pattern_id=f"{category}_{len(matches)}",
+                category=category,
+                issue_id=issue.issue_id,
+                matched_keywords=matched_keywords,
+                quote=quotes[0] if quotes else "",
+            ))
+
     return matches
 
 
-def aggregate_patterns(matches: List[PatternMatch]) -> List[QuantumPattern]:
+def aggregate_patterns(matches: List[PatternMatch], names: Optional[Dict[str, str]] = None) -> List[QuantumPattern]:
     """Aggregate individual matches into pattern summaries."""
     # Group by category
     by_category: Dict[str, List[PatternMatch]] = defaultdict(list)
@@ -198,7 +164,7 @@ def aggregate_patterns(matches: List[PatternMatch]) -> List[QuantumPattern]:
         
         pattern = QuantumPattern(
             pattern_id=category,
-            name=QUANTUM_PATTERN_CATEGORIES.get(category, category.replace("_", " ").title()),
+            name=(names or {}).get(category, category.replace("_", " ").title()),
             description=f"Issues related to {category.replace('_', ' ')} in quantum software development",
             category=category,
             supporting_issue_ids=sorted(all_issue_ids),
@@ -227,16 +193,16 @@ def extract_quantum_patterns(
     issues = load_issues(issues_path)
     
     # Build keyword patterns from config
-    keyword_patterns = build_keyword_patterns(config)
+    matcher = build_keyword_patterns(config)
     
     # Find matches
     logger.info("Finding pattern matches")
-    matches = find_pattern_matches(issues, keyword_patterns, config)
+    matches = find_pattern_matches(issues, matcher, config)
     logger.info("Found matches", count=len(matches))
     
     # Aggregate into patterns
     logger.info("Aggregating patterns")
-    patterns = aggregate_patterns(matches)
+    patterns = aggregate_patterns(matches, matcher.names)
     logger.info("Extracted patterns", count=len(patterns))
     
     # Save patterns JSONL

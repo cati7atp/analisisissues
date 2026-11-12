@@ -7,6 +7,9 @@ from pydantic import BaseModel, Field
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
+DEFAULT_TAXONOMY_PATH = Path(__file__).resolve().parent.parent / "config" / "quantum_taxonomy.yaml"
+
+
 class PathsConfig(BaseModel):
     raw_data: Path = Path("data/raw/issues.jsonl")
     processed_data: Path = Path("data/processed/issues_clean.jsonl")
@@ -117,7 +120,8 @@ class Config(BaseModel):
     input: InputConfig = Field(default_factory=InputConfig)
     preprocessing: PreprocessingConfig = Field(default_factory=PreprocessingConfig)
     bertopic: BERTopicConfig = Field(default_factory=BERTopicConfig)
-    quantum_patterns: QuantumPatternsConfig
+    quantum_taxonomy: Path = DEFAULT_TAXONOMY_PATH
+    quantum_patterns: Optional[QuantumPatternsConfig] = None  # legacy; superseded by the taxonomy
     metrics: MetricsConfig = Field(default_factory=MetricsConfig)
     report: ReportConfig = Field(default_factory=ReportConfig)
 
