@@ -87,7 +87,7 @@ class BERTopicConfig(BaseModel):
     calculate_probabilities: bool = False  # use hdbscan.probabilities_
     reduce_outliers: bool = False  # True also writes a separate reduced result (S18)
     repo_specific_share: float = 0.8  # a topic above this top-repo share is flagged repo_specific
-    temporal_nr_bins: int = 20  # time bins for topics_over_time
+    temporal_nr_bins: int = 10  # time bins for topics_over_time
     temporal_views: bool = True  # topics_over_time is slow on large corpora; False skips it and topics_per_class
     seed: int = 42  # UMAP random_state
     reproducible: bool = True  # True: seeded, single-threaded UMAP (identical topics across runs); False: parallel, unseeded

@@ -252,9 +252,11 @@ def test_keybert_and_mmr_are_aspects_main_label_stays_ctfidf(small_config):
     assert keybert and all(isinstance(w, tuple) for w in keybert)
 
 
-def test_outliers_not_reduced_by_default(small_config, tmp_path):
+def test_outliers_not_reduced_when_disabled(small_config, tmp_path):
     import json
     from src.preprocess import IssuePreprocessor
+
+    small_config.bertopic.reduce_outliers = False
 
     path = tmp_path / "with_misc.jsonl"
     IssuePreprocessor(small_config).process_items(write_issues(n_misc=6), path)
