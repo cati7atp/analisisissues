@@ -1,14 +1,14 @@
 """Strip untouched issue-template boilerplate (S12).
 
-Only structural markers are removed: HTML comments, known template headings that
-occupy a whole line, and unchecked checklist items. Repeated per-repo templates are
-handled by the data-driven repeated-line filter, not by name lists.
+Only structural markers are removed: HTML comments and known template headings that
+occupy a whole line. Checklist lines are not removed here, because a unique checklist
+line is real content; template checklists and per-repo templates are handled by the
+data-driven repeated-line filter, not by name lists.
 """
 
 import re
 
 HTML_COMMENT = re.compile(r"<!--[\s\S]*?-->")
-UNCHECKED_BOX = re.compile(r"^\s*[-*+]\s*\[ \]\s.*$", re.MULTILINE)
 TEMPLATE_HEADINGS = (
     "describe the bug", "environment", "steps to reproduce", "additional context",
     "expected behavior", "expected behaviour", "actual behavior", "actual behaviour",
@@ -24,4 +24,4 @@ HEADING_LINE = re.compile(
 def strip_templates(text: str) -> str:
     text = HTML_COMMENT.sub("", text)
     text = HEADING_LINE.sub("", text)
-    return UNCHECKED_BOX.sub("", text)
+    return text
