@@ -190,10 +190,6 @@ HANDOFF.md                  Guía de análisis para el equipo
 No se versionan: `data/processed/`, `data/cache/`, `data/analysis/model/` y las corridas
 previas al enmascaramiento. Ver `.gitignore` y `docs/data-handling.md`.
 
-## Licencia
-
-MIT.
-
 ## Citación
 
 Si usás este trabajo en una investigación, citá:
@@ -201,7 +197,7 @@ Si usás este trabajo en una investigación, citá:
 ```bibtex
 @misc{quantum-issues-analysis,
   title={Quantum Software Maintainability Analysis via GitHub Issue Mining},
-  year={2024},
+  year={2026},
   note={Analysis of hybrid quantum-classical software maintainability patterns}
 }
 ```
