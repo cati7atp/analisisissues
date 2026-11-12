@@ -3,7 +3,7 @@
 import json
 import typer
 from pathlib import Path
-from typing import List, Dict, Any, Optional
+from typing import Any, Dict, Iterable, Iterator, List, Optional
 from datetime import datetime
 from collections import Counter
 
@@ -93,7 +93,6 @@ class IssuePreprocessor:
             author=author,
             created_at=created_at,
             body=cleaned_body,
-            original_body=body
         )
     
     def clean_issue(self, raw_issue: RawIssue) -> Optional[CleanedIssue]:
@@ -163,50 +162,60 @@ class IssuePreprocessor:
             full_text=full_text
         )
     
-    def process(self, input_path: Optional[Path] = None, output_path: Optional[Path] = None) -> List[CleanedIssue]:
-        """Run the full preprocessing pipeline."""
-        input_path = input_path or self.config.paths.raw_data
+    def iter_raw_issues(self, input_path: Path) -> Iterator[RawIssue]:
+        """Stream raw issues from a legacy JSONL file."""
+        with open(input_path, "r", encoding="utf-8") as f:
+            for line_num, line in enumerate(f, 1):
+                line = line.strip()
+                if not line:
+                    continue
+                try:
+                    yield RawIssue(**json.loads(line))
+                except Exception as e:
+                    logger.warning("Failed to parse line", line=line_num, error=str(e))
+
+    @staticmethod
+    def _serialize(issue: CleanedIssue) -> str:
+        data = issue.model_dump()
+        data["created_at"] = issue.created_at.isoformat()
+        if issue.closed_at:
+            data["closed_at"] = issue.closed_at.isoformat()
+        for comment in data["comments"]:
+            comment["created_at"] = comment["created_at"].isoformat()
+        return json.dumps(data, ensure_ascii=False) + "\n"
+
+    def process_items(
+        self, raw_issues: Iterable[RawIssue], output_path: Optional[Path] = None, chunk_size: int = 500
+    ) -> Dict[str, int]:
+        """Clean raw issues as a stream and write JSONL in chunks; return counts."""
         output_path = output_path or self.config.paths.processed_data
-        
-        # Ensure output directory exists
         output_path.parent.mkdir(parents=True, exist_ok=True)
-        
-        # Load and clean
-        raw_issues = self.load_raw_issues(input_path)
-        
-        cleaned_issues = []
-        stats = {"total": len(raw_issues), "kept": 0, "skipped": 0, "comments_removed": 0}
-        
-        for raw_issue in tqdm(raw_issues, desc="Preprocessing issues"):
-            cleaned = self.clean_issue(raw_issue)
-            if cleaned:
-                cleaned_issues.append(cleaned)
-                stats["kept"] += 1
-            else:
-                stats["skipped"] += 1
-            
-            # Count removed comments
-            original_comment_count = len(raw_issue.comments)
-            if cleaned:
-                stats["comments_removed"] += original_comment_count - len(cleaned.comments)
-            else:
-                stats["comments_removed"] += original_comment_count
-        
-        # Save to JSONL
-        logger.info("Saving cleaned issues", output=str(output_path), count=len(cleaned_issues))
+        stats = {"total": 0, "kept": 0, "skipped": 0, "comments_removed": 0}
+        chunk: List[str] = []
         with open(output_path, "w", encoding="utf-8") as f:
-            for issue in cleaned_issues:
-                # Convert to dict with serializable dates
-                data = issue.model_dump()
-                data["created_at"] = issue.created_at.isoformat()
-                if issue.closed_at:
-                    data["closed_at"] = issue.closed_at.isoformat()
-                for comment in data["comments"]:
-                    comment["created_at"] = comment["created_at"].isoformat()
-                f.write(json.dumps(data, ensure_ascii=False) + "\n")
-        
-        logger.info("Preprocessing complete", **stats)
-        return cleaned_issues
+            for raw_issue in tqdm(raw_issues, desc="Preprocessing issues"):
+                stats["total"] += 1
+                cleaned = self.clean_issue(raw_issue)
+                original_comments = len(raw_issue.comments)
+                if cleaned:
+                    stats["kept"] += 1
+                    stats["comments_removed"] += original_comments - len(cleaned.comments)
+                    chunk.append(self._serialize(cleaned))
+                    if len(chunk) >= chunk_size:
+                        f.writelines(chunk)
+                        chunk.clear()
+                else:
+                    stats["skipped"] += 1
+                    stats["comments_removed"] += original_comments
+            f.writelines(chunk)
+        logger.info("Preprocessing complete", output=str(output_path), **stats)
+        return stats
+
+    def process(self, input_path: Optional[Path] = None, output_path: Optional[Path] = None) -> Dict[str, int]:
+        """Legacy JSONL entry point: stream input_path through process_items."""
+        input_path = input_path or self.config.paths.raw_data
+        logger.info("Loading raw issues", path=str(input_path))
+        return self.process_items(self.iter_raw_issues(input_path), output_path)
 
 
 def preprocess_cli(
@@ -224,9 +233,9 @@ def preprocess_cli(
     input_path = Path(input_file) if input_file else cfg.paths.raw_data
     output_path = Path(output_file) if output_file else cfg.paths.processed_data
     
-    issues = preprocessor.process(input_path, output_path)
+    stats = preprocessor.process(input_path, output_path)
     
-    typer.echo(f"Processed {len(issues)} issues -> {output_path}")
+    typer.echo(f"Processed {stats['kept']} issues -> {output_path}")
 
 
 if __name__ == "__main__":

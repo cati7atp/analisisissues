@@ -77,7 +77,6 @@ class CleanedComment(BaseModel):
     author: str
     created_at: datetime
     body: str
-    original_body: str
 
 
 class CleanedIssue(BaseModel):

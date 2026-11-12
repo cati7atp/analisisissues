@@ -164,7 +164,7 @@ class TestIssuePreprocessor:
         output_file = tmp_path / "output.jsonl"
         issues = preprocessor.process(input_file, output_file)
         
-        assert len(issues) == 1
+        assert issues["kept"] == 1
         assert output_file.exists()
         
         # Verify output format
@@ -175,3 +175,15 @@ class TestIssuePreprocessor:
             assert "issue_type" in data
             assert "cleaned_body" in data
             assert "full_text" in data
+
+    def test_process_items_streams_generator_without_original_body(self, preprocessor, sample_raw_issue, tmp_path):
+        def gen():
+            for n in range(3):
+                yield RawIssue(**{**sample_raw_issue, "issue_number": n + 1})
+
+        out = tmp_path / "nested" / "clean.jsonl"
+        stats = preprocessor.process_items(gen(), out)
+        assert (stats["total"], stats["kept"]) == (3, 3)
+        rows = [json.loads(line) for line in out.read_text(encoding="utf-8").splitlines()]
+        assert [r["issue_number"] for r in rows] == [1, 2, 3]
+        assert all(rows[0]["comments"]) and "original_body" not in rows[0]["comments"][0]

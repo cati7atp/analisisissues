@@ -33,9 +33,9 @@ def preprocess(
         console.print(f"[red]Input file not found: {input_path}[/red]")
         raise typer.Exit(1)
     
-    issues = preprocessor.process(input_path, output_path)
+    stats = preprocessor.process(input_path, output_path)
     
-    console.print(f"[green]Processed {len(issues)} issues -> {output_path}[/green]")
+    console.print(f"[green]Processed {stats['kept']} issues -> {output_path}[/green]")
 
 
 @app.command()
