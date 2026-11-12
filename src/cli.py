@@ -63,6 +63,7 @@ def preprocess(
 
     console.print(f"loaded: {load_stats.loaded}")
     console.print(f"excluded (repos): {load_stats.excluded}")
+    console.print(f"needs_review (kept): {load_stats.needs_review}")
     console.print(f"rejected: {load_stats.rejections.total} {dict(load_stats.rejections.by_reason)}")
     console.print(f"skipped (bot-authored issues): {stats['bot_issues']}")
     console.print(f"skipped (exact duplicates): {stats['duplicates']}")

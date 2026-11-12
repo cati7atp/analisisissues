@@ -121,3 +121,22 @@ def test_reject_ratio_within_limit_passes(make_db):
     stats = LoadStats()
     list(load_items_sqlite(InputConfig(db_path=db, max_reject_ratio=0.01), stats))
     assert stats.rejections.total == 1
+
+
+def test_review_repos_reported_but_not_excluded(make_db):
+    from src.loader import LoadStats
+    db = make_db(items=[{"repo": "gdsfactory/gdsfactory", "number": 1},
+                        {"repo": "gdsfactory/gdsfactory", "number": 2},
+                        {"repo": "a/b", "number": 1}])
+    stats = LoadStats()
+    items = list(load_items_sqlite(InputConfig(db_path=db), stats))
+    assert len(items) == 3
+    assert stats.needs_review == {"gdsfactory/gdsfactory": 2}
+
+
+def test_review_repos_is_configurable(make_db):
+    from src.loader import LoadStats
+    db = make_db(items=[{"repo": "a/b", "number": 1}])
+    stats = LoadStats()
+    list(load_items_sqlite(InputConfig(db_path=db, review_repos=["a/b"]), stats))
+    assert stats.needs_review == {"a/b": 1}

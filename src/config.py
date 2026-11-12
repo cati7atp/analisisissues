@@ -28,6 +28,8 @@ class InputConfig(BaseModel):
     include_comment_kinds: List[str] = Field(default_factory=lambda: ["issue_comment"])
     exclude_repos: List[str] = Field(default_factory=lambda: ["QuTech-Delft/OpenQL"])
     max_reject_ratio: float = 0.005
+    # Repos that are kept but reported as needing review (see the preprocess summary).
+    review_repos: List[str] = Field(default_factory=lambda: ["gdsfactory/gdsfactory"])
 
 
 class PreprocessingConfig(BaseModel):

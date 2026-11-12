@@ -20,6 +20,7 @@ class RejectionRatioExceeded(RuntimeError):
 class LoadStats:
     loaded: int = 0
     excluded: int = 0
+    needs_review: dict = field(default_factory=dict)
     rejections: RejectionCounter = field(default_factory=RejectionCounter)
 
 
@@ -81,6 +82,7 @@ def load_items_sqlite(
     comment_sql = COMMENT_QUERY.format(kinds=",".join("?" * len(cfg.include_comment_kinds)))
     item_sql = ITEM_QUERY.format(types=",".join("?" * len(cfg.item_types)))
     excluded = set(cfg.exclude_repos)
+    review = set(cfg.review_repos)
     try:
         for row in conn.execute(item_sql, cfg.item_types):
             if row["repo"] in excluded:
@@ -99,6 +101,8 @@ def load_items_sqlite(
                 )
             ]
             stats.loaded += 1
+            if row["repo"] in review:
+                stats.needs_review[row["repo"]] = stats.needs_review.get(row["repo"], 0) + 1
             yield RawIssue(
                 repo=row["repo"],
                 issue_number=row["number"],
