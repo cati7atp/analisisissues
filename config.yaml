@@ -14,6 +14,14 @@ paths:
   report_md: "reports/quantum_maintainability_report.md"
   pattern_summary_csv: "reports/pattern_summary.csv"
 
+# Input (read-only SQLite dataset)
+input:
+  db_path: "quantum-gh-dataset-2026-10-22/miner.db"
+  item_types: [issue]            # Phase 1: issues only (values: issue, pr, discussion)
+  include_comment_kinds: [issue_comment]
+  exclude_repos: ["QuTech-Delft/OpenQL"]
+  max_reject_ratio: 0.005
+
 # Preprocessing
 preprocessing:
   bot_users: ["dependabot", "renovate", "github-actions", "codecov", "coveralls", "bors", "mergify"]

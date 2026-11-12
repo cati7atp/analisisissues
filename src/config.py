@@ -21,6 +21,14 @@ class PathsConfig(BaseModel):
     pattern_summary_csv: Path = Path("reports/pattern_summary.csv")
 
 
+class InputConfig(BaseModel):
+    db_path: Path = Path("quantum-gh-dataset-2026-10-22/miner.db")
+    item_types: List[str] = Field(default_factory=lambda: ["issue"])
+    include_comment_kinds: List[str] = Field(default_factory=lambda: ["issue_comment"])
+    exclude_repos: List[str] = Field(default_factory=lambda: ["QuTech-Delft/OpenQL"])
+    max_reject_ratio: float = 0.005
+
+
 class PreprocessingConfig(BaseModel):
     bot_users: List[str] = Field(default_factory=lambda: [
         "dependabot", "renovate", "github-actions", "codecov", "coveralls", "bors", "mergify"
@@ -75,6 +83,7 @@ class ReportConfig(BaseModel):
 
 class Config(BaseModel):
     paths: PathsConfig = Field(default_factory=PathsConfig)
+    input: InputConfig = Field(default_factory=InputConfig)
     preprocessing: PreprocessingConfig = Field(default_factory=PreprocessingConfig)
     bertopic: BERTopicConfig = Field(default_factory=BERTopicConfig)
     quantum_patterns: QuantumPatternsConfig
