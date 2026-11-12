@@ -289,6 +289,19 @@ def compute_maintainability_metrics(
         )
         repo_metrics.append(metrics)
     
+    # Per-repo, per-family and capped comparison views
+    from .comparisons import compare_groups, load_repo_families
+    from .patterns import build_keyword_patterns
+
+    comparisons = compare_groups(
+        issues, build_keyword_patterns(config), doc_topic_map,
+        load_repo_families(config.input.db_path), config.metrics.comparison_repo_cap,
+    )
+    comparisons_path = output_json.with_name("comparisons.json")
+    comparisons_path.parent.mkdir(parents=True, exist_ok=True)
+    with open(comparisons_path, "w", encoding="utf-8") as f:
+        json.dump(comparisons, f, ensure_ascii=False, indent=2)
+
     # Compute aggregated metrics
     aggregated = compute_aggregated_metrics(repo_metrics, patterns, issues)
     

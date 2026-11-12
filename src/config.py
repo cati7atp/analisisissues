@@ -106,6 +106,7 @@ class MetricsConfig(BaseModel):
     compute_gini: bool = True
     resolution_time_quantiles: List[float] = Field(default_factory=lambda: [0.25, 0.5, 0.75])
     anonymize_repos_in_report: bool = True
+    comparison_repo_cap: int = 1000  # per-repo document cap for the sensitivity run
 
 
 class ReportConfig(BaseModel):
