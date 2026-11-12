@@ -247,3 +247,49 @@ class TestMetricsParity:
             created_at=datetime(2024, 1, 1), author="u", full_text="we should investigate the nonexistent seedling",
         )
         assert sum(compute_quantum_keyword_ratios([issue], config).values()) == 0.0
+
+
+def _issue(n, text):
+    return CleanedIssue(repo="a/b", issue_number=n, title=text, cleaned_body="", state="open",
+                        created_at=datetime(2024, 1, 1), author="u", full_text=text)
+
+
+class TestTopicIntegration:
+    def _write(self, tmp_path, issues, assignments, topics):
+        issues_file = tmp_path / "issues.jsonl"
+        with open(issues_file, "w", encoding="utf-8") as f:
+            for issue in issues:
+                data = issue.model_dump()
+                data["created_at"] = issue.created_at.isoformat()
+                f.write(json.dumps(data) + "\n")
+        doc_topics = tmp_path / "doc_topics.jsonl"
+        doc_topics.write_text("\n".join(
+            json.dumps({"issue_id": i.issue_id, "topic_id": t, "probability": 1.0})
+            for i, t in zip(issues, assignments)) + "\n", encoding="utf-8")
+        topics_file = tmp_path / "topics.jsonl"
+        topics_file.write_text("\n".join(
+            json.dumps({"topic_id": tid, "name": f"{tid}_x", "keywords": kw, "count": c})
+            for tid, kw, c in topics) + "\n", encoding="utf-8")
+        return issues_file, topics_file, doc_topics
+
+    def test_patterns_report_topic_share_and_uncovered_topics_are_candidates(self, config, tmp_path):
+        issues = [_issue(1, "transpile fails"), _issue(2, "transpiler crash"), _issue(3, "transpile slow"),
+                  _issue(4, "pulse schedule broken"), _issue(5, "tea recipe"), _issue(6, "coffee recipe"),
+                  _issue(7, "lunch menu")]
+        files = self._write(tmp_path, issues, [0, 0, 0, -1, 1, 1, 1],
+                            [(0, ["transpile"], 3), (1, ["recipe", "menu"], 3)])
+        out = tmp_path / "patterns.jsonl"
+        patterns = extract_quantum_patterns(config, files[1], files[0], out, doc_topics_path=files[2])
+        by_cat = {p.category: p for p in patterns}
+        assert by_cat["transpilation_compilation"].topic_share == 1.0
+        assert by_cat["pulse_control"].topic_share == 0.0  # its only document is an outlier
+        candidates = [json.loads(l) for l in (tmp_path / "candidate_categories.jsonl").read_text(encoding="utf-8").splitlines()]
+        assert [c["topic_id"] for c in candidates] == [1]
+        assert candidates[0]["keywords"] == ["recipe", "menu"] and candidates[0]["matched_share"] == 0.0
+
+    def test_without_doc_topics_patterns_still_run(self, config, tmp_path):
+        files = self._write(tmp_path, [_issue(1, "transpile fails")], [0], [(0, ["transpile"], 1)])
+        files[2].unlink()
+        patterns = extract_quantum_patterns(config, files[1], files[0], tmp_path / "p.jsonl", doc_topics_path=files[2])
+        assert patterns and patterns[0].topic_share is None
+        assert not (tmp_path / "candidate_categories.jsonl").exists()

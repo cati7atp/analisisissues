@@ -130,6 +130,7 @@ class QuantumPattern(BaseModel):
     frequency: int
     example_quotes: List[str] = Field(default_factory=list)
     keywords_matched: List[str] = Field(default_factory=list)
+    topic_share: Optional[float] = None  # share of supporting issues that fall in a discovered topic
 
 
 class RepoMetrics(BaseModel):

@@ -184,8 +184,13 @@ def extract_quantum_patterns(
     topics_path: Path,
     issues_path: Path,
     output_path: Path,
+    doc_topics_path: Optional[Path] = None,
 ) -> List[QuantumPattern]:
-    """Extract quantum-specific patterns from topics and issues."""
+    """Extract quantum-specific patterns from topics and issues.
+
+    With a doc-topics file the patterns also report the share of their issues that fall in
+    discovered topics, and topics no category covers are written to candidate_categories.jsonl.
+    """
     logger.info("Loading data for pattern extraction")
     
     # Load data
@@ -204,6 +209,20 @@ def extract_quantum_patterns(
     logger.info("Aggregating patterns")
     patterns = aggregate_patterns(matches, matcher.names)
     logger.info("Extracted patterns", count=len(patterns))
+
+    doc_topics_path = doc_topics_path or config.paths.doc_topics_output
+    if doc_topics_path.exists():
+        doc_topics = load_doc_topics(doc_topics_path)
+        patterns = enhance_with_topic_analysis(patterns, topics, doc_topics, issues)
+        candidates = find_candidate_categories({m.issue_id for m in matches}, topics, doc_topics)
+        candidates_path = output_path.with_name("candidate_categories.jsonl")
+        candidates_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(candidates_path, "w", encoding="utf-8") as f:
+            for candidate in candidates:
+                f.write(json.dumps(candidate, ensure_ascii=False) + "\n")
+        logger.info("Candidate new categories", count=len(candidates))
+    else:
+        logger.info("No doc-topics file; skipping topic analysis", path=str(doc_topics_path))
     
     # Save patterns JSONL
     output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -248,6 +267,10 @@ def enhance_with_topic_analysis(
             topic_id = issue_to_topic.get(issue_id, -1)
             if topic_id != -1:
                 topic_counts[topic_id] += 1
+        pattern.topic_share = (
+            sum(topic_counts.values()) / len(pattern.supporting_issue_ids)
+            if pattern.supporting_issue_ids else 0.0
+        )
         
         # Add top topics to pattern description
         if topic_counts:
@@ -257,6 +280,29 @@ def enhance_with_topic_analysis(
                 pattern.description += f" Associated topics: {', '.join(topic_names)}."
     
     return patterns
+
+
+def find_candidate_categories(
+    matched_issue_ids: Set[str],
+    topics: List[TopicInfo],
+    doc_topics: List[DocTopic],
+    min_share: float = 0.5,
+) -> List[Dict[str, Any]]:
+    """Topics where fewer than ``min_share`` of the documents match any taxonomy category."""
+    members: Dict[int, List[str]] = defaultdict(list)
+    for dt in doc_topics:
+        if dt.topic_id != -1:
+            members[dt.topic_id].append(dt.issue_id)
+    candidates = []
+    for topic in topics:
+        ids = members.get(topic.topic_id, [])
+        share = sum(1 for i in ids if i in matched_issue_ids) / len(ids) if ids else 0.0
+        if share < min_share:
+            candidates.append({
+                "topic_id": topic.topic_id, "name": topic.name, "keywords": topic.keywords,
+                "count": topic.count, "matched_share": share,
+            })
+    return candidates
 
 
 if __name__ == "__main__":
