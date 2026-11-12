@@ -230,7 +230,7 @@ class IssuePreprocessor:
             repo=raw_issue.repo,
             issue_number=raw_issue.issue_number,
             title=MENTION_PATTERN.sub("@user", raw_issue.title.strip()),
-            body=MENTION_PATTERN.sub("@user", raw_issue.body),
+            body=MENTION_PATTERN.sub("@user", raw_issue.body or ""),
             cleaned_body=cleaned_body,
             state=raw_issue.state,
             labels=[l.lower() for l in raw_issue.labels],

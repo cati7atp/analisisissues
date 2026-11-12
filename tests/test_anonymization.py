@@ -55,3 +55,8 @@ def test_anonymization_can_be_disabled(config):
     config.preprocessing.anonymize_authors = False
     issue = IssuePreprocessor(config).clean_issue(_raw())
     assert issue.author == "realperson" and issue.assignees == ["alice", "carol"]
+
+
+def test_issue_with_null_body_is_cleaned(pre):
+    issue = pre.clean_issue(_raw(body=None, title="Optimizer fails to converge on hardware backends"))
+    assert issue is None or issue.body == ""
