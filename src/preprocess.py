@@ -81,6 +81,7 @@ class IssuePreprocessor:
         cleaned_body = clean_text(
             body,
             strip_code_fences=self.preprocessing_config.strip_code_fences,
+            strip_templates=self.preprocessing_config.strip_templates,
             normalize_whitespace=self.preprocessing_config.normalize_whitespace
         )
         
@@ -113,6 +114,7 @@ class IssuePreprocessor:
         cleaned_body = clean_text(
             raw_body,
             strip_code_fences=self.preprocessing_config.strip_code_fences,
+            strip_templates=self.preprocessing_config.strip_templates,
             normalize_whitespace=self.preprocessing_config.normalize_whitespace
         )
         

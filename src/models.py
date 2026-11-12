@@ -7,6 +7,7 @@ from collections import Counter
 import re
 
 from .code_summary import summarize_build_logs, summarize_fenced_code, summarize_tracebacks
+from .templates import strip_templates as remove_templates
 
 
 IssueType = Literal["bug", "feature", "question", "discussion", "other"]
@@ -172,7 +173,12 @@ MENTION_PATTERN = re.compile(r"@\w+")
 ISSUE_REF_PATTERN = re.compile(r"#\d+")
 
 
-def clean_text(text: str, strip_code_fences: bool = True, normalize_whitespace: bool = True) -> str:
+def clean_text(
+    text: str,
+    strip_code_fences: bool = True,
+    normalize_whitespace: bool = True,
+    strip_templates: bool = True,
+) -> str:
     """Clean markdown text for analysis."""
     if not text:
         return ""
@@ -184,7 +190,10 @@ def clean_text(text: str, strip_code_fences: bool = True, normalize_whitespace: 
         result = summarize_tracebacks(result)
         result = summarize_build_logs(result)
         result = INLINE_CODE_PATTERN.sub("[CODE]", result)
-    
+
+    if strip_templates:
+        result = remove_templates(result)
+
     result = URL_PATTERN.sub("[URL]", result)
     result = MENTION_PATTERN.sub("@user", result)
     result = ISSUE_REF_PATTERN.sub("#issue", result)

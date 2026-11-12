@@ -43,6 +43,7 @@ class PreprocessingConfig(BaseModel):
     min_body_length: int = 10
     max_comment_length: int = 50000
     strip_code_fences: bool = True
+    strip_templates: bool = True
     normalize_whitespace: bool = True
 
 

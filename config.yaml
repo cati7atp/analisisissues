@@ -34,6 +34,7 @@ preprocessing:
   min_body_length: 10
   max_comment_length: 50000
   strip_code_fences: true
+  strip_templates: true          # HTML comments, template headings, unchecked checklist items
   normalize_whitespace: true
 
 # BERTopic Configuration
