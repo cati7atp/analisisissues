@@ -60,6 +60,8 @@ def prepare_documents(issues: List[CleanedIssue], embed_max_chars: int = 2000):
     docs = []
     embed_texts = []
     issue_ids = []
+    timestamps = []
+    repos = []
 
     for issue in issues:
         text = issue.full_text.strip()
@@ -67,9 +69,11 @@ def prepare_documents(issues: List[CleanedIssue], embed_max_chars: int = 2000):
             docs.append(text)
             embed_texts.append(build_embedding_text(issue.title, issue.cleaned_body, embed_max_chars))
             issue_ids.append(issue.issue_id)
+            timestamps.append(issue.created_at)
+            repos.append(issue.repo)
 
     logger.info("Prepared documents", count=len(docs))
-    return docs, embed_texts, issue_ids
+    return docs, embed_texts, issue_ids, timestamps, repos
 
 
 def build_vectorizer(config) -> CountVectorizer:
@@ -142,7 +146,7 @@ def run_topic_modeling(
     issues = load_cleaned_issues(input_path)
     
     # Prepare documents
-    docs, embed_texts, issue_ids = prepare_documents(issues, config.bertopic.embed_max_chars)
+    docs, embed_texts, issue_ids, timestamps, repos = prepare_documents(issues, config.bertopic.embed_max_chars)
     
     if len(docs) < config.bertopic.hdbscan_min_cluster_size * 2:
         logger.warning("Too few documents for topic modeling", count=len(docs))
@@ -205,10 +209,30 @@ def run_topic_modeling(
     # Generate visualization
     _generate_visualization(config, topic_model, docs, output_dir)
 
+    _save_temporal_views(config, topic_model, docs, timestamps, repos, output_dir)
+
     if config.bertopic.reduce_outliers:
         _save_reduced_result(config, topic_model, docs, issue_ids, topics, probabilities, embeddings, output_dir, noise)
 
     return topic_model
+
+
+def _save_frame(frame: pd.DataFrame, path: Path, rename: Dict[str, str]) -> None:
+    """Write a BERTopic result frame as JSONL, without the outlier topic."""
+    frame = frame[frame["Topic"] != -1].rename(columns=rename)
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "w", encoding="utf-8") as f:
+        for row in frame.to_dict(orient="records"):
+            f.write(json.dumps({k.lower(): (v.isoformat() if hasattr(v, "isoformat") else v)
+                                for k, v in row.items()}, ensure_ascii=False, default=lambda o: o.item()) + "\n")
+
+
+def _save_temporal_views(config, topic_model, docs, timestamps, repos, output_dir: Path) -> None:
+    """Topics over time (document-order timestamps) and per repo class (S25)."""
+    over_time = topic_model.topics_over_time(docs, timestamps, nr_bins=config.bertopic.temporal_nr_bins)
+    _save_frame(over_time, output_dir / "topics_over_time.jsonl", {})
+    per_class = topic_model.topics_per_class(docs, repos)
+    _save_frame(per_class, output_dir / "topics_per_class.jsonl", {})
 
 
 def _save_reduced_result(config, topic_model, docs, issue_ids, topics, probabilities, embeddings, output_dir, noise):

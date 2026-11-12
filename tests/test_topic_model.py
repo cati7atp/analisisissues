@@ -446,3 +446,51 @@ def test_noise_summary_is_empty_without_a_lexicon_and_survives_reduction(small_c
     summary = json.loads((out / "run_summary.json").read_text(encoding="utf-8"))
     assert summary["noise_topics"] == [] and summary["noise_topic_share"] == 0.0
     assert "reduced" in summary and summary["outcome"] == "ok"
+
+
+def _read_jsonl(path):
+    import json
+    return [json.loads(line) for line in path.read_text(encoding="utf-8").splitlines()]
+
+
+def test_topics_over_time_and_per_class_use_aligned_timestamps_and_repos(small_config, tmp_path, monkeypatch):
+    from bertopic import BERTopic
+    from src.preprocess import IssuePreprocessor
+
+    issues = write_issues()
+    for n, it in enumerate(issues):
+        it.repo = "a/b" if n % 2 else "c/d"
+        it.created_at = f"2024-0{1 + n % 3}-15T00:00:00Z"
+    path = tmp_path / "issues_clean.jsonl"
+    IssuePreprocessor(small_config).process_items(issues, path)
+
+    seen = {}
+    orig_time, orig_class = BERTopic.topics_over_time, BERTopic.topics_per_class
+
+    def spy_time(self, docs, timestamps, *a, **kw):
+        seen["time"] = (list(docs), list(timestamps))
+        return orig_time(self, docs, timestamps, *a, **kw)
+
+    def spy_class(self, docs, classes, *a, **kw):
+        seen["class"] = (list(docs), list(classes))
+        return orig_class(self, docs, classes, *a, **kw)
+
+    monkeypatch.setattr(BERTopic, "topics_over_time", spy_time)
+    monkeypatch.setattr(BERTopic, "topics_per_class", spy_class)
+    out = tmp_path / "out"
+    run(small_config, path, out, ThemeEncoder())
+
+    cleaned = [__import__("json").loads(l) for l in path.read_text(encoding="utf-8").splitlines()]
+    docs, stamps = seen["time"]
+    assert len(docs) == len(stamps) == len(cleaned)
+    assert [s.isoformat()[:10] for s in stamps] == [c["created_at"][:10] for c in cleaned]
+    assert seen["class"][1] == [c["repo"] for c in cleaned]
+
+    over_time = _read_jsonl(out / "topics_over_time.jsonl")
+    per_class = _read_jsonl(out / "topics_per_class.jsonl")
+    assert over_time and per_class
+    assert all(r["topic"] != -1 for r in over_time + per_class)
+    assert {r["class"] for r in per_class} == {"a/b", "c/d"}
+    n_clustered = sum(1 for d in _read_jsonl(small_config.paths.doc_topics_output) if d["topic_id"] != -1)
+    assert sum(r["frequency"] for r in over_time) == n_clustered
+    assert sum(r["frequency"] for r in per_class) == n_clustered

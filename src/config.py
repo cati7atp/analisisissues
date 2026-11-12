@@ -83,6 +83,7 @@ class BERTopicConfig(BaseModel):
     ])
     calculate_probabilities: bool = False  # use hdbscan.probabilities_
     reduce_outliers: bool = False  # True also writes a separate reduced result (S18)
+    temporal_nr_bins: int = 20  # time bins for topics_over_time
     reproducible: bool = False  # True seeds UMAP (random_state=42) but disables parallelism
     verbose: bool = True
 
