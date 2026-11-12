@@ -79,3 +79,45 @@ def test_default_item_types_yields_only_issues(make_db):
 def test_item_types_configurable(make_db):
     cfg = InputConfig(db_path=_mixed(make_db), item_types=["pr", "discussion"])
     assert sorted(i.item_type for i in load_items_sqlite(cfg)) == ["discussion", "pr"]
+
+
+import json
+
+from src.loader import LoadStats, RejectionRatioExceeded
+
+
+def test_exclude_repos_skipped_and_counted(make_db):
+    db = make_db(items=[{"repo": "x/Excluded", "number": 1}, {"repo": "a/b", "number": 1}])
+    stats = LoadStats()
+    items = list(load_items_sqlite(InputConfig(db_path=db, exclude_repos=["x/Excluded"]), stats))
+    assert [i.repo for i in items] == ["a/b"]
+    assert (stats.loaded, stats.excluded, stats.rejections.total) == (1, 1, 0)
+
+
+def test_rejections_counted_and_written(make_db, tmp_path):
+    db = make_db(items=[{"repo": "a/b", "number": 1},
+                        {"repo": "a/b", "number": 2, "created_at": None},
+                        {"repo": "a/b", "number": 3, "created_at": "not-a-date"},
+                        {"repo": "", "number": 4}])
+    stats, out = LoadStats(), tmp_path / "out" / "rejections.jsonl"
+    cfg = InputConfig(db_path=db, max_reject_ratio=1.0)
+    items = list(load_items_sqlite(cfg, stats, rejections_path=out))
+    assert len(items) == 1 and stats.loaded == 1
+    assert stats.rejections.by_reason == {"bad_created_at": 2, "missing_repo": 1}
+    rows = [json.loads(line) for line in out.read_text(encoding="utf-8").splitlines()]
+    assert sorted(r["reason"] for r in rows) == ["bad_created_at", "bad_created_at", "missing_repo"]
+
+
+def test_reject_ratio_exceeded_fails_run(make_db):
+    db = make_db(items=[{"repo": "a/b", "number": 1},
+                        {"repo": "a/b", "number": 2, "created_at": None}])
+    with pytest.raises(RejectionRatioExceeded):
+        list(load_items_sqlite(InputConfig(db_path=db, max_reject_ratio=0.1), LoadStats()))
+
+
+def test_reject_ratio_within_limit_passes(make_db):
+    db = make_db(items=[{"repo": "a/b", "number": n} for n in range(1, 201)]
+                 + [{"repo": "a/b", "number": 999, "created_at": None}])
+    stats = LoadStats()
+    list(load_items_sqlite(InputConfig(db_path=db, max_reject_ratio=0.01), stats))
+    assert stats.rejections.total == 1
