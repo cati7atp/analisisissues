@@ -45,6 +45,7 @@ class PreprocessingConfig(BaseModel):
     strip_code_fences: bool = True
     strip_templates: bool = True
     repeated_line_min_issues: int = 20  # a line in this many distinct issues is boilerplate; 0 disables
+    repeated_comment_min_issues: int = 5  # a comment in this many distinct issues is automated or templated; 0 disables
     normalize_whitespace: bool = True
 
 

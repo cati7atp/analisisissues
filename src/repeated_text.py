@@ -38,14 +38,31 @@ def _key(text: str) -> int:
 class RepeatedTextIndex:
     """Counts distinct issues per normalized line, then filters lines at or above a threshold."""
 
-    def __init__(self, min_line_issues: int):
+    def __init__(self, min_line_issues: int, min_comment_issues: int = 0):
         self.min_line_issues = min_line_issues
+        self.min_comment_issues = min_comment_issues
         self.line_counts: Counter = Counter()
+        self.comment_counts: Counter = Counter()
         self.removed_line_occurrences = 0
+        self.dropped_comments = 0
 
-    def add_issue(self, lines: Iterable[str]) -> None:
+    def add_issue(self, lines: Iterable[str], comments: Iterable[str] = ()) -> None:
         keys: Set[int] = {_key(normalize_line(l)) for l in lines if is_countable(l)}
         self.line_counts.update(keys)
+        self.comment_counts.update({_key(normalize_line(c)) for c in comments if is_countable(c)})
+
+    def is_repeated_comment(self, text: str) -> bool:
+        return (
+            self.min_comment_issues > 0
+            and is_countable(text)
+            and self.comment_counts[_key(normalize_line(text))] >= self.min_comment_issues
+        )
+
+    @property
+    def repeated_comments(self) -> int:
+        if self.min_comment_issues <= 0:
+            return 0
+        return sum(1 for c in self.comment_counts.values() if c >= self.min_comment_issues)
 
     def is_repeated_line(self, line: str) -> bool:
         return (

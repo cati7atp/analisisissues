@@ -36,6 +36,7 @@ preprocessing:
   strip_code_fences: true
   strip_templates: true          # HTML comments, template headings, unchecked checklist items
   repeated_line_min_issues: 20   # remove lines seen in this many distinct issues (two-pass); 0 disables
+  repeated_comment_min_issues: 5 # drop comments seen in this many distinct issues; 0 disables
   normalize_whitespace: true
 
 # BERTopic Configuration

@@ -96,3 +96,41 @@ def test_cli_preprocess_uses_two_passes_without_double_counting(make_db, tmp_pat
     assert "repeated lines: 1 distinct, 22 removed" in result.output
     rows = [json.loads(l) for l in (tmp_path / "out" / "issues_clean.jsonl").read_text(encoding="utf-8").splitlines()]
     assert len(rows) == 22 and all("automatic footer" not in r["cleaned_body"] for r in rows)
+
+
+def _with_comment(n_issues, comment, total=25):
+    return [_issue(i, f"Description {UNIQUE(i)} of the problem.", [comment] if i < n_issues else [f"A human reply {UNIQUE(i)}"]) for i in range(total)]
+
+
+AUTOMATED = "Release notes: registered a new version through the registry bot"
+
+
+def test_comment_seen_in_5_issues_is_dropped(config, tmp_path):
+    stats, rows = _run(config, _with_comment(5, AUTOMATED), tmp_path)
+    assert all("registry bot" not in r["full_text"] for r in rows)
+    assert stats["repeated_comments"] == 1
+    assert stats["repeated_comment_drops"] == 5
+    assert len(rows) == 25  # the issues themselves are kept
+
+
+def test_comment_seen_in_4_issues_is_kept(config, tmp_path):
+    stats, rows = _run(config, _with_comment(4, AUTOMATED), tmp_path)
+    assert sum("registry bot" in r["full_text"] for r in rows) == 4
+    assert stats["repeated_comments"] == 0
+
+
+def test_comment_repeated_inside_one_issue_counts_once(config, tmp_path):
+    issues = [_issue(i, f"Description {UNIQUE(i)} of the problem.", [AUTOMATED + " v1", AUTOMATED + " v1"]) for i in range(3)]
+    _, rows = _run(config, issues, tmp_path)
+    assert all("registry bot" in r["full_text"] for r in rows)
+
+
+def test_repeated_exception_summary_comment_is_kept(config, tmp_path):
+    _, rows = _run(config, _with_comment(10, SUMMARY), tmp_path)
+    assert sum("QiskitError: boom happened" in r["full_text"] for r in rows) == 10
+
+
+def test_comment_threshold_zero_disables_the_comment_filter(config, tmp_path):
+    config.preprocessing.repeated_comment_min_issues = 0
+    _, rows = _run(config, _with_comment(10, AUTOMATED), tmp_path)
+    assert sum("registry bot" in r["full_text"] for r in rows) == 10

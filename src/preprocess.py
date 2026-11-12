@@ -60,19 +60,22 @@ class IssuePreprocessor:
     def build_repeated_index(self, raw_issues: Iterable[RawIssue]) -> RepeatedTextIndex:
         """Pass 1: count distinct issues per normalized line (bodies and kept comments)."""
         cfg = self.preprocessing_config
-        index = RepeatedTextIndex(cfg.repeated_line_min_issues)
+        index = RepeatedTextIndex(cfg.repeated_line_min_issues, cfg.repeated_comment_min_issues)
+
+        def structured(text: Optional[str]) -> str:
+            return structure_text(text or "", cfg.strip_code_fences, cfg.strip_templates)
+
         for raw_issue in raw_issues:
             if is_bot_user(raw_issue.author, list(self.bot_users), raw_issue.author_type):
                 continue
-            texts = [raw_issue.body or ""]
-            texts += [c.get("body") if isinstance(c, dict) else c.body for c in raw_issue.comments
-                      if not self._is_dropped_comment(c)]
-            lines: List[str] = []
-            for text in texts:
-                lines += structure_text(
-                    text or "", cfg.strip_code_fences, cfg.strip_templates
-                ).split("\n")
-            index.add_issue(lines)
+            lines = structured(raw_issue.body).split("\n")
+            comments: List[str] = []
+            for c in raw_issue.comments:
+                if not self._is_dropped_comment(c):
+                    comments.append(structured(c.get("body") if isinstance(c, dict) else c.body))
+            for text in comments:
+                lines += text.split("\n")
+            index.add_issue(lines, comments)
         return index
 
     def _is_dropped_comment(self, comment) -> bool:
@@ -111,7 +114,16 @@ class IssuePreprocessor:
         # Skip system-like comments
         if any(p.search(body) for p in self.automated_patterns):
             return None
-        
+
+        # Skip comments repeated across many issues (automated or templated, S12)
+        if self.repeated_index and self.repeated_index.min_comment_issues > 0:
+            structured = structure_text(
+                body, self.preprocessing_config.strip_code_fences, self.preprocessing_config.strip_templates
+            )
+            if self.repeated_index.is_repeated_comment(structured):
+                self.repeated_index.dropped_comments += 1
+                return None
+
         # Clean the body
         cleaned_body = clean_text(
             body,
@@ -120,7 +132,7 @@ class IssuePreprocessor:
             line_filter=self._line_filter(),
             normalize_whitespace=self.preprocessing_config.normalize_whitespace
         )
-        
+
         # Truncate very long comments
         if len(cleaned_body) > self.preprocessing_config.max_comment_length:
             cleaned_body = cleaned_body[:self.preprocessing_config.max_comment_length] + "... [truncated]"
@@ -249,11 +261,12 @@ class IssuePreprocessor:
         output_path.parent.mkdir(parents=True, exist_ok=True)
         self.repeated_index = None
         if callable(raw_issues):
-            if self.preprocessing_config.repeated_line_min_issues > 0:
+            if self.preprocessing_config.repeated_line_min_issues > 0 or self.preprocessing_config.repeated_comment_min_issues > 0:
                 self.repeated_index = self.build_repeated_index(raw_issues())
             raw_issues = raw_issues()
         stats = {"total": 0, "kept": 0, "skipped": 0, "comments_removed": 0, "bot_issues": 0,
-                 "repeated_lines": 0, "repeated_line_removals": 0}
+                 "repeated_lines": 0, "repeated_line_removals": 0,
+                 "repeated_comments": 0, "repeated_comment_drops": 0}
         chunk: List[str] = []
         with open(output_path, "w", encoding="utf-8") as f:
             for raw_issue in tqdm(raw_issues, desc="Preprocessing issues"):
@@ -276,6 +289,8 @@ class IssuePreprocessor:
         if self.repeated_index:
             stats["repeated_lines"] = self.repeated_index.repeated_lines
             stats["repeated_line_removals"] = self.repeated_index.removed_line_occurrences
+            stats["repeated_comments"] = self.repeated_index.repeated_comments
+            stats["repeated_comment_drops"] = self.repeated_index.dropped_comments
         logger.info("Preprocessing complete", output=str(output_path), **stats)
         return stats
 

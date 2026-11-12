@@ -51,7 +51,7 @@ def preprocess(
     def items():
         # pass 1 (counting) uses throwaway stats so loaded/rejection counts are not doubled
         passes["count"] += 1
-        if passes["count"] == 1 and cfg.preprocessing.repeated_line_min_issues > 0:
+        if passes["count"] == 1 and (cfg.preprocessing.repeated_line_min_issues > 0 or cfg.preprocessing.repeated_comment_min_issues > 0):
             return load_items_sqlite(cfg.input, LoadStats())
         return load_items_sqlite(cfg.input, load_stats, rejections_path)
 
@@ -67,6 +67,7 @@ def preprocess(
     console.print(f"skipped (bot-authored issues): {stats['bot_issues']}")
     console.print(f"skipped (empty content): {stats['skipped'] - stats['bot_issues']}")
     console.print(f"repeated lines: {stats['repeated_lines']} distinct, {stats['repeated_line_removals']} removed")
+    console.print(f"repeated comments: {stats['repeated_comments']} distinct, {stats['repeated_comment_drops']} dropped")
     console.print(f"[green]Processed {stats['kept']} issues -> {output_path}[/green]")
 
 
