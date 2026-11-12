@@ -6,6 +6,8 @@ from pydantic import BaseModel, Field, field_validator
 from collections import Counter
 import re
 
+from .code_summary import summarize_fenced_code, summarize_tracebacks
+
 
 IssueType = Literal["bug", "feature", "question", "discussion", "other"]
 
@@ -178,7 +180,8 @@ def clean_text(text: str, strip_code_fences: bool = True, normalize_whitespace: 
     result = text
     
     if strip_code_fences:
-        result = CODE_FENCE_PATTERN.sub("[CODE_BLOCK]", result)
+        result = summarize_fenced_code(result)
+        result = summarize_tracebacks(result)
         result = INLINE_CODE_PATTERN.sub("[CODE]", result)
     
     result = URL_PATTERN.sub("[URL]", result)
