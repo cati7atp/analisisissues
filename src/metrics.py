@@ -108,14 +108,14 @@ def compute_contributor_gini(issues: List[CleanedIssue]) -> float:
 
 
 def compute_topic_entropy(issues: List[CleanedIssue], doc_topics_path: Path) -> float:
-    """Compute entropy of topic distribution."""
-    # Load doc topics
+    """Entropy of the topic distribution of this repo's own issues."""
+    repo_ids = {issue.issue_id for issue in issues}
     topic_counts = Counter()
     if doc_topics_path.exists():
         with open(doc_topics_path, "r") as f:
             for line in f:
                 data = json.loads(line)
-                if data["topic_id"] != -1:
+                if data["topic_id"] != -1 and data["issue_id"] in repo_ids:
                     topic_counts[data["topic_id"]] += 1
     
     if not topic_counts:
@@ -156,7 +156,7 @@ def get_top_topics_for_repo(issues: List[CleanedIssue], doc_topics_path: Path, t
     topic_counts = Counter()
     for issue_id in repo_issue_ids:
         topic_id = issue_to_topic.get(issue_id)
-        if topic_id and topic_id != -1:
+        if topic_id is not None and topic_id != -1:
             topic_counts[topic_id] += 1
     
     total = sum(topic_counts.values())
@@ -255,7 +255,7 @@ def compute_aggregated_metrics(
     # Overall resolution time
     all_resolution_times = []
     for m in repo_metrics:
-        if m.median_resolution_days:
+        if m.median_resolution_days is not None:
             all_resolution_times.append(m.median_resolution_days)
     overall_median = np.median(all_resolution_times) if all_resolution_times else None
     
