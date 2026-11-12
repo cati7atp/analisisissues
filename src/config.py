@@ -58,6 +58,12 @@ class BERTopicConfig(BaseModel):
     hdbscan_metric: str = "euclidean"
     vectorizer_ngram_range: List[int] = Field(default_factory=lambda: [1, 2])
     vectorizer_stop_words: str = "english"
+    vectorizer_min_df: int = 1
+    vectorizer_max_df: float = 0.85  # fraction of topics: c-TF-IDF fits one document per topic
+    # Placeholder tokens left by clean_text until structured code summaries exist (T2.5)
+    domain_stop_words: List[str] = Field(default_factory=lambda: [
+        "code", "block", "url", "user", "issue", "code_block"
+    ])
     calculate_probabilities: bool = True
     verbose: bool = True
 

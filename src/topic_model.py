@@ -14,7 +14,7 @@ from sentence_transformers import SentenceTransformer
 from bertopic import BERTopic
 from bertopic.vectorizers import ClassTfidfTransformer
 from bertopic.representation import KeyBERTInspired
-from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.feature_extraction.text import CountVectorizer, ENGLISH_STOP_WORDS
 import umap
 import hdbscan
 import plotly.graph_objects as go
@@ -65,18 +65,33 @@ def prepare_documents(issues: List[CleanedIssue]) -> List[str]:
     return docs, issue_ids
 
 
-def create_bertopic_model(config) -> BERTopic:
-    """Create BERTopic model with configured parameters."""
-    # UMAP for dimensionality reduction
-    umap_model = umap.UMAP(
-        n_neighbors=config.bertopic.umap_n_neighbors,
-        n_components=config.bertopic.umap_n_components,
-        min_dist=config.bertopic.umap_min_dist,
-        metric=config.bertopic.umap_metric,
-        random_state=42,
+def build_vectorizer(config) -> CountVectorizer:
+    """CountVectorizer for c-TF-IDF; English plus domain stop words, bigrams."""
+    cfg = config.bertopic
+    base = ENGLISH_STOP_WORDS if cfg.vectorizer_stop_words == "english" else frozenset()
+    return CountVectorizer(
+        ngram_range=tuple(cfg.vectorizer_ngram_range),
+        stop_words=sorted(set(base) | {w.lower() for w in cfg.domain_stop_words}),
+        min_df=cfg.vectorizer_min_df,
+        max_df=cfg.vectorizer_max_df,
     )
-    
-    # HDBSCAN for clustering
+
+
+def create_bertopic_model(config, embedding_model=None, umap_model=None) -> BERTopic:
+    """Create BERTopic model with configured parameters.
+
+    `embedding_model` and `umap_model` can be injected (tests use fakes); embeddings
+    themselves are always passed explicitly to `fit_transform`.
+    """
+    if umap_model is None:
+        umap_model = umap.UMAP(
+            n_neighbors=config.bertopic.umap_n_neighbors,
+            n_components=config.bertopic.umap_n_components,
+            min_dist=config.bertopic.umap_min_dist,
+            metric=config.bertopic.umap_metric,
+            random_state=42,
+        )
+
     hdbscan_model = hdbscan.HDBSCAN(
         min_cluster_size=config.bertopic.hdbscan_min_cluster_size,
         min_samples=config.bertopic.hdbscan_min_samples,
@@ -84,29 +99,17 @@ def create_bertopic_model(config) -> BERTopic:
         cluster_selection_method="eom",
         prediction_data=True,
     )
-    
-    # Vectorizer for c-TF-IDF
-    vectorizer_model = CountVectorizer(
-        ngram_range=tuple(config.bertopic.vectorizer_ngram_range),
-        stop_words=config.bertopic.vectorizer_stop_words,
-        min_df=2,
-    )
-    
-    # c-TF-IDF transformer
-    ctfidf_model = ClassTfidfTransformer(reduce_frequent_words=True)
-    
-    # Representation model for better topic labels
+
+    ctfidf_model = ClassTfidfTransformer(reduce_frequent_words=True, bm25_weighting=True)
     representation_model = KeyBERTInspired()
-    
-    # Embedding model
-    embedding_model = SentenceTransformer(config.bertopic.embedding_model)
-    
-    # Create BERTopic model
-    topic_model = BERTopic(
+    if embedding_model is None:
+        embedding_model = SentenceTransformer(config.bertopic.embedding_model)
+
+    return BERTopic(
         embedding_model=embedding_model,
         umap_model=umap_model,
         hdbscan_model=hdbscan_model,
-        vectorizer_model=vectorizer_model,
+        vectorizer_model=build_vectorizer(config),
         ctfidf_model=ctfidf_model,
         representation_model=representation_model,
         min_topic_size=config.bertopic.min_topic_size,
@@ -114,8 +117,6 @@ def create_bertopic_model(config) -> BERTopic:
         calculate_probabilities=config.bertopic.calculate_probabilities,
         verbose=config.bertopic.verbose,
     )
-    
-    return topic_model
 
 
 def run_topic_modeling(config, input_path: Path, output_dir: Path) -> BERTopic:

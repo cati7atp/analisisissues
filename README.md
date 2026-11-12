@@ -84,7 +84,7 @@ python -m src.cli generate-report
 All parameters are configurable via `config.yaml`:
 
 - **Preprocessing**: Bot filtering by author (`author_type` Bot, `[bot]` suffix or exact names in `bot_users`), anchored `automated_comment_patterns` for template comments, min body length, code fence stripping
-- **BERTopic**: Embedding model, UMAP/HDBSCAN parameters, min topic size
+- **BERTopic**: Embedding model, UMAP/HDBSCAN parameters, min topic size, vectorizer `min_df`/`max_df` (fraction of topics) and `domain_stop_words`
 - **Quantum Patterns**: 8 categories with 50+ keywords (extensible)
 - **Metrics**: Gini computation, resolution quantiles
 - **Report**: Anonymization, quote limits
