@@ -97,7 +97,8 @@ class CleanedIssue(BaseModel):
     assignees: List[str] = Field(default_factory=list)
     milestone: Optional[str] = None
     reactions: Dict[str, int] = Field(default_factory=dict)
-    issue_type: IssueType = "other"
+    item_type: str = "issue"  # dataset `type` column (authoritative)
+    issue_type: IssueType = "other"  # secondary keyword classification
     full_text: str = ""  # Combined text for topic modeling
 
     @property
@@ -215,32 +216,36 @@ def clean_text(
     return result
 
 
+def _has_word(keywords: List[str], text: str) -> bool:
+    """True when any keyword occurs in ``text`` as a whole word or phrase."""
+    return any(re.search(r"\b" + re.escape(kw) + r"\b", text) for kw in keywords)
+
+
 def classify_issue_type(title: str, body: Optional[str], labels: List[str]) -> IssueType:
-    """Classify issue type from title, body, and labels."""
+    """Secondary keyword classification from labels, then title and body (whole words only)."""
     text = f"{title} {body or ''}".lower()
     label_text = " ".join(labels).lower()
-    
+
     bug_keywords = ["bug", "error", "fail", "crash", "broken", "issue", "problem", "defect", "exception"]
     feature_keywords = ["feature", "enhancement", "request", "add", "implement", "support", "proposal"]
     question_keywords = ["question", "how to", "help", "ask", "doubt", "unclear", "confused"]
-    
-    if any(kw in label_text for kw in ["bug", "type:bug", "kind/bug"]):
+
+    if _has_word(["bug"], label_text):
         return "bug"
-    if any(kw in label_text for kw in ["feature", "enhancement", "type:feature", "kind/feature"]):
+    if _has_word(["feature", "enhancement"], label_text):
         return "feature"
-    if any(kw in label_text for kw in ["question", "help wanted", "type:question", "kind/question"]):
+    if _has_word(["question"], label_text):
         return "question"
-    if any(kw in label_text for kw in ["discussion", "type:discussion", "kind/discussion"]):
+    if _has_word(["discussion"], label_text):
         return "discussion"
-    
-    # Heuristic from text
-    if any(kw in text for kw in bug_keywords):
+
+    if _has_word(bug_keywords, text):
         return "bug"
-    if any(kw in text for kw in feature_keywords):
+    if _has_word(feature_keywords, text):
         return "feature"
-    if any(kw in text for kw in question_keywords):
+    if _has_word(question_keywords, text):
         return "question"
-    
+
     return "discussion"
 
 
