@@ -424,7 +424,8 @@ def generate_report(
     sections = []
     
     sections.append("# Quantum Software Maintainability Analysis Report\n")
-    sections.append(f"*Generated: {datetime.now(timezone.utc).isoformat(timespec="seconds")}*")
+    generated_at = datetime.now(timezone.utc).isoformat(timespec="seconds")
+    sections.append(f"*Generated: {generated_at}*")
     sections.append(f"*Anonymized: {anonymize}*\n")
     
     sections.append(generate_executive_summary(metrics, patterns))
