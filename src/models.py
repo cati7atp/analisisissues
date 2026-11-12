@@ -97,6 +97,7 @@ class CleanedIssue(BaseModel):
     assignees: List[str] = Field(default_factory=list)
     milestone: Optional[str] = None
     reactions: Dict[str, int] = Field(default_factory=dict)
+    state_reason: Optional[str] = None
     item_type: str = "issue"  # dataset `type` column (authoritative)
     issue_type: IssueType = "other"  # secondary keyword classification
     full_text: str = ""  # Combined text for topic modeling
@@ -141,8 +142,7 @@ class RepoMetrics(BaseModel):
     issue_types: Dict[str, int]
     median_resolution_days: Optional[float] = None
     resolution_by_type: Dict[str, Optional[float]] = Field(default_factory=dict)
-    reopen_rate: float = 0.0
-    label_churn_per_issue: float = 0.0
+    resolution_outcomes: Dict[str, int] = Field(default_factory=dict)  # closed issues by state_reason
     gini_contributors: float = 0.0
     unique_contributors: int = 0
     quantum_keyword_ratios: Dict[str, float] = Field(default_factory=dict)
@@ -154,7 +154,7 @@ class AggregatedMetrics(BaseModel):
     total_repos: int
     total_issues: int
     overall_median_resolution_days: Optional[float] = None
-    overall_reopen_rate: float = 0.0
+    resolution_outcomes: Dict[str, int] = Field(default_factory=dict)
     overall_gini_contributors: float = 0.0
     avg_issues_per_repo: float = 0.0
     quantum_pattern_prevalence: Dict[str, float] = Field(default_factory=dict)

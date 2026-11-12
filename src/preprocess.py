@@ -232,6 +232,7 @@ class IssuePreprocessor:
             assignees=[a.lower() for a in raw_issue.assignees],
             milestone=raw_issue.milestone,
             reactions=raw_issue.reactions,
+            state_reason=raw_issue.state_reason,
             item_type=raw_issue.item_type or "issue",
             issue_type=issue_type,
             full_text=full_text

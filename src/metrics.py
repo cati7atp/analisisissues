@@ -71,33 +71,9 @@ def compute_resolution_time(issue: CleanedIssue) -> Optional[float]:
     return None
 
 
-def compute_reopen_rate(issues: List[CleanedIssue]) -> float:
-    """Estimate reopen rate from state transitions (simplified)."""
-    # Without event data, we approximate: issues that were closed but have recent comments
-    # or issues with state "open" that have "closed" label or similar
-    closed_issues = [i for i in issues if i.state == "closed"]
-    if not closed_issues:
-        return 0.0
-    
-    # Heuristic: issues with comments after close date might be reopened
-    # Since we don't have event timeline, we use a proxy
-    reopened = 0
-    for issue in closed_issues:
-        if issue.closed_at:
-            # Check if any comment is after close date
-            for comment in issue.comments:
-                if to_utc(comment.created_at) > to_utc(issue.closed_at):
-                    reopened += 1
-                    break
-    
-    return reopened / len(closed_issues) if closed_issues else 0.0
-
-
-def compute_label_churn(issues: List[CleanedIssue]) -> float:
-    """Compute average label changes per issue (proxy without event data)."""
-    # Without event data, we can't compute true label churn
-    # Return 0 as placeholder
-    return 0.0
+def compute_resolution_outcomes(issues: List[CleanedIssue]) -> Dict[str, int]:
+    """Closed issues by ``state_reason`` (completed, not_planned, duplicate, ...)."""
+    return dict(Counter(i.state_reason or "unspecified" for i in issues if i.state == "closed"))
 
 
 def compute_contributor_gini(issues: List[CleanedIssue]) -> float:
@@ -107,24 +83,31 @@ def compute_contributor_gini(issues: List[CleanedIssue]) -> float:
     return compute_gini(counts)
 
 
-def compute_topic_entropy(issues: List[CleanedIssue], doc_topics_path: Path) -> float:
-    """Entropy of the topic distribution of this repo's own issues."""
-    repo_ids = {issue.issue_id for issue in issues}
-    topic_counts = Counter()
+def load_doc_topic_map(doc_topics_path: Path) -> Dict[str, int]:
+    """issue_id -> topic_id for clustered documents (outliers omitted), read once as UTF-8."""
+    mapping: Dict[str, int] = {}
     if doc_topics_path.exists():
-        with open(doc_topics_path, "r") as f:
+        with open(doc_topics_path, "r", encoding="utf-8") as f:
             for line in f:
                 data = json.loads(line)
-                if data["topic_id"] != -1 and data["issue_id"] in repo_ids:
-                    topic_counts[data["topic_id"]] += 1
-    
+                if data["topic_id"] != -1:
+                    mapping[data["issue_id"]] = data["topic_id"]
+    return mapping
+
+
+def _topic_map(source) -> Dict[str, int]:
+    return load_doc_topic_map(source) if isinstance(source, Path) else source
+
+
+def compute_topic_entropy(issues: List[CleanedIssue], doc_topics) -> float:
+    """Entropy of the topic distribution of this repo's own issues (doc_topics: path or issue->topic map)."""
+    issue_to_topic = _topic_map(doc_topics)
+    topic_counts = Counter(issue_to_topic[i.issue_id] for i in issues if i.issue_id in issue_to_topic)
     if not topic_counts:
         return 0.0
-    
     total = sum(topic_counts.values())
     probs = [c / total for c in topic_counts.values()]
-    entropy = -sum(p * math.log2(p) for p in probs if p > 0)
-    return entropy
+    return -sum(p * math.log2(p) for p in probs if p > 0)
 
 
 def compute_quantum_keyword_ratios(issues: List[CleanedIssue], config, matcher=None) -> Dict[str, float]:
@@ -140,17 +123,10 @@ def compute_quantum_keyword_ratios(issues: List[CleanedIssue], config, matcher=N
     return {category: (count / total if total else 0.0) for category, count in counts.items()}
 
 
-def get_top_topics_for_repo(issues: List[CleanedIssue], doc_topics_path: Path, top_n: int = 5) -> List[Dict[str, Any]]:
-    """Get top topics for a repository."""
-    # Map issue_id -> topic_id
-    issue_to_topic = {}
-    if doc_topics_path.exists():
-        with open(doc_topics_path, "r") as f:
-            for line in f:
-                data = json.loads(line)
-                if data["topic_id"] != -1:
-                    issue_to_topic[data["issue_id"]] = data["topic_id"]
-    
+def get_top_topics_for_repo(issues: List[CleanedIssue], doc_topics, top_n: int = 5) -> List[Dict[str, Any]]:
+    """Get top topics for a repository (doc_topics: path or issue->topic map)."""
+    issue_to_topic = _topic_map(doc_topics)
+
     # Count topics for this repo's issues
     repo_issue_ids = {issue.issue_id for issue in issues}
     topic_counts = Counter()
@@ -173,7 +149,7 @@ def compute_repo_metrics(
     repo: str,
     issues: List[CleanedIssue],
     patterns: List[QuantumPattern],
-    doc_topics_path: Path,
+    doc_topics,
     config,
 ) -> RepoMetrics:
     """Compute metrics for a single repository."""
@@ -203,12 +179,6 @@ def compute_repo_metrics(
         type_times = [t for t in type_times if t is not None]
         resolution_by_type[issue_type] = np.median(type_times) if type_times else None
     
-    # Reopen rate
-    reopen_rate = compute_reopen_rate(issues)
-    
-    # Label churn
-    label_churn = compute_label_churn(issues)
-    
     # Contributor Gini
     gini = compute_contributor_gini(issues)
     unique_contributors = len(set(i.author for i in issues))
@@ -217,10 +187,10 @@ def compute_repo_metrics(
     quantum_ratios = compute_quantum_keyword_ratios(issues, config)
     
     # Topic entropy
-    topic_entropy = compute_topic_entropy(issues, doc_topics_path)
+    topic_entropy = compute_topic_entropy(issues, doc_topics)
     
     # Top topics
-    top_topics = get_top_topics_for_repo(issues, doc_topics_path)
+    top_topics = get_top_topics_for_repo(issues, doc_topics)
     
     return RepoMetrics(
         repo=repo,
@@ -230,8 +200,7 @@ def compute_repo_metrics(
         issue_types=dict(type_counts),
         median_resolution_days=median_resolution,
         resolution_by_type=resolution_by_type,
-        reopen_rate=reopen_rate,
-        label_churn_per_issue=label_churn,
+        resolution_outcomes=compute_resolution_outcomes(issues),
         gini_contributors=gini,
         unique_contributors=unique_contributors,
         quantum_keyword_ratios=quantum_ratios,
@@ -259,17 +228,13 @@ def compute_aggregated_metrics(
             all_resolution_times.append(m.median_resolution_days)
     overall_median = np.median(all_resolution_times) if all_resolution_times else None
     
-    # Overall reopen rate (weighted)
-    total_closed = sum(m.closed_issues for m in repo_metrics)
-    weighted_reopen = sum(m.reopen_rate * m.closed_issues for m in repo_metrics)
-    overall_reopen = weighted_reopen / total_closed if total_closed > 0 else 0.0
-    
-    # Overall Gini
-    all_authors = []
+    # Resolution outcomes pooled across repos
+    outcomes: Counter = Counter()
     for m in repo_metrics:
-        # We don't have per-repo author lists, so approximate
-        pass
-    overall_gini = np.mean([m.gini_contributors for m in repo_metrics]) if repo_metrics else 0.0
+        outcomes.update(m.resolution_outcomes)
+
+    # Gini of authorship on the pooled data (not the mean of per-repo Ginis)
+    overall_gini = compute_contributor_gini(all_issues) if all_issues else 0.0
     
     # Average issues per repo
     avg_issues = total_issues / total_repos if total_repos > 0 else 0.0
@@ -287,7 +252,7 @@ def compute_aggregated_metrics(
         total_repos=total_repos,
         total_issues=total_issues,
         overall_median_resolution_days=overall_median,
-        overall_reopen_rate=overall_reopen,
+        resolution_outcomes=dict(outcomes),
         overall_gini_contributors=overall_gini,
         avg_issues_per_repo=avg_issues,
         quantum_pattern_prevalence=pattern_prevalence,
@@ -313,12 +278,14 @@ def compute_maintainability_metrics(
     for issue in issues:
         issues_by_repo[issue.repo].append(issue)
     
+    doc_topic_map = load_doc_topic_map(config.paths.doc_topics_output)  # single read
+
     # Compute per-repo metrics
     logger.info("Computing per-repo metrics", n_repos=len(issues_by_repo))
     repo_metrics = []
     for repo, repo_issues in tqdm(issues_by_repo.items(), desc="Computing repo metrics"):
         metrics = compute_repo_metrics(
-            repo, repo_issues, patterns, config.paths.doc_topics_output, config
+            repo, repo_issues, patterns, doc_topic_map, config
         )
         repo_metrics.append(metrics)
     
@@ -345,7 +312,6 @@ def compute_maintainability_metrics(
         "open_issues": m.open_issues,
         "closed_issues": m.closed_issues,
         "median_resolution_days": m.median_resolution_days,
-        "reopen_rate": m.reopen_rate,
         "gini_contributors": m.gini_contributors,
         "unique_contributors": m.unique_contributors,
         "topic_entropy": m.topic_entropy,

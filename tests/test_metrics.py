@@ -77,3 +77,76 @@ def test_unparseable_dates_become_none_and_are_counted_never_now(config):
     assert cleaned.closed_at is None and pre.datetime_failures == 1
     assert pre.clean_issue(RawIssue(**base, created_at="garbage")) is None
     assert pre.last_skip_reason == "bad_created_at" and pre.datetime_failures == 2
+
+
+def _write_issues(path, issues):
+    with open(path, "w", encoding="utf-8") as f:
+        for issue in issues:
+            data = issue.model_dump()
+            data["created_at"] = issue.created_at.isoformat()
+            data["closed_at"] = issue.closed_at.isoformat() if issue.closed_at else None
+            f.write(json.dumps(data, ensure_ascii=False) + "\n")
+
+
+def _run_metrics(config, tmp_path, issues, assignments=None):
+    from src.metrics import compute_maintainability_metrics
+
+    issues_file = tmp_path / "issues.jsonl"
+    _write_issues(issues_file, issues)
+    config.paths.doc_topics_output.parent.mkdir(parents=True, exist_ok=True)
+    config.paths.doc_topics_output.write_text("\n".join(
+        json.dumps({"issue_id": i.issue_id, "topic_id": (assignments or {}).get(i.issue_id, 0), "probability": 1.0},
+                   ensure_ascii=False) for i in issues) + "\n", encoding="utf-8")
+    patterns = tmp_path / "patterns.jsonl"
+    patterns.write_text("", encoding="utf-8")
+    return compute_maintainability_metrics(config, issues_file, patterns, tmp_path / "m.json", tmp_path / "m.csv")
+
+
+def test_reopen_rate_and_label_churn_are_gone_from_outputs(config, tmp_path):
+    result = _run_metrics(config, tmp_path, [_issue("a/a", 1), _issue("b/b", 1)])
+    dumped = json.loads((tmp_path / "m.json").read_text(encoding="utf-8"))
+    assert "reopen_rate" not in dumped["per_repo"][0] and "label_churn_per_issue" not in dumped["per_repo"][0]
+    assert "overall_reopen_rate" not in dumped["aggregated"]
+    assert "reopen_rate" not in (tmp_path / "m.csv").read_text(encoding="utf-8")
+    assert result.aggregated.total_issues == 2
+
+
+def test_state_reason_resolution_outcome_breakdown(config, tmp_path):
+    from datetime import timezone
+
+    closed = datetime(2024, 1, 2, tzinfo=timezone.utc)
+    issues = []
+    for n, reason in enumerate(["completed", "completed", "not_planned", "duplicate", None]):
+        issue = _issue("a/a", n, state_reason=reason)
+        issue.state, issue.closed_at = "closed", closed
+        issues.append(issue)
+    issues.append(_issue("a/a", 99, state_reason="reopened"))  # open: not an outcome
+    result = _run_metrics(config, tmp_path, issues)
+    expected = {"completed": 2, "not_planned": 1, "duplicate": 1, "unspecified": 1}
+    assert result.per_repo[0].resolution_outcomes == expected
+    assert result.aggregated.resolution_outcomes == expected
+
+
+def test_overall_gini_is_computed_on_pooled_authors(config, tmp_path):
+    from src.metrics import compute_contributor_gini
+
+    issues = [_issue("a/a", n) for n in range(4)]  # one author, 4 issues
+    for n, name in enumerate("pqrs"):
+        issue = _issue("b/b", n)
+        issue.author = name
+        issues.append(issue)
+    result = _run_metrics(config, tmp_path, issues)
+    assert result.aggregated.overall_gini_contributors == pytest.approx(compute_contributor_gini(issues))
+    assert result.aggregated.overall_gini_contributors > 0.0  # the mean of the repo Ginis is 0
+
+
+def test_doc_topics_read_once_as_utf8(config, tmp_path, monkeypatch):
+    import src.metrics as metrics
+
+    reads = []
+    original = metrics.load_doc_topic_map
+    monkeypatch.setattr(metrics, "load_doc_topic_map", lambda p: reads.append(p) or original(p))
+    issues = [_issue("ünï/çödé", 1), _issue("b/b", 1)]
+    result = _run_metrics(config, tmp_path, issues)
+    assert len(reads) == 1
+    assert result.per_repo[0].top_topics == [{"topic_id": 0, "count": 1, "percentage": 100.0}]

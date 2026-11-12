@@ -78,7 +78,7 @@ This report presents a systematic analysis of GitHub issues from repositories ut
 - **Repositories Analyzed**: {agg.total_repos}
 - **Total Issues**: {agg.total_issues}
 - **Median Resolution Time**: {format_number(agg.overall_median_resolution_days)} days
-- **Reopen Rate**: {agg.overall_reopen_rate:.1%}
+- **Resolution Outcomes (closed issues)**: {agg.resolution_outcomes}
 - **Contributor Concentration (Gini)**: {agg.overall_gini_contributors:.2f}
 - **Quantum-Specific Patterns Identified**: {len(patterns)} categories, {total_patterns} total occurrences
 
@@ -176,7 +176,7 @@ def generate_metrics_section(metrics: MaintainabilityMetrics, anonymize: bool) -
         f"| Total Repositories | {agg.total_repos} |",
         f"| Total Issues | {agg.total_issues} |",
         f"| Median Resolution Time (days) | {format_number(agg.overall_median_resolution_days)} |",
-        f"| Overall Reopen Rate | {agg.overall_reopen_rate:.1%} |",
+        f"| Resolution Outcomes (closed) | {agg.resolution_outcomes} |",
         f"| Contributor Gini Coefficient | {agg.overall_gini_contributors:.3f} |",
         f"| Avg Issues per Repository | {agg.avg_issues_per_repo:.1f} |",
         "",
@@ -193,7 +193,7 @@ def generate_metrics_section(metrics: MaintainabilityMetrics, anonymize: bool) -
             "Open": m.open_issues,
             "Closed": m.closed_issues,
             "Median Resolution (days)": format_number(m.median_resolution_days),
-            "Reopen Rate": f"{m.reopen_rate:.1%}",
+            "Outcomes": str(m.resolution_outcomes),
             "Gini": f"{m.gini_contributors:.3f}",
             "Contributors": m.unique_contributors,
             "Topic Entropy": f"{m.topic_entropy:.2f}",
@@ -231,7 +231,7 @@ def generate_comparative_discussion(metrics: MaintainabilityMetrics, patterns: L
 
 ## Quantum vs Classical Maintainability
 
-Traditional software maintainability metrics (resolution time, reopen rate, contributor concentration) provide a baseline, but quantum software introduces additional dimensions:
+Traditional software maintainability metrics (resolution time, resolution outcomes, contributor concentration) provide a baseline, but quantum software introduces additional dimensions:
 
 ### 1. Hardware Dependency Risk
 Unlike classical software, quantum programs depend on physical quantum hardware with:
@@ -296,7 +296,7 @@ def generate_threats_to_validity(config) -> str:
 
 2. **Issue Classification Heuristics**: Issue typing (bug/feature/question) relies on labels and text heuristics, which may misclassify issues, especially in repositories with inconsistent labeling practices.
 
-3. **Reopen Rate Proxy**: Without GitHub event timeline data, reopen rate is approximated via comments after closure, which may not correspond to actual reopen events.
+3. **No Event History**: The dataset has no event timeline, so reopen rate and label churn are not reported; closed issues are broken down by `state_reason` instead.
 
 4. **Label Churn**: True label churn requires event data; current implementation returns 0 as placeholder.
 
@@ -312,7 +312,7 @@ def generate_threats_to_validity(config) -> str:
 
 ## Construct Validity
 
-1. **Maintainability Operationalization**: Metrics chosen (resolution time, reopen rate, Gini) are proxies; true maintainability includes cognitive load, onboarding time, and change failure rate not measured here.
+1. **Maintainability Operationalization**: Metrics chosen (resolution time, resolution outcomes, Gini) are proxies; true maintainability includes cognitive load, onboarding time, and change failure rate not measured here.
 
 2. **Topic Model Stability**: BERTopic results vary with random seeds and hyperparameters; results should be validated across multiple runs.
 """
@@ -330,7 +330,7 @@ This analysis of {agg.total_issues} GitHub issues across {agg.total_repos} quant
 
 1. **Quantum Pattern Taxonomy**: Eight categories of quantum-specific issues identified, providing a vocabulary for practitioners and researchers.
 
-2. **Quantitative Baselines**: First systematic measurement of resolution times, reopen rates, and contributor concentration in quantum repositories.
+2. **Quantitative Baselines**: First systematic measurement of resolution times, resolution outcomes, and contributor concentration in quantum repositories.
 
 3. **Methodological Framework**: Reproducible pipeline combining BERTopic topic modeling with domain-specific pattern extraction.
 
