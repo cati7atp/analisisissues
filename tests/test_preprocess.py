@@ -179,7 +179,7 @@ class TestIssuePreprocessor:
     def test_process_items_streams_generator_without_original_body(self, preprocessor, sample_raw_issue, tmp_path):
         def gen():
             for n in range(3):
-                yield RawIssue(**{**sample_raw_issue, "issue_number": n + 1})
+                yield RawIssue(**{**sample_raw_issue, "issue_number": n + 1, "title": f"VQE convergence fails {n}"})
 
         out = tmp_path / "nested" / "clean.jsonl"
         stats = preprocessor.process_items(gen(), out)

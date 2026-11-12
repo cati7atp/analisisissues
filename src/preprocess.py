@@ -4,7 +4,7 @@ import json
 import re
 import typer
 from pathlib import Path
-from typing import Any, Callable, Dict, Iterable, Iterator, List, Optional, Union
+from typing import Any, Callable, Dict, Iterable, Iterator, List, Optional, Set, Union
 from datetime import datetime
 from collections import Counter
 
@@ -13,7 +13,7 @@ from tqdm import tqdm
 import structlog
 
 from .config import get_config, load_config
-from .repeated_text import RepeatedTextIndex
+from .repeated_text import RepeatedTextIndex, document_key
 from .models import (
     RawIssue, CleanedIssue, CleanedComment,
     clean_text, classify_issue_type, is_bot_user, parse_datetime, structure_text
@@ -266,13 +266,21 @@ class IssuePreprocessor:
             raw_issues = raw_issues()
         stats = {"total": 0, "kept": 0, "skipped": 0, "comments_removed": 0, "bot_issues": 0,
                  "repeated_lines": 0, "repeated_line_removals": 0,
-                 "repeated_comments": 0, "repeated_comment_drops": 0}
+                 "repeated_comments": 0, "repeated_comment_drops": 0, "duplicates": 0}
+        seen_documents: Set[int] = set()
         chunk: List[str] = []
         with open(output_path, "w", encoding="utf-8") as f:
             for raw_issue in tqdm(raw_issues, desc="Preprocessing issues"):
                 stats["total"] += 1
                 cleaned = self.clean_issue(raw_issue)
                 original_comments = len(raw_issue.comments)
+                if cleaned and self.preprocessing_config.drop_exact_duplicates:
+                    key = document_key(cleaned.title, cleaned.cleaned_body)
+                    if key in seen_documents:
+                        stats["duplicates"] += 1
+                        cleaned = None
+                    else:
+                        seen_documents.add(key)
                 if cleaned:
                     stats["kept"] += 1
                     stats["comments_removed"] += original_comments - len(cleaned.comments)

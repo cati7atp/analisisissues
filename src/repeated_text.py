@@ -85,3 +85,8 @@ class RepeatedTextIndex:
             else:
                 kept.append(line)
         return "\n".join(kept)
+
+
+def document_key(title: str, body: str) -> int:
+    """Hash of the normalized title plus cleaned body, for exact-duplicate detection."""
+    return _key(_SPACE.sub(" ", f"{title} {body}".lower()).strip())
