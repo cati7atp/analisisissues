@@ -1,183 +1,202 @@
-# Quantum GitHub Issues Analysis
+# Análisis de mantenibilidad de issues de GitHub en software cuántico
 
-A Python pipeline for analyzing GitHub issues from repositories using quantum computing components (Qiskit, Cirq, PennyLane, Amazon Braket, Q#, etc.) to identify maintainability patterns in hybrid quantum-classical software products.
+Pipeline en Python que analiza issues de GitHub de repositorios con componentes de
+computación cuántica (Qiskit, Cirq, PennyLane, Amazon Braket, Q#, etc.) para identificar
+patrones de mantenibilidad en productos híbridos cuántico-clásicos.
 
-## Overview
+## Descripción general
 
-This project addresses a critical gap in software engineering research: understanding the maintainability challenges of hybrid quantum-classical systems, which are still a novelty in the industry. By applying NLP topic modeling (BERTopic) and domain-specific pattern extraction to GitHub issues, we identify common failure modes, quantify their prevalence, and provide actionable recommendations for practitioners.
+El proyecto aborda un vacío en la investigación de ingeniería de software: entender los
+desafíos de mantenibilidad de sistemas híbridos cuántico-clásicos, todavía novedosos en la
+industria. Aplica modelado de tópicos (BERTopic) y extracción de patrones específicos del
+dominio sobre issues de GitHub para identificar modos de falla comunes, cuantificar su
+prevalencia y producir recomendaciones accionables.
 
-## Quick Start
+**Los resultados de la corrida vigente están versionados en el repositorio.** Clonar
+alcanza para analizarlos: no hace falta re-ejecutar el pipeline.
 
-### 1. Install Dependencies
+## Inicio rápido
+
+### 1. Entorno
 
 ```bash
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-# or: venv\Scripts\activate  # Windows
+python -m venv .venv
+source .venv/bin/activate        # Linux / macOS
+# Windows PowerShell: .\.venv\Scripts\Activate.ps1
 
-# Install dependencies
 pip install -r requirements.txt
 ```
 
-### 2. Prepare Input Data
+Los pines de `click<8.2` y `hdbscan==0.8.40` en `requirements.txt` son necesarios: el
+pipeline no arranca con otras versiones.
 
-Place your GitHub issues data as a JSONL file at `data/raw/issues.jsonl`. Each line should be a JSON object:
+### 2. Datos de entrada
 
-```json
-{
-  "repo": "owner/repo",
-  "issue_number": 123,
-  "title": "Issue title",
-  "body": "Issue body text",
-  "state": "open",
-  "labels": ["bug", "quantum"],
-  "created_at": "2024-01-15T10:30:00Z",
-  "closed_at": null,
-  "author": "username",
-  "comments": [
-    {
-      "author": "commenter",
-      "created_at": "2024-01-16T12:00:00Z",
-      "body": "Comment text"
-    }
-  ],
-  "assignees": [],
-  "milestone": null,
-  "reactions": {"+1": 5}
-}
-```
+El pipeline lee un dataset SQLite (`miner.db`) cuya ruta declara `input.db_path` en
+`config.yaml`. Un argumento `--db` la reemplaza.
 
-### 3. Run the Pipeline
+El dataset no se versiona: pesa cientos de MB y es el origen de los datos, no un
+resultado. `preprocess --input` todavía acepta un JSONL legado, con una línea por issue.
+
+### 3. Ejecutar el pipeline
 
 ```bash
-# Run full pipeline
-python -m src.cli run-pipeline   # reads input.db_path (miner.db); --db PATH overrides it, --output-dir DIR redirects every output
+# Pipeline completo
+python -m src.cli run-pipeline
 
-# Or step by step:
-python -m src.cli preprocess   # reads input.db_path (miner.db); --input still accepts a legacy JSONL
+# O paso por paso
+python -m src.cli preprocess
 python -m src.cli topic-model
-python -m src.cli extract-patterns   # --output-dir DIR reads the topic results from DIR and writes patterns and cross_project_patterns.* there
-python -m src.cli compute-metrics   # --output-dir DIR writes metrics, CSV and comparisons.json there
+python -m src.cli extract-patterns
+python -m src.cli compute-metrics
 python -m src.cli generate-report
 ```
 
-### 4. View Results
+En Linux/macOS: `./run_pipeline.sh`. En Windows: `.\run_pipeline.ps1`. Ambos aceptan la
+ruta a `miner.db` como primer argumento y activan `.venv` si existe.
 
-- **Report**: `reports/quantum_maintainability_report.md`
-- **Visualization**: `reports/topic_visualization.html` (open in browser)
-- **Metrics**: `data/analysis/maintainability_metrics.json`
-- **Patterns**: `data/analysis/quantum_patterns.jsonl`
-- **Cross-project patterns**: `data/analysis/cross_project_patterns.csv` (a topic is cross-project when `cross_project.min_repos` repos each hold `min_issues_per_repo` of its issues and no repo exceeds `max_top_repo_share`)
+`run-pipeline` redirige **todas** las salidas al directorio de resultados
+(`--output-dir`, por defecto `data/analysis`): la visualización y los CSV de resumen
+quedan ahí, no en `reports/`, aunque `config.yaml` declare esas rutas. Solo el reporte
+Markdown se escribe en `reports/`.
 
-## Pipeline Stages
+La corrida completa tarda alrededor de 33 minutos con GPU CUDA en un equipo de gama
+media. Con CPU no está medida y es bastante más lenta.
 
-| Stage | Command | Output | Description |
-|-------|---------|--------|-------------|
-| 1. Preprocess | `preprocess` | `data/processed/issues_clean.jsonl` | Clean, normalize, classify issues |
-| 2. Topic Model | `topic-model` | `data/analysis/topics.jsonl` | BERTopic topic discovery |
-| 3. Patterns | `extract-patterns` | `data/analysis/quantum_patterns.jsonl` | Quantum-specific pattern extraction |
-| 4. Metrics | `compute-metrics` | `data/analysis/maintainability_metrics.json` | Maintainability indicators |
-| 5. Report | `generate-report` | `reports/quantum_maintainability_report.md` | Scientific report |
+### 4. Ver los resultados
 
-## Configuration
+- **Reporte**: `reports/quantum_maintainability_report.md`
+- **Visualización**: `data/analysis/topic_visualization.html` (abrir en el navegador)
+- **Métricas**: `data/analysis/maintainability_metrics.json`
+- **Patrones**: `data/analysis/quantum_patterns.jsonl`
+- **Patrones entre proyectos**: `data/analysis/cross_project_patterns.csv`
 
-All parameters are configurable via `config.yaml`:
+Guía de lectura para el equipo de análisis: `HANDOFF.md`, que incluye la referencia de
+cada archivo de salida y de cada campo (sección 3).
 
-- **Preprocessing**: Bot filtering by author (`author_type` Bot, `[bot]` suffix or exact names in `bot_users`), anchored `automated_comment_patterns` for template comments, min body length, code fence stripping; code, traceback and build-log summaries, template stripping (`strip_templates`), and a two-pass filter that removes lines seen in at least `repeated_line_min_issues` distinct issues and drops comments seen in at least `repeated_comment_min_issues` distinct issues; exact duplicate documents are dropped (`drop_exact_duplicates`, first occurrence kept); issues with fewer than `min_chars` cleaned title+body characters are skipped
-- **BERTopic**: Embedding model, UMAP/HDBSCAN parameters, min cluster size (`--min-topic-size` sets `hdbscan_min_cluster_size`), `reproducible` (seeds UMAP), embeddings computed once and cached under `paths.cache_dir` (`embed_*` options; run summary with outlier share and `outcome` in the model dir; 0 or 1 clusters end with `outcome: no_topics` and empty outputs instead of an error), optional `reduce_outliers` (off by default; writes separate `*_reduced` outputs), vectorizer `min_df`/`max_df` (fraction of topics) and `domain_stop_words`
-- **Quantum Patterns**: 8 categories with 50+ keywords (extensible)
-- **Metrics**: Gini computation, resolution quantiles
-- **Report**: Anonymization, quote limits
+## Etapas del pipeline
 
-## Quantum Pattern Taxonomy
+| Etapa | Comando | Salida | Descripción |
+|---|---|---|---|
+| 1. Preprocesamiento | `preprocess` | `data/processed/issues_clean.jsonl` | Limpieza, normalización y clasificación |
+| 2. Modelado de tópicos | `topic-model` | `data/analysis/topics.jsonl` | Descubrimiento de tópicos con BERTopic |
+| 3. Patrones | `extract-patterns` | `data/analysis/quantum_patterns.jsonl` | Extracción de patrones cuánticos |
+| 4. Métricas | `compute-metrics` | `data/analysis/maintainability_metrics.json` | Indicadores de mantenibilidad |
+| 5. Reporte | `generate-report` | `reports/quantum_maintainability_report.md` | Reporte científico |
 
-| Category | Description | Example Keywords |
-|----------|-------------|------------------|
-| Hardware/Backend | Device availability, calibration, queue times | noise, calibration, queue, backend |
-| Algorithm Convergence | Variational algorithm issues | VQE, QAOA, ansatz, barren plateau |
-| Dependency/Version | Framework version conflicts | qiskit-terra, numpy, version conflict |
-| Simulator vs Hardware | Discrepancies between sim and real | simulator, hardware, noise model |
-| Transpilation/Compilation | Circuit compilation failures | transpile, coupling map, routing |
-| Gradients/Autodiff | Differentiation failures | gradient, parameter-shift, adjoint |
-| Reproducibility | Non-deterministic results | seed, deterministic, random |
-| Performance/Scaling | Large circuit performance | scaling, qubit count, depth |
+## Configuración
 
-## Extending Pattern Categories
+Todos los parámetros se ajustan en `config.yaml`:
 
-Categories and their keywords live in `config/quantum_taxonomy.yaml` (the `quantum_patterns` block of `config.yaml` is legacy and ignored).
+- **Preprocesamiento**: filtrado de bots por autor (`author_type` Bot, sufijo `[bot]` o
+  nombres exactos en `bot_users`), `automated_comment_patterns` anclados para comentarios
+  de plantilla, longitud mínima de cuerpo, eliminación de bloques de código, resúmenes de
+  código, tracebacks y logs de compilación, eliminación de plantillas
+  (`strip_templates`), filtro en dos pasadas que descarta líneas repetidas en al menos
+  `repeated_line_min_issues` issues distintos y comentarios repetidos en al menos
+  `repeated_comment_min_issues`, descarte de documentos duplicados exactos
+  (`drop_exact_duplicates`, se conserva la primera aparición) y descarte de issues con
+  menos de `min_chars` caracteres limpios de título y cuerpo.
+- **BERTopic**: modelo de embeddings, parámetros de UMAP/HDBSCAN, tamaño mínimo de clúster
+  (`--min-topic-size` fija `hdbscan_min_cluster_size`), `reproducible` (siembra UMAP),
+  embeddings calculados una vez y cacheados en `paths.cache_dir`, `reduce_outliers`
+  (desactivado por defecto; escribe salidas `*_reduced` separadas), `min_df`/`max_df` del
+  vectorizador y `domain_stop_words`.
+- **Patrones cuánticos**: 12 categorías versionadas en `config/quantum_taxonomy.yaml`.
+- **Métricas**: cálculo de Gini y cuantiles de resolución.
+- **Reporte**: anonimización y límites de citas.
 
-## Outputs (`data/analysis/`)
+## Taxonomía de patrones
 
-| File | Content |
-|------|---------|
-| `topics.jsonl` | One row per topic: name, keywords, count, representative docs, `top_repo`, `top_repo_share`, `n_repos`, `repo_specific` |
-| `doc_topics.jsonl` | Issue id (`owner/repo#n`) -> topic id (`-1` = outlier) and probability |
-| `doc_topics_reduced.jsonl`, `topics_reduced.jsonl` | Secondary result with outliers reassigned by embedding similarity (more coverage, lower quality) |
-| `cross_project_patterns.{jsonl,csv}` | Per topic: repos holding it, per-repo prevalence, top-repo share, evenness, `cross_project` flag |
-| `quantum_patterns.jsonl`, `pattern_summary.csv`, `candidate_categories.jsonl` | Taxonomy categories and topics the taxonomy does not explain |
-| `topics_over_time.jsonl`, `topics_per_class.jsonl` | Temporal and per-repo views (`bertopic.temporal_views: false` skips them; they take tens of minutes) |
-| `maintainability_metrics.json`, `comparisons.json` | Per-repo/aggregate metrics and per-repo, per-family and capped comparisons |
-| `run_summary.json` | Topic count, outlier share, noise topics, repo-specific topics |
-| `topic_visualization.html` | Interactive BERTopic views |
+Las categorías y sus términos viven en `config/quantum_taxonomy.yaml`. El bloque
+`quantum_patterns` de `config.yaml` es legado y se ignora.
 
-Runs are reproducible: UMAP is seeded (`bertopic.seed`, `bertopic.reproducible: true`). Setting `reproducible: false` runs UMAP in parallel and unseeded.
+| Categoría | Descripción |
+|---|---|
+| `transpilation_compilation` | Fallas de compilación y transpilación de circuitos |
+| `noise_error_mitigation` | Ruido, mitigación y corrección de errores |
+| `hardware_backend` | Acceso a hardware, calibración y colas |
+| `qubit_mapping_routing` | Mapeo de qubits y ruteo |
+| `gradients_autodiff` | Circuitos parametrizados y gradientes |
+| `performance_scaling` | Rendimiento y memoria del simulador |
+| `pulse_control` | Control de pulsos |
+| `dependency_version` | Conflictos de versión y dependencias |
+| `documentation_examples` | Documentación y ejemplos |
+| `algorithm_convergence` | Convergencia de algoritmos variacionales |
+| `sim_vs_hardware` | Discrepancias entre simulador y hardware |
+| `reproducibility` | Resultados no deterministas |
 
-## Privacy
+## Salidas
 
-`preprocessing.anonymize_authors` (default on) replaces authors, commenters and assignees with salted pseudonyms (`u_<12 hex>`, stable per person, case-insensitive) and masks `@mentions` in titles, bodies and comments. Bot filtering uses the real name before pseudonymizing. Change `author_salt` to make pseudonyms unlinkable to an earlier release. Repository names are public project names and are anonymized only in the report (`report.anonymize`). Inline decorators such as `@njit` also become `@user`.
+Las salidas se escriben en `data/analysis/` y están versionadas en el repositorio.
 
-## Running Tests
+| Archivo | Contenido |
+|---|---|
+| `topics.jsonl` | Una fila por tópico: nombre, palabras clave, conteo, documentos representativos, `top_repo`, `top_repo_share`, `n_repos`, `repo_specific` |
+| `doc_topics.jsonl` | Id de issue (`owner/repo#n`) → id de tópico (`-1` = outlier) y probabilidad |
+| `topics_reduced.jsonl`, `doc_topics_reduced.jsonl` | Resultado secundario con los outliers reasignados por similitud de embeddings: más cobertura, menor calidad |
+| `cross_project_patterns.{jsonl,csv}` | Por tópico: repos que lo sostienen, prevalencia por repo, proporción del repo principal, uniformidad y marca `cross_project` |
+| `quantum_patterns.jsonl`, `pattern_summary.csv`, `candidate_categories.jsonl` | Categorías de la taxonomía y tópicos que la taxonomía no explica |
+| `topics_over_time.jsonl`, `topics_per_class.jsonl` | Vistas temporal y por repo (`bertopic.temporal_views: false` las omite; tardan decenas de minutos) |
+| `maintainability_metrics.json`, `comparisons.json` | Métricas por repo y agregadas, y comparaciones por repo, por familia y con tope |
+| `run_summary.json` | Cantidad de tópicos, proporción de outliers, tópicos de ruido y tópicos específicos de un repo |
+| `topic_visualization.html` | Vistas interactivas de BERTopic |
+
+## Privacidad
+
+`preprocessing.anonymize_authors` (activo por defecto) reemplaza autores, comentaristas y
+asignados por seudónimos con sal (`u_<12 hex>`, estables por persona, sin distinguir
+mayúsculas) y enmascara `@menciones` y correos electrónicos en títulos, cuerpos y
+comentarios. El filtrado de bots usa el nombre real antes de seudonimizar. Cambiar
+`author_salt` hace que los seudónimos no se puedan enlazar con una versión anterior.
+
+Los nombres de repositorio son proyectos públicos y se anonimizan solo en el reporte
+(`report.anonymize`).
+
+Alcance completo del enmascaramiento, decisiones aceptadas y artefactos que no se
+comparten: `docs/data-handling.md`.
+
+## Tests
 
 ```bash
 pytest -q
 pytest --cov=src tests/
 ```
 
-## Project Structure
+## Estructura del proyecto
 
 ```
-quantum-issues-analysis/
-├── src/
-│   ├── __init__.py
-│   ├── cli.py              # Typer CLI entry point
-│   ├── config.py           # Configuration management
-│   ├── models.py           # Pydantic data models
-│   ├── preprocess.py       # S3: Data preprocessing
-│   ├── topic_model.py      # S4: BERTopic modeling
-│   ├── patterns.py         # S5: Quantum pattern extraction
-│   ├── metrics.py          # S6: Maintainability metrics
-│   └── report.py           # S7: Report generation
-├── tests/
-├── data/
-│   ├── raw/                # Input: issues.jsonl
-│   ├── processed/          # Cleaned issues
-│   └── analysis/           # Topics, patterns, metrics
-├── models/
-│   └── bertopic/           # Saved BERTopic model (model/ = safetensors; --output-dir redirects model and results)
-├── reports/
-│   ├── quantum_maintainability_report.md
-│   ├── topic_visualization.html
-│   └── *.csv               # Summary tables
-├── odd/
-│   └── tasks/              # ODD feature specification
-├── .github/
-│   └── workflows/          # GitHub Actions
-├── config.yaml
-├── requirements.txt
-├── pyproject.toml
-├── run_pipeline.sh
-├── run_pipeline.ps1
-└── README.md
+src/                        Código del pipeline
+├── cli.py                  Punto de entrada (Typer)
+├── config.py               Carga de configuración
+├── models.py               Modelos de datos y enmascaramiento
+├── preprocess.py           Limpieza y normalización
+├── topic_model.py          Modelado de tópicos con BERTopic
+├── patterns.py             Extracción de patrones cuánticos
+├── metrics.py              Métricas de mantenibilidad
+└── report.py               Generación del reporte
+tests/                      Suite de tests
+config/                     Taxonomía de patrones versionada
+docs/                       Política de manejo de datos
+data/analysis/              Resultados versionados
+reports/                    Reporte entregable
+.github/workflows/          Integración continua
+config.yaml                 Configuración del pipeline
+run_pipeline.sh             Ejecutor para Linux/macOS
+run_pipeline.ps1            Ejecutor para Windows
+HANDOFF.md                  Guía de análisis para el equipo
 ```
 
-## License
+No se versionan: `data/processed/`, `data/cache/`, `data/analysis/model/` y las corridas
+previas al enmascaramiento. Ver `.gitignore` y `docs/data-handling.md`.
 
-MIT
+## Licencia
 
-## Citation
+MIT.
 
-If you use this work in research, please cite:
+## Citación
+
+Si usás este trabajo en una investigación, citá:
 
 ```bibtex
 @misc{quantum-issues-analysis,
