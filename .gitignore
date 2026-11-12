@@ -30,13 +30,26 @@ Thumbs.db
 *.tar.xz
 quantum-gh-dataset-*/
 .venv/
-data/
 models/
-reports/
 *.pkl
 *.joblib
 *.model
 *.bin
+
+# Datos generados: solo se versionan los resultados publicables.
+# Quedan fuera el corpus procesado, el cache de embeddings, el modelo BERTopic y las
+# corridas previas al enmascarado (run_b, run_r), que conservan correos reales.
+data/*
+!data/analysis/
+data/analysis/model/
+!data/analysis/*.jsonl
+!data/analysis/*.csv
+!data/analysis/*.json
+!data/analysis/*.html
+
+# Reportes: solo el markdown entregable.
+reports/*
+!reports/*.md
 
 # Logs
 *.log

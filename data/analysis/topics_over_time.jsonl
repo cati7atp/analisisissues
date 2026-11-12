@@ -1,0 +1,1114 @@
+{"topic": 7, "words": "e711, comparison cond, e711 comparison, cond, cond mesolve", "frequency": 1, "timestamp": "2012-11-08T06:14:44.704000+00:00"}
+{"topic": 9, "words": "rhs, milstein, bicgstab, rhs function, qtp", "frequency": 8, "timestamp": "2012-11-08T06:14:44.704000+00:00"}
+{"topic": 15, "words": "squeez, f90 solver, qutip_gui, macports, f90", "frequency": 7, "timestamp": "2012-11-08T06:14:44.704000+00:00"}
+{"topic": 23, "words": "matplotlib unit, sufficient set, using pil, personally idea, tests plotting", "frequency": 1, "timestamp": "2012-11-08T06:14:44.704000+00:00"}
+{"topic": 48, "words": "old documentation, rebuild old, sphinx_rtd_theme, point latest, old docs", "frequency": 1, "timestamp": "2012-11-08T06:14:44.704000+00:00"}
+{"topic": 49, "words": "wire gates, multi wire, intersects allowing, stuff pushing, big qfts", "frequency": 1, "timestamp": "2012-11-08T06:14:44.704000+00:00"}
+{"topic": 50, "words": "travisci, slow tests, travisci tests, maybe 50min, testing travisci", "frequency": 1, "timestamp": "2012-11-08T06:14:44.704000+00:00"}
+{"topic": 76, "words": "istests, istest, requests ahead, istests return, istests ideas", "frequency": 1, "timestamp": "2012-11-08T06:14:44.704000+00:00"}
+{"topic": 91, "words": "rob py, devel lib, py3 devel, py envs, home rob", "frequency": 2, "timestamp": "2012-11-08T06:14:44.704000+00:00"}
+{"topic": 132, "words": "pep8, doctest mechanism, examples doctests, doctests, output examples", "frequency": 2, "timestamp": "2012-11-08T06:14:44.704000+00:00"}
+{"topic": 144, "words": "1x1 qobj, qobj, 1x1, dims, sigmax otimes", "frequency": 3, "timestamp": "2012-11-08T06:14:44.704000+00:00"}
+{"topic": 150, "words": "qobjsparse, qobjsparse qobjdense, systen suboptimal, systen, doubt close", "frequency": 1, "timestamp": "2012-11-08T06:14:44.704000+00:00"}
+{"topic": 2, "words": "pulses, timestreams, pulse, sequencer, pulsetemplates", "frequency": 31, "timestamp": "2014-04-06T12:10:24.600000+00:00"}
+{"topic": 3, "words": "database, pulses, sql, databases, sqlite", "frequency": 1, "timestamp": "2014-04-06T12:10:24.600000+00:00"}
+{"topic": 9, "words": "mcsolve, odeconfig, psi0, odeconfig psi0, waiting time", "frequency": 16, "timestamp": "2014-04-06T12:10:24.600000+00:00"}
+{"topic": 13, "words": "superoperators, super_tensor, superoperators vectorized, pure tensor, tensor superoperators", "frequency": 1, "timestamp": "2014-04-06T12:10:24.600000+00:00"}
+{"topic": 15, "words": "umfpackwarning, umfpack, ok qobj, 576 umfpackwarning, umfpack umfpack", "frequency": 5, "timestamp": "2014-04-06T12:10:24.600000+00:00"}
+{"topic": 29, "words": "sphinx, markup, results look, doxygen link, remain look", "frequency": 2, "timestamp": "2014-04-06T12:10:24.600000+00:00"}
+{"topic": 41, "words": "backport pypi, like developing, travis tests, windows xp, recommended language", "frequency": 2, "timestamp": "2014-04-06T12:10:24.600000+00:00"}
+{"topic": 49, "words": "sup matrix, class task, feature generic, task feature, implement generic", "frequency": 3, "timestamp": "2014-04-06T12:10:24.600000+00:00"}
+{"topic": 50, "words": "travis, administrators, qc toolkit, add qc, astropy server", "frequency": 2, "timestamp": "2014-04-06T12:10:24.600000+00:00"}
+{"topic": 64, "words": "bloch_1, bloch_2, bloch_3, bloch_0, png", "frequency": 1, "timestamp": "2014-04-06T12:10:24.600000+00:00"}
+{"topic": 88, "words": "edit cmakelists, install eigen, trying probs, accordingly right, probs confirm", "frequency": 1, "timestamp": "2014-04-06T12:10:24.600000+00:00"}
+{"topic": 91, "words": "tests twice, test_str_list_td_corr correlation, arg td, test_correlation test_str_list_td_corr, correlation_3op_2t typeerror", "frequency": 1, "timestamp": "2014-04-06T12:10:24.600000+00:00"}
+{"topic": 112, "words": "hyperthreading, num_cpu flag, reason dont, hyperthreading think, hyperthreading available", "frequency": 1, "timestamp": "2014-04-06T12:10:24.600000+00:00"}
+{"topic": 125, "words": "classical safe, dev simpler, qubit dev, hidden qubit, controlled unused", "frequency": 1, "timestamp": "2014-04-06T12:10:24.600000+00:00"}
+{"topic": 135, "words": "dragging, lot comprehensible, mobile users, let thing, drag multiple", "frequency": 3, "timestamp": "2014-04-06T12:10:24.600000+00:00"}
+{"topic": 141, "words": "progressbar, htmlprogressbar especially, add progressbar, unfortunately progressbar, mesolve essolve", "frequency": 1, "timestamp": "2014-04-06T12:10:24.600000+00:00"}
+{"topic": 144, "words": "qutrit_basis, dtype object, list suggests, qobjs dimensions, fine older", "frequency": 2, "timestamp": "2014-04-06T12:10:24.600000+00:00"}
+{"topic": 1, "words": "shaders, alternatively detection, intentional usage, nans divisions, detection warns", "frequency": 1, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 2, "words": "matlab, measurement windows, sequencepulsetemplate, pulses, sequencer", "frequency": 33, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 3, "words": "tektronix 5014, awg, tektronix, 5014, awg driver", "frequency": 1, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 5, "words": "shake sha, sha, niederreiter, chacha20, shake", "frequency": 1, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 9, "words": "lindblad equation, lindblad, markovian problems, superoperator, equation", "frequency": 10, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 12, "words": "selection gate, text wrapping, wrapping ios, ios iphone, iphone post", "frequency": 2, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 13, "words": "kron tensor, vector_to_operator, tensor_contract, contraction vector_to_operator, affect contracts", "frequency": 3, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 15, "words": "users alex, alex pyxbld, pyrex, pyxbld temp, release pyrex", "frequency": 16, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 17, "words": "create branches, branches, public repo, new org, forking", "frequency": 1, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 23, "words": "pyqtgraph, plot, plotting, qtplot, live plotting", "frequency": 12, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 25, "words": "instrument, instruments, driver, qcodes, drivers", "frequency": 33, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 27, "words": "zeroing memory, speedup possible, sodium, common directory, zeroing", "frequency": 2, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 29, "words": "sphinx, autodoc, sphinx documentation, leaving copenhagen, png design", "frequency": 5, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 30, "words": "qip, qip module, jul dec, thesis jul, thank tagging", "frequency": 1, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 31, "words": "quirk thinks, implemented affect, clicks right, branch 34, circuit draggable", "frequency": 3, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 34, "words": "sine, pdh normalizer, minus infinity, rounding, saturation", "frequency": 7, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 35, "words": "set_dly, pretrig_data_min, pretrig_ok, rsz, test_modules", "frequency": 5, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 38, "words": "computer yeah, retired performance, hardly time, calculating fixed, ipad just", "frequency": 1, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 47, "words": "called opaque, quite display, particular args, adequate docstrings, docstrings usage", "frequency": 4, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 48, "words": "currently constructions, readthedocs online, repository available, integration readthedocs, readthedocs integration", "frequency": 1, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 50, "words": "travis, travis tests, travis test, trunc_neg, qobj trunc_neg", "frequency": 7, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 51, "words": "julialang julia, julialang, changed meaning, julia, occur place", "frequency": 2, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 55, "words": "filewrapper, io manager, preparing necessary, filewrapper io, aside dubious", "frequency": 2, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 59, "words": "adjoint channels, particular raises, watrous notes, superoperators particular, create surprising", "frequency": 1, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 63, "words": "toymodel, people download, toy, pacakges maybe, instrument_divers ice_cream", "frequency": 1, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 64, "words": "details bloch, sphere tooltips, tooltips, add details, bloch sphere", "frequency": 1, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 65, "words": "coverity, mypy lang, using mypy, type analysis, codacy", "frequency": 3, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 68, "words": "freebsd 10, version newhope, compiler spotted, newhope need, spotted freebsd", "frequency": 2, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 69, "words": "timeout, instrument server, night run, default timeout, acquiring data", "frequency": 1, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 70, "words": "apply_params, apply_params python3, uses iteritems, implemented control, control classes", "frequency": 1, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 72, "words": "foreground loops, background loops, foreground, broken pipe, pipe error", "frequency": 1, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 74, "words": "site cfg, extra_link_args, numpy 10, cfg, failure numpy", "frequency": 3, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 76, "words": "generators reorganized, qutip random, random qobjs, qobj functions, reorganized fewer", "frequency": 1, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 78, "words": "pyrpl, redpitaya, lockbox, config file, pyrpl pyrpl", "frequency": 9, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 80, "words": "kept value, value configuration, make density, matrix display, resizable", "frequency": 2, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 81, "words": "diskio, absolute path, filenames format, cryptic nice, converts absolute", "frequency": 3, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 83, "words": "rand_urandom_aes, alex thinking, new rand_urandom_aes, existing chacha20, ni available", "frequency": 1, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 91, "words": "correlation tests, fpga complexity, timing specs, na transfer, timing", "frequency": 2, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 92, "words": "hdf5 formatter, dataset, enforced unique, like structure, hdf5", "frequency": 8, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 95, "words": "background measurement, multiprocessing, multiprocessing arch, connected investigate, implementation multiprocessing", "frequency": 2, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 99, "words": "cycle animation, entries creating, animations cycle, animation gate, rotation allow", "frequency": 2, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 103, "words": "spectrum, specan, transfer function, rbw, iq", "frequency": 12, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 111, "words": "title bar, widget, disappears entirely, away disappears, titlebar", "frequency": 1, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 116, "words": "min js, src min, js, safari, firefox", "frequency": 28, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 117, "words": "sizes benchmarking, benchmarking table, key sizes, add public, public key", "frequency": 1, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 118, "words": "coverage parameter, increase test, test coverage, increase, coverage", "frequency": 1, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 130, "words": "keyword return, automatically complains, ref returned, declaration constructed, corrected commit", "frequency": 1, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 135, "words": "dragging, drag, touch, touch action, resize", "frequency": 19, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 139, "words": "html file, topological quantum, single html, html, html javascript", "frequency": 3, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 141, "words": "widgets, subprocess widget, ipython widgets, load widgets, loading ipython", "frequency": 6, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 143, "words": "logging, logging handler, logging branch, like multiprocessing, multiprocessing basically", "frequency": 2, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 144, "words": "diagonal states, properly diagonal, states zero, qobj expm, column analysing", "frequency": 2, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 146, "words": "run tool, finally passed, errors investigated, parameter finally, forth parameter", "frequency": 1, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 150, "words": "liouvillian, liouvillian preferred, number nonzero, collapse operators, hamiltonian collapse", "frequency": 1, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 155, "words": "foo, lower case, simpler predictable, status options, scienc ex", "frequency": 1, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 157, "words": "sweep values, standardparameter, np arange, arange, yields array", "frequency": 2, "timestamp": "2015-08-28T15:54:14.200000+00:00"}
+{"topic": 0, "words": "yml editor, value attributes, immediately ton, explicitely written, unused modules", "frequency": 6, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 1, "words": "stak nvidia, gpu compute, compute error, stak, xmr stak", "frequency": 1, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 2, "words": "forlooppt, pulse template, pulse, repetitionpulsetemplate, pulse templates", "frequency": 30, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 3, "words": "sqlite, dataset experiment, dataset, mongodb, sqlite_base", "frequency": 5, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 4, "words": "u1 283185307179586, 283185307179586, cx_cancellation, direction_mapper, qr", "frequency": 11, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 5, "words": "nist branch, make install, nist, oqs_kex, kex api", "frequency": 29, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 7, "words": "pyquil, pyquil_config, quil, pyquil api, forest", "frequency": 67, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 8, "words": "t10, zi, pdf plots, components stream, components vs", "frequency": 2, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 9, "words": "01, mesolve, floquet, 02, psi0", "frequency": 23, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 10, "words": "python36 site, abc_user, abc_user appdata, users abc_user, roaming python", "frequency": 9, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 11, "words": "expandcomposite, hashed sha2_256, sha2_256, transactions signed, hashed", "frequency": 2, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 12, "words": "beamer, beamer overlay, trimming, svg tool, openqasm svg", "frequency": 3, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 13, "words": "arguments wrong, tensor product, controlled tensors, construction rhs, product systems", "frequency": 5, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 15, "words": "zppvuj, build zppvuj, zppvuj pyqryptonight, pyqryptonight, qryptonight", "frequency": 30, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 16, "words": "missing variables, dimod solvers, solvers qbsolv, couplings random, random sa", "frequency": 1, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 17, "words": "master, defaults development, branch master, default branch, branches", "frequency": 12, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 18, "words": "sequences cliffords, compose identity, random sequences, sequences, cliffords constructed", "frequency": 1, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 20, "words": "binaryquadraticmodel, relabel_variables, dimod binaryquadraticmodel, binaryquadraticmodel relabel_variables, dimod", "frequency": 8, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 21, "words": "squeeze, truncated, qt create, expm expm, squeeze function", "frequency": 6, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 22, "words": "advanced noise, noisy circuit, noisy, coin flips, qae_noisy", "frequency": 12, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 23, "words": "py35_0, py36_0, vc14, vc14_0 vc14, vc14_0", "frequency": 19, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 24, "words": "subtrees, follow branch, subtrees worth, minimal make, git subtrees", "frequency": 3, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 25, "words": "instrument, driver, instruments, outdict, qcodes", "frequency": 48, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 26, "words": "frameworks python, versions lib, python framework, packages projectq, framework versions", "frequency": 21, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 27, "words": "maxqubits, maxqubits right, fix maxqubits, right maxqubits, maxqubits used", "frequency": 1, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 28, "words": "cshake, keccak_absorb, keccak, sha3_test, shake", "frequency": 5, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 29, "words": "reference generated, docs reference, sphinx, touch actual, decided little", "frequency": 6, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 30, "words": "cheat, entire wavefunction, wavefunction, get_state_vector, unnatural projectq", "frequency": 4, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 31, "words": "marshal, human readable, readable format, readable, human", "frequency": 5, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 32, "words": "dwave, pyreadline, dwave_micro_client, dwavesampler, sampler properties", "frequency": 20, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 34, "words": "lockbox, lock, pid, setpoint, autolock", "frequency": 45, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 35, "words": "_save, calls _save, test_two_trees, memory py, _save_counter", "frequency": 6, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 36, "words": "modular provides, introduce modular, transpiler replace, modular transpiler, support extending", "frequency": 2, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 37, "words": "column graph, imbalance, graph layout, coloring function, imbalance structural", "frequency": 4, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 38, "words": "qdac, parallism, projectq performance, programs tabor, speed qdac", "frequency": 7, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 39, "words": "ibmquantumexperience, qiskitenv, sgeron, setuptools 27, make env", "frequency": 9, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 40, "words": "chain_strength, embedding, pyc, packages dwave, chains", "frequency": 15, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 41, "words": "install develop, decode byte, codec decode, unicodedecodeerror, unicodedecodeerror ascii", "frequency": 11, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 42, "words": "file_cache, file_cache module, google v1, api apis, moving directory", "frequency": 4, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 43, "words": "pauliterms, paulisums, pauliterms paulisums, paulis supposed, multiply paulis", "frequency": 7, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 45, "words": "language loops, qasm useful, qasm subset, subset language, useful read", "frequency": 1, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 47, "words": "une, des, avec, le, dans", "frequency": 8, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 48, "words": "readthedocs default, update links, link documentation, readthedocs, link", "frequency": 8, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 49, "words": "sørensen, mølmer sørensen, mølmer, optimal terms, target return", "frequency": 4, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 50, "words": "travis, travis ci, travis job_stages, cppdebug, line 599", "frequency": 29, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 51, "words": "julia stops, specific operator, proejct, created operator, floats entries", "frequency": 2, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 52, "words": "line number, mind fixes, dave mentioning, number snippet, snippet stuff", "frequency": 1, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 55, "words": "_clear, acquisition module, kill_timers, orphan, sr830", "frequency": 6, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 56, "words": "cvx, sdp, matlab cvx, reconstruction, tomography", "frequency": 3, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 57, "words": "dummyengine, objects keys, basicgate, string representations, interleaving", "frequency": 7, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 58, "words": "dir local, home dir, file home, twisted, packages twisted", "frequency": 75, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 59, "words": "dagcircuit, building dagcircuit, dag, conforms architecture, given dagcircuit", "frequency": 2, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 61, "words": "link personal, branch model, personal webpage, cycle probably, model release", "frequency": 2, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 62, "words": "chainable, google xmonqubit, xmonqubit, iter q0, append iter", "frequency": 5, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 63, "words": "autodoc, google style, tutorial ipynb, notebooks, _ln", "frequency": 7, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 64, "words": "all_anim, anim, bloch, animation, bloch sphere", "frequency": 6, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 65, "words": "check failures, class machinery, mypy barfs, nit default, mypy v0", "frequency": 3, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 66, "words": "proq_test, index range, range error, error iterating, index assigned", "frequency": 8, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 67, "words": "data_vectors, sampler composite, instantiating sampler, requires parser, want benefits", "frequency": 12, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 68, "words": "unused function, newhope, sig_picnic, libnewhope_la, iexternal", "frequency": 6, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 69, "words": "thread pools, clients thread, use thread, pools, connection object", "frequency": 5, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 71, "words": "equality, equality programs, syntactical equality, program comparison, semantic equality", "frequency": 3, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 74, "words": "response answer, installed revisit, answer decoding, revisit response, decoding python", "frequency": 2, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 75, "words": "environment yml, requirements txt, yml, users tend, conda pip", "frequency": 5, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 76, "words": "schema introduce, clreg_name, contains labels, section belongs, belongs included", "frequency": 2, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 77, "words": "qvmconnection expectation, pauliterm, pauliterms docs, accepts pauliterm, surprise real", "frequency": 2, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 78, "words": "pyrpl, redpitaya, debug pyrpl, attributes selectproperty, selectproperty", "frequency": 14, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 80, "words": "ind, ind ind, diagonal elements, dist ind, 01262083", "frequency": 2, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 81, "words": "virtual py, targeting wrong, options match, missing invalid, invalid device", "frequency": 8, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 82, "words": "expects unique, 1a, experiment, save information, experiment run", "frequency": 3, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 83, "words": "random qobj, seed, rand_unitary using, like rand_unitary, option generating", "frequency": 5, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 84, "words": "warning check, missing meta, author supplied, author_email supplied, adtt cloudclient", "frequency": 1, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 86, "words": "masks, measurement effect, second argument, dacs alazar, resp txt", "frequency": 4, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 88, "words": "quest library, build_refactor, coverage3, quest, current makefile", "frequency": 4, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 91, "words": "alicetest, alicetest bobtest, charlietest, bobtest, bothremote", "frequency": 3, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 92, "words": "dataset, feature dataset, h16, s2, qcodes", "frequency": 13, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 94, "words": "fullconfig, _quantumprogram, _quantumprogram py, ported unfortunately, reviewing needs", "frequency": 1, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 95, "words": "freeze_support, _main runtimeerror, spawn, finished bootstrapping, produce executable", "frequency": 5, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 98, "words": "scaffcc, docker, docker image, dockerfile, provided docker", "frequency": 3, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 99, "words": "radians, support radians, gate exponentiation, xgate, really exp", "frequency": 2, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 100, "words": "cirquit circuit, cirqus, cirquit, weeks start, raise took", "frequency": 1, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 103, "words": "specan, na, acquisition, scope, rbw", "frequency": 39, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 105, "words": "pylint, pep8, pylint run, continuous integration, decided plan", "frequency": 3, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 107, "words": "instrument_drivers manufacturer, manufacturer, device class, instrument_drivers, class entry", "frequency": 8, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 109, "words": "having pyrpl, inherit module, pyrpl inherit, pyrpl instance, pyrpl instances", "frequency": 6, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 111, "words": "reducedmodulewidget instead, gui prettified, modulewidget reducedmodulewidget, baseclass modulewidget, reducedmodulewidget", "frequency": 2, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 112, "words": "took, 14 took, 12 took, 18 took, 20 took", "frequency": 1, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 114, "words": "qubitplaceholders, cqc backend, particular type, stripping type, pragmas accept", "frequency": 6, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 116, "words": "vec2, chrome, firefox, shader, safari", "frequency": 6, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 117, "words": "ck, collective knowledge, benchmarking, qck, level speedups", "frequency": 3, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 118, "words": "coverage, incremental coverage, coveralls, coveralls io, incremental", "frequency": 6, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 119, "words": "gatenoisemodel, compute average, kraus, list operators, average gate", "frequency": 2, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 120, "words": "idea form, files idea, documentation unofficial, documentation buildling, docs unable", "frequency": 6, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 121, "words": "compose use, return popped, instruction came, came useful, popped instruction", "frequency": 2, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 122, "words": "resource management, bad interaction, python bug, coroutines, interaction context", "frequency": 2, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 123, "words": "config, config load, progressive config, new config, from_config", "frequency": 10, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 124, "words": "_inverse, inverse, x0 args, ier, myfunc", "frequency": 4, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 125, "words": "survival rate, survival, latex backend, classical state, repeated measurements", "frequency": 5, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 126, "words": "fenwick, bksf, bravyi kitaev, bravyi, fenwick tree", "frequency": 8, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 130, "words": "message commit, 3fcbef06342a14e9ea9d6a94da6f38f32b51b6f6 working, 6cb16d37f0295881d0a31445a66f1177b10ac984 serialization, 7fcef364083ccc253a0dc6ebf9fc10c1a9e797ea gives, commit 3fcbef06342a14e9ea9d6a94da6f38f32b51b6f6", "frequency": 1, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 131, "words": "qiskit tools, statements missing, file statements, coverage qiskit, tools visualization", "frequency": 5, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 133, "words": "wrong contains, check regular, expression wrong, single namespace, namespace check", "frequency": 2, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 134, "words": "install cirq, necessary indicating, internet package, installing internet, pip3", "frequency": 1, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 135, "words": "button mouse, controlkey, mouse, dragging columns, dragging", "frequency": 9, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 136, "words": "control eng, controls apply, flip doesn, phaseflip gate, affected invoking", "frequency": 2, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 138, "words": "openfermion, 2017 paper, used openfermion, demo, nathan wiebe", "frequency": 9, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 139, "words": "vmd, contraction coefficients, densities, coefficients exponents, hdf5 files", "frequency": 1, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 140, "words": "device calibration, past experiment, contained information, highfinessepdh, accessible previous", "frequency": 2, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 141, "words": "closes gui, pyrpl new_cavity, tuning closes, reopen gui, gui typical", "frequency": 1, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 142, "words": "cache invalidation, invalidation, invalidation use, invalidation remove, engines created", "frequency": 1, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 143, "words": "logging, python logging, dump stdout, logging facility, logger", "frequency": 4, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 144, "words": "range n_modes, tensor_out, n_modes, mode_ns, spmath", "frequency": 3, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 146, "words": "sig_picnic, sidh msr, msr p503, src sig_picnic, sidh", "frequency": 3, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 147, "words": "vivado, license, embedded_sdk, embedded_sdk xilinxd, license confirmed", "frequency": 3, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 148, "words": "zeroth, zeroth qubit, initialised qubit, qubits initialised, create qubits", "frequency": 2, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 149, "words": "symbolicoperator, rdm, fermionoperator, symbolic representations, qubitoperator", "frequency": 6, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 150, "words": "linearoperator, sparse, csc, usage double, n_hilbert", "frequency": 6, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 151, "words": "ahead master, branch ahead, master good, branch stable, stable", "frequency": 1, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 154, "words": "logo, schwag, shirts, feynman diagram, openfermion logo", "frequency": 2, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 157, "words": "setpoints, custom setpoints, repetitions, results repetitions, sweep", "frequency": 5, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 159, "words": "sympy, symbol sympy, half useful, square sine, string worried", "frequency": 2, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 161, "words": "equivalent control, infinite bytes, sha 512, secure hash, resistant using", "frequency": 3, "timestamp": "2017-01-18T19:38:03.800000+00:00"}
+{"topic": 0, "words": "moment routing, pyyaml, yml files, critical vulnerability, ran moment", "frequency": 2, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 1, "words": "raspberry pi, raspberry, xeon, opencl, opencl kernel", "frequency": 12, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 2, "words": "pulse, schedule, pulses, pulsestorage, schedules", "frequency": 140, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 3, "words": "cancel jobs, jobs program, cancel, operations expvals, expvals", "frequency": 11, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 4, "words": "mapper, coupling, swap, coupling map, swap mapper", "frequency": 94, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 5, "words": "oqs, nist, oqs cp, openssl, cp src", "frequency": 48, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 6, "words": "cv, gradients, non gaussian, gaussian, cv gradients", "frequency": 27, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 7, "words": "pyquil, qvm, quil, quilc, pyquil api", "frequency": 127, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 8, "words": "zx calculus, calculus, zx, zxcalculus com, zxcalculus", "frequency": 2, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 9, "words": "mesolve, steadystate, time dependent, pz anaconda3, home pz", "frequency": 24, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 10, "words": "nrinv, ncx, nr, qasm, qasm output", "frequency": 11, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 12, "words": "q7, drawer, mpl, nbarrier q7, q7 nbarrier", "frequency": 80, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 13, "words": "otoc, phys_dim, wires qml, rot wires, qml rot", "frequency": 14, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 14, "words": "tensornet device, experimental tensornet, jax, classical machine, support jax", "frequency": 2, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 15, "words": "0y2uped9, build 0y2uped9, 0y2uped9 pyqrllib, pyqrllib, pip build", "frequency": 32, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 16, "words": "sshd_config, al2, al2 sshd_config, directory config, checking al2", "frequency": 1, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 17, "words": "changelog, cirqbot, automerge, release notes, automerge tags", "frequency": 19, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 18, "words": "clifford, qunit, stabilizer, clifford simulator, tableau", "frequency": 16, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 20, "words": "bqm, vartype, vartype binary, make_quadratic, binaryquadraticmodel", "frequency": 37, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 21, "words": "707, 707 707, unitary, decompose, matrix circuit", "frequency": 26, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 22, "words": "noise, noise model, noise models, qvm, models", "frequency": 43, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 23, "words": "matplotlib, plot, interactive, plot_histogram, figure", "frequency": 48, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 24, "words": "visual redistributable, scenario install, redistributable, qi, terra element", "frequency": 21, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 25, "words": "instrument, driver, parameters group, sweep object, initial value", "frequency": 21, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 26, "words": "job, jobs, attribute spec, schema attribute, ibmq", "frequency": 40, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 27, "words": "memory, ram, tn vs, vs qasm, qfusion", "frequency": 14, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 28, "words": "00439641, 0307873, u2 qc, 472202, 0674301", "frequency": 19, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 29, "words": "sphinx, blankline, neal, blank line, automate building", "frequency": 13, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 30, "words": "qmodes, qml templates, creates randomly, structure learning, gaussian list", "frequency": 8, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 31, "words": "json, serialization, visualizers, protobuf, deserialization", "frequency": 24, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 32, "words": "dwave, dwavesampler, cloud client, ocean, client", "frequency": 40, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 34, "words": "signal, iq, lock, lockbox, synchronize", "frequency": 14, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 35, "words": "pulse testing, jenkins, 1365 warnings, squelch tests, tests receptive", "frequency": 16, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 36, "words": "idempotence, pass manager, property set, manager, passes", "frequency": 19, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 37, "words": "fcl, unit tiles, cluster loops, frustrated cluster, graphviz", "frequency": 5, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 38, "words": "qubit_characterizations_test, qubit_characterizations_test py, parallelization limit, evaluated load, decorators evaluated", "frequency": 7, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 39, "words": "initial_layout, qiskit transpiler, teleport py, named qiskit, teleport", "frequency": 14, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 40, "words": "73, 74, 71, 76, 69", "frequency": 32, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 41, "words": "ic, files x86, ic program, thomas appdata, program files", "frequency": 16, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 42, "words": "cirq dev, qualgorithmzoo jl, cqc, cirq experiments, qualgorithmzoo", "frequency": 16, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 43, "words": "paulistring, paulisum, lineardict, pauli, pauli string", "frequency": 22, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 44, "words": "rr, ket1, entropy, ket0, mechanics", "frequency": 6, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 45, "words": "ast, nuqasm2, parser, produces ast, interpret ast", "frequency": 3, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 47, "words": "dummy private, writing drivers, documenter, private method, add_parameter", "frequency": 6, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 48, "words": "master nist, wiki, nist branch, readme rst, qiskit org", "frequency": 12, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 49, "words": "measurementgate, qubits act, gate optimization, constructed universal, universal quantum", "frequency": 14, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 50, "words": "travis, ranlib file, utilities symbols, file libs, ranlib", "frequency": 34, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 51, "words": "jl, yao, julia, luxurysparse, 309726", "frequency": 9, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 52, "words": "pytest, stestr, test runner, runner, xdist", "frequency": 12, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 53, "words": "sf backend, version openfermion, comb, google collab, colab", "frequency": 2, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 55, "words": "deprecations, good bind, compiler arg, items marked, post deprecations", "frequency": 9, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 57, "words": "decompose, compositegate, decompositions, decoherence functions, gate set", "frequency": 21, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 58, "words": "twisted spread, nosuchmethod method, known_peers, spread flavors, nosuchmethod", "frequency": 7, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 59, "words": "dag, dagcircuit, self graph, need dag, node", "frequency": 27, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 60, "words": "deploy fails, fails manylinux, included wheel, building statically, wheel", "frequency": 6, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 61, "words": "maintainer section, developer section, new swap, maintainer, section module", "frequency": 8, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 62, "words": "moments, linequbit cirq, cirq linequbit, gridqubit cirq, moment", "frequency": 25, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 63, "words": "jupyter, visualizations, interactive visualizations, jupyter tools, notebooks", "frequency": 13, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 64, "words": "bloch, sphere, bloch sphere, plot_bloch_vector, matplotlib", "frequency": 15, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 65, "words": "used type, type annotations, typed file, ide navigate, mypy", "frequency": 5, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 66, "words": "layout get_registers, get_registers, register subscripting, qubitplaceholder, obscure indexerror", "frequency": 18, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 67, "words": "sampleset, samplesets, run duration, maximum problem, from_samples", "frequency": 21, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 68, "words": "opencl, apps use, adopt metal, ___kmpc_critical, symbol ___kmpc_critical", "frequency": 4, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 69, "words": "sapi, problem submit, multipart, multipart upload, ref problem", "frequency": 13, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 70, "words": "bind, bind parameters, parameter theta, parameters parameter, circuit parameters", "frequency": 5, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 71, "words": "ordertester, equal ordering, verify equal, iff iff, given sequence", "frequency": 3, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 72, "words": "build commit, failed trying, trying build, commit, failed", "frequency": 43, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 73, "words": "major performance, backwards compat, 2474 causes, compat fix, classes discuss", "frequency": 1, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 74, "words": "openqml, openqml core, float128, numpy openqml, numpy", "frequency": 10, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 75, "words": "taxing, requirements txt, api version, api versions, requirements arises", "frequency": 7, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 76, "words": "qobj, schema, qobj schema, conditionals, schemas", "frequency": 53, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 77, "words": "probabilities snapshot, expectation, expectation value, pauli expectation, expectations return", "frequency": 8, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 78, "words": "pyrpl, redpitaya, attributes selectproperty, selectproperty, module options", "frequency": 10, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 80, "words": "density, density matrix, matrix simulator, density matrices, cpu local", "frequency": 22, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 81, "words": "replacing bash, bash scripts, script past, ips port, cabler daniel", "frequency": 4, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 82, "words": "rabi, experiments experiment, cirq proper, google_engine_rabi ibm_q_rabi, populates field", "frequency": 2, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 83, "words": "seed, seeding, random seed, procs, alarming", "frequency": 13, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 84, "words": "dev builds, break integrations, cut version, attempt upload, builds pypi", "frequency": 4, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 86, "words": "controlled measurements, conditional measurements, conditional, trivial circuits, measure", "frequency": 10, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 88, "words": "install target, quicklisp pulling, pulling dependencies, qvm quicklisp, quicklisp", "frequency": 5, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 89, "words": "qrack, lgpl, benn, simulation resources, mqc", "frequency": 4, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 91, "words": "q8, trydecompose, q9, qobjitem, c10", "frequency": 11, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 92, "words": "50e 17, 15 50e, 50e, sqlite_base, dataset", "frequency": 8, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 93, "words": "jwt used, suggestion shouldn, assume jwt, using jw, completely whim", "frequency": 1, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 94, "words": "register list, documented just, qureg, quantum register, decompositions stateprep2cnot", "frequency": 1, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 95, "words": "futures, concurrent futures, concurrent, processpoolexecutor, async", "frequency": 13, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 98, "words": "dockerfile, dockerfile needs, docker, alpine, developers consequence", "frequency": 8, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 99, "words": "rotation angle, angle rotation, turns half, half turns, sqrt gates", "frequency": 5, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 100, "words": "optimizer class, new_user_interface, optimizer, optimizers, learning rate", "frequency": 21, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 102, "words": "parity flag, false flag, parameter mappings, changes lack, bosonic true", "frequency": 2, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 103, "words": "rbw, na, setting register, frequency setting, 1hz", "frequency": 2, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 104, "words": "occupied_indices, occupied_indices active_indices, active_indices, familiar quantum, subblocks", "frequency": 3, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 105, "words": "pylint, astroid, flake8, wrong wrong, documenting exceptions", "frequency": 8, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 106, "words": "pyqpanda, 或者, 请问您在mac下qpanda 2生成成功了么, 请问您在mac下qpanda, so文件", "frequency": 4, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 107, "words": "channels, control channels, drive channels, drive, collection channels", "frequency": 13, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 108, "words": "observables, plugins, suite observables, reference plugins, operations queue", "frequency": 4, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 109, "words": "class level, imports, embeddings, level imports, level import", "frequency": 12, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 111, "words": "new setting, quick implementation, intend svg, latex_config, png currently", "frequency": 1, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 112, "words": "qubit experiment, experiment took, number threads, threads, qiskit_num_procs", "frequency": 6, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 113, "words": "lightning 19, 19 pennylane, problem pennylane, importing pennylane, pennylane 19", "frequency": 1, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 114, "words": "los, lo, frequencies, default frequencies, default lo", "frequency": 5, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 115, "words": "performance regression, classes introduced, backend properties, bit classes, dag dag", "frequency": 4, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 116, "words": "22 22, 22, a6 22, 80 a6, 22 e2", "frequency": 4, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 117, "words": "benchmark cpp, benchmark, integral type, benchmarks, qfusion", "frequency": 5, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 118, "words": "coverage, coveralls, line continuations, coveralls coverage, coverage collection", "frequency": 5, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 119, "words": "general kraus, krauss operators, kraus maps, krauss, a_i", "frequency": 3, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 120, "words": "intersphinx, ip, pyrpl object, ip address, unittest", "frequency": 5, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 121, "words": "like tools, windows clearer, quirks sdk, message find_grid_embedding, says source", "frequency": 3, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 122, "words": "kak, kak decomposition, negative sign, instability, base vtomole", "frequency": 4, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 123, "words": "config, default basic, undefined solver, home based, config file", "frequency": 7, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 124, "words": "rzz gate, initialization reversible, width 1001, 1001 alt, extra u3", "frequency": 4, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 125, "words": "new classicalregister, classicalregister circuit, yes allowed, allowed called, attribute trialresult", "frequency": 8, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 126, "words": "majorana, majorana operators, mode majorana, hermitian, majoranaoperator", "frequency": 4, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 128, "words": "import aer, aer, pipenv, qiskit providers, onedrive dokumenti", "frequency": 9, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 129, "words": "templates, initialization functions, tuple unpacking, math gcd, hamiltonian definitely", "frequency": 10, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 131, "words": "needs testing, current coverage, coverage, file statements, statements missing", "frequency": 10, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 132, "words": "function formatted, trailing newline, extra trailing, yapf, newline", "frequency": 5, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 134, "words": "unomahaqcl, named cirq, google foxtail, install cirq, print cirq", "frequency": 12, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 135, "words": "drag, drag qubit, wire drag, new column, dragging", "frequency": 5, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 136, "words": "global phase, eigengate, global, phase, ejectz", "frequency": 10, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 137, "words": "fake, fake_device, faketenerife, properties to_dict, backends fakeyorktown", "frequency": 2, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 138, "words": "openfermion, openfermion cirq, givens, development releases, run checks", "frequency": 5, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 139, "words": "qcircuit, quantikz, tex, qpic, latex", "frequency": 12, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 140, "words": "enginejob, keys enginejob, calibration enginejob, print id, str probably", "frequency": 1, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 141, "words": "progress bar, progress bars, progress, bar, mouseover", "frequency": 5, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 142, "words": "functions sim, boilerplate, engine results, sampler implementations, validation functions", "frequency": 5, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 143, "words": "logging, log level, help string, default log, printed stdout", "frequency": 8, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 144, "words": "hadamard_transform, ket0, basis basis, hadamard_transform identity, ket0 ket0", "frequency": 5, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 145, "words": "linear regression, thanks library, forum pennylane, hopefully modified, pennylane regression", "frequency": 1, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 146, "words": "key allocated, private key, memory leaks, end sign, hook allows", "frequency": 3, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 147, "words": "copyright, add licenses, following copyright, header following, year file", "frequency": 5, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 148, "words": "submitted using, jobs submitted, binary pad, called working, hex binary", "frequency": 1, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 149, "words": "term2, term1 term2, term1, normal_ordered, fermionoperator bosonoperator", "frequency": 4, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 151, "words": "branch stable, failing trying, stable failing, 10 failing, stable 10", "frequency": 4, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 152, "words": "gate ccx, qiakit, ccnot qiakit, jpg file, file ccx", "frequency": 2, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 153, "words": "basis expansions, getting matrix, eigenvectors eigenvalues, cirq plugin, eigenvectors", "frequency": 7, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 154, "words": "logo, best regard, zulfan thanks, version white, short logo", "frequency": 1, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 155, "words": "expression tree, outside qnode, does outside, queueing implicit, post apply", "frequency": 6, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 157, "words": "trialresult, sweeptrialresult, sweep, dataframe, stop length", "frequency": 12, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 158, "words": "distutils, numpy distutils, trying distutils, customize msvccompiler, distutils customize", "frequency": 6, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 159, "words": "sympy, erfc, fuss, sympy basic, sympy expressions", "frequency": 4, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 160, "words": "keysight folder, lowercase keysight, filename collision, keysight, lowercase", "frequency": 1, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 161, "words": "fix xref, preparation period, tight tag, bit tight, examples summer", "frequency": 2, "timestamp": "2018-06-11T23:21:53.400000+00:00"}
+{"topic": 0, "words": "gds, station yaml, route, station, cheesing", "frequency": 26, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 1, "words": "oclengine, oclengine cpp, cpp text, gpu, undefined reference", "frequency": 51, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 2, "words": "pulse, schedule, pulses, duration, signal", "frequency": 179, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 3, "words": "problem ids, active jobs, executors, executor, dream", "frequency": 9, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 4, "words": "basis, transpile, trans_qc, target basis, coupling map", "frequency": 42, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 5, "words": "liboqs, oqs, aes, openssh, src common", "frequency": 49, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 6, "words": "gradient, gradients, jacobian, shift, hessian", "frequency": 52, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 7, "words": "py37_0, py_0, pyquil, pypi_0, pypi_0 pypi", "frequency": 47, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 8, "words": "tgt, coord, annotation coord, annotation, data type", "frequency": 7, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 9, "words": "time dependent, mcsolve, mesolve, dependent, solver", "frequency": 39, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 10, "words": "cx cx, cx, 11 cx, rz 25, 25 pi", "frequency": 29, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 11, "words": "integer float32, types bqms, float32 dtypes, float64 good, bqms right", "frequency": 1, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 12, "words": "mpl, drawer, mpl drawer, text drawer, latex drawer", "frequency": 80, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 13, "words": "tensor, tensorflow_core python, tensorflow_core, packages tensorflow_core, tape mode", "frequency": 30, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 14, "words": "loss function, autodiff_backend, jax backend, tensorflow v2, loss", "frequency": 3, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 15, "words": "python_build, python_build temp, creating python_build, temp linux, linux x86_64", "frequency": 32, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 16, "words": "get_device, aws_device, braket object, attribute get_device, boto3", "frequency": 4, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 17, "words": "changelog, actions, branches, gitflow, releases", "frequency": 27, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 18, "words": "qunit, clifford, stabilizer, qstabilizerhybrid, clifford group", "frequency": 26, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 19, "words": "networkx, llvm support, retworkx, support remain, pase", "frequency": 3, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 20, "words": "bqm, dqm, quadratic, fileview, bqms", "frequency": 54, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 21, "words": "unitary, lambda phi, isometry, cnx, u_clean", "frequency": 33, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 22, "words": "noise, noise model, noise models, relaxation, thermal relaxation", "frequency": 17, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 23, "words": "matplotlib, plot, hinton, plotly, plotting", "frequency": 27, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 24, "words": "jedi, module level, needs module, level documentation, aqua", "frequency": 19, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 25, "words": "vals, vna, instrument, qcodes, qcodes instrument", "frequency": 13, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 26, "words": "job_monitor, coupling_map version, job, nq, nq coupling_map", "frequency": 17, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 27, "words": "runningpassmanager py, runningpassmanager, _do_pass, memory, _run_this_pass", "frequency": 25, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 28, "words": "cargs, probability, circuit measure, carg, 5j", "frequency": 22, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 29, "words": "sphinx, pydata, add_source_parser, theme, version sphinx", "frequency": 20, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 30, "words": "keras, pqc, training, pqc layer, tfq", "frequency": 27, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 31, "words": "json, json serialization, serialization, cirq objects, gzip", "frequency": 20, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 32, "words": "requirements info, pip looking, looking multiple, compatible requirements, info pip", "frequency": 30, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 33, "words": "ansys, q3d, renderer, hfss, pyepr", "frequency": 51, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 34, "words": "pid, pfd, signals, fpga, mhz", "frequency": 9, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 35, "words": "place definition, uglification, place default, notebooks, test value", "frequency": 15, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 36, "words": "remove passes, es exclusively, manager levels, routing_method, ability remove", "frequency": 9, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 37, "words": "graphviz, attributeerror graph, graph object, graph objects, bokeh", "frequency": 10, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 38, "words": "qulacs, summary nqubits, nqubits qibo, sec, threads summary", "frequency": 13, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 39, "words": "td td, td, seaborn, tmp qiskit, pyqode", "frequency": 11, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 40, "words": "embedding, minorminer, pegasus, clique, busclique", "frequency": 33, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 41, "words": "fast version, python support, install fast, build nightly, projectq", "frequency": 11, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 42, "words": "cirq master, cirq, tfq, aws braket, later coming", "frequency": 24, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 43, "words": "hamiltonians nqubits, singlequbitcliffordgate, nqubits, pauli, exp ih", "frequency": 13, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 44, "words": "relative entropy, entropy, entropy quantum, m_k, rho_k", "frequency": 17, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 45, "words": "openqasm2, openqasm3, typeless, openqasm, language", "frequency": 14, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 47, "words": "occurrences, occurrences missing, type doc, missing yield, type documentation", "frequency": 9, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 48, "words": "links, fix link, broken links, link, behavior browser", "frequency": 23, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 49, "words": "sqrt iswap, iswap, collecting, qubit gates, collect", "frequency": 25, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 50, "words": "travis, github actions, travis ci, actions, quota", "frequency": 15, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 51, "words": "yao, versions uninstalled, julia, uninstalled, compatibility requirements", "frequency": 17, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 52, "words": "pytest, randomness, based testing, property based, pytest plugin", "frequency": 15, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 53, "words": "26 2020, mar 26, tensorflow, 2020 12, tensorflow quantum", "frequency": 22, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 55, "words": "deprecated, deprecation, sbcl, mp2info, deprecated actually", "frequency": 16, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 56, "words": "singlet state, singlet, generalized singlet, svd cpp, linalg almost_equal", "frequency": 2, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 57, "words": "base_gate, riswap, crazy pills, id instruction, pills", "frequency": 18, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 58, "words": "qrl, master_addr, username local, dev theqrl, info root", "frequency": 6, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 59, "words": "dagdependency_to_dag, substitute_node_with_dag, docstrings inline, convert dagdependency, detailed docstrings", "frequency": 6, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 60, "words": "cibuildwheels, wheels, walrus, twine, wheels confident", "frequency": 4, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 61, "words": "workshop, mitiq, gsoc, wiki, jupyterhub", "frequency": 26, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 62, "words": "moment, moments, insert, insertion, cirq moment", "frequency": 18, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 63, "words": "notebooks, jupyter, nbsphinx, jupyter notebooks, reviewnb", "frequency": 17, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 64, "words": "sphere, bloch, cmath, bloch sphere, cmath sqrt", "frequency": 16, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 65, "words": "mypy, wanna collaborate, hi wanna, type hints, type checking", "frequency": 8, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 66, "words": "multiple qbits, set quantumregister, subscript, draw method, displaying multiple", "frequency": 4, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 67, "words": "hybrid solvers, qpu samplers, samplers, solver features, unstructured solvers", "frequency": 13, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 68, "words": "clang, undefinedbehaviorsanitizer, undefined behaviour, clang undefinedbehaviorsanitizer, qtesla", "frequency": 19, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 69, "words": "sapi, upload, retry, multipart upload, multipart", "frequency": 14, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 70, "words": "bind, bind parameters, module quantumcircuit, quantumcircuit, quantumcircuit bind_parameters", "frequency": 16, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 71, "words": "tape context, deprecated slowly, require queuing, deal consider, discourage works", "frequency": 2, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 72, "words": "build commit, trying build, failing trying, master failing, branch master", "frequency": 31, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 73, "words": "root instrument, station config, output v0, station configuration, parameters station", "frequency": 1, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 74, "words": "0_, numpy 19, _dimod_, _dimod, 14 0_", "frequency": 11, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 75, "words": "requirements, requirements txt, dependencies, install_requires, optional requirements", "frequency": 10, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 76, "words": "qobj validator, meas_return, invalid combination, remove qobj, ignored remove", "frequency": 4, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 77, "words": "symbol values, expectation, collection return, batch symbol, expectation value", "frequency": 12, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 78, "words": "ftv33, dios, iq module, asg module, pyrpl", "frequency": 9, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 80, "words": "density, density matrix, density matrices, matrix simulator, quantuminformation jl", "frequency": 18, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 81, "words": "argparse, load macro, change load, unaligned, variants relying", "frequency": 8, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 83, "words": "drbg, rand_bytes, seed, submissions shall, game change", "frequency": 9, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 84, "words": "information development, pypi package, installing pypi, package issues, issues following", "frequency": 6, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 86, "words": "bit1, bit0, terminal measurements, unhook, bit1 bit0", "frequency": 9, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 88, "words": "cmake, cross compiling, run cmake, cpu_features, build complains", "frequency": 14, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 89, "words": "occupancy, hopping, hopping operator, navigator, operator factory", "frequency": 7, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 91, "words": "higher layer, deal concurrency, testrandomclifford tests, testrandomclifford, deterministic test", "frequency": 5, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 92, "words": "xarray, dataset, hdf5, load data, camera", "frequency": 5, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 93, "words": "sparsepauliop, getitem, return tuple, numpy __mul__, consider return", "frequency": 2, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 95, "words": "ammar, home ammar, ammar local, listening socket, listening", "frequency": 11, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 96, "words": "folding, fold, folding functions, folded, moments", "frequency": 26, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 97, "words": "hilbertspace, qbt, flux, param_vals, param_name", "frequency": 20, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 98, "words": "dockerhub, dockerfile, docker, current dockerfile, dockerfile regularly", "frequency": 4, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 99, "words": "angles, denormalization, canonicalized, fsimgate, consistency consider", "frequency": 6, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 100, "words": "cost function, waitgate, wait operations, cost, trainable", "frequency": 9, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 104, "words": "hamiltonian, hole transformation, particle hole, qml hamiltonian, hamiltonian term", "frequency": 9, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 105, "words": "pylint, globally disabling, according running, upgrade pylint, pylint current", "frequency": 4, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 106, "words": "pyqpanda, 版本, 操作系统, shor_factorization, vqe 都是量子神经网络", "frequency": 10, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 107, "words": "get_device_specification, behavior produce, engineprocessor, device inherits, methods embarrassing", "frequency": 3, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 108, "words": "raw counts, need raw, _raw executor_, motivated problems, emerged bayesian", "frequency": 1, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 109, "words": "pydeps, imports, circular, use import, quadratichamiltonian", "frequency": 9, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 110, "words": "end cheers, great seb, board clearly, tutorials basically, started rst", "frequency": 1, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 111, "words": "buttons, icons, zoom, component widget, dockify", "frequency": 17, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 112, "words": "nreps, time nreps, qubits complex128, nreps total, mpi", "frequency": 8, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 113, "words": "mottonenstatepreparation, importing pennylane, state_vector length, mottonenstatepreparation wires, attribute mottonenstatepreparation", "frequency": 3, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 114, "words": "physical qubits, physical, variable identifiers, identifiers, qubit identifiers", "frequency": 8, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 115, "words": "performance regression, regression, retworkx, performance, optional registers", "frequency": 16, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 116, "words": "returned 0x9242, 0x9242, 0x9242 context_lost_webgl, drawn post, post drawn", "frequency": 1, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 117, "words": "asv, gcp, performance benchmarks, benchmarks, using consequently", "frequency": 6, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 118, "words": "coverage, assertions passed, lcov, assertions, indexedlda", "frequency": 6, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 119, "words": "kraus, choi, kraus operators, choi matrix, channel", "frequency": 12, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 120, "words": "view markdown, markdown, preview, source links, view source", "frequency": 7, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 121, "words": "greeting, static methods, greeting action, make_node, pr greeting", "frequency": 5, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 123, "words": "config options, quest ubuntu, client constructor, accepted config, states accepts", "frequency": 7, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 124, "words": "second reason, u1, inverse, u1 gates, u3 u1", "frequency": 8, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 125, "words": "collapse, rho, measurement gate, measurement, result types", "frequency": 7, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 126, "words": "implementation unittest, unittest documentation, topics implementation, breaks used, related topics", "frequency": 17, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 128, "words": "aer provider, resolve dependency, import aer, importing aer, 11 08", "frequency": 5, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 129, "words": "rand_bra, test_transformations_from_qobj_and_direct_eigenbases_match, test_basis_transformation py, test_basis_transformation, py test_transformations_from_qobj_and_direct_eigenbases_match", "frequency": 4, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 130, "words": "style language, ordering consistent, gets away, colon, parameterized types", "frequency": 1, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 131, "words": "qiskit plugins, tests pyquil, pyquil qiskit, qiskit module, plugins run", "frequency": 5, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 132, "words": "yapf, formatting, black, black formatting, line length", "frequency": 9, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 133, "words": "cleanup global, pollution example, namespace pollution, pollution, global namespace", "frequency": 1, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 134, "words": "install cirq, cirq google, calls hang, import xmonsimulator, import cirq", "frequency": 7, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 136, "words": "phase implementation, parameter global, intuitive seeing, verified mathematica, seeing instead", "frequency": 1, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 137, "words": "conf n_qubits, fake, conf, fakerueschlikon, range conf", "frequency": 6, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 138, "words": "usr openfermion, openfermion, openfermion examples, ofc variational, variational module", "frequency": 7, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 139, "words": "tex, pgf, texmf, texlive texmf, dist tex", "frequency": 4, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 140, "words": "device calibration, wrapper function, documentation repeated, modify simulation, little suggestion", "frequency": 2, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 141, "words": "popup window, popup, gui popup, gui, like avoid", "frequency": 4, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 142, "words": "run_batch, async support, async, methods inherit, common implementations", "frequency": 7, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 143, "words": "logging, implement logging, glog, logging strategy, debugging functions", "frequency": 4, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 144, "words": "ufuncs, ufunc, numpy 20, elementwise, qobj", "frequency": 6, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 145, "words": "extrapolation, bayesian, mle, richardson, richardson extrapolation", "frequency": 11, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 146, "words": "c24, 590, sike, line 590, sidh_compressed", "frequency": 6, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 147, "words": "license, sourcing, open sourcing, commercial use, add license", "frequency": 4, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 148, "words": "input result, marginal_counts, marginalized, bit positions, 09090909", "frequency": 4, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 149, "words": "openfermion utils, openfermion, openfermion transforms, symbolicoperator, openfermion ops", "frequency": 5, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 150, "words": "sparse_matrix method, method paulisum, paulisum, sparse_matrix, method protocol", "frequency": 2, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 151, "words": "branch stable, 16 failing, stable 16, failing trying, failed branch", "frequency": 23, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 152, "words": "toffoli gate, to_string, toffoli, bit toffoli, decomposition toffoli", "frequency": 2, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 153, "words": "pauli basis, new observable, projector, projectorsum, add projector", "frequency": 4, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 154, "words": "logo, revision, uf, revision revision, second mitiq", "frequency": 2, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 155, "words": "type preserving, preserving resolution, cirq types, resolution, type information", "frequency": 6, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 157, "words": "sweepable, recursive type, trialresult, recursive, protocol make", "frequency": 6, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 158, "words": "raspberry, aer, rpi, conan, compile aer", "frequency": 11, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 159, "words": "sympy, flattening, versus parameterized, separate checks, flattening utilities", "frequency": 4, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 161, "words": "grover, qc add_register, regs, add_register, orac", "frequency": 6, "timestamp": "2019-11-03T03:05:43+00:00"}
+{"topic": 0, "words": "gds, gdsfactory, klayout, port, ports", "frequency": 119, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 1, "words": "gpu, qulacs simulator, chi_matrix, cuquantum, gpu support", "frequency": 32, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 2, "words": "pulse, duration, schedule, delay, waveform", "frequency": 94, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 3, "words": "covalent, electron, executor, db, electrons", "frequency": 272, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 4, "words": "coupling, coupling map, swap, transpiler, dagnode", "frequency": 64, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 5, "words": "liboqs, w64 mingw32, x86_64 w64, w64, mingw32", "frequency": 66, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 6, "words": "qnode, gradient, hessian, tape, jacobian", "frequency": 125, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 7, "words": "pyquil, quilc, qvm, quil, quilc version", "frequency": 40, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 8, "words": "checkouts, docs checkouts, home docs, checkouts latest, mitiq checkouts", "frequency": 9, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 9, "words": "sm1, sm5, sm4, sm3, sm2", "frequency": 51, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 10, "words": "qr, qr qr, exporter, qasm, ccx qr", "frequency": 53, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 11, "words": "follow rule, df thc, rule zero, femoco, using equations", "frequency": 3, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 12, "words": "mpl, drawer, drawers, font, mpl circuit", "frequency": 20, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 13, "words": "pyhd3eb1b0_0, pypi_0, pypi_0 pypi, torch, tensor", "frequency": 40, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 14, "words": "jax, jax interface, jit, jax jit, optimisers", "frequency": 34, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 15, "words": "conda, pep517, xdg, qutip, pybuild", "frequency": 36, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 16, "words": "braket, amazon, amazon braket, braket sdk, sdk", "frequency": 28, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 17, "words": "changelog, towncrier, action, automerge, hotfix", "frequency": 54, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 18, "words": "clifford, cdr, stabilizer, ddr, tableau", "frequency": 37, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 19, "words": "quizx, srinjoy, rust, possible stick, cython snippet", "frequency": 3, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 20, "words": "cqm, bqm, quadratic, objective, constraint", "frequency": 70, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 21, "words": "unitary, truth table, openql, function transform, truth", "frequency": 32, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 22, "words": "noise, noise model, noisy, noise models, model", "frequency": 32, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 23, "words": "plottr, xvfb, matplotlib, plot, pytest xvfb", "frequency": 26, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 24, "words": "migrated outlines, migration needs, outlines requirements, migrate qiskit_nature, nature migrated", "frequency": 23, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 25, "words": "val_mapping, instrument, terminator, qcodes, driver", "frequency": 12, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 26, "words": "job, coupling_map version, nq, nq coupling_map, jobs", "frequency": 26, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 27, "words": "211 01343, 01343, 41 211, 31 41, 211", "frequency": 28, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 28, "words": "grp, i_repeat, entropy, rightend, leftend", "frequency": 26, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 29, "words": "sphinx, forward references, autodocsumm, themes, latest sphinx", "frequency": 25, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 30, "words": "helper qubits, qcnn, layers trained, keras, ghz circuits", "frequency": 18, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 31, "words": "json, serialization, cirq_type, json serialization, deserialization", "frequency": 30, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 32, "words": "dwave, ocean, ocean sdk, dwave preprocessing, dwave ocean", "frequency": 18, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 33, "words": "ansys, renderer, hfss, pyepr, ansys renderer", "frequency": 33, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 34, "words": "pwm1, pid, lockbox, pid module, max_hold_no_iir branch", "frequency": 11, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 35, "words": "simphony, flake, sipann, austen, dat files", "frequency": 29, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 36, "words": "passes, pass manager, library circuits, library class, compose", "frequency": 13, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 37, "words": "graph, graphs, networkx, tensor objects, nodes", "frequency": 14, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 38, "words": "spsa, clops, slow, 24 processes, transform_qubits", "frequency": 25, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 39, "words": "named qiskit, thermodynamics_utils, qiskit ml, modulenotfounderror, states cython", "frequency": 20, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 40, "words": "mask_bound, mine_clique_embeddings, nx graph, draw_chimera, chimera", "frequency": 13, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 41, "words": "higher needed, environment normally, install fails, eventlet, specify higher", "frequency": 9, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 42, "words": "cirq core, core contrib, cirq, v0 11, cirq 15", "frequency": 26, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 43, "words": "paulistring, paulistringphasorgate, paulitrotterevolution, densepaulistring, work qdrift", "frequency": 13, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 44, "words": "clipping algorithm, bigram, clipping, bipartite entanglement, entanglement entropy", "frequency": 2, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 45, "words": "grammar, openqasm, openpulse, language server, grammars", "frequency": 16, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 47, "words": "docstrings, doctest, docstring, violations api, api specified", "frequency": 20, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 48, "words": "slack link, github button, know steps, link expired, unitaryhack let", "frequency": 13, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 49, "words": "iswap, sqrt iswap, xygate, gatetabulation, xx yy", "frequency": 22, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 50, "words": "lgtm, travis, credits refresh, migrate travis, credit balance", "frequency": 4, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 51, "words": "julia, yao, yaoapi, users abdul, abdul", "frequency": 17, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 52, "words": "pytest, pb2, pb2 files, stestr, testclient", "frequency": 17, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 53, "words": "tensorflow_quantum, tensorflow, tensorflow quantum, tensorflow_quantum core, tfq", "frequency": 18, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 54, "words": "false false, stim, else_correlated_error, true true, false", "frequency": 19, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 55, "words": "deprecation, warnings, deprecation warnings, global singletons, deprecated", "frequency": 15, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 56, "words": "_cur_orthog_, _cur_orthog_ set, _entropy_, negative entropy, rand_herm", "frequency": 5, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 57, "words": "gatefamily, gateset, timing duration, decision diagram, duration", "frequency": 18, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 58, "words": "considerably provided, sec clocks, crypto sync, trusted community, kind slow", "frequency": 1, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 59, "words": "dag, original dag, collect_2q_runs, nodes just, dagnode", "frequency": 6, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 60, "words": "wheels, cibuildwheel, ppc64le, runners, hosted runners", "frequency": 18, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 61, "words": "ruby, rfc want, general concepts, specified rfc, mitiq", "frequency": 19, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 62, "words": "moment, moments, operations moment, circular imports, insertion", "frequency": 18, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 63, "words": "jupyter, rst files, jupyter extension, executing jupyter, bounty label", "frequency": 11, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 64, "words": "bloch, sphere, bloch sphere, matplotlib, composer", "frequency": 23, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 65, "words": "mypy, relaxed options, dimacs, type annotations, type hinting", "frequency": 8, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 66, "words": "c_if, r0, unused registers, cnf, end clause", "frequency": 18, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 67, "words": "boson sampling, sampleset, nb boson, return nonetype, sampling nb", "frequency": 15, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 68, "words": "freebsd, clang, freebsd 13, gcc, m1", "frequency": 20, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 69, "words": "sapi, metadata api, timeout, leap, leap dashboard", "frequency": 12, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 70, "words": "commata, terra qiskit, bind, quantumcircuit, parameter table", "frequency": 19, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 71, "words": "equality, adjoint, qml equal, tape, qpe_circuit", "frequency": 15, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 72, "words": "push branch, created branch, development understand, installed readme, confirm installed", "frequency": 2, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 74, "words": "doctests, numpy, numpy team, normed, run doctests", "frequency": 9, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 75, "words": "requirements txt, requirements, txt, pinned, remove pinned", "frequency": 15, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 76, "words": "schema compliant, partial result, header job, info passed, return info", "frequency": 4, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 77, "words": "expectation, expectation value, expectation values, compute expectation, opflow", "frequency": 18, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 78, "words": "pyrpl, pitaya, 0x40100014, 0x40100014 _reads, addr 0x40100014", "frequency": 5, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 79, "words": "project stabilizer, projectx cleaned, stabilizer project, stabilizer projectx, projectx", "frequency": 1, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 80, "words": "density, density matrix, density matrices, density_matrix, distributed", "frequency": 12, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 81, "words": "custom exception, exceptions, built exceptions, gradientunsupportederror, serialized sequence", "frequency": 11, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 82, "words": "experiment, experiments, experiment data, parent experiment, sub experiments", "frequency": 45, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 83, "words": "seed, thread_local, random number, resp, resp thread", "frequency": 9, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 84, "words": "pypi, release pipeline, run release, publish pypi, uv", "frequency": 12, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 86, "words": "cco, measurement key, moves measurement, allow repeated, synchronizeterminalmeasurements", "frequency": 5, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 88, "words": "home documents, documents dir, dir llvm, lib lto, lto", "frequency": 3, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 89, "words": "pl model, helm, kubernetes, oovqe, aqtdevice", "frequency": 12, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 91, "words": "gates fermionic_simulation_test, fermionic_simulation_test py, fermionic_simulation_test, test_fermionic_simulation_gate, py test_fermionic_simulation_gate", "frequency": 9, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 92, "words": "mockparabola, dataset, hdf5, netcdf, hdf5_format", "frequency": 6, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 93, "words": "fermionicop, dense labels, sparse labels, labels, string labels", "frequency": 14, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 94, "words": "qpy, qpy serialization, deserialization, qpy_serialization, serialization", "frequency": 9, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 95, "words": "multiprocessing, python3 asyncio, deadlock, asyncio, file usr", "frequency": 10, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 96, "words": "folding, fold, folded, qc_basis, mitiq_test", "frequency": 18, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 97, "words": "flux, fluxq1, transmon, osc, eigen energies", "frequency": 10, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 98, "words": "docker, dockerfile, docker images, docker tests, docker image", "frequency": 10, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 99, "words": "angle value, mantissa, planck length, precision, angle", "frequency": 8, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 100, "words": "optimizers, replace usages, making optimization, optimization readily, passing time", "frequency": 6, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 101, "words": "tableau, tableausimulator, stim, stim tableau, stim tableausimulator", "frequency": 21, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 102, "words": "type signature, signature detailed, signature struct, type spin, complete reconstruction", "frequency": 2, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 104, "words": "16 dev0, pennylane 16, hamiltonian, vqe hamiltonian, negative sign", "frequency": 11, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 105, "words": "pylint, pylint applied, pylint complaining, directory pylint, applied tools", "frequency": 5, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 106, "words": "paddlepaddle hackathon, paddlepaddle, pyqpanda, hackathon, 版本", "frequency": 15, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 107, "words": "pre factor, new style, visainstrument, bare generator, plugin developers", "frequency": 8, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 108, "words": "observables, observable, expect psi, classes reference, base classes", "frequency": 19, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 109, "words": "parameterized basic, imports good, multiple files, qubit py, py multiple", "frequency": 7, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 111, "words": "resizable, drop components, toolbar button, viewer, toolbar", "frequency": 11, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 112, "words": "x86_64 linux, 38 x86_64, linux gnu, cpython 38, ubuntu local", "frequency": 7, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 113, "words": "pennylane, logging, lightning, pennylane lightning, qchem", "frequency": 17, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 114, "words": "physical qubits, physical, wildcard pattern, physical qubit, identifier", "frequency": 6, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 115, "words": "ns, performance regression, regression, inheriting, performance", "frequency": 8, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 116, "words": "ui firefox, opaqueness, firefox, rendered graph, firefox dragging", "frequency": 1, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 117, "words": "asv, benchmarks, irrelevant add, asv irrelevant, benchmarks merged", "frequency": 7, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 118, "words": "coverage, ulp, vs beta, test coverage, codecov", "frequency": 10, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 119, "words": "kraus, kraus operators, process matrix, operator sum, choi", "frequency": 10, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 120, "words": "manual page, rfc added, json ir, office hours, api references", "frequency": 6, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 121, "words": "search functionality, advert, reference showing, correct spelling, missing prefix", "frequency": 13, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 123, "words": "saved_parameters pkl, saved_parameters, pkl, open saved_parameters, tricrown", "frequency": 6, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 124, "words": "inverse, gate inverse, self inverse, inverse gates, negative reps", "frequency": 8, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 125, "words": "observer, cat, singular qubits, consciousness, determines quantum", "frequency": 6, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 126, "words": "bksf, bksf mapper, mapper, bk, fermionic", "frequency": 6, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 128, "words": "provider install, missingoptionallibraryerror qiskit, aer library, install qiskit, aer provider", "frequency": 3, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 129, "words": "er1, 28106587 14, 28106587, 14 85135832, 0436407 28106587", "frequency": 5, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 130, "words": "way operations, argument wires, arguments keywords, require argument, operations required", "frequency": 2, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 131, "words": "moved snapshot, unittest suite, snapshot testing, nixos, useful tackling", "frequency": 3, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 132, "words": "black, various formatting, format incremental, formatting, formatting issues", "frequency": 5, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 133, "words": "highlighted blue, automatic keyword, documentation keywords, mass rewrite, highlighted context", "frequency": 3, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 134, "words": "plain python, mean _abc, abc did, jupyterlab macos, 15 plain", "frequency": 6, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 136, "words": "global phase, phase, global, decompositions ignore, phase gate", "frequency": 6, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 137, "words": "fake, fakebackendv2, fake backends, backendv2, v2 backends", "frequency": 19, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 138, "words": "molecule, openfermion, openfermion dirac, dirac, protons", "frequency": 6, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 139, "words": "qpic, latex, routines bug, ohms, svg representation", "frequency": 5, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 140, "words": "calibration, structure calibration, contains experiments, calibration experiments, calibration contains", "frequency": 6, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 141, "words": "qt gui, gui, qt, job watcher, event loop", "frequency": 8, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 142, "words": "qubit_map, classes private, tsimulatorstate, statevectorstepresult, invoke decomposition", "frequency": 9, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 143, "words": "window disappear, expect log, log window, disappear appear, icon log", "frequency": 1, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 144, "words": "qobj_list, sparse true, higher dimensions, qobj_list qobj_list, size raise", "frequency": 4, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 145, "words": "different factories, plot_fit, axis values, different points, plot follows", "frequency": 1, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 146, "words": "valgrind, sike, suppression files, line numbers, things understanding", "frequency": 7, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 147, "words": "licenses, nist, license statements, previous text, aforementioned files", "frequency": 3, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 148, "words": "memory field, size shape, valueerror reshape, reshape array, does act", "frequency": 6, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 149, "words": "coefficients, polynomialtensor, structure problems, body term, stores body", "frequency": 6, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 150, "words": "costs times, evolution matrix, place improve, exponentialutils, drop small", "frequency": 7, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 151, "words": "0831d6b61ad5d661c5f756ae7c1e4938eddbc117, 0831d6b61ad5d661c5f756ae7c1e4938eddbc117 failed, commit 0831d6b61ad5d661c5f756ae7c1e4938eddbc117, 16 failing, stable 16", "frequency": 1, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 152, "words": "probably exchange, method outdated, transpilations final, don u1, outdated far", "frequency": 2, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 153, "words": "depth samples, 15sec, qubits depth, 1000 took, 20h numpy", "frequency": 4, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 154, "words": "logo, joss, bloqade logo, problems software, add bloqade", "frequency": 6, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 155, "words": "paramresolver, hash, don hash, hashable, circuitoperation", "frequency": 7, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 156, "words": "detectorerrormodel, detectorerrormodel add, error model, detector error, detector", "frequency": 12, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 157, "words": "concern deprecate, deprecate keeping, simulator methods, states simultaneously, simulator sweep", "frequency": 1, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 158, "words": "llvm openmp, arm64, openmp, conan, openmp 12", "frequency": 3, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 159, "words": "value_of, value args, sympy, sympy arguments, self value_of", "frequency": 4, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 161, "words": "invoker, correct key, defined number, grover, simulation binary", "frequency": 5, "timestamp": "2021-03-26T06:49:32.600000+00:00"}
+{"topic": 0, "words": "gdsfactory, klayout, gf, gds, component", "frequency": 288, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 1, "words": "cuda quantum, cuda, ast, ast expression, gpu", "frequency": 159, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 2, "words": "pulse, schedule, pulser, scheduling, duration", "frequency": 95, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 3, "words": "covalent, executor, electron, sublattice, electrons", "frequency": 194, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 4, "words": "layout, transpile, transpiler, coupling, coupling map", "frequency": 91, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 5, "words": "assertionerror got, failed tests, unexpected return, got unexpected, 3221225781", "frequency": 60, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 6, "words": "gradient, qnode, differentiation, gradients, parameter shift", "frequency": 85, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 7, "words": "pyquil, qvm, qcs, quil, qcs sdk", "frequency": 69, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 8, "words": "spider, rewrites, vertices, zxlive, bialgebra", "frequency": 92, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 9, "words": "sm, sm dag, dag sm, propagator, steady", "frequency": 30, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 10, "words": "exporter, qasm, oq2, qasm3, openqasm", "frequency": 56, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 11, "words": "bloq, bloqs, costs, qrom, composite bloq", "frequency": 79, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 12, "words": "drawer, luxor, mpl, step2, heralds", "frequency": 23, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 13, "words": "circuit ty, torch, ty quantum, ty, tensor", "frequency": 60, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 14, "words": "jax, jit, jax jit, tracer, tracers", "frequency": 52, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 15, "words": "python site, python lib, lib python, library python, qutip tests", "frequency": 26, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 16, "words": "amazon braket, braket, amazon, qbraid, ionq", "frequency": 70, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 17, "words": "actions, release notes, github actions, action, reno", "frequency": 36, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 18, "words": "clifford, cliffords, clifford gate, theta np, clifford gates", "frequency": 38, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 19, "words": "msrv, rust, feature opt, manifest file, manifest", "frequency": 10, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 20, "words": "cqm, quadratic, constraint, objective, cqm serialization", "frequency": 19, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 21, "words": "packages bqskit, py3104, py3104 lib, envs py3104, bqskit", "frequency": 29, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 22, "words": "noise, noise model, noisemodel, model, noise models", "frequency": 35, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 23, "words": "matplotlib, histogram, plot, legend, plotting", "frequency": 33, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 24, "words": "qiskit org, afrohacks, primitives, ecosystem, afrohacks afrotech", "frequency": 45, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 25, "words": "instrument, get_idn, usb, virtual instruments, instrumentmodule", "frequency": 14, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 26, "words": "job, qelectron, jobs, qelectron db, provider", "frequency": 26, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 27, "words": "memory, 2389, python 2389, memory usage, initial_state", "frequency": 32, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 28, "words": "qcfinal, qcfinal cu, statevector, sub_1, sub_2", "frequency": 20, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 29, "words": "sphinx, sphinx panels, panels, sphinx design, sphinxcontrib bibtex", "frequency": 26, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 30, "words": "h1, dropout, training, data loader, h2", "frequency": 27, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 31, "words": "json, serialization, json serialization, deserialization, serialize", "frequency": 24, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 32, "words": "dwave, slashes, ocean, dwave conf, sio2", "frequency": 9, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 33, "words": "ansys, 2022 r2, ansys 2022, 02 eigenmode, r2", "frequency": 9, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 34, "words": "b0, b0 b0, genblk6, i_dsp genblk6, genblk6 iq_2_outputs", "frequency": 8, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 35, "words": "functional tests, flaky tests, flaky, ui functional, failure repeating", "frequency": 16, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 36, "words": "preset, preset pass, stage, pass manager, passes", "frequency": 25, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 37, "words": "gflow, graph, measurement planes, finding algorithm, planes", "frequency": 23, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 38, "words": "routecqc, benchmarks repeats, transformers routing, routing routecqc, benchmarks transformers", "frequency": 26, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 39, "words": "_in_process, module named, 04 s390x, cp39, qiskit_nature", "frequency": 18, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 41, "words": "support python, drop support, gdspy, oqpy, installation", "frequency": 27, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 42, "words": "cirq ft, ft, 21 21, qualtran launch, api core", "frequency": 9, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 43, "words": "paulis, pauli, paulilist, paulisentence, repr", "frequency": 16, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 44, "words": "entropy, quantum information, information module, entanglement, entanglement entropy", "frequency": 23, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 45, "words": "uax31, nfkc, openqasm, nfc, autoqasm", "frequency": 28, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 46, "words": "hugr, hugrs, command iterator, hugrview, circuit hugrs", "frequency": 8, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 47, "words": "docs executable, executable make, make examples, examples docs, docstrings", "frequency": 20, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 48, "words": "http_404, broken http_404, links, http_404 finished, excluded broken", "frequency": 12, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 49, "words": "logicblocks, qudit gates, qudit, weyl heisenberg, classicalxor gate", "frequency": 12, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 50, "words": "travis, travisci, fixed travis, travis ci, grafik", "frequency": 2, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 51, "words": "v0, v1, julia, bloqade, jl", "frequency": 19, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 52, "words": "pytest, toqito, temporary directory, test database, pytest used", "frequency": 24, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 53, "words": "tensorflow quantum, tensorflow, colab, install tensorflow, tfq", "frequency": 29, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 54, "words": "stim, add stim, stim circuit, sinter, lattice surgery", "frequency": 37, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 55, "words": "remove deprecated, deprecated tests, deprecated, deprecation raise, check deprecation", "frequency": 16, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 56, "words": "totally positive, rand_states, unvectorize, generate set, measure state", "frequency": 12, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 57, "words": "qtx, qtx wire, quake, td, valign pre", "frequency": 14, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 58, "words": "grpc message, message size, size limit, client grpc, volume readout", "frequency": 1, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 59, "words": "dagcircuit, variables dagcircuit, successors, manual variables, dag", "frequency": 23, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 60, "words": "wheels, aarch64, aarch64 wheels, apple silicon, aarch64 wheel", "frequency": 17, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 61, "words": "faqs, nbsp, faq, nbsp nbsp, pinned post", "frequency": 12, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 62, "words": "circuit_utils, place moments, circuit_utils module, get_operator_number circuit_utils, circuit_utils get_operator_number", "frequency": 7, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 63, "words": "jupyter, crumble, notebooks, notebook_name, nbconvert", "frequency": 23, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 64, "words": "sphere, bloch sphere, bloch, plot_bloch_multivector, coordinate list", "frequency": 6, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 65, "words": "mypy, add shapes, type checking, pyright, annotations", "frequency": 14, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 66, "words": "indexerror list, quantikz, list index, qubit instruction, index range", "frequency": 14, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 67, "words": "alias sampling, sampleview, sampleset, attributes signature, prints sample", "frequency": 5, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 68, "words": "gcc 13, gcc, clang, ddsim_noise_aware, rawhide", "frequency": 18, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 69, "words": "sapi, oauth, option env, kwarg option, file kwarg", "frequency": 14, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 70, "words": "parametervectorelement, parametervectorelement parametervectorelement, bind parameters, paulitwodesign, bind", "frequency": 13, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 71, "words": "transformprogram, transformcontainer, adjoint, p5, p4", "frequency": 14, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 73, "words": "base profile, profile, codegen, declare statements, rc27", "frequency": 8, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 74, "words": "numpy 25, numpy 24, numpy, numpy numpy, bug numpy", "frequency": 12, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 75, "words": "requirements, dependencies, failures failures, install_requires, requirements txt", "frequency": 18, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 76, "words": "isherm qobj, qobj correct, false fixed, generate correct, result false", "frequency": 1, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 77, "words": "expectation, state energy, expectation value, simulate_expectation_values, real ground", "frequency": 11, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 78, "words": "debug pyrpl, pyrpl, 2004hroot, sshshell, pyrpl sshshell", "frequency": 7, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 79, "words": "spec gen, gen conjugate, conjugate invert, fragments, invert run", "frequency": 1, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 80, "words": "0j, factoring measurement, 0j error, representation ket, traces op", "frequency": 4, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 81, "words": "quark, suggestion improvement, link current, playground link, eof", "frequency": 21, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 82, "words": "experiment, experiments, child experiments, child, number circuits", "frequency": 15, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 83, "words": "sampled directions, independently sampled, average independently, random, cover various", "frequency": 7, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 84, "words": "pypi, trusted, trusted publishers, publishers, publishing", "frequency": 8, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 85, "words": "tket1, tket2, tket1 resource, linear bit, core concept", "frequency": 9, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 86, "words": "measurements, measurement, constructed graph, intermediate measurements, mid measurement", "frequency": 16, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 87, "words": "qubitdeclaration, qubitdeclaration size, integerliteral expression, errors ast, ast qubitdeclaration", "frequency": 1, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 88, "words": "qc modules, ex3 qc, apps quest, shared ex3, ex3", "frequency": 12, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 89, "words": "opflow, qiskit opflow, reset gate, opflow qiskit, oovqe", "frequency": 22, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 90, "words": "rust written, debugging expensive, rust liboqs, people possible, machine escape", "frequency": 2, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 91, "words": "flaky, failure, ci, ci failure, ci qiskit", "frequency": 14, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 92, "words": "captured_run_id, gridded data, run_id, gridded, xarray", "frequency": 5, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 93, "words": "sparselabelop, fermionicop, sparsepauliop, simplify, nature version", "frequency": 29, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 94, "words": "qpy, serialization, qpy serialization, floats, deserialization", "frequency": 22, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 95, "words": "get_next_classical, non destructively, protocol_1, destructively, execution queue", "frequency": 7, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 96, "words": "let pick, mod frac, pick example, example present, loop folding", "frequency": 2, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 97, "words": "flux, lamb, e_, ej, transmon", "frequency": 6, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 98, "words": "docker, apptainer, dockerfile, docker image, docker images", "frequency": 18, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 99, "words": "parametric angles, parametric, polynomial, angles, constant term", "frequency": 2, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 100, "words": "analog feature, reupload, intermediate measurements, from_cirq functionality, tested encountered", "frequency": 3, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 101, "words": "tableau, stim tableau, decoding failure, state decoding, stim", "frequency": 24, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 102, "words": "quakesynth, pointer struct, bridge, struct, quakesynth pass", "frequency": 10, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 103, "words": "get_state function, function documentation, get_state, documentation get_state, documentation na", "frequency": 1, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 104, "words": "hamiltonian, hamiltonians, coeffs, gellmann, gellmann observables", "frequency": 18, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 105, "words": "pylint, ruff, using string, flynt, pydocstyle", "frequency": 15, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 106, "words": "pyqpanda, qlist, 版本, 建议的解决方案, 操作系统", "frequency": 12, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 107, "words": "backend devices, device checking, installed backend, checking mechanism, plugin device", "frequency": 7, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 108, "words": "observables, listordict, split_non_commuting, variance, variance trivially", "frequency": 4, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 109, "words": "typings, submodule specifically, import typings, case_default, import leaf", "frequency": 6, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 110, "words": "tests toqito, toqito, add tests, covered existing, uncovered", "frequency": 23, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 111, "words": "dark mode, dark, images, svg, white background", "frequency": 6, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 112, "words": "11100, circ, 00011, mpi, jun doi", "frequency": 10, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 113, "words": "users quantumfall, quantumfall anaconda3, quantumfall, transfer learning, pennylane", "frequency": 10, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 114, "words": "physical qubits, physical, initializers, qudit, circuits physical", "frequency": 10, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 115, "words": "500ms, translator, trials, swap count, basis translator", "frequency": 8, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 116, "words": "vec2, _gen_output_size, outputfor, _gen_secret_half, vec2 outputfor", "frequency": 2, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 117, "words": "benchmarking page, benchmarking, benchmark v4, metrics gathered, performance scqubits", "frequency": 8, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 118, "words": "coverage, codecov, tooling enforced, coverage report, test coverage", "frequency": 9, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 119, "words": "kraus, kraus operators, choi matrix, a_k, choi", "frequency": 8, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 120, "words": "snippets, use snippets, short id, jupyter_autogen, citation format", "frequency": 7, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 121, "words": "addlabel, via_stack_circular, via_stack_circular working, numbers appears, look inconsistency", "frequency": 7, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 122, "words": "subspace int64, int64 vector, int64, bloqadeexpr, users jwurtz", "frequency": 4, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 123, "words": "config created, dispatcher config, config server, client server, server config", "frequency": 2, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 124, "words": "fused, yao doesn, 2792, parameter objects, setter class", "frequency": 5, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 125, "words": "weak measurement, circuitresult object, collapsed measurements, circuitresult, pauli like", "frequency": 5, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 126, "words": "majoranaoperator, majoranaop, majoranaoperator does, symbolicoperator, jordan wigner", "frequency": 4, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 128, "words": "qiskit_aer, packages qiskit_aer, users administrator, administrator appdata, python311 lib", "frequency": 7, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 129, "words": "scipy 11, nemo, scipy, eigensystem, hermitian eval", "frequency": 7, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 130, "words": "ambiguous types, return type, let binding, type inference, inference", "frequency": 13, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 131, "words": "2024 module, eol mid, deliverable package, intention clean, explicit unittests", "frequency": 8, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 132, "words": "python formatting, formatting, yapf, formatting step, pep8 style", "frequency": 8, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 133, "words": "namespaces, namespace, hierarchical namespaces, hierarchical, items", "frequency": 6, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 134, "words": "label ready, monitor push, 03 06, prs ignored, deploy correctly", "frequency": 1, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 136, "words": "global phase, mathrm varphi, mathrm mathrm, mathrm, global", "frequency": 6, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 137, "words": "fakebackendv2, asymmetric readout, kyiv, fake, readout errors", "frequency": 8, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 138, "words": "pr leisure, leisure need, doc dependency, yay nay, dependency doc", "frequency": 1, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 139, "words": "qpic, quantikz, quantikz qcircuit, corresponding latex, qcircuit", "frequency": 5, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 140, "words": "calibration, update calibrations, zne inference, calibrations object, mitiq zne", "frequency": 16, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 141, "words": "progress bars, enhancedtextprogressbar, bars, profiler, docstring suggest", "frequency": 3, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 142, "words": "rng, batched way, sweat_smile, batched, single tasks", "frequency": 8, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 143, "words": "logging, logs, download entire, qelectrons, log", "frequency": 7, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 144, "words": "12 12, csc_matrix, _csc csc_matrix, _csc, sparse _csc", "frequency": 4, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 145, "words": "pec, ideal_operation, body executor, pec representations, extrapolator", "frequency": 3, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 146, "words": "valgrind, assignment thread, trace valgrind, memory referenced, memory leaks", "frequency": 3, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 147, "words": "license, cc0, licenses, mit, apache2", "frequency": 8, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 148, "words": "dit, dits, binary hex, checking key, string binary", "frequency": 4, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 149, "words": "n_k, homo, lumo, homo lumo, fermionic", "frequency": 7, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 150, "words": "sparse matrix, sparse, qrusty, row, dense vector", "frequency": 6, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 151, "words": "rolloff, zero repo, function rcfiltertaps, versions validated, version contributing", "frequency": 2, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 152, "words": "toffoli, toffoli complexity, log epsilon, complexity, costs", "frequency": 9, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 153, "words": "projectors, projector, apply projector, defaulted think, support defaulted", "frequency": 4, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 154, "words": "logo, twitter logo, twitter, hacktoberfest, update twitter", "frequency": 5, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 155, "words": "fact inherits, bool normalized, inheritance object, object simpler, normalize data", "frequency": 6, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 156, "words": "detector, detector error, tanner graph, tanner, detector slice", "frequency": 10, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 157, "words": "subsys_update_info, sweepable, sweep, deepcopy true, bare spectrum", "frequency": 2, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 158, "words": "c1060, error c1060, c1060 compiler, compiler heap, forge ci", "frequency": 3, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 159, "words": "exponentiated, puzzling spotted, exp gives, circuit exponentiated, spotted investigating", "frequency": 1, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 160, "words": "qsharp json, problems view, single file, multi file, language service", "frequency": 7, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 161, "words": "phaseflip, grover, psi rangle, bitflip, oracle", "frequency": 3, "timestamp": "2022-08-17T10:33:22.200000+00:00"}
+{"topic": 0, "words": "span, color, gdsfactory, span style, span span", "frequency": 251, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 1, "words": "cuda, cudaq, nvidia, cuda quantum, gpu", "frequency": 281, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 2, "words": "pulse, pulser, duration, uuid, pulses", "frequency": 58, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 3, "words": "executor, aws codebuild, codebuild, executors, covalent", "frequency": 24, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 4, "words": "passmanager, transpiled, qk py312, dhhoe miniconda3, py312 lib", "frequency": 89, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 5, "words": "liboqs, kem, oqs, ml, openssl", "frequency": 94, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 6, "words": "qnode, gradient, differentiated, parameter shift, qjit", "frequency": 85, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 7, "words": "pyquil, quil, dynacool, pyquil 14, qvm", "frequency": 40, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 8, "words": "zxlive, spider, graph like, spiders, rewrites", "frequency": 80, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 9, "words": "jump rate, steady, jump, steady state, propagator", "frequency": 41, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 10, "words": "qasm, exporter, qasm file, qasm txt, qasm3", "frequency": 69, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 11, "words": "bloq, bloqs, symbolic, costs, qrom", "frequency": 139, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 12, "words": "draw, mpl, drawer, idle_wires, including attachments", "frequency": 23, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 13, "words": "dmrg, torch, tensor, pytorch, tn", "frequency": 55, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 14, "words": "jax, jaxpr, miniforge base, homebrew caskroom, caskroom miniforge", "frequency": 85, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 15, "words": "cvxcore_wrap, cvxcore, cvxpy cvxcore, cvxcore python, python cvxcore_wrap", "frequency": 31, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 16, "words": "qbraid, ionq, azure, braket, amazon", "frequency": 52, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 17, "words": "actions, changelog, github actions, workflow, github", "frequency": 35, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 18, "words": "clifford, cliffords, clifford gate, sergey, clifford circuit", "frequency": 39, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 19, "words": "rust, rust native, python space, rust space, standalone function", "frequency": 96, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 20, "words": "number auxiliaries, dimod make_quadratic, auxiliaries, make_quadratic, data e_min", "frequency": 4, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 21, "words": "unitary, qsd, unitary matrix, shannon decomposition, shannon", "frequency": 41, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 22, "words": "noise, noise model, noisy, times 10, model", "frequency": 27, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 23, "words": "wavefunction, plot, plot_matplotlib, matplotlib, _number_to_keep_", "frequency": 19, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 24, "words": "qdrift trotterization, trotterization method, public subject, subject policy, ecosystem", "frequency": 37, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 25, "words": "triton, setpoints, quark, jürgen, dummy parameters", "frequency": 9, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 26, "words": "service, ibm, job, fake service, jobs batch", "frequency": 18, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 27, "words": "memory, ram, sbatch, insufficient memory, required memory", "frequency": 25, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 28, "words": "statevector, chessboard, probability, 205 controlled_by, bits 205", "frequency": 34, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 29, "words": "sphinx, theme, autoapi, docs build, html", "frequency": 30, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 30, "words": "tem, jittor, circuit knitting, knitting, qubit qutrit", "frequency": 24, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 31, "words": "json, serialization, coupler_pulse couplerpulse, gds metadata, coupler_pulse", "frequency": 18, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 32, "words": "dwave, win_amd64 pyd, _minorminer, _minorminer cp313, file _minorminer", "frequency": 10, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 33, "words": "ansys, qmetal, qmetal lib, envs qmetal, qiskit_metal", "frequency": 12, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 34, "words": "fpga, pid, lock, iq, pid module", "frequency": 16, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 35, "words": "anyon, anyon target, sporadic, repeatedly cause, processes repeatedly", "frequency": 10, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 36, "words": "pass manager, passes, manager, stage, accessor functions", "frequency": 21, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 37, "words": "flow, graph, pauli flow, graphs, rustworkx", "frequency": 31, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 38, "words": "qualtran bloqs, qualtran, bloqs, bloqs qsp, qsp", "frequency": 13, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 39, "words": "required installed, qiskit primitives, import, qiskit_machine_learning, upload qiskit", "frequency": 24, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 40, "words": "eps eps, num_var, eps, samps, num_reads", "frequency": 7, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 41, "words": "support python, python 13, matrix build, oct 2024, drop python", "frequency": 17, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 42, "words": "npm, live server, cirq v1, npm live, cirq ft", "frequency": 16, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 43, "words": "pauli, identity pauli, productformula, pauli word, pauli strings", "frequency": 15, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 44, "words": "rho ab, rho, alpha, entropy, ab", "frequency": 23, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 45, "words": "openqasm, election, openqasm3, tsc, pyqasm", "frequency": 24, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 46, "words": "guppy, hugr, hugrs, callindirect, tket2", "frequency": 22, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 47, "words": "level docstrings, details module, docstrings add, add details, docstrings", "frequency": 24, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 48, "words": "github pages, link, education page, pages, appendix app", "frequency": 17, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 49, "words": "ordereddict u3, ordereddict, u3, cx, u3 cx", "frequency": 11, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 50, "words": "travis, ppc64le, s390x, travis ci, osuosl", "frequency": 4, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 51, "words": "julia, jl, quantumoptics, quantumtoolbox, cuyao", "frequency": 22, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 52, "words": "py toqito, toqito, matrix_props tests, toqito matrix_props, state_props tests", "frequency": 16, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 53, "words": "tensorflow, colab, tensorflow python, 11 dist, tensorflow quantum", "frequency": 16, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 54, "words": "stim, stim env, stim circuit, add stim, stimcirq", "frequency": 25, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 55, "words": "deprecations, deprecation, deprecated, local detuning, samplerv2", "frequency": 28, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 56, "words": "doubly, doubly stochastic, nonnegative, axis_num, stochastic matrix", "frequency": 16, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 57, "words": "gst, gate set, different decomposition, ry gate, parameterized gates", "frequency": 13, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 58, "words": "92665, 7065072, 7065072 bytes, 92665 92665, 92665 data", "frequency": 2, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 59, "words": "dag, sub circuit, object private, equivalent sub, painful inconsistency", "frequency": 8, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 60, "words": "wheels, free threaded, free threading, wheel, support free", "frequency": 23, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 61, "words": "2025 idea, idea list, update gsoc, gsoc 2025, contribution guide", "frequency": 11, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 62, "words": "moments, gate files, protocols is_parameterized, resolved_op, is_parameterized", "frequency": 7, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 63, "words": "notebooks, ucc, nexus local, used legend, work jupyterlab", "frequency": 9, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 64, "words": "bloch sphere, sphere, bloch, wireframe, add bloch", "frequency": 7, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 65, "words": "mypy, gitignore, mypy 11, type annotation, gitignore file", "frequency": 22, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 66, "words": "control qubits, broadcasting conventions, append multi, binary hamiltonian, circuitpermmps", "frequency": 8, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 67, "words": "sampleresult, samplerresult, problem id, leaphybridnlsampler, problem_data_id", "frequency": 7, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 68, "words": "freebsd 14, freebsd, ldpc, intel variants, ldpc v2", "frequency": 7, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 69, "words": "cache control, sapi, polling, cache, long polling", "frequency": 14, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 70, "words": "clbit classicalregister, parametervectorelement, keyerror clbit, ifelseop, ansatz_opt", "frequency": 13, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 71, "words": "adjoint, classes classes, tapes, transforms, transforms pipeline", "frequency": 22, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 73, "words": "rca, qir generation, qir, rir, check pass", "frequency": 9, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 74, "words": "numpy, cos_trunc, fock_trunc, support numpy, cos_trunc fock_trunc", "frequency": 17, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 75, "words": "dependabot, catalyst version, dependabot prs, requirements txt, consider cadence", "frequency": 9, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 76, "words": "remove qobj, qobj, hard having, qobj et, property dtype", "frequency": 6, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 77, "words": "expectation, expectation value, cisd, model moment, expectation values", "frequency": 16, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 78, "words": "xff, xff xff, pyrpl, 0e, loader", "frequency": 8, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 79, "words": "intrinsic callables, callables, globally unique, callables globally, intrinsic", "frequency": 2, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 80, "words": "resetchannel does, resetchannel, density, densitymatrixsimulator, density matrices", "frequency": 6, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 81, "words": "getter setter, getter, costly getter, message hint, async lowering", "frequency": 6, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 82, "words": "cloud service, experiments extended, remove principle, allowing fixed, won iterating", "frequency": 3, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 83, "words": "seed, seeds, seeding, random, random number", "frequency": 14, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 84, "words": "pypi, trusted, ucc, trusted publishers, trusted publisher", "frequency": 18, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 85, "words": "hseries, tket2, tket1, hugr, quantinuum hugr", "frequency": 34, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 86, "words": "measurement doesn, mid, mid circuit, circuit measurement, measurementvalue", "frequency": 12, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 87, "words": "outcomearray, catalyst_integration, quantumfloats, quantumfloat, outcomearray 13", "frequency": 15, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 88, "words": "cmake, standalone plugin, cmake configuration, mydialect, braket backend", "frequency": 13, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 89, "words": "qadence, samples, bqskit mqtbench, monorepo, integrating bqskit", "frequency": 15, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 90, "words": "rust port, port, rust, rust blocked, blocked port", "frequency": 56, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 91, "words": "unable replicate, saying unable, long saying, wonder close, close unable", "frequency": 6, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 92, "words": "multiindex, dataset, xarray dataset, params include, appear associated", "frequency": 4, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 93, "words": "hub, skill, validation plan, false fix, sparsepauliop", "frequency": 6, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 94, "words": "qpy, galois, galois fields, test_dict, pytket qiskit", "frequency": 14, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 95, "words": "qdu, qcu, debug_print, self debug_print, print info", "frequency": 7, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 96, "words": "folding, local folding, constant folding, mitigation dialect, folding techniques", "frequency": 6, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 97, "words": "transmon, ec, varphi, e_ mathrm, left hat", "frequency": 11, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 98, "words": "mkl 64bit, 64bit 2019, 2019 057, docker, 057", "frequency": 8, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 99, "words": "rotation, angle, angles, merge rotation, 2π", "frequency": 24, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 100, "words": "cirq q0, q0 cirq, curriculum learning, curriculum, optimize step", "frequency": 10, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 101, "words": "tableau, tableaux, tableausimulator, tableau simulator, stim tableau", "frequency": 8, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 102, "words": "kernel, kernels, na, na na, kernel builder", "frequency": 24, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 104, "words": "3x11, 3x11 array, batching, hamiltonian, need try", "frequency": 9, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 105, "words": "pylint, ruff, mccabe, pylint checks, pylintrc", "frequency": 12, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 106, "words": "pyqpanda, qpanda, qpanda_found, importing pyqpanda, pyqpanda python", "frequency": 6, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 107, "words": "internal method, options flags, virtual devices, public property, new device", "frequency": 7, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 108, "words": "observable, observables, typehint, estimatorpub, observablesarray", "frequency": 14, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 109, "words": "circular, circular import, imports, unused imports, imported unused", "frequency": 6, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 110, "words": "toqito, parent information, executable parent, examples toqito, remove csr_matrix", "frequency": 22, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 111, "words": "dark, dark mode, images, light dark, white background", "frequency": 8, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 112, "words": "catalyst gpu, mpi, gpu, single node, cpu execution", "frequency": 5, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 113, "words": "croot, file croot, pennylane, lightning, pennylane lightning", "frequency": 8, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 114, "words": "remapping, initial remapping, company priorities, swaps, want automatically", "frequency": 6, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 115, "words": "sherbrooke, set qargs, peaks, transpilation time, 3520dt", "frequency": 5, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 116, "words": "2522, 5d, 5b, 2522zdetector, 2522h", "frequency": 2, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 117, "words": "reversible circuits, benchmarking, benchmark, stupid question, changes time", "frequency": 8, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 118, "words": "codecov, coverage 90, order tests, increase test, tests executed", "frequency": 4, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 119, "words": "generating mr, yes process, process generating, choi_matrix, inexperienced github", "frequency": 4, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 120, "words": "dco, goal introduction, seconding, fix dco, orca backend", "frequency": 9, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 121, "words": "grid function, simultaneously single, pr approximately, potentially suggest, bloc", "frequency": 9, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 122, "words": "circboxes, cnot decomposes, doing independently, decomposes cnot, option removed", "frequency": 5, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 123, "words": "ts api, introduce config, swap argument, codelens run, app config", "frequency": 5, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 124, "words": "commutativeinversecancellation, for_loop, compatible pass, raised applying, cancel parametric", "frequency": 7, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 125, "words": "section possible, shots shape, starting measured, indices measurement, compute section", "frequency": 3, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 126, "words": "majorana, bonsai, majorana operators, majoranic hamiltonian, majoranic", "frequency": 1, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 127, "words": "qf, jasp, acc, bug jasp, acc qf", "frequency": 15, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 128, "words": "qiskit providers, aer, qiskit aer, param_binds, providers", "frequency": 13, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 129, "words": "sine decomposition, cosine sine, eigenvectors, cosine, autoblock", "frequency": 8, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 130, "words": "static arguments, static argument, static, hash value, hashable", "frequency": 13, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 131, "words": "qiskit requirement, 44 44, depandabot, depandabot pr, requirement 44", "frequency": 6, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 132, "words": "black, formatting, formatting tools, linting formatting, black pre", "frequency": 9, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 133, "words": "namespace, namespaces, completions, completion list, completion", "frequency": 21, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 134, "words": "depends lark, lark, lark pyquil, lark 12, pyzx depends", "frequency": 7, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 136, "words": "global phase, phase, phase preserving, phasecontext, global", "frequency": 7, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 138, "words": "quantumlib account, openfermion distributions, account pypi, release newer, numpy v2", "frequency": 4, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 139, "words": "text based, classical constructs, ability generate, based visualizations, latex", "frequency": 3, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 140, "words": "get_calibration, target get_calibration, has_calibration, target has_calibration, docs include", "frequency": 7, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 141, "words": "pyrpl gui, progress bar, launch pyrpl, checkout fork, fork pyrpl", "frequency": 5, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 142, "words": "task unitaryhack, steps batch, tasks localsimulator, run integ, integ", "frequency": 3, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 143, "words": "iverilog, logging, stdout, green light, stderr", "frequency": 6, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 144, "words": "nnz, csr, super choi, nnz attribute, csr csr", "frequency": 4, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 145, "words": "extrapolation, lre, pt, zne, pt qem", "frequency": 15, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 146, "words": "valgrind, massif, massif tool, valgrind massif, build configurations", "frequency": 4, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 147, "words": "license, public license, general public, copy mitiq, choose license", "frequency": 4, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 148, "words": "ellipsis, right partitions, vs intellisense, underflow error, multidimensional indexing", "frequency": 4, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 149, "words": "multisiteoperator, blocks pair, integer operatorquantumobject, pair integer, logarithmic mapper", "frequency": 3, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 150, "words": "csc format, csr, csc, linearoperator, sparse", "frequency": 4, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 152, "words": "toffoli, toffoli gate, toffoli gates, depth using, toffoli depth", "frequency": 13, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 153, "words": "hat, hat hat, hat frac, pm hat, frac sqrt", "frequency": 8, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 154, "words": "logo, ucc, report benchmarks, credibility, question report", "frequency": 7, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 155, "words": "yep totally, dtype unfortunately, set numerical, meaning _originally, mechanism jump", "frequency": 2, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 156, "words": "rec, 12 tick, tick cx, rec rec, tick", "frequency": 3, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 157, "words": "qubit instances, updating parameters, parameter sweep, worksheet confirm, replacement dill", "frequency": 2, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 158, "words": "newc, envs qiskitdevenv5, newc anaconda, qiskitdevenv5, path newc", "frequency": 7, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 159, "words": "sympy, core circuit_routines, big_o, circuit_routines py, circuit_routines", "frequency": 9, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 160, "words": "qsharp json, qsharp, file project, language service, squiggles", "frequency": 14, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 161, "words": "lightning_qubit, modular, grover, used gates, lightning_qubit gates", "frequency": 11, "timestamp": "2024-01-08T14:17:11.800000+00:00"}
+{"topic": 0, "words": "span, gdsfactory, color, pdk, span style", "frequency": 153, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 1, "words": "08 22, 2025 08, cuda, linkedlibraryholder cpp, info linkedlibraryholder", "frequency": 215, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 2, "words": "eom, aom, delay, delays, pasqal", "frequency": 21, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 3, "words": "socket io, authentication, pty, zero authentication, global singleton", "frequency": 3, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 4, "words": "layout, swap, swaps, coupling, coupling map", "frequency": 49, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 5, "words": "liboqs, dsa, lms, qr uov, kem", "frequency": 82, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 6, "words": "nan nan, nan, hessian, gradient, derivative", "frequency": 42, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 7, "words": "rewiring, quil, quilc, pyquil, meas", "frequency": 15, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 8, "words": "proof, spider, zxlive, rewrite, rewrites", "frequency": 107, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 9, "words": "floquet, propagator, t_n, jump operators, sesolve", "frequency": 27, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 10, "words": "qasm, qasm3, openqasm, importer, exporter", "frequency": 36, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 11, "words": "bloq, bloqs, attrs, qualtran, call_graph", "frequency": 24, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 12, "words": "outer circuit, cregbundle, outer, drawer, mpldrawer", "frequency": 12, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 13, "words": "dmrg, torch, quimb, gauges, tensor", "frequency": 33, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 14, "words": "jax, jaxpr, envs test_bed, test_bed, test_bed lib", "frequency": 52, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 15, "words": "cython, editable, string compilation, conda, python 14", "frequency": 11, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 16, "words": "qbraid, braket, ionq, amazon braket, amazon", "frequency": 62, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 17, "words": "changelog, workflow, permissions, changelog file, october 2025", "frequency": 30, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 18, "words": "clifford, circuit clifford, synthesis, non clifford, clifford synthesis", "frequency": 46, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 19, "words": "rust, qpy, rust native, trait, rust circuit", "frequency": 83, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 20, "words": "bqm variables, relabel_variables mapping, fix trigger, workaround idempotent, variables latest", "frequency": 1, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 21, "words": "powermodifier, unitary, householder, inversemodifier, fractional powers", "frequency": 24, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 22, "words": "noise, noisemodel, noise model, inherit font, g2_distinguishable", "frequency": 24, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 23, "words": "component plot, shared linux, linux machines, deduplication, value default_deduplication_threshold", "frequency": 4, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 24, "words": "legacy behavior, deprecationwarning treating, treating circuitinstruction, iterable deprecated, circuitinstruction iterable", "frequency": 12, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 25, "words": "pause capture, resource function, raw resource, pause, instrument", "frequency": 5, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 26, "words": "poll, auth quantum, send serialize, getting 500s, object server", "frequency": 5, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 27, "words": "qrisp tests, mb qrisp, mb, tests block_encodings_tests, block_encodings_tests", "frequency": 18, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 28, "words": "near clifford, qrack, mid circuit, circuit measurement, near", "frequency": 16, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 29, "words": "sphinx, mkdocs, sphinx extensions, literal text, docstrings", "frequency": 14, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 30, "words": "benchmark, structured loop, ml qae, structured, wavelet", "frequency": 24, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 31, "words": "weightmap, json_test, contrib json_test, json_test py, sequence schema", "frequency": 7, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 32, "words": "mockdwavesampler, regions metadata, initial_states, dwavesampler, region codes", "frequency": 2, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 33, "words": "ansys, pyepr, hfss, aedt, pyhd8ed1ab_0", "frequency": 21, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 34, "words": "pid, iq, iq modules, lockbox, fpga", "frequency": 8, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 35, "words": "wycheproof, retries, helpers cached_requests_get, cached_requests_get, transient network", "frequency": 16, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 36, "words": "new pass, ideal pass, pipeline, irs, ucc docs", "frequency": 23, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 37, "words": "flow, id_order, flow finding, causal flow, open graphs", "frequency": 23, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 38, "words": "qeom, gidney adder, beh2, qeom taking, percall", "frequency": 17, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 39, "words": "users nate, cpython 313, cap, arm64 cpython, nate", "frequency": 12, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 40, "words": "parallelembeddingcomposite, draw_chimera_embedding, parallelembeddingcomposite composite, find_multiple_embeddings, zephyr_coordinates", "frequency": 7, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 41, "words": "lock pypi, poetry lock, mit, apache, bsd clause", "frequency": 13, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 42, "words": "webpack, cirq web, vite, recirq, cirq", "frequency": 9, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 43, "words": "pauli presimulation, presimulation, pauli, paulistring, parity gates", "frequency": 18, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 44, "words": "exclusion, ppt, locc, sdp, is_separable", "frequency": 31, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 45, "words": "openqasm, parser, source unit, version header, includer", "frequency": 16, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 46, "words": "hugr, guppy, guppylang, hugrs, modifierresolverpass", "frequency": 72, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 47, "words": "existing lowercase, lowercase keys, appears absent, keys available, available likely", "frequency": 10, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 48, "words": "llms txt, llms, site root, links, published site", "frequency": 13, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 49, "words": "gauge compiling, existing gauge, gauge, anti controlled, moment gauge", "frequency": 7, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 50, "words": "probably environment, commits close, passing closed, closed agreed, environment look", "frequency": 1, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 51, "words": "julia, quantumtoolbox, quantumtoolboxutilities, jl, quantumtoolboxevolutioncore", "frequency": 11, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 52, "words": "pytest, xdsl, global seed, stochastic tests, working submit", "frequency": 12, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 53, "words": "keras, tensorflow, colab, tensorflow quantum, tfq", "frequency": 8, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 54, "words": "stim, sinter, sinter 15, stim 15, pulsar", "frequency": 14, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 55, "words": "mod2 utilities, mod2, 15 release, dilithium, notice included", "frequency": 3, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 56, "words": "_part computational, preserving proposed, act guard, toqito change, audit toqito", "frequency": 57, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 57, "words": "notimplemented, fallback options, options notimplemented, bug concern, ends performing", "frequency": 2, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 58, "words": "1796388, get_state_mainchain, fresh sync, sync stalls, address_is_valid", "frequency": 1, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 59, "words": "dag, replacement dag, successors, add dag, input_vars", "frequency": 16, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 60, "words": "wheels, python 14, wheel, runners, wheels python", "frequency": 21, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 61, "words": "eca, eclipse, eclipse foundation, eclipse contributor, contributor agreement", "frequency": 11, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 62, "words": "moment, single moment, control keys, moments, keys", "frequency": 8, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 63, "words": "jupyter builder, jupyter, inside jupyter, npm script, builder plugin", "frequency": 6, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 64, "words": "argmax, 00 rangle, linalg eigh, bloch, add_points", "frequency": 7, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 65, "words": "src openfermion, openfermion circuits, circuits trotter, trotter algorithms, openfermion", "frequency": 18, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 66, "words": "line 48, uses signed, literal qubits, usize, chip", "frequency": 11, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 67, "words": "variadic, enable early, num_qubits static, sample_problem, variadic shots", "frequency": 8, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 68, "words": "llvm, cuda components, link llvm, yaml parsing, smaller components", "frequency": 4, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 69, "words": "sapi, response header, useaftercloseerror, client context, exiting context", "frequency": 6, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 70, "words": "my_param, new_qc, gadi, new_qc parameters, elephant", "frequency": 11, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 71, "words": "adjoint, adjoint lowering, transform, tape, transforms", "frequency": 18, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 73, "words": "adaptive, qir, miscompile, adaptive_ri, adaptive_rif", "frequency": 57, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 74, "words": "rust numpy, num_executables, 2025 09, pr 285, string_ removed", "frequency": 10, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 75, "words": "dependabot, version history, dependencies, quantum metal, history table", "frequency": 10, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 77, "words": "expectation_from_samples, expectation, expectation value, ignores salespersons, dig eventually", "frequency": 4, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 78, "words": "pyrpl, fpga, redpitaya, pyrpl_new pyrpl, jy97geri pyrpl_new", "frequency": 9, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 79, "words": "panic, rs, adaptive_ri, stage profile, adaptive_rif", "frequency": 65, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 80, "words": "recurrence relation, recurrence, noisy density, tests deterministic, branchselector", "frequency": 3, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 81, "words": "doesn report, report values, waveform produced, values repeat, error stack", "frequency": 8, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 83, "words": "seed, random, rng, generation function, global runtime", "frequency": 8, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 84, "words": "defines schema, schema info, validate_pyproject_schema_store, info validate_pyproject_schema_store, get_multi_schema", "frequency": 16, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 85, "words": "pytket, hugr, tket, pytket circuit, optimisation level", "frequency": 22, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 86, "words": "control_keys, tomography, tomography function, single_qubit_state_tomography, circuitoperation", "frequency": 8, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 87, "words": "quantumfloat, adder, modulus, sbp, 0625", "frequency": 48, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 88, "words": "vars, vars like, quest, cmake, build tree", "frequency": 12, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 89, "words": "mqom, mqom v2, mqom v3, jerome, v2 removal", "frequency": 3, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 90, "words": "ready guidelines, 2026 ready, argument rust, guidelines hi, hi participating", "frequency": 5, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 91, "words": "tcomplexity, qualtran l1, test_unitary_synthesis_plugin, test_unitary_synthesis_plugin py, _controllable", "frequency": 8, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 92, "words": "netcdf, dataset, xarray, database file, exported netcdf", "frequency": 10, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 93, "words": "fs_abs, fs prune, sparsepauliop, print fs_abs, prune print", "frequency": 7, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 94, "words": "qpy, gzip, qpy version, seeks, seekable", "frequency": 12, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 95, "words": "python defined, flight, seq, link supported, 180 recv", "frequency": 3, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 96, "words": "constant folding, folding, constant, constant fold, copyable", "frequency": 6, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 97, "words": "bus, mhz, flux, koch, f01", "frequency": 10, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 98, "words": "alpine, musl, ci containers, docker, alpine uses", "frequency": 5, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 99, "words": "angle, 10 19, degree symbol, fidelity threshold, angles", "frequency": 6, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 100, "words": "tb, 40 qubit, simulations 40, buffer creation, feasible qsim", "frequency": 4, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 101, "words": "tableau random, reproducibility currently, random n_qubits, benchmarking stochastic, tableau", "frequency": 1, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 102, "words": "captured, kernel, captured arguments, demotion, runtime list", "frequency": 16, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 104, "words": "cuda deployment, cu12, cu12 12, fresh ci, rerun pipeline", "frequency": 2, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 105, "words": "internal software, urgent remove, mention internal, suite title, preference order", "frequency": 4, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 106, "words": "pyqpanda, qpanda lm, qpanda, paulioperator, quantum_env", "frequency": 2, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 107, "words": "preprocessing program, device preprocessing, end device, parameters differ, with_new_device", "frequency": 3, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 108, "words": "observable, zero observable, uuid, aggregation, observable uuid", "frequency": 7, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 109, "words": "unused imports, reproducible wildcard, contain unused, wildcard imports, files contain", "frequency": 2, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 110, "words": "scaling ll, helper evaluate, conversion helper, validate_sys, constructor sites", "frequency": 1, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 111, "words": "importing logo, shape principal, principal stands, polygons numpy, logo single", "frequency": 1, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 112, "words": "mpi, quest, post loop, affinity, v3", "frequency": 8, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 113, "words": "autoray, numpymimic, attribute numpymimic, module autoray, autoray attribute", "frequency": 7, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 114, "words": "coersion, coersions, wire label, hack week, wire index", "frequency": 5, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 115, "words": "popqc, voqc, total gate, 100k, mib", "frequency": 5, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 116, "words": "array map, json defining, map anonymous, understand json, defaulted parse", "frequency": 1, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 117, "words": "asv benchmarks, asv, benchmarks, new pass, pytest benchmark", "frequency": 7, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 118, "words": "reviewdog, coverage, changed lines, lines files, test groups", "frequency": 3, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 119, "words": "kraus, beam splitter, kraus format, splitter, choi", "frequency": 5, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 120, "words": "unitarydesign, braket examples, unitarydesign 2026, table contents, notebooks amazon", "frequency": 3, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 121, "words": "deactivate warning, deactivate, prefer deactivate, space formula, switch example", "frequency": 4, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 122, "words": "graph decomposition, decomposition, decomposition rule, rule, bytecode", "frequency": 28, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 123, "words": "semantic versioning, debug functions, major version, versioning, api breaks", "frequency": 5, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 124, "words": "concrete inverse, inverse, circuiterror, inverse circuiterror, inverse_cancellation rs", "frequency": 6, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 125, "words": "measurement gates, measurement bit, heralded, qubit flipped, project_traceout", "frequency": 6, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 126, "words": "a_j, gamma_ 2j, 2j, a_j a_j, majorana", "frequency": 1, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 127, "words": "jasp, quantumstate, jasp quantumstate, i64, tensor i64", "frequency": 25, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 128, "words": "import paths, paths aer, cpython 14, aer deprecated, 14 linux", "frequency": 2, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 129, "words": "initial vectors, vectors orthogonal, orthogonal, dmrg solve, spmatrix", "frequency": 5, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 130, "words": "compiling html, explicitly bool, detecting need, wasting tutorials, tutorials compiling", "frequency": 8, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 131, "words": "extension modules, starting v2, having runner, roughly looked, orchestrator clear", "frequency": 1, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 133, "words": "namespaces, quickfix, unresolved, code_action rs, code_action", "frequency": 4, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 134, "words": "protobuf, protobuf dependency, stimcirq, helping let, constraints testing", "frequency": 3, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 136, "words": "complex phases, phases, _a_, symbolic boolean, boolean phases", "frequency": 4, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 137, "words": "qubit layers, match target, won reverse, fidelity experiment, backend follows", "frequency": 1, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 138, "words": "openfermion, labels github, openfermion project, linked contributing, connect members", "frequency": 4, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 139, "words": "deterministic headless, editor ui, svg, data renderer, theme aware", "frequency": 3, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 140, "words": "calibration md, calibration guide, current api, api hi, coban thank", "frequency": 2, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 141, "words": "ipykernel, related imports, ships remove, workaround ipykernel, clears upstream", "frequency": 2, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 142, "words": "scalar circuit, task specification, ising samples, noise model, run_batch", "frequency": 2, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 143, "words": "sequences inserted, logging, ddd, idle windows, logging tracing", "frequency": 3, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 144, "words": "adding sparse, gets zero, sparse qobj, try zero, result nonzero", "frequency": 1, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 145, "words": "pea, representations, nez0b, year edition, signed pec", "frequency": 3, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 146, "words": "valgrind, frodo_sample_n, invalid reads, red zone, mkpcastto", "frequency": 7, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 147, "words": "license, gpl, copyright, license file, lingering gnu", "frequency": 7, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 148, "words": "mixed width, ziplongest, marginalized, hex keys, bitstrings marginalized", "frequency": 11, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 149, "words": "a_j, enr spaces, dagger a_j, a_j dagger, sum_j", "frequency": 1, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 150, "words": "dia, sparse, xn, support sparse, diagonals", "frequency": 5, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 152, "words": "toffoli, simulating non, toffoli gate, phase toffoli, magic states", "frequency": 3, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 153, "words": "hat, diagonal projectors, projectors, hat otimes, otimes hat", "frequency": 4, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 154, "words": "logo, logos, swag, product logos, swag mockup", "frequency": 8, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 155, "words": "plr1714 incompatible, plr1714, disable plr1714, path dependent, thing working", "frequency": 3, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 156, "words": "detector, gauge detectors, detectors, gauge, bootstrap", "frequency": 5, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 159, "words": "sympy, free variables, crashes simulator, input ports, unbound sympy", "frequency": 6, "timestamp": "2025-05-31T18:01:01.400000+00:00"}
+{"topic": 160, "words": "shor qs, qs, qs files, jan 2024, target profile", "frequency": 8, "timestamp": "2025-05-31T18:01:01.400000+00:00"}

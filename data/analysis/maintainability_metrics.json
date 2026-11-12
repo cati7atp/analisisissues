@@ -1,0 +1,6974 @@
+{
+  "per_repo": [
+    {
+      "repo": "AgnostiqHQ/covalent",
+      "total_issues": 776,
+      "open_issues": 68,
+      "closed_issues": 708,
+      "issue_types": {
+        "bug": 301,
+        "feature": 215,
+        "discussion": 247,
+        "question": 13
+      },
+      "median_resolution_days": 17.91695601851852,
+      "resolution_by_type": {
+        "bug": 16.776493055555555,
+        "feature": 15.215717592592593,
+        "question": 11.970231481481482,
+        "discussion": 20.746452546296297,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 675,
+        "not_planned": 33
+      },
+      "gini_contributors": 0.7477200634417129,
+      "unique_contributors": 52,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.001288659793814433,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.01804123711340206,
+        "qubit_mapping_routing": 0.002577319587628866,
+        "gradients_autodiff": 0.007731958762886598,
+        "performance_scaling": 0.007731958762886598,
+        "pulse_control": 0.0,
+        "dependency_version": 0.01804123711340206,
+        "documentation_examples": 0.16237113402061856,
+        "algorithm_convergence": 0.015463917525773196,
+        "sim_vs_hardware": 0.003865979381443299,
+        "reproducibility": 0.001288659793814433
+      },
+      "topic_entropy": 1.7991378947459042,
+      "top_topics": [
+        {
+          "topic_id": 3,
+          "count": 459,
+          "percentage": 78.2
+        },
+        {
+          "topic_id": 17,
+          "count": 24,
+          "percentage": 4.1
+        },
+        {
+          "topic_id": 37,
+          "count": 12,
+          "percentage": 2.0
+        },
+        {
+          "topic_id": 15,
+          "count": 7,
+          "percentage": 1.2
+        },
+        {
+          "topic_id": 26,
+          "count": 6,
+          "percentage": 1.0
+        }
+      ]
+    },
+    {
+      "repo": "BQSKit/bqskit",
+      "total_issues": 123,
+      "open_issues": 34,
+      "closed_issues": 89,
+      "issue_types": {
+        "feature": 40,
+        "bug": 60,
+        "discussion": 23
+      },
+      "median_resolution_days": 29.751967592592592,
+      "resolution_by_type": {
+        "bug": 14.898732638888887,
+        "feature": 67.93943287037037,
+        "question": null,
+        "discussion": 35.82947916666667,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 87,
+        "not_planned": 2
+      },
+      "gini_contributors": 0.48978782470751536,
+      "unique_contributors": 41,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.08130081300813008,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.008130081300813009,
+        "qubit_mapping_routing": 0.032520325203252036,
+        "gradients_autodiff": 0.032520325203252036,
+        "performance_scaling": 0.032520325203252036,
+        "pulse_control": 0.0,
+        "dependency_version": 0.008130081300813009,
+        "documentation_examples": 0.11382113821138211,
+        "algorithm_convergence": 0.024390243902439025,
+        "sim_vs_hardware": 0.024390243902439025,
+        "reproducibility": 0.04878048780487805
+      },
+      "topic_entropy": 3.950064305027517,
+      "top_topics": [
+        {
+          "topic_id": 10,
+          "count": 14,
+          "percentage": 28.6
+        },
+        {
+          "topic_id": 21,
+          "count": 4,
+          "percentage": 8.2
+        },
+        {
+          "topic_id": 96,
+          "count": 3,
+          "percentage": 6.1
+        },
+        {
+          "topic_id": 89,
+          "count": 3,
+          "percentage": 6.1
+        },
+        {
+          "topic_id": 28,
+          "count": 3,
+          "percentage": 6.1
+        }
+      ]
+    },
+    {
+      "repo": "Budapest-Quantum-Computing-Group/piquasso",
+      "total_issues": 53,
+      "open_issues": 8,
+      "closed_issues": 45,
+      "issue_types": {
+        "discussion": 19,
+        "feature": 15,
+        "bug": 16,
+        "question": 3
+      },
+      "median_resolution_days": 26.70510416666667,
+      "resolution_by_type": {
+        "bug": 66.03974537037037,
+        "feature": 13.230509259259259,
+        "question": 30.553912037037037,
+        "discussion": 22.598460648148148,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 45
+      },
+      "gini_contributors": 0.6037735849056604,
+      "unique_contributors": 7,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.018867924528301886,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.03773584905660377,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.018867924528301886,
+        "documentation_examples": 0.1320754716981132,
+        "algorithm_convergence": 0.0,
+        "sim_vs_hardware": 0.018867924528301886,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": 2.94770277922009,
+      "top_topics": [
+        {
+          "topic_id": 67,
+          "count": 2,
+          "percentage": 22.2
+        },
+        {
+          "topic_id": 113,
+          "count": 1,
+          "percentage": 11.1
+        },
+        {
+          "topic_id": 29,
+          "count": 1,
+          "percentage": 11.1
+        },
+        {
+          "topic_id": 30,
+          "count": 1,
+          "percentage": 11.1
+        },
+        {
+          "topic_id": 80,
+          "count": 1,
+          "percentage": 11.1
+        }
+      ]
+    },
+    {
+      "repo": "C2QA/bosonic-qiskit",
+      "total_issues": 57,
+      "open_issues": 4,
+      "closed_issues": 53,
+      "issue_types": {
+        "bug": 17,
+        "discussion": 19,
+        "feature": 18,
+        "question": 3
+      },
+      "median_resolution_days": 28.848148148148148,
+      "resolution_by_type": {
+        "bug": 31.114166666666666,
+        "feature": 35.374375,
+        "question": 31.91443287037037,
+        "discussion": 12.498072916666667,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 53
+      },
+      "gini_contributors": 0.6337719298245614,
+      "unique_contributors": 8,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.08771929824561403,
+        "noise_error_mitigation": 0.017543859649122806,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.07017543859649122,
+        "performance_scaling": 0.017543859649122806,
+        "pulse_control": 0.0,
+        "dependency_version": 0.07017543859649122,
+        "documentation_examples": 0.24561403508771928,
+        "algorithm_convergence": 0.07017543859649122,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.017543859649122806
+      },
+      "topic_entropy": 3.8796640049025943,
+      "top_topics": [
+        {
+          "topic_id": 39,
+          "count": 3,
+          "percentage": 13.6
+        },
+        {
+          "topic_id": 84,
+          "count": 2,
+          "percentage": 9.1
+        },
+        {
+          "topic_id": 41,
+          "count": 2,
+          "percentage": 9.1
+        },
+        {
+          "topic_id": 63,
+          "count": 2,
+          "percentage": 9.1
+        },
+        {
+          "topic_id": 24,
+          "count": 2,
+          "percentage": 9.1
+        }
+      ]
+    },
+    {
+      "repo": "HaeffnerLab/IonSim.jl",
+      "total_issues": 73,
+      "open_issues": 13,
+      "closed_issues": 60,
+      "issue_types": {
+        "discussion": 30,
+        "bug": 21,
+        "feature": 16,
+        "question": 6
+      },
+      "median_resolution_days": 63.56548611111111,
+      "resolution_by_type": {
+        "bug": 8.242719907407407,
+        "feature": 82.21188657407407,
+        "question": 8.22931712962963,
+        "discussion": 85.2885648148148,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 60
+      },
+      "gini_contributors": 0.684931506849315,
+      "unique_contributors": 11,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0136986301369863,
+        "performance_scaling": 0.0136986301369863,
+        "pulse_control": 0.0136986301369863,
+        "dependency_version": 0.0136986301369863,
+        "documentation_examples": 0.2191780821917808,
+        "algorithm_convergence": 0.0136986301369863,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.0136986301369863
+      },
+      "topic_entropy": 3.2158411726837532,
+      "top_topics": [
+        {
+          "topic_id": 51,
+          "count": 5,
+          "percentage": 26.3
+        },
+        {
+          "topic_id": 47,
+          "count": 2,
+          "percentage": 10.5
+        },
+        {
+          "topic_id": 121,
+          "count": 2,
+          "percentage": 10.5
+        },
+        {
+          "topic_id": 22,
+          "count": 2,
+          "percentage": 10.5
+        },
+        {
+          "topic_id": 61,
+          "count": 2,
+          "percentage": 10.5
+        }
+      ]
+    },
+    {
+      "repo": "NVIDIA/cuda-quantum",
+      "total_issues": 1306,
+      "open_issues": 382,
+      "closed_issues": 924,
+      "issue_types": {
+        "feature": 318,
+        "bug": 840,
+        "discussion": 139,
+        "question": 9
+      },
+      "median_resolution_days": 26.135011574074074,
+      "resolution_by_type": {
+        "bug": 16.43101851851852,
+        "feature": 76.99342592592592,
+        "question": 77.12938657407406,
+        "discussion": 26.142175925925926,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 919,
+        "duplicate": 4,
+        "not_planned": 1
+      },
+      "gini_contributors": 0.7501250117198487,
+      "unique_contributors": 196,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.010719754977029096,
+        "noise_error_mitigation": 0.018376722817764167,
+        "hardware_backend": 0.03751914241960184,
+        "qubit_mapping_routing": 0.009954058192955589,
+        "gradients_autodiff": 0.009188361408882083,
+        "performance_scaling": 0.03522205206738132,
+        "pulse_control": 0.0015313935681470138,
+        "dependency_version": 0.021439509954058193,
+        "documentation_examples": 0.15007656967840735,
+        "algorithm_convergence": 0.04670750382848392,
+        "sim_vs_hardware": 0.01761102603369066,
+        "reproducibility": 0.02679938744257274
+      },
+      "topic_entropy": 2.613470389309279,
+      "top_topics": [
+        {
+          "topic_id": 1,
+          "count": 512,
+          "percentage": 67.5
+        },
+        {
+          "topic_id": 102,
+          "count": 45,
+          "percentage": 5.9
+        },
+        {
+          "topic_id": 16,
+          "count": 13,
+          "percentage": 1.7
+        },
+        {
+          "topic_id": 21,
+          "count": 13,
+          "percentage": 1.7
+        },
+        {
+          "topic_id": 43,
+          "count": 9,
+          "percentage": 1.2
+        }
+      ]
+    },
+    {
+      "repo": "OriginQ/QPanda-2",
+      "total_issues": 46,
+      "open_issues": 16,
+      "closed_issues": 30,
+      "issue_types": {
+        "bug": 31,
+        "discussion": 7,
+        "feature": 6,
+        "question": 2
+      },
+      "median_resolution_days": 11.124751157407406,
+      "resolution_by_type": {
+        "bug": 7.763043981481482,
+        "feature": 122.93734953703704,
+        "question": 246.44527199074074,
+        "discussion": 9.212934027777777,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 30
+      },
+      "gini_contributors": 0.1404682274247492,
+      "unique_contributors": 39,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.043478260869565216,
+        "documentation_examples": 0.08695652173913043,
+        "algorithm_convergence": 0.021739130434782608,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.08695652173913043
+      },
+      "topic_entropy": 0.9487692967084504,
+      "top_topics": [
+        {
+          "topic_id": 106,
+          "count": 30,
+          "percentage": 83.3
+        },
+        {
+          "topic_id": 1,
+          "count": 3,
+          "percentage": 8.3
+        },
+        {
+          "topic_id": 120,
+          "count": 1,
+          "percentage": 2.8
+        },
+        {
+          "topic_id": 21,
+          "count": 1,
+          "percentage": 2.8
+        },
+        {
+          "topic_id": 66,
+          "count": 1,
+          "percentage": 2.8
+        }
+      ]
+    },
+    {
+      "repo": "PaddlePaddle/Quantum",
+      "total_issues": 33,
+      "open_issues": 24,
+      "closed_issues": 9,
+      "issue_types": {
+        "discussion": 18,
+        "bug": 14,
+        "feature": 1
+      },
+      "median_resolution_days": 13.690381944444445,
+      "resolution_by_type": {
+        "bug": 50.033101851851846,
+        "feature": null,
+        "question": null,
+        "discussion": 13.690381944444445,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 9
+      },
+      "gini_contributors": 0.346969696969697,
+      "unique_contributors": 20,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.06060606060606061,
+        "documentation_examples": 0.15151515151515152,
+        "algorithm_convergence": 0.15151515151515152,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": 2.0598225451324987,
+      "top_topics": [
+        {
+          "topic_id": 106,
+          "count": 15,
+          "percentage": 62.5
+        },
+        {
+          "topic_id": 1,
+          "count": 2,
+          "percentage": 8.3
+        },
+        {
+          "topic_id": 30,
+          "count": 1,
+          "percentage": 4.2
+        },
+        {
+          "topic_id": 77,
+          "count": 1,
+          "percentage": 4.2
+        },
+        {
+          "topic_id": 21,
+          "count": 1,
+          "percentage": 4.2
+        }
+      ]
+    },
+    {
+      "repo": "PennyLaneAI/catalyst",
+      "total_issues": 488,
+      "open_issues": 174,
+      "closed_issues": 314,
+      "issue_types": {
+        "feature": 122,
+        "bug": 289,
+        "discussion": 71,
+        "question": 6
+      },
+      "median_resolution_days": 21.96465277777778,
+      "resolution_by_type": {
+        "bug": 10.79050925925926,
+        "feature": 82.62060185185186,
+        "question": 131.96064814814815,
+        "discussion": 19.768923611111113,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 290,
+        "not_planned": 19,
+        "duplicate": 5
+      },
+      "gini_contributors": 0.7021004098360656,
+      "unique_contributors": 64,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.004098360655737705,
+        "noise_error_mitigation": 0.00819672131147541,
+        "hardware_backend": 0.01639344262295082,
+        "qubit_mapping_routing": 0.0020491803278688526,
+        "gradients_autodiff": 0.11065573770491803,
+        "performance_scaling": 0.012295081967213115,
+        "pulse_control": 0.0,
+        "dependency_version": 0.014344262295081968,
+        "documentation_examples": 0.10655737704918032,
+        "algorithm_convergence": 0.018442622950819672,
+        "sim_vs_hardware": 0.00819672131147541,
+        "reproducibility": 0.022540983606557378
+      },
+      "topic_entropy": 3.7809230421397846,
+      "top_topics": [
+        {
+          "topic_id": 6,
+          "count": 66,
+          "percentage": 28.7
+        },
+        {
+          "topic_id": 14,
+          "count": 53,
+          "percentage": 23.0
+        },
+        {
+          "topic_id": 71,
+          "count": 15,
+          "percentage": 6.5
+        },
+        {
+          "topic_id": 1,
+          "count": 11,
+          "percentage": 4.8
+        },
+        {
+          "topic_id": 122,
+          "count": 10,
+          "percentage": 4.3
+        }
+      ]
+    },
+    {
+      "repo": "PennyLaneAI/pennylane",
+      "total_issues": 1674,
+      "open_issues": 274,
+      "closed_issues": 1400,
+      "issue_types": {
+        "discussion": 129,
+        "feature": 444,
+        "question": 17,
+        "bug": 1084
+      },
+      "median_resolution_days": 17.092910879629628,
+      "resolution_by_type": {
+        "bug": 9.26318287037037,
+        "feature": 56.73046296296296,
+        "question": 11.291597222222222,
+        "discussion": 20.98431712962963,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 1379,
+        "not_planned": 21
+      },
+      "gini_contributors": 0.7170259553616263,
+      "unique_contributors": 345,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.012544802867383513,
+        "noise_error_mitigation": 0.008960573476702509,
+        "hardware_backend": 0.037037037037037035,
+        "qubit_mapping_routing": 0.004181600955794504,
+        "gradients_autodiff": 0.22819593787335724,
+        "performance_scaling": 0.014336917562724014,
+        "pulse_control": 0.0035842293906810036,
+        "dependency_version": 0.04778972520908005,
+        "documentation_examples": 0.22102747909199522,
+        "algorithm_convergence": 0.08900836320191159,
+        "sim_vs_hardware": 0.017921146953405017,
+        "reproducibility": 0.026881720430107527
+      },
+      "topic_entropy": 4.265933330367707,
+      "top_topics": [
+        {
+          "topic_id": 6,
+          "count": 235,
+          "percentage": 29.6
+        },
+        {
+          "topic_id": 14,
+          "count": 113,
+          "percentage": 14.2
+        },
+        {
+          "topic_id": 13,
+          "count": 86,
+          "percentage": 10.8
+        },
+        {
+          "topic_id": 71,
+          "count": 44,
+          "percentage": 5.5
+        },
+        {
+          "topic_id": 104,
+          "count": 24,
+          "percentage": 3.0
+        }
+      ]
+    },
+    {
+      "repo": "PennyLaneAI/pennylane-lightning",
+      "total_issues": 125,
+      "open_issues": 23,
+      "closed_issues": 102,
+      "issue_types": {
+        "bug": 79,
+        "discussion": 21,
+        "feature": 25
+      },
+      "median_resolution_days": 14.2128125,
+      "resolution_by_type": {
+        "bug": 12.358715277777778,
+        "feature": 24.059212962962963,
+        "question": null,
+        "discussion": 7.623072916666667,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 101,
+        "not_planned": 1
+      },
+      "gini_contributors": 0.53008,
+      "unique_contributors": 50,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.008,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.104,
+        "performance_scaling": 0.032,
+        "pulse_control": 0.0,
+        "dependency_version": 0.088,
+        "documentation_examples": 0.12,
+        "algorithm_convergence": 0.032,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.04
+      },
+      "topic_entropy": 3.567431961844104,
+      "top_topics": [
+        {
+          "topic_id": 113,
+          "count": 12,
+          "percentage": 20.7
+        },
+        {
+          "topic_id": 60,
+          "count": 9,
+          "percentage": 15.5
+        },
+        {
+          "topic_id": 161,
+          "count": 7,
+          "percentage": 12.1
+        },
+        {
+          "topic_id": 1,
+          "count": 7,
+          "percentage": 12.1
+        },
+        {
+          "topic_id": 6,
+          "count": 4,
+          "percentage": 6.9
+        }
+      ]
+    },
+    {
+      "repo": "ProjectQ-Framework/ProjectQ",
+      "total_issues": 158,
+      "open_issues": 31,
+      "closed_issues": 127,
+      "issue_types": {
+        "bug": 69,
+        "discussion": 52,
+        "feature": 25,
+        "question": 12
+      },
+      "median_resolution_days": 13.924548611111112,
+      "resolution_by_type": {
+        "bug": 16.262708333333332,
+        "feature": 35.27626157407408,
+        "question": 46.7527025462963,
+        "discussion": 7.448379629629629,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 127
+      },
+      "gini_contributors": 0.4480688088283025,
+      "unique_contributors": 78,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.03164556962025317,
+        "noise_error_mitigation": 0.0189873417721519,
+        "hardware_backend": 0.04430379746835443,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.006329113924050633,
+        "performance_scaling": 0.04430379746835443,
+        "pulse_control": 0.0,
+        "dependency_version": 0.0759493670886076,
+        "documentation_examples": 0.18354430379746836,
+        "algorithm_convergence": 0.10759493670886076,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.012658227848101266
+      },
+      "topic_entropy": 4.75330572678067,
+      "top_topics": [
+        {
+          "topic_id": 26,
+          "count": 11,
+          "percentage": 15.7
+        },
+        {
+          "topic_id": 41,
+          "count": 8,
+          "percentage": 11.4
+        },
+        {
+          "topic_id": 66,
+          "count": 4,
+          "percentage": 5.7
+        },
+        {
+          "topic_id": 57,
+          "count": 3,
+          "percentage": 4.3
+        },
+        {
+          "topic_id": 28,
+          "count": 3,
+          "percentage": 4.3
+        }
+      ]
+    },
+    {
+      "repo": "Q-Compiler/UniversalQCompiler",
+      "total_issues": 1,
+      "open_issues": 0,
+      "closed_issues": 1,
+      "issue_types": {
+        "question": 1
+      },
+      "median_resolution_days": 6.772488425925926,
+      "resolution_by_type": {
+        "bug": null,
+        "feature": null,
+        "question": 6.772488425925926,
+        "discussion": null,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 1
+      },
+      "gini_contributors": 0.0,
+      "unique_contributors": 1,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.0,
+        "documentation_examples": 1.0,
+        "algorithm_convergence": 0.0,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": 0.0,
+      "top_topics": []
+    },
+    {
+      "repo": "QUARK-framework/QUARK",
+      "total_issues": 21,
+      "open_issues": 7,
+      "closed_issues": 14,
+      "issue_types": {
+        "bug": 11,
+        "feature": 6,
+        "question": 2,
+        "discussion": 2
+      },
+      "median_resolution_days": 19.05646412037037,
+      "resolution_by_type": {
+        "bug": 30.686793981481483,
+        "feature": 7.483344907407407,
+        "question": 6.071215277777778,
+        "discussion": 143.55674768518517,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 14
+      },
+      "gini_contributors": 0.28571428571428575,
+      "unique_contributors": 5,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.0,
+        "documentation_examples": 0.09523809523809523,
+        "algorithm_convergence": 0.047619047619047616,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.047619047619047616
+      },
+      "topic_entropy": 2.584962500721156,
+      "top_topics": [
+        {
+          "topic_id": 16,
+          "count": 1,
+          "percentage": 16.7
+        },
+        {
+          "topic_id": 107,
+          "count": 1,
+          "percentage": 16.7
+        },
+        {
+          "topic_id": 81,
+          "count": 1,
+          "percentage": 16.7
+        },
+        {
+          "topic_id": 98,
+          "count": 1,
+          "percentage": 16.7
+        },
+        {
+          "topic_id": 0,
+          "count": 1,
+          "percentage": 16.7
+        }
+      ]
+    },
+    {
+      "repo": "Qiskit/qiskit",
+      "total_issues": 5731,
+      "open_issues": 725,
+      "closed_issues": 5006,
+      "issue_types": {
+        "discussion": 587,
+        "bug": 3289,
+        "feature": 1830,
+        "question": 25
+      },
+      "median_resolution_days": 30.218912037037036,
+      "resolution_by_type": {
+        "bug": 15.249652777777778,
+        "feature": 82.91185185185185,
+        "question": 3.8475925925925925,
+        "discussion": 33.047037037037036,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 4728,
+        "not_planned": 270,
+        "duplicate": 8
+      },
+      "gini_contributors": 0.750547053799718,
+      "unique_contributors": 1119,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.20781713488047462,
+        "noise_error_mitigation": 0.014831617518757634,
+        "hardware_backend": 0.03629384051648927,
+        "qubit_mapping_routing": 0.06264177281451754,
+        "gradients_autodiff": 0.02564997382655732,
+        "performance_scaling": 0.02338160879427674,
+        "pulse_control": 0.06857441982202059,
+        "dependency_version": 0.11987436747513523,
+        "documentation_examples": 0.15512127028441808,
+        "algorithm_convergence": 0.05304484383179201,
+        "sim_vs_hardware": 0.023730588030012215,
+        "reproducibility": 0.039958122491711746
+      },
+      "topic_entropy": 5.347267093951794,
+      "top_topics": [
+        {
+          "topic_id": 4,
+          "count": 355,
+          "percentage": 12.4
+        },
+        {
+          "topic_id": 2,
+          "count": 306,
+          "percentage": 10.7
+        },
+        {
+          "topic_id": 12,
+          "count": 201,
+          "percentage": 7.0
+        },
+        {
+          "topic_id": 19,
+          "count": 169,
+          "percentage": 5.9
+        },
+        {
+          "topic_id": 10,
+          "count": 130,
+          "percentage": 4.5
+        }
+      ]
+    },
+    {
+      "repo": "Qiskit/qiskit-aer",
+      "total_issues": 978,
+      "open_issues": 198,
+      "closed_issues": 780,
+      "issue_types": {
+        "bug": 697,
+        "feature": 221,
+        "discussion": 49,
+        "question": 11
+      },
+      "median_resolution_days": 20.10720486111111,
+      "resolution_by_type": {
+        "bug": 13.999542824074075,
+        "feature": 66.8802662037037,
+        "question": 80.04680555555555,
+        "discussion": 20.017916666666665,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 770,
+        "not_planned": 10
+      },
+      "gini_contributors": 0.538993536188098,
+      "unique_contributors": 398,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.10531697341513292,
+        "noise_error_mitigation": 0.10224948875255624,
+        "hardware_backend": 0.019427402862985686,
+        "qubit_mapping_routing": 0.010224948875255624,
+        "gradients_autodiff": 0.017382413087934562,
+        "performance_scaling": 0.046012269938650305,
+        "pulse_control": 0.07770961145194274,
+        "dependency_version": 0.27300613496932513,
+        "documentation_examples": 0.14314928425357873,
+        "algorithm_convergence": 0.02965235173824131,
+        "sim_vs_hardware": 0.02965235173824131,
+        "reproducibility": 0.03578732106339468
+      },
+      "topic_entropy": 4.528422303958611,
+      "top_topics": [
+        {
+          "topic_id": 1,
+          "count": 55,
+          "percentage": 12.7
+        },
+        {
+          "topic_id": 27,
+          "count": 50,
+          "percentage": 11.5
+        },
+        {
+          "topic_id": 22,
+          "count": 43,
+          "percentage": 9.9
+        },
+        {
+          "topic_id": 2,
+          "count": 37,
+          "percentage": 8.5
+        },
+        {
+          "topic_id": 128,
+          "count": 36,
+          "percentage": 8.3
+        }
+      ]
+    },
+    {
+      "repo": "QuEST-Kit/QuEST",
+      "total_issues": 309,
+      "open_issues": 45,
+      "closed_issues": 264,
+      "issue_types": {
+        "feature": 126,
+        "bug": 106,
+        "discussion": 71,
+        "question": 6
+      },
+      "median_resolution_days": 67.07195023148148,
+      "resolution_by_type": {
+        "bug": 16.356840277777778,
+        "feature": 128.2766724537037,
+        "question": 54.89568287037037,
+        "discussion": 26.88866898148148,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 263,
+        "not_planned": 1
+      },
+      "gini_contributors": 0.771733065506082,
+      "unique_contributors": 58,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.016181229773462782,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.009708737864077669,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.019417475728155338,
+        "pulse_control": 0.0,
+        "dependency_version": 0.019417475728155338,
+        "documentation_examples": 0.08090614886731391,
+        "algorithm_convergence": 0.009708737864077669,
+        "sim_vs_hardware": 0.006472491909385114,
+        "reproducibility": 0.019417475728155338
+      },
+      "topic_entropy": 4.0838588897269625,
+      "top_topics": [
+        {
+          "topic_id": 1,
+          "count": 33,
+          "percentage": 27.7
+        },
+        {
+          "topic_id": 88,
+          "count": 16,
+          "percentage": 13.4
+        },
+        {
+          "topic_id": 80,
+          "count": 8,
+          "percentage": 6.7
+        },
+        {
+          "topic_id": 112,
+          "count": 6,
+          "percentage": 5.0
+        },
+        {
+          "topic_id": 153,
+          "count": 6,
+          "percentage": 5.0
+        }
+      ]
+    },
+    {
+      "repo": "QuEraComputing/Bloqade.jl",
+      "total_issues": 205,
+      "open_issues": 63,
+      "closed_issues": 142,
+      "issue_types": {
+        "feature": 65,
+        "discussion": 55,
+        "bug": 74,
+        "question": 11
+      },
+      "median_resolution_days": 18.650410879629632,
+      "resolution_by_type": {
+        "bug": 6.267239583333334,
+        "feature": 35.71422453703704,
+        "question": 32.84255787037037,
+        "discussion": 17.99559027777778,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 142
+      },
+      "gini_contributors": 0.7206923682140048,
+      "unique_contributors": 31,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.004878048780487805,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.014634146341463415,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.13170731707317074,
+        "dependency_version": 0.014634146341463415,
+        "documentation_examples": 0.15609756097560976,
+        "algorithm_convergence": 0.05365853658536585,
+        "sim_vs_hardware": 0.004878048780487805,
+        "reproducibility": 0.00975609756097561
+      },
+      "topic_entropy": 3.914147344175786,
+      "top_topics": [
+        {
+          "topic_id": 51,
+          "count": 19,
+          "percentage": 21.6
+        },
+        {
+          "topic_id": 9,
+          "count": 12,
+          "percentage": 13.6
+        },
+        {
+          "topic_id": 2,
+          "count": 10,
+          "percentage": 11.4
+        },
+        {
+          "topic_id": 23,
+          "count": 7,
+          "percentage": 8.0
+        },
+        {
+          "topic_id": 108,
+          "count": 6,
+          "percentage": 6.8
+        }
+      ]
+    },
+    {
+      "repo": "QuEraComputing/tsim",
+      "total_issues": 46,
+      "open_issues": 8,
+      "closed_issues": 38,
+      "issue_types": {
+        "bug": 14,
+        "discussion": 8,
+        "feature": 23,
+        "question": 1
+      },
+      "median_resolution_days": 24.46888310185185,
+      "resolution_by_type": {
+        "bug": 7.215891203703704,
+        "feature": 29.342199074074074,
+        "question": null,
+        "discussion": 28.550416666666667,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 36,
+        "not_planned": 2
+      },
+      "gini_contributors": 0.681159420289855,
+      "unique_contributors": 9,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.021739130434782608,
+        "documentation_examples": 0.13043478260869565,
+        "algorithm_convergence": 0.0,
+        "sim_vs_hardware": 0.021739130434782608,
+        "reproducibility": 0.15217391304347827
+      },
+      "topic_entropy": 2.8453509366224368,
+      "top_topics": [
+        {
+          "topic_id": 54,
+          "count": 3,
+          "percentage": 27.3
+        },
+        {
+          "topic_id": 18,
+          "count": 2,
+          "percentage": 18.2
+        },
+        {
+          "topic_id": 156,
+          "count": 1,
+          "percentage": 9.1
+        },
+        {
+          "topic_id": 83,
+          "count": 1,
+          "percentage": 9.1
+        },
+        {
+          "topic_id": 51,
+          "count": 1,
+          "percentage": 9.1
+        }
+      ]
+    },
+    {
+      "repo": "Quandela/Perceval",
+      "total_issues": 36,
+      "open_issues": 0,
+      "closed_issues": 36,
+      "issue_types": {
+        "bug": 25,
+        "feature": 7,
+        "discussion": 4
+      },
+      "median_resolution_days": 36.76784143518519,
+      "resolution_by_type": {
+        "bug": 26.041099537037038,
+        "feature": 91.35230324074074,
+        "question": null,
+        "discussion": 46.74230324074074,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 32,
+        "not_planned": 4
+      },
+      "gini_contributors": 0.26,
+      "unique_contributors": 25,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.05555555555555555,
+        "noise_error_mitigation": 0.027777777777777776,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.05555555555555555,
+        "pulse_control": 0.0,
+        "dependency_version": 0.0,
+        "documentation_examples": 0.2222222222222222,
+        "algorithm_convergence": 0.05555555555555555,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": 2.725480556997868,
+      "top_topics": [
+        {
+          "topic_id": 67,
+          "count": 2,
+          "percentage": 22.2
+        },
+        {
+          "topic_id": 22,
+          "count": 2,
+          "percentage": 22.2
+        },
+        {
+          "topic_id": 30,
+          "count": 1,
+          "percentage": 11.1
+        },
+        {
+          "topic_id": 12,
+          "count": 1,
+          "percentage": 11.1
+        },
+        {
+          "topic_id": 18,
+          "count": 1,
+          "percentage": 11.1
+        }
+      ]
+    },
+    {
+      "repo": "Quantinuum/tket",
+      "total_issues": 545,
+      "open_issues": 85,
+      "closed_issues": 460,
+      "issue_types": {
+        "bug": 263,
+        "discussion": 168,
+        "feature": 105,
+        "question": 9
+      },
+      "median_resolution_days": 11.948686342592593,
+      "resolution_by_type": {
+        "bug": 8.587314814814814,
+        "feature": 21.594722222222224,
+        "question": 22.39220486111111,
+        "discussion": 10.087436342592593,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 455,
+        "not_planned": 5
+      },
+      "gini_contributors": 0.8001550587931258,
+      "unique_contributors": 71,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.011009174311926606,
+        "noise_error_mitigation": 0.001834862385321101,
+        "hardware_backend": 0.005504587155963303,
+        "qubit_mapping_routing": 0.029357798165137616,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.01651376146788991,
+        "pulse_control": 0.001834862385321101,
+        "dependency_version": 0.01834862385321101,
+        "documentation_examples": 0.10825688073394496,
+        "algorithm_convergence": 0.012844036697247707,
+        "sim_vs_hardware": 0.011009174311926606,
+        "reproducibility": 0.007339449541284404
+      },
+      "topic_entropy": 4.815424319389113,
+      "top_topics": [
+        {
+          "topic_id": 10,
+          "count": 30,
+          "percentage": 17.2
+        },
+        {
+          "topic_id": 18,
+          "count": 21,
+          "percentage": 12.1
+        },
+        {
+          "topic_id": 4,
+          "count": 12,
+          "percentage": 6.9
+        },
+        {
+          "topic_id": 21,
+          "count": 9,
+          "percentage": 5.2
+        },
+        {
+          "topic_id": 31,
+          "count": 9,
+          "percentage": 5.2
+        }
+      ]
+    },
+    {
+      "repo": "Quantinuum/tket2",
+      "total_issues": 495,
+      "open_issues": 162,
+      "closed_issues": 333,
+      "issue_types": {
+        "discussion": 182,
+        "feature": 179,
+        "bug": 128,
+        "question": 6
+      },
+      "median_resolution_days": 11.198217592592593,
+      "resolution_by_type": {
+        "bug": 6.096053240740741,
+        "feature": 17.535075231481482,
+        "question": 6.955115740740741,
+        "discussion": 7.814785879629629,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 308,
+        "not_planned": 21,
+        "duplicate": 4
+      },
+      "gini_contributors": 0.746897546897547,
+      "unique_contributors": 35,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.006060606060606061,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.010101010101010102,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.00202020202020202,
+        "performance_scaling": 0.00808080808080808,
+        "pulse_control": 0.0,
+        "dependency_version": 0.022222222222222223,
+        "documentation_examples": 0.052525252525252523,
+        "algorithm_convergence": 0.00808080808080808,
+        "sim_vs_hardware": 0.00202020202020202,
+        "reproducibility": 0.014141414141414142
+      },
+      "topic_entropy": 3.310290980377433,
+      "top_topics": [
+        {
+          "topic_id": 46,
+          "count": 102,
+          "percentage": 40.8
+        },
+        {
+          "topic_id": 85,
+          "count": 58,
+          "percentage": 23.2
+        },
+        {
+          "topic_id": 99,
+          "count": 10,
+          "percentage": 4.0
+        },
+        {
+          "topic_id": 96,
+          "count": 9,
+          "percentage": 3.6
+        },
+        {
+          "topic_id": 19,
+          "count": 6,
+          "percentage": 2.4
+        }
+      ]
+    },
+    {
+      "repo": "QuantumBFS/Yao.jl",
+      "total_issues": 251,
+      "open_issues": 21,
+      "closed_issues": 230,
+      "issue_types": {
+        "discussion": 87,
+        "feature": 53,
+        "bug": 92,
+        "question": 19
+      },
+      "median_resolution_days": 10.806348379629629,
+      "resolution_by_type": {
+        "bug": 4.780653935185185,
+        "feature": 53.26479166666667,
+        "question": 2.6324421296296294,
+        "discussion": 11.506765046296296,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 230
+      },
+      "gini_contributors": 0.6047340051558472,
+      "unique_contributors": 85,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.00398406374501992,
+        "noise_error_mitigation": 0.0199203187250996,
+        "hardware_backend": 0.01593625498007968,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.099601593625498,
+        "performance_scaling": 0.01195219123505976,
+        "pulse_control": 0.00796812749003984,
+        "dependency_version": 0.05179282868525897,
+        "documentation_examples": 0.1752988047808765,
+        "algorithm_convergence": 0.09163346613545817,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": 4.0639185784060965,
+      "top_topics": [
+        {
+          "topic_id": 51,
+          "count": 38,
+          "percentage": 32.5
+        },
+        {
+          "topic_id": 6,
+          "count": 18,
+          "percentage": 15.4
+        },
+        {
+          "topic_id": 80,
+          "count": 5,
+          "percentage": 4.3
+        },
+        {
+          "topic_id": 1,
+          "count": 4,
+          "percentage": 3.4
+        },
+        {
+          "topic_id": 22,
+          "count": 3,
+          "percentage": 2.6
+        }
+      ]
+    },
+    {
+      "repo": "QuantumSavory/QuantumClifford.jl",
+      "total_issues": 207,
+      "open_issues": 97,
+      "closed_issues": 110,
+      "issue_types": {
+        "bug": 81,
+        "feature": 81,
+        "discussion": 40,
+        "question": 5
+      },
+      "median_resolution_days": 89.97452546296296,
+      "resolution_by_type": {
+        "bug": 71.02686342592592,
+        "feature": 85.38236689814815,
+        "question": 2.6863078703703707,
+        "discussion": 146.7178587962963,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 110
+      },
+      "gini_contributors": 0.7471316425120773,
+      "unique_contributors": 32,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.004830917874396135,
+        "noise_error_mitigation": 0.057971014492753624,
+        "hardware_backend": 0.00966183574879227,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.014492753623188406,
+        "pulse_control": 0.004830917874396135,
+        "dependency_version": 0.01932367149758454,
+        "documentation_examples": 0.21739130434782608,
+        "algorithm_convergence": 0.024154589371980676,
+        "sim_vs_hardware": 0.014492753623188406,
+        "reproducibility": 0.0966183574879227
+      },
+      "topic_entropy": 4.168152549683151,
+      "top_topics": [
+        {
+          "topic_id": 18,
+          "count": 13,
+          "percentage": 20.0
+        },
+        {
+          "topic_id": 1,
+          "count": 11,
+          "percentage": 16.9
+        },
+        {
+          "topic_id": 101,
+          "count": 5,
+          "percentage": 7.7
+        },
+        {
+          "topic_id": 38,
+          "count": 4,
+          "percentage": 6.2
+        },
+        {
+          "topic_id": 51,
+          "count": 3,
+          "percentage": 4.6
+        }
+      ]
+    },
+    {
+      "repo": "Renmusxd/RustQIP",
+      "total_issues": 28,
+      "open_issues": 24,
+      "closed_issues": 4,
+      "issue_types": {
+        "discussion": 4,
+        "feature": 20,
+        "question": 1,
+        "bug": 3
+      },
+      "median_resolution_days": 65.36847222222222,
+      "resolution_by_type": {
+        "bug": 4.817986111111111,
+        "feature": 217.03331018518517,
+        "question": null,
+        "discussion": 62.971053240740744,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 4
+      },
+      "gini_contributors": 0.6428571428571429,
+      "unique_contributors": 5,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.03571428571428571,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.10714285714285714,
+        "pulse_control": 0.0,
+        "dependency_version": 0.0,
+        "documentation_examples": 0.10714285714285714,
+        "algorithm_convergence": 0.03571428571428571,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": 3.095795255000934,
+      "top_topics": [
+        {
+          "topic_id": 19,
+          "count": 2,
+          "percentage": 18.2
+        },
+        {
+          "topic_id": 30,
+          "count": 2,
+          "percentage": 18.2
+        },
+        {
+          "topic_id": 75,
+          "count": 1,
+          "percentage": 9.1
+        },
+        {
+          "topic_id": 139,
+          "count": 1,
+          "percentage": 9.1
+        },
+        {
+          "topic_id": 161,
+          "count": 1,
+          "percentage": 9.1
+        }
+      ]
+    },
+    {
+      "repo": "SoftwareQuTech/SimulaQron",
+      "total_issues": 115,
+      "open_issues": 12,
+      "closed_issues": 103,
+      "issue_types": {
+        "discussion": 35,
+        "bug": 45,
+        "feature": 23,
+        "question": 12
+      },
+      "median_resolution_days": 13.041909722222222,
+      "resolution_by_type": {
+        "bug": 11.854751157407406,
+        "feature": 57.77511574074074,
+        "question": 47.591631944444444,
+        "discussion": 7.978831018518519,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 103
+      },
+      "gini_contributors": 0.5842995169082125,
+      "unique_contributors": 36,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.008695652173913044,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.008695652173913044,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.02608695652173913,
+        "pulse_control": 0.0,
+        "dependency_version": 0.034782608695652174,
+        "documentation_examples": 0.13043478260869565,
+        "algorithm_convergence": 0.0,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.008695652173913044
+      },
+      "topic_entropy": 3.8136606896881857,
+      "top_topics": [
+        {
+          "topic_id": 95,
+          "count": 3,
+          "percentage": 12.0
+        },
+        {
+          "topic_id": 98,
+          "count": 2,
+          "percentage": 8.0
+        },
+        {
+          "topic_id": 123,
+          "count": 2,
+          "percentage": 8.0
+        },
+        {
+          "topic_id": 91,
+          "count": 2,
+          "percentage": 8.0
+        },
+        {
+          "topic_id": 81,
+          "count": 2,
+          "percentage": 8.0
+        }
+      ]
+    },
+    {
+      "repo": "Strilanc/Quirk",
+      "total_issues": 340,
+      "open_issues": 41,
+      "closed_issues": 299,
+      "issue_types": {
+        "question": 10,
+        "feature": 64,
+        "discussion": 201,
+        "bug": 65
+      },
+      "median_resolution_days": 6.747673611111111,
+      "resolution_by_type": {
+        "bug": 2.5469328703703704,
+        "feature": 21.714693287037036,
+        "question": 41.991875,
+        "discussion": 6.935162037037037,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 299
+      },
+      "gini_contributors": 0.795891690009337,
+      "unique_contributors": 63,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0058823529411764705,
+        "hardware_backend": 0.0029411764705882353,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.008823529411764706,
+        "performance_scaling": 0.014705882352941176,
+        "pulse_control": 0.0029411764705882353,
+        "dependency_version": 0.0,
+        "documentation_examples": 0.014705882352941176,
+        "algorithm_convergence": 0.026470588235294117,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": 3.2596022340610866,
+      "top_topics": [
+        {
+          "topic_id": 116,
+          "count": 44,
+          "percentage": 34.1
+        },
+        {
+          "topic_id": 135,
+          "count": 34,
+          "percentage": 26.4
+        },
+        {
+          "topic_id": 64,
+          "count": 7,
+          "percentage": 5.4
+        },
+        {
+          "topic_id": 49,
+          "count": 5,
+          "percentage": 3.9
+        },
+        {
+          "topic_id": 125,
+          "count": 4,
+          "percentage": 3.1
+        }
+      ]
+    },
+    {
+      "repo": "TeamGraphix/graphix",
+      "total_issues": 187,
+      "open_issues": 14,
+      "closed_issues": 173,
+      "issue_types": {
+        "feature": 86,
+        "bug": 80,
+        "discussion": 20,
+        "question": 1
+      },
+      "median_resolution_days": 62.06465277777778,
+      "resolution_by_type": {
+        "bug": 42.23255787037037,
+        "feature": 84.7760763888889,
+        "question": 203.0719560185185,
+        "discussion": 131.01564814814816,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 164,
+        "duplicate": 1,
+        "not_planned": 8
+      },
+      "gini_contributors": 0.6533364333875843,
+      "unique_contributors": 23,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.10695187165775401,
+        "noise_error_mitigation": 0.03208556149732621,
+        "hardware_backend": 0.0053475935828877,
+        "qubit_mapping_routing": 0.0053475935828877,
+        "gradients_autodiff": 0.0053475935828877,
+        "performance_scaling": 0.0374331550802139,
+        "pulse_control": 0.0,
+        "dependency_version": 0.016042780748663103,
+        "documentation_examples": 0.11229946524064172,
+        "algorithm_convergence": 0.0374331550802139,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.06417112299465241
+      },
+      "topic_entropy": 3.998102743952393,
+      "top_topics": [
+        {
+          "topic_id": 37,
+          "count": 36,
+          "percentage": 39.6
+        },
+        {
+          "topic_id": 13,
+          "count": 4,
+          "percentage": 4.4
+        },
+        {
+          "topic_id": 132,
+          "count": 3,
+          "percentage": 3.3
+        },
+        {
+          "topic_id": 29,
+          "count": 3,
+          "percentage": 3.3
+        },
+        {
+          "topic_id": 81,
+          "count": 3,
+          "percentage": 3.3
+        }
+      ]
+    },
+    {
+      "repo": "amazon-braket/amazon-braket-sdk-python",
+      "total_issues": 176,
+      "open_issues": 19,
+      "closed_issues": 157,
+      "issue_types": {
+        "bug": 116,
+        "discussion": 10,
+        "feature": 50
+      },
+      "median_resolution_days": 26.00115740740741,
+      "resolution_by_type": {
+        "bug": 14.922326388888889,
+        "feature": 58.06223958333334,
+        "question": null,
+        "discussion": 20.376493055555557,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 153,
+        "not_planned": 4
+      },
+      "gini_contributors": 0.47774621212121215,
+      "unique_contributors": 72,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.005681818181818182,
+        "noise_error_mitigation": 0.056818181818181816,
+        "hardware_backend": 0.09659090909090909,
+        "qubit_mapping_routing": 0.005681818181818182,
+        "gradients_autodiff": 0.017045454545454544,
+        "performance_scaling": 0.022727272727272728,
+        "pulse_control": 0.045454545454545456,
+        "dependency_version": 0.05113636363636364,
+        "documentation_examples": 0.17045454545454544,
+        "algorithm_convergence": 0.017045454545454544,
+        "sim_vs_hardware": 0.005681818181818182,
+        "reproducibility": 0.017045454545454544
+      },
+      "topic_entropy": 3.549478658966205,
+      "top_topics": [
+        {
+          "topic_id": 16,
+          "count": 40,
+          "percentage": 41.7
+        },
+        {
+          "topic_id": 45,
+          "count": 12,
+          "percentage": 12.5
+        },
+        {
+          "topic_id": 26,
+          "count": 4,
+          "percentage": 4.2
+        },
+        {
+          "topic_id": 142,
+          "count": 4,
+          "percentage": 4.2
+        },
+        {
+          "topic_id": 2,
+          "count": 3,
+          "percentage": 3.1
+        }
+      ]
+    },
+    {
+      "repo": "baidu/QCompute",
+      "total_issues": 3,
+      "open_issues": 3,
+      "closed_issues": 0,
+      "issue_types": {
+        "discussion": 3
+      },
+      "median_resolution_days": null,
+      "resolution_by_type": {
+        "bug": null,
+        "feature": null,
+        "question": null,
+        "discussion": null,
+        "other": null
+      },
+      "resolution_outcomes": {},
+      "gini_contributors": 0.0,
+      "unique_contributors": 3,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.0,
+        "documentation_examples": 0.0,
+        "algorithm_convergence": 0.0,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": -0.0,
+      "top_topics": [
+        {
+          "topic_id": 106,
+          "count": 3,
+          "percentage": 100.0
+        }
+      ]
+    },
+    {
+      "repo": "blueqat/blueqatSDK",
+      "total_issues": 43,
+      "open_issues": 1,
+      "closed_issues": 42,
+      "issue_types": {
+        "discussion": 13,
+        "feature": 20,
+        "bug": 10
+      },
+      "median_resolution_days": 112.985,
+      "resolution_by_type": {
+        "bug": 11.727876157407408,
+        "feature": 268.8301851851852,
+        "question": null,
+        "discussion": 97.33530671296296,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 42
+      },
+      "gini_contributors": 0.6598837209302326,
+      "unique_contributors": 8,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.046511627906976744,
+        "documentation_examples": 0.06976744186046512,
+        "algorithm_convergence": 0.20930232558139536,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": 3.94770277922009,
+      "top_topics": [
+        {
+          "topic_id": 28,
+          "count": 2,
+          "percentage": 11.1
+        },
+        {
+          "topic_id": 49,
+          "count": 2,
+          "percentage": 11.1
+        },
+        {
+          "topic_id": 86,
+          "count": 1,
+          "percentage": 5.6
+        },
+        {
+          "topic_id": 29,
+          "count": 1,
+          "percentage": 5.6
+        },
+        {
+          "topic_id": 41,
+          "count": 1,
+          "percentage": 5.6
+        }
+      ]
+    },
+    {
+      "repo": "boschmitt/tweedledum",
+      "total_issues": 36,
+      "open_issues": 22,
+      "closed_issues": 14,
+      "issue_types": {
+        "feature": 11,
+        "bug": 18,
+        "discussion": 7
+      },
+      "median_resolution_days": 48.10236111111111,
+      "resolution_by_type": {
+        "bug": 14.353807870370371,
+        "feature": 266.75070601851854,
+        "question": null,
+        "discussion": 70.81041666666667,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 14
+      },
+      "gini_contributors": 0.3819444444444444,
+      "unique_contributors": 16,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.027777777777777776,
+        "pulse_control": 0.0,
+        "dependency_version": 0.05555555555555555,
+        "documentation_examples": 0.027777777777777776,
+        "algorithm_convergence": 0.0,
+        "sim_vs_hardware": 0.027777777777777776,
+        "reproducibility": 0.1388888888888889
+      },
+      "topic_entropy": 3.169925001442312,
+      "top_topics": [
+        {
+          "topic_id": 41,
+          "count": 1,
+          "percentage": 11.1
+        },
+        {
+          "topic_id": 50,
+          "count": 1,
+          "percentage": 11.1
+        },
+        {
+          "topic_id": 57,
+          "count": 1,
+          "percentage": 11.1
+        },
+        {
+          "topic_id": 65,
+          "count": 1,
+          "percentage": 11.1
+        },
+        {
+          "topic_id": 68,
+          "count": 1,
+          "percentage": 11.1
+        }
+      ]
+    },
+    {
+      "repo": "dwavesystems/dimod",
+      "total_issues": 493,
+      "open_issues": 153,
+      "closed_issues": 340,
+      "issue_types": {
+        "feature": 249,
+        "bug": 166,
+        "discussion": 70,
+        "question": 8
+      },
+      "median_resolution_days": 12.16578125,
+      "resolution_by_type": {
+        "bug": 3.9361516203703704,
+        "feature": 19.955324074074074,
+        "question": 0.8056481481481481,
+        "discussion": 9.50792824074074,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 338,
+        "not_planned": 2
+      },
+      "gini_contributors": 0.7969514377759217,
+      "unique_contributors": 68,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.006085192697768763,
+        "pulse_control": 0.0,
+        "dependency_version": 0.04462474645030426,
+        "documentation_examples": 0.13995943204868155,
+        "algorithm_convergence": 0.002028397565922921,
+        "sim_vs_hardware": 0.002028397565922921,
+        "reproducibility": 0.018255578093306288
+      },
+      "topic_entropy": 2.329048930536357,
+      "top_topics": [
+        {
+          "topic_id": 20,
+          "count": 173,
+          "percentage": 62.9
+        },
+        {
+          "topic_id": 67,
+          "count": 38,
+          "percentage": 13.8
+        },
+        {
+          "topic_id": 32,
+          "count": 6,
+          "percentage": 2.2
+        },
+        {
+          "topic_id": 47,
+          "count": 6,
+          "percentage": 2.2
+        },
+        {
+          "topic_id": 37,
+          "count": 6,
+          "percentage": 2.2
+        }
+      ]
+    },
+    {
+      "repo": "dwavesystems/dwave-cloud-client",
+      "total_issues": 294,
+      "open_issues": 77,
+      "closed_issues": 217,
+      "issue_types": {
+        "bug": 107,
+        "question": 4,
+        "discussion": 69,
+        "feature": 114
+      },
+      "median_resolution_days": 6.149618055555556,
+      "resolution_by_type": {
+        "bug": 3.0307465277777776,
+        "feature": 13.885127314814815,
+        "question": 96.43991319444444,
+        "discussion": 1.9706828703703703,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 217
+      },
+      "gini_contributors": 0.842687074829932,
+      "unique_contributors": 32,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.003401360544217687,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.06802721088435375,
+        "pulse_control": 0.0,
+        "dependency_version": 0.017006802721088437,
+        "documentation_examples": 0.061224489795918366,
+        "algorithm_convergence": 0.0,
+        "sim_vs_hardware": 0.003401360544217687,
+        "reproducibility": 0.01020408163265306
+      },
+      "topic_entropy": 3.0069655920402836,
+      "top_topics": [
+        {
+          "topic_id": 69,
+          "count": 61,
+          "percentage": 33.9
+        },
+        {
+          "topic_id": 32,
+          "count": 50,
+          "percentage": 27.8
+        },
+        {
+          "topic_id": 123,
+          "count": 21,
+          "percentage": 11.7
+        },
+        {
+          "topic_id": 67,
+          "count": 11,
+          "percentage": 6.1
+        },
+        {
+          "topic_id": 20,
+          "count": 4,
+          "percentage": 2.2
+        }
+      ]
+    },
+    {
+      "repo": "dwavesystems/dwave-graphs",
+      "total_issues": 87,
+      "open_issues": 33,
+      "closed_issues": 54,
+      "issue_types": {
+        "feature": 23,
+        "bug": 31,
+        "discussion": 28,
+        "question": 5
+      },
+      "median_resolution_days": 11.530497685185185,
+      "resolution_by_type": {
+        "bug": 8.838391203703704,
+        "feature": 13.9078125,
+        "question": 6.013894675925926,
+        "discussion": 68.84608796296297,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 54
+      },
+      "gini_contributors": 0.5003591954022989,
+      "unique_contributors": 32,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.034482758620689655,
+        "documentation_examples": 0.22988505747126436,
+        "algorithm_convergence": 0.0,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.022988505747126436
+      },
+      "topic_entropy": 2.3504369450543847,
+      "top_topics": [
+        {
+          "topic_id": 40,
+          "count": 22,
+          "percentage": 52.4
+        },
+        {
+          "topic_id": 37,
+          "count": 7,
+          "percentage": 16.7
+        },
+        {
+          "topic_id": 32,
+          "count": 4,
+          "percentage": 9.5
+        },
+        {
+          "topic_id": 0,
+          "count": 2,
+          "percentage": 4.8
+        },
+        {
+          "topic_id": 20,
+          "count": 1,
+          "percentage": 2.4
+        }
+      ]
+    },
+    {
+      "repo": "dwavesystems/dwave-neal",
+      "total_issues": 34,
+      "open_issues": 5,
+      "closed_issues": 29,
+      "issue_types": {
+        "feature": 14,
+        "bug": 14,
+        "discussion": 6
+      },
+      "median_resolution_days": 7.943923611111111,
+      "resolution_by_type": {
+        "bug": 5.1679050925925925,
+        "feature": 7.943923611111111,
+        "question": null,
+        "discussion": 92.42811342592593,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 29
+      },
+      "gini_contributors": 0.5113122171945702,
+      "unique_contributors": 13,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.058823529411764705,
+        "documentation_examples": 0.11764705882352941,
+        "algorithm_convergence": 0.0,
+        "sim_vs_hardware": 0.029411764705882353,
+        "reproducibility": 0.029411764705882353
+      },
+      "topic_entropy": 3.3248629576173565,
+      "top_topics": [
+        {
+          "topic_id": 67,
+          "count": 3,
+          "percentage": 21.4
+        },
+        {
+          "topic_id": 48,
+          "count": 2,
+          "percentage": 14.3
+        },
+        {
+          "topic_id": 29,
+          "count": 1,
+          "percentage": 7.1
+        },
+        {
+          "topic_id": 32,
+          "count": 1,
+          "percentage": 7.1
+        },
+        {
+          "topic_id": 1,
+          "count": 1,
+          "percentage": 7.1
+        }
+      ]
+    },
+    {
+      "repo": "dwavesystems/dwave-ocean-sdk",
+      "total_issues": 84,
+      "open_issues": 25,
+      "closed_issues": 59,
+      "issue_types": {
+        "discussion": 32,
+        "bug": 34,
+        "feature": 18
+      },
+      "median_resolution_days": 20.12241898148148,
+      "resolution_by_type": {
+        "bug": 57.96003472222222,
+        "feature": 226.11728009259258,
+        "question": null,
+        "discussion": 2.028732638888889,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 59
+      },
+      "gini_contributors": 0.4868421052631579,
+      "unique_contributors": 38,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.011904761904761904,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.05952380952380952,
+        "documentation_examples": 0.4642857142857143,
+        "algorithm_convergence": 0.011904761904761904,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": 3.4271908262357234,
+      "top_topics": [
+        {
+          "topic_id": 32,
+          "count": 13,
+          "percentage": 33.3
+        },
+        {
+          "topic_id": 29,
+          "count": 5,
+          "percentage": 12.8
+        },
+        {
+          "topic_id": 69,
+          "count": 3,
+          "percentage": 7.7
+        },
+        {
+          "topic_id": 20,
+          "count": 2,
+          "percentage": 5.1
+        },
+        {
+          "topic_id": 60,
+          "count": 2,
+          "percentage": 5.1
+        }
+      ]
+    },
+    {
+      "repo": "dwavesystems/dwave-system",
+      "total_issues": 222,
+      "open_issues": 85,
+      "closed_issues": 137,
+      "issue_types": {
+        "feature": 71,
+        "discussion": 47,
+        "bug": 104
+      },
+      "median_resolution_days": 10.605254629629629,
+      "resolution_by_type": {
+        "bug": 10.820162037037036,
+        "feature": 22.043819444444445,
+        "question": null,
+        "discussion": 7.443709490740741,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 133,
+        "not_planned": 3,
+        "duplicate": 1
+      },
+      "gini_contributors": 0.6527436527436528,
+      "unique_contributors": 66,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.018018018018018018,
+        "qubit_mapping_routing": 0.0045045045045045045,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.009009009009009009,
+        "pulse_control": 0.0,
+        "dependency_version": 0.04054054054054054,
+        "documentation_examples": 0.14414414414414414,
+        "algorithm_convergence": 0.009009009009009009,
+        "sim_vs_hardware": 0.0045045045045045045,
+        "reproducibility": 0.03153153153153153
+      },
+      "topic_entropy": 2.6439391631608222,
+      "top_topics": [
+        {
+          "topic_id": 40,
+          "count": 50,
+          "percentage": 36.0
+        },
+        {
+          "topic_id": 32,
+          "count": 46,
+          "percentage": 33.1
+        },
+        {
+          "topic_id": 67,
+          "count": 12,
+          "percentage": 8.6
+        },
+        {
+          "topic_id": 20,
+          "count": 10,
+          "percentage": 7.2
+        },
+        {
+          "topic_id": 55,
+          "count": 3,
+          "percentage": 2.2
+        }
+      ]
+    },
+    {
+      "repo": "dwavesystems/minorminer",
+      "total_issues": 82,
+      "open_issues": 25,
+      "closed_issues": 57,
+      "issue_types": {
+        "bug": 45,
+        "discussion": 24,
+        "feature": 12,
+        "question": 1
+      },
+      "median_resolution_days": 6.852615740740741,
+      "resolution_by_type": {
+        "bug": 5.948327546296296,
+        "feature": 4.36566550925926,
+        "question": 0.1685763888888889,
+        "discussion": 44.36209490740741,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 55,
+        "not_planned": 2
+      },
+      "gini_contributors": 0.4708056171470805,
+      "unique_contributors": 33,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.024390243902439025,
+        "pulse_control": 0.0,
+        "dependency_version": 0.012195121951219513,
+        "documentation_examples": 0.12195121951219512,
+        "algorithm_convergence": 0.0,
+        "sim_vs_hardware": 0.012195121951219513,
+        "reproducibility": 0.06097560975609756
+      },
+      "topic_entropy": 2.2580059062298448,
+      "top_topics": [
+        {
+          "topic_id": 40,
+          "count": 28,
+          "percentage": 60.9
+        },
+        {
+          "topic_id": 60,
+          "count": 5,
+          "percentage": 10.9
+        },
+        {
+          "topic_id": 32,
+          "count": 2,
+          "percentage": 4.3
+        },
+        {
+          "topic_id": 69,
+          "count": 2,
+          "percentage": 4.3
+        },
+        {
+          "topic_id": 35,
+          "count": 1,
+          "percentage": 2.2
+        }
+      ]
+    },
+    {
+      "repo": "dynamiqs/dynamiqs",
+      "total_issues": 80,
+      "open_issues": 9,
+      "closed_issues": 71,
+      "issue_types": {
+        "bug": 45,
+        "feature": 21,
+        "discussion": 13,
+        "question": 1
+      },
+      "median_resolution_days": 12.96369212962963,
+      "resolution_by_type": {
+        "bug": 18.518506944444447,
+        "feature": 25.548773148148147,
+        "question": null,
+        "discussion": 4.791030092592592,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 69,
+        "not_planned": 2
+      },
+      "gini_contributors": 0.4194444444444445,
+      "unique_contributors": 36,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.1,
+        "performance_scaling": 0.0375,
+        "pulse_control": 0.0125,
+        "dependency_version": 0.025,
+        "documentation_examples": 0.1625,
+        "algorithm_convergence": 0.025,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.125
+      },
+      "topic_entropy": 2.8585552118703146,
+      "top_topics": [
+        {
+          "topic_id": 9,
+          "count": 20,
+          "percentage": 45.5
+        },
+        {
+          "topic_id": 150,
+          "count": 4,
+          "percentage": 9.1
+        },
+        {
+          "topic_id": 6,
+          "count": 4,
+          "percentage": 9.1
+        },
+        {
+          "topic_id": 14,
+          "count": 4,
+          "percentage": 9.1
+        },
+        {
+          "topic_id": 13,
+          "count": 2,
+          "percentage": 4.5
+        }
+      ]
+    },
+    {
+      "repo": "eclipse-qrisp/Qrisp",
+      "total_issues": 363,
+      "open_issues": 149,
+      "closed_issues": 214,
+      "issue_types": {
+        "feature": 52,
+        "discussion": 58,
+        "bug": 246,
+        "question": 7
+      },
+      "median_resolution_days": 10.910746527777778,
+      "resolution_by_type": {
+        "bug": 8.10980324074074,
+        "feature": 49.375677083333336,
+        "question": 28.37177662037037,
+        "discussion": 8.264236111111112,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 194,
+        "not_planned": 14,
+        "duplicate": 6
+      },
+      "gini_contributors": 0.7639462809917354,
+      "unique_contributors": 48,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.030303030303030304,
+        "noise_error_mitigation": 0.005509641873278237,
+        "hardware_backend": 0.0027548209366391185,
+        "qubit_mapping_routing": 0.005509641873278237,
+        "gradients_autodiff": 0.011019283746556474,
+        "performance_scaling": 0.024793388429752067,
+        "pulse_control": 0.0,
+        "dependency_version": 0.05785123966942149,
+        "documentation_examples": 0.21763085399449036,
+        "algorithm_convergence": 0.0743801652892562,
+        "sim_vs_hardware": 0.013774104683195593,
+        "reproducibility": 0.027548209366391185
+      },
+      "topic_entropy": 3.3631993790413333,
+      "top_topics": [
+        {
+          "topic_id": 87,
+          "count": 60,
+          "percentage": 31.9
+        },
+        {
+          "topic_id": 127,
+          "count": 40,
+          "percentage": 21.3
+        },
+        {
+          "topic_id": 14,
+          "count": 30,
+          "percentage": 16.0
+        },
+        {
+          "topic_id": 130,
+          "count": 5,
+          "percentage": 2.7
+        },
+        {
+          "topic_id": 28,
+          "count": 5,
+          "percentage": 2.7
+        }
+      ]
+    },
+    {
+      "repo": "entropicalabs/openqaoa",
+      "total_issues": 58,
+      "open_issues": 20,
+      "closed_issues": 38,
+      "issue_types": {
+        "bug": 41,
+        "feature": 16,
+        "discussion": 1
+      },
+      "median_resolution_days": 29.482528935185186,
+      "resolution_by_type": {
+        "bug": 28.392083333333332,
+        "feature": 58.06568865740741,
+        "question": null,
+        "discussion": 3.2557407407407406,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 37,
+        "not_planned": 1
+      },
+      "gini_contributors": 0.47368421052631576,
+      "unique_contributors": 19,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.017241379310344827,
+        "noise_error_mitigation": 0.017241379310344827,
+        "hardware_backend": 0.034482758620689655,
+        "qubit_mapping_routing": 0.017241379310344827,
+        "gradients_autodiff": 0.034482758620689655,
+        "performance_scaling": 0.034482758620689655,
+        "pulse_control": 0.0,
+        "dependency_version": 0.08620689655172414,
+        "documentation_examples": 0.1206896551724138,
+        "algorithm_convergence": 0.39655172413793105,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": 3.916126946588284,
+      "top_topics": [
+        {
+          "topic_id": 16,
+          "count": 2,
+          "percentage": 9.5
+        },
+        {
+          "topic_id": 57,
+          "count": 2,
+          "percentage": 9.5
+        },
+        {
+          "topic_id": 104,
+          "count": 2,
+          "percentage": 9.5
+        },
+        {
+          "topic_id": 24,
+          "count": 2,
+          "percentage": 9.5
+        },
+        {
+          "topic_id": 7,
+          "count": 2,
+          "percentage": 9.5
+        }
+      ]
+    },
+    {
+      "repo": "eperrier/QDataSet",
+      "total_issues": 2,
+      "open_issues": 1,
+      "closed_issues": 1,
+      "issue_types": {
+        "discussion": 2
+      },
+      "median_resolution_days": 1.7104745370370371,
+      "resolution_by_type": {
+        "bug": null,
+        "feature": null,
+        "question": null,
+        "discussion": 1.7104745370370371,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 1
+      },
+      "gini_contributors": 0.0,
+      "unique_contributors": 2,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.0,
+        "documentation_examples": 0.5,
+        "algorithm_convergence": 0.0,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": 0.0,
+      "top_topics": []
+    },
+    {
+      "repo": "epiqc/ScaffCC",
+      "total_issues": 27,
+      "open_issues": 8,
+      "closed_issues": 19,
+      "issue_types": {
+        "bug": 13,
+        "discussion": 11,
+        "feature": 1,
+        "question": 2
+      },
+      "median_resolution_days": 154.9016898148148,
+      "resolution_by_type": {
+        "bug": 154.9016898148148,
+        "feature": 2924.000914351852,
+        "question": 22.72824074074074,
+        "discussion": 501.43930555555556,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 15,
+        "not_planned": 4
+      },
+      "gini_contributors": 0.2651072124756335,
+      "unique_contributors": 19,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.0,
+        "documentation_examples": 0.1111111111111111,
+        "algorithm_convergence": 0.1111111111111111,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": 2.725480556997868,
+      "top_topics": [
+        {
+          "topic_id": 5,
+          "count": 2,
+          "percentage": 22.2
+        },
+        {
+          "topic_id": 10,
+          "count": 2,
+          "percentage": 22.2
+        },
+        {
+          "topic_id": 17,
+          "count": 1,
+          "percentage": 11.1
+        },
+        {
+          "topic_id": 35,
+          "count": 1,
+          "percentage": 11.1
+        },
+        {
+          "topic_id": 13,
+          "count": 1,
+          "percentage": 11.1
+        }
+      ]
+    },
+    {
+      "repo": "gdsfactory/gdsfactory",
+      "total_issues": 1038,
+      "open_issues": 52,
+      "closed_issues": 986,
+      "issue_types": {
+        "bug": 509,
+        "discussion": 118,
+        "feature": 370,
+        "question": 41
+      },
+      "median_resolution_days": 5.179143518518519,
+      "resolution_by_type": {
+        "bug": 1.7017708333333332,
+        "feature": 49.11146412037037,
+        "question": 8.707800925925927,
+        "discussion": 9.092233796296297,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 910,
+        "not_planned": 71,
+        "duplicate": 5
+      },
+      "gini_contributors": 0.7160860282247565,
+      "unique_contributors": 222,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0038535645472061657,
+        "qubit_mapping_routing": 0.10597302504816955,
+        "gradients_autodiff": 0.0019267822736030828,
+        "performance_scaling": 0.004816955684007707,
+        "pulse_control": 0.0009633911368015414,
+        "dependency_version": 0.02601156069364162,
+        "documentation_examples": 0.2023121387283237,
+        "algorithm_convergence": 0.002890173410404624,
+        "sim_vs_hardware": 0.0019267822736030828,
+        "reproducibility": 0.011560693641618497
+      },
+      "topic_entropy": 1.218360240766006,
+      "top_topics": [
+        {
+          "topic_id": 0,
+          "count": 740,
+          "percentage": 86.9
+        },
+        {
+          "topic_id": 23,
+          "count": 9,
+          "percentage": 1.1
+        },
+        {
+          "topic_id": 65,
+          "count": 9,
+          "percentage": 1.1
+        },
+        {
+          "topic_id": 63,
+          "count": 8,
+          "percentage": 0.9
+        },
+        {
+          "topic_id": 47,
+          "count": 6,
+          "percentage": 0.7
+        }
+      ]
+    },
+    {
+      "repo": "harshangrjn/QuantumCircuitOpt.jl",
+      "total_issues": 13,
+      "open_issues": 3,
+      "closed_issues": 10,
+      "issue_types": {
+        "feature": 7,
+        "bug": 3,
+        "discussion": 3
+      },
+      "median_resolution_days": 2.938396990740741,
+      "resolution_by_type": {
+        "bug": 0.2298726851851852,
+        "feature": 10.650144675925926,
+        "question": null,
+        "discussion": 8.187210648148149,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 10
+      },
+      "gini_contributors": 0.4615384615384615,
+      "unique_contributors": 3,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.0,
+        "documentation_examples": 0.0,
+        "algorithm_convergence": 0.15384615384615385,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": 2.321928094887362,
+      "top_topics": [
+        {
+          "topic_id": 99,
+          "count": 1,
+          "percentage": 20.0
+        },
+        {
+          "topic_id": 49,
+          "count": 1,
+          "percentage": 20.0
+        },
+        {
+          "topic_id": 18,
+          "count": 1,
+          "percentage": 20.0
+        },
+        {
+          "topic_id": 62,
+          "count": 1,
+          "percentage": 20.0
+        },
+        {
+          "topic_id": 152,
+          "count": 1,
+          "percentage": 20.0
+        }
+      ]
+    },
+    {
+      "repo": "inQWIRE/QWIRE",
+      "total_issues": 2,
+      "open_issues": 0,
+      "closed_issues": 2,
+      "issue_types": {
+        "discussion": 1,
+        "bug": 1
+      },
+      "median_resolution_days": 75.66473958333334,
+      "resolution_by_type": {
+        "bug": 151.03472222222223,
+        "feature": null,
+        "question": null,
+        "discussion": 0.29475694444444445,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 2
+      },
+      "gini_contributors": 0.0,
+      "unique_contributors": 2,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.0,
+        "documentation_examples": 0.0,
+        "algorithm_convergence": 0.0,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": 1.0,
+      "top_topics": [
+        {
+          "topic_id": 1,
+          "count": 1,
+          "percentage": 50.0
+        },
+        {
+          "topic_id": 72,
+          "count": 1,
+          "percentage": 50.0
+        }
+      ]
+    },
+    {
+      "repo": "intel/intel-qs",
+      "total_issues": 23,
+      "open_issues": 11,
+      "closed_issues": 12,
+      "issue_types": {
+        "feature": 6,
+        "question": 1,
+        "bug": 13,
+        "discussion": 3
+      },
+      "median_resolution_days": 33.724375,
+      "resolution_by_type": {
+        "bug": 367.4122453703704,
+        "feature": 31.82255787037037,
+        "question": 7.199490740740741,
+        "discussion": 706.5541666666667,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 12
+      },
+      "gini_contributors": 0.2301790281329923,
+      "unique_contributors": 17,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.0,
+        "documentation_examples": 0.13043478260869565,
+        "algorithm_convergence": 0.0,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": 2.75,
+      "top_topics": [
+        {
+          "topic_id": 88,
+          "count": 2,
+          "percentage": 25.0
+        },
+        {
+          "topic_id": 1,
+          "count": 1,
+          "percentage": 12.5
+        },
+        {
+          "topic_id": 98,
+          "count": 1,
+          "percentage": 12.5
+        },
+        {
+          "topic_id": 27,
+          "count": 1,
+          "percentage": 12.5
+        },
+        {
+          "topic_id": 112,
+          "count": 1,
+          "percentage": 12.5
+        }
+      ]
+    },
+    {
+      "repo": "itsubaki/q",
+      "total_issues": 15,
+      "open_issues": 2,
+      "closed_issues": 13,
+      "issue_types": {
+        "question": 2,
+        "feature": 4,
+        "discussion": 7,
+        "bug": 2
+      },
+      "median_resolution_days": 6.2365625,
+      "resolution_by_type": {
+        "bug": 1.747789351851852,
+        "feature": 10.917800925925926,
+        "question": 3.961238425925926,
+        "discussion": 6.958877314814814,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 12,
+        "not_planned": 1
+      },
+      "gini_contributors": 0.4533333333333333,
+      "unique_contributors": 5,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.06666666666666667,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.0,
+        "documentation_examples": 0.0,
+        "algorithm_convergence": 0.0,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": 2.521640636343318,
+      "top_topics": [
+        {
+          "topic_id": 61,
+          "count": 2,
+          "percentage": 28.6
+        },
+        {
+          "topic_id": 13,
+          "count": 1,
+          "percentage": 14.3
+        },
+        {
+          "topic_id": 18,
+          "count": 1,
+          "percentage": 14.3
+        },
+        {
+          "topic_id": 56,
+          "count": 1,
+          "percentage": 14.3
+        },
+        {
+          "topic_id": 114,
+          "count": 1,
+          "percentage": 14.3
+        }
+      ]
+    },
+    {
+      "repo": "jcmgray/quimb",
+      "total_issues": 233,
+      "open_issues": 65,
+      "closed_issues": 168,
+      "issue_types": {
+        "feature": 37,
+        "discussion": 20,
+        "bug": 158,
+        "question": 18
+      },
+      "median_resolution_days": 5.891591435185186,
+      "resolution_by_type": {
+        "bug": 3.5630208333333333,
+        "feature": 38.77144675925926,
+        "question": 48.6340625,
+        "discussion": 4.213958333333333,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 165,
+        "not_planned": 2,
+        "duplicate": 1
+      },
+      "gini_contributors": 0.3603184483831864,
+      "unique_contributors": 131,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.004291845493562232,
+        "noise_error_mitigation": 0.004291845493562232,
+        "hardware_backend": 0.008583690987124463,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.08583690987124463,
+        "performance_scaling": 0.034334763948497854,
+        "pulse_control": 0.0,
+        "dependency_version": 0.030042918454935622,
+        "documentation_examples": 0.19742489270386265,
+        "algorithm_convergence": 0.15450643776824036,
+        "sim_vs_hardware": 0.017167381974248927,
+        "reproducibility": 0.034334763948497854
+      },
+      "topic_entropy": 3.1623544326139776,
+      "top_topics": [
+        {
+          "topic_id": 13,
+          "count": 66,
+          "percentage": 53.2
+        },
+        {
+          "topic_id": 14,
+          "count": 9,
+          "percentage": 7.3
+        },
+        {
+          "topic_id": 15,
+          "count": 5,
+          "percentage": 4.0
+        },
+        {
+          "topic_id": 129,
+          "count": 5,
+          "percentage": 4.0
+        },
+        {
+          "topic_id": 83,
+          "count": 3,
+          "percentage": 2.4
+        }
+      ]
+    },
+    {
+      "repo": "microsoft/Qcodes",
+      "total_issues": 641,
+      "open_issues": 188,
+      "closed_issues": 453,
+      "issue_types": {
+        "feature": 141,
+        "question": 21,
+        "discussion": 167,
+        "bug": 312
+      },
+      "median_resolution_days": 23.18204861111111,
+      "resolution_by_type": {
+        "bug": 18.070636574074076,
+        "feature": 48.01618055555556,
+        "question": 35.40947916666667,
+        "discussion": 20.943622685185186,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 451,
+        "not_planned": 2
+      },
+      "gini_contributors": 0.6956983197360681,
+      "unique_contributors": 122,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0031201248049922,
+        "hardware_backend": 0.031201248049921998,
+        "qubit_mapping_routing": 0.0015600624024961,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.0390015600624025,
+        "pulse_control": 0.0249609984399376,
+        "dependency_version": 0.0405616224648986,
+        "documentation_examples": 0.21372854914196568,
+        "algorithm_convergence": 0.0015600624024961,
+        "sim_vs_hardware": 0.0031201248049922,
+        "reproducibility": 0.0062402496099844
+      },
+      "topic_entropy": 3.290115670936466,
+      "top_topics": [
+        {
+          "topic_id": 25,
+          "count": 146,
+          "percentage": 44.8
+        },
+        {
+          "topic_id": 92,
+          "count": 51,
+          "percentage": 15.6
+        },
+        {
+          "topic_id": 23,
+          "count": 31,
+          "percentage": 9.5
+        },
+        {
+          "topic_id": 29,
+          "count": 10,
+          "percentage": 3.1
+        },
+        {
+          "topic_id": 35,
+          "count": 7,
+          "percentage": 2.1
+        }
+      ]
+    },
+    {
+      "repo": "microsoft/qdk",
+      "total_issues": 880,
+      "open_issues": 224,
+      "closed_issues": 656,
+      "issue_types": {
+        "bug": 497,
+        "discussion": 42,
+        "feature": 333,
+        "question": 8
+      },
+      "median_resolution_days": 20.294184027777774,
+      "resolution_by_type": {
+        "bug": 11.020202546296296,
+        "feature": 48.863321759259264,
+        "question": 28.41516203703704,
+        "discussion": 49.4122337962963,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 610,
+        "not_planned": 43,
+        "duplicate": 3
+      },
+      "gini_contributors": 0.7812140391254315,
+      "unique_contributors": 79,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.005681818181818182,
+        "noise_error_mitigation": 0.003409090909090909,
+        "hardware_backend": 0.011363636363636364,
+        "qubit_mapping_routing": 0.0011363636363636363,
+        "gradients_autodiff": 0.0022727272727272726,
+        "performance_scaling": 0.015909090909090907,
+        "pulse_control": 0.0,
+        "dependency_version": 0.03636363636363636,
+        "documentation_examples": 0.10454545454545454,
+        "algorithm_convergence": 0.029545454545454545,
+        "sim_vs_hardware": 0.0022727272727272726,
+        "reproducibility": 0.020454545454545454
+      },
+      "topic_entropy": 4.217386731578079,
+      "top_topics": [
+        {
+          "topic_id": 73,
+          "count": 69,
+          "percentage": 20.1
+        },
+        {
+          "topic_id": 79,
+          "count": 67,
+          "percentage": 19.5
+        },
+        {
+          "topic_id": 160,
+          "count": 29,
+          "percentage": 8.5
+        },
+        {
+          "topic_id": 133,
+          "count": 27,
+          "percentage": 7.9
+        },
+        {
+          "topic_id": 16,
+          "count": 22,
+          "percentage": 6.4
+        }
+      ]
+    },
+    {
+      "repo": "munich-quantum-toolkit/bench",
+      "total_issues": 114,
+      "open_issues": 9,
+      "closed_issues": 105,
+      "issue_types": {
+        "feature": 68,
+        "question": 3,
+        "discussion": 6,
+        "bug": 37
+      },
+      "median_resolution_days": 36.01803240740741,
+      "resolution_by_type": {
+        "bug": 8.85792824074074,
+        "feature": 91.35381944444444,
+        "question": 104.11543981481482,
+        "discussion": 21.1153587962963,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 99,
+        "not_planned": 6
+      },
+      "gini_contributors": 0.6251461988304093,
+      "unique_contributors": 30,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.02631578947368421,
+        "noise_error_mitigation": 0.02631578947368421,
+        "hardware_backend": 0.07894736842105263,
+        "qubit_mapping_routing": 0.03508771929824561,
+        "gradients_autodiff": 0.008771929824561403,
+        "performance_scaling": 0.03508771929824561,
+        "pulse_control": 0.0,
+        "dependency_version": 0.043859649122807015,
+        "documentation_examples": 0.11403508771929824,
+        "algorithm_convergence": 0.11403508771929824,
+        "sim_vs_hardware": 0.017543859649122806,
+        "reproducibility": 0.043859649122807015
+      },
+      "topic_entropy": 3.823393567922348,
+      "top_topics": [
+        {
+          "topic_id": 89,
+          "count": 6,
+          "percentage": 16.2
+        },
+        {
+          "topic_id": 30,
+          "count": 6,
+          "percentage": 16.2
+        },
+        {
+          "topic_id": 107,
+          "count": 3,
+          "percentage": 8.1
+        },
+        {
+          "topic_id": 16,
+          "count": 3,
+          "percentage": 8.1
+        },
+        {
+          "topic_id": 10,
+          "count": 3,
+          "percentage": 8.1
+        }
+      ]
+    },
+    {
+      "repo": "munich-quantum-toolkit/ddsim",
+      "total_issues": 46,
+      "open_issues": 7,
+      "closed_issues": 39,
+      "issue_types": {
+        "discussion": 7,
+        "question": 4,
+        "bug": 24,
+        "feature": 11
+      },
+      "median_resolution_days": 8.98130787037037,
+      "resolution_by_type": {
+        "bug": 5.529583333333333,
+        "feature": 125.43747106481482,
+        "question": 1.3424768518518517,
+        "discussion": 204.79730324074075,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 39
+      },
+      "gini_contributors": 0.3858695652173913,
+      "unique_contributors": 24,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.021739130434782608,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.0,
+        "documentation_examples": 0.15217391304347827,
+        "algorithm_convergence": 0.043478260869565216,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.06521739130434782
+      },
+      "topic_entropy": 3.452819531114783,
+      "top_topics": [
+        {
+          "topic_id": 112,
+          "count": 3,
+          "percentage": 18.8
+        },
+        {
+          "topic_id": 88,
+          "count": 2,
+          "percentage": 12.5
+        },
+        {
+          "topic_id": 21,
+          "count": 2,
+          "percentage": 12.5
+        },
+        {
+          "topic_id": 24,
+          "count": 1,
+          "percentage": 6.2
+        },
+        {
+          "topic_id": 4,
+          "count": 1,
+          "percentage": 6.2
+        }
+      ]
+    },
+    {
+      "repo": "munich-quantum-toolkit/predictor",
+      "total_issues": 60,
+      "open_issues": 16,
+      "closed_issues": 44,
+      "issue_types": {
+        "feature": 32,
+        "discussion": 9,
+        "bug": 16,
+        "question": 3
+      },
+      "median_resolution_days": 54.595422453703705,
+      "resolution_by_type": {
+        "bug": 22.407060185185184,
+        "feature": 59.933703703703706,
+        "question": 162.1809027777778,
+        "discussion": 332.96427083333333,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 44
+      },
+      "gini_contributors": 0.6266666666666667,
+      "unique_contributors": 10,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.016666666666666666,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.016666666666666666,
+        "qubit_mapping_routing": 0.016666666666666666,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.05,
+        "pulse_control": 0.0,
+        "dependency_version": 0.05,
+        "documentation_examples": 0.13333333333333333,
+        "algorithm_convergence": 0.0,
+        "sim_vs_hardware": 0.016666666666666666,
+        "reproducibility": 0.03333333333333333
+      },
+      "topic_entropy": 3.831401845392172,
+      "top_topics": [
+        {
+          "topic_id": 89,
+          "count": 6,
+          "percentage": 20.0
+        },
+        {
+          "topic_id": 30,
+          "count": 3,
+          "percentage": 10.0
+        },
+        {
+          "topic_id": 38,
+          "count": 2,
+          "percentage": 6.7
+        },
+        {
+          "topic_id": 47,
+          "count": 2,
+          "percentage": 6.7
+        },
+        {
+          "topic_id": 143,
+          "count": 2,
+          "percentage": 6.7
+        }
+      ]
+    },
+    {
+      "repo": "munich-quantum-toolkit/qcec",
+      "total_issues": 54,
+      "open_issues": 0,
+      "closed_issues": 54,
+      "issue_types": {
+        "bug": 36,
+        "feature": 11,
+        "discussion": 3,
+        "question": 4
+      },
+      "median_resolution_days": 23.365480324074074,
+      "resolution_by_type": {
+        "bug": 17.91888310185185,
+        "feature": 536.3323495370371,
+        "question": 2.0591030092592595,
+        "discussion": 20.83622685185185,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 54
+      },
+      "gini_contributors": 0.538888888888889,
+      "unique_contributors": 20,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.24074074074074073,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.018518518518518517,
+        "qubit_mapping_routing": 0.1111111111111111,
+        "gradients_autodiff": 0.018518518518518517,
+        "performance_scaling": 0.07407407407407407,
+        "pulse_control": 0.0,
+        "dependency_version": 0.018518518518518517,
+        "documentation_examples": 0.1111111111111111,
+        "algorithm_convergence": 0.018518518518518517,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.09259259259259259
+      },
+      "topic_entropy": 1.9219280948873623,
+      "top_topics": [
+        {
+          "topic_id": 60,
+          "count": 2,
+          "percentage": 40.0
+        },
+        {
+          "topic_id": 21,
+          "count": 1,
+          "percentage": 20.0
+        },
+        {
+          "topic_id": 57,
+          "count": 1,
+          "percentage": 20.0
+        },
+        {
+          "topic_id": 65,
+          "count": 1,
+          "percentage": 20.0
+        }
+      ]
+    },
+    {
+      "repo": "munich-quantum-toolkit/qecc",
+      "total_issues": 44,
+      "open_issues": 5,
+      "closed_issues": 39,
+      "issue_types": {
+        "discussion": 6,
+        "bug": 20,
+        "feature": 17,
+        "question": 1
+      },
+      "median_resolution_days": 15.873912037037037,
+      "resolution_by_type": {
+        "bug": 8.835983796296297,
+        "feature": 73.13876157407407,
+        "question": 0.0036805555555555554,
+        "discussion": 11.474895833333333,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 39
+      },
+      "gini_contributors": 0.4134199134199134,
+      "unique_contributors": 21,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.022727272727272728,
+        "noise_error_mitigation": 0.06818181818181818,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.045454545454545456,
+        "pulse_control": 0.0,
+        "dependency_version": 0.045454545454545456,
+        "documentation_examples": 0.1590909090909091,
+        "algorithm_convergence": 0.045454545454545456,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.06818181818181818
+      },
+      "topic_entropy": 3.75,
+      "top_topics": [
+        {
+          "topic_id": 41,
+          "count": 2,
+          "percentage": 12.5
+        },
+        {
+          "topic_id": 15,
+          "count": 2,
+          "percentage": 12.5
+        },
+        {
+          "topic_id": 131,
+          "count": 1,
+          "percentage": 6.2
+        },
+        {
+          "topic_id": 68,
+          "count": 1,
+          "percentage": 6.2
+        },
+        {
+          "topic_id": 55,
+          "count": 1,
+          "percentage": 6.2
+        }
+      ]
+    },
+    {
+      "repo": "munich-quantum-toolkit/qmap",
+      "total_issues": 49,
+      "open_issues": 11,
+      "closed_issues": 38,
+      "issue_types": {
+        "feature": 23,
+        "bug": 22,
+        "discussion": 2,
+        "question": 2
+      },
+      "median_resolution_days": 33.249837962962964,
+      "resolution_by_type": {
+        "bug": 2.332071759259259,
+        "feature": 320.81635416666666,
+        "question": 45.848130787037036,
+        "discussion": 968.5232523148148,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 28,
+        "not_planned": 9,
+        "duplicate": 1
+      },
+      "gini_contributors": 0.4016326530612245,
+      "unique_contributors": 25,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.08163265306122448,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.02040816326530612,
+        "qubit_mapping_routing": 0.12244897959183673,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.04081632653061224,
+        "pulse_control": 0.0,
+        "dependency_version": 0.04081632653061224,
+        "documentation_examples": 0.08163265306122448,
+        "algorithm_convergence": 0.10204081632653061,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": 2.5207474747403578,
+      "top_topics": [
+        {
+          "topic_id": 4,
+          "count": 7,
+          "percentage": 33.3
+        },
+        {
+          "topic_id": 18,
+          "count": 7,
+          "percentage": 33.3
+        },
+        {
+          "topic_id": 49,
+          "count": 1,
+          "percentage": 4.8
+        },
+        {
+          "topic_id": 15,
+          "count": 1,
+          "percentage": 4.8
+        },
+        {
+          "topic_id": 24,
+          "count": 1,
+          "percentage": 4.8
+        }
+      ]
+    },
+    {
+      "repo": "nicolasloizeau/PauliStrings.jl",
+      "total_issues": 34,
+      "open_issues": 6,
+      "closed_issues": 28,
+      "issue_types": {
+        "feature": 18,
+        "bug": 10,
+        "discussion": 6
+      },
+      "median_resolution_days": 43.90014467592593,
+      "resolution_by_type": {
+        "bug": 26.729699074074073,
+        "feature": 48.05008680555555,
+        "question": null,
+        "discussion": 84.23646990740741,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 27,
+        "duplicate": 1
+      },
+      "gini_contributors": 0.6535947712418301,
+      "unique_contributors": 9,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.029411764705882353,
+        "noise_error_mitigation": 0.058823529411764705,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.029411764705882353,
+        "documentation_examples": 0.23529411764705882,
+        "algorithm_convergence": 0.029411764705882353,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.029411764705882353
+      },
+      "topic_entropy": 1.792481250360578,
+      "top_topics": [
+        {
+          "topic_id": 43,
+          "count": 3,
+          "percentage": 50.0
+        },
+        {
+          "topic_id": 148,
+          "count": 1,
+          "percentage": 16.7
+        },
+        {
+          "topic_id": 150,
+          "count": 1,
+          "percentage": 16.7
+        },
+        {
+          "topic_id": 51,
+          "count": 1,
+          "percentage": 16.7
+        }
+      ]
+    },
+    {
+      "repo": "open-quantum-safe/liboqs",
+      "total_issues": 889,
+      "open_issues": 100,
+      "closed_issues": 789,
+      "issue_types": {
+        "discussion": 256,
+        "bug": 366,
+        "feature": 216,
+        "question": 51
+      },
+      "median_resolution_days": 15.469050925925925,
+      "resolution_by_type": {
+        "bug": 8.361284722222223,
+        "feature": 54.5158912037037,
+        "question": 12.947511574074074,
+        "discussion": 12.952233796296296,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 741,
+        "not_planned": 45,
+        "duplicate": 3
+      },
+      "gini_contributors": 0.6741814176993566,
+      "unique_contributors": 239,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0011248593925759281,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0022497187851518562,
+        "qubit_mapping_routing": 0.0011248593925759281,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.012373453318335208,
+        "pulse_control": 0.0,
+        "dependency_version": 0.02699662542182227,
+        "documentation_examples": 0.12710911136107986,
+        "algorithm_convergence": 0.0,
+        "sim_vs_hardware": 0.0022497187851518562,
+        "reproducibility": 0.052868391451068614
+      },
+      "topic_entropy": 2.1725004780469974,
+      "top_topics": [
+        {
+          "topic_id": 5,
+          "count": 355,
+          "percentage": 67.2
+        },
+        {
+          "topic_id": 68,
+          "count": 44,
+          "percentage": 8.3
+        },
+        {
+          "topic_id": 146,
+          "count": 28,
+          "percentage": 5.3
+        },
+        {
+          "topic_id": 50,
+          "count": 24,
+          "percentage": 4.5
+        },
+        {
+          "topic_id": 88,
+          "count": 12,
+          "percentage": 2.3
+        }
+      ]
+    },
+    {
+      "repo": "open-quantum-safe/openssh",
+      "total_issues": 76,
+      "open_issues": 8,
+      "closed_issues": 68,
+      "issue_types": {
+        "discussion": 25,
+        "bug": 28,
+        "feature": 20,
+        "question": 3
+      },
+      "median_resolution_days": 30.982922453703704,
+      "resolution_by_type": {
+        "bug": 7.782673611111111,
+        "feature": 30.516145833333333,
+        "question": 31.983923611111113,
+        "discussion": 33.15826388888889,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 62,
+        "not_planned": 5,
+        "duplicate": 1
+      },
+      "gini_contributors": 0.43609022556390975,
+      "unique_contributors": 28,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.039473684210526314,
+        "documentation_examples": 0.039473684210526314,
+        "algorithm_convergence": 0.0,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": 0.83421983903532,
+      "top_topics": [
+        {
+          "topic_id": 5,
+          "count": 57,
+          "percentage": 87.7
+        },
+        {
+          "topic_id": 146,
+          "count": 3,
+          "percentage": 4.6
+        },
+        {
+          "topic_id": 16,
+          "count": 1,
+          "percentage": 1.5
+        },
+        {
+          "topic_id": 17,
+          "count": 1,
+          "percentage": 1.5
+        },
+        {
+          "topic_id": 50,
+          "count": 1,
+          "percentage": 1.5
+        }
+      ]
+    },
+    {
+      "repo": "openqasm/openqasm",
+      "total_issues": 276,
+      "open_issues": 103,
+      "closed_issues": 173,
+      "issue_types": {
+        "discussion": 82,
+        "question": 10,
+        "feature": 79,
+        "bug": 105
+      },
+      "median_resolution_days": 54.56923611111111,
+      "resolution_by_type": {
+        "bug": 49.97984953703704,
+        "feature": 54.56923611111111,
+        "question": 57.625474537037036,
+        "discussion": 60.664768518518514,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 170,
+        "not_planned": 3
+      },
+      "gini_contributors": 0.529659588810246,
+      "unique_contributors": 86,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.014492753623188406,
+        "noise_error_mitigation": 0.028985507246376812,
+        "hardware_backend": 0.06521739130434782,
+        "qubit_mapping_routing": 0.014492753623188406,
+        "gradients_autodiff": 0.014492753623188406,
+        "performance_scaling": 0.007246376811594203,
+        "pulse_control": 0.10144927536231885,
+        "dependency_version": 0.057971014492753624,
+        "documentation_examples": 0.16666666666666666,
+        "algorithm_convergence": 0.018115942028985508,
+        "sim_vs_hardware": 0.007246376811594203,
+        "reproducibility": 0.010869565217391304
+      },
+      "topic_entropy": 3.3609734246120415,
+      "top_topics": [
+        {
+          "topic_id": 45,
+          "count": 34,
+          "percentage": 38.6
+        },
+        {
+          "topic_id": 10,
+          "count": 9,
+          "percentage": 10.2
+        },
+        {
+          "topic_id": 114,
+          "count": 8,
+          "percentage": 9.1
+        },
+        {
+          "topic_id": 2,
+          "count": 7,
+          "percentage": 8.0
+        },
+        {
+          "topic_id": 48,
+          "count": 4,
+          "percentage": 4.5
+        }
+      ]
+    },
+    {
+      "repo": "oscarhiggott/PyMatching",
+      "total_issues": 89,
+      "open_issues": 22,
+      "closed_issues": 67,
+      "issue_types": {
+        "feature": 23,
+        "discussion": 28,
+        "question": 4,
+        "bug": 34
+      },
+      "median_resolution_days": 13.652314814814815,
+      "resolution_by_type": {
+        "bug": 10.338888888888889,
+        "feature": 18.09558449074074,
+        "question": 25.02611111111111,
+        "discussion": 13.893321759259258,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 67
+      },
+      "gini_contributors": 0.5325251330573625,
+      "unique_contributors": 38,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.06741573033707865,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.011235955056179775,
+        "documentation_examples": 0.20224719101123595,
+        "algorithm_convergence": 0.0,
+        "sim_vs_hardware": 0.011235955056179775,
+        "reproducibility": 0.0449438202247191
+      },
+      "topic_entropy": 3.1363793303507563,
+      "top_topics": [
+        {
+          "topic_id": 54,
+          "count": 5,
+          "percentage": 26.3
+        },
+        {
+          "topic_id": 37,
+          "count": 3,
+          "percentage": 15.8
+        },
+        {
+          "topic_id": 60,
+          "count": 3,
+          "percentage": 15.8
+        },
+        {
+          "topic_id": 156,
+          "count": 1,
+          "percentage": 5.3
+        },
+        {
+          "topic_id": 41,
+          "count": 1,
+          "percentage": 5.3
+        }
+      ]
+    },
+    {
+      "repo": "pasqal-io/Pulser",
+      "total_issues": 364,
+      "open_issues": 37,
+      "closed_issues": 327,
+      "issue_types": {
+        "discussion": 143,
+        "bug": 100,
+        "feature": 104,
+        "question": 17
+      },
+      "median_resolution_days": 21.001030092592593,
+      "resolution_by_type": {
+        "bug": 14.919537037037038,
+        "feature": 34.903819444444444,
+        "question": 13.990902777777778,
+        "discussion": 19.006226851851853,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 326,
+        "not_planned": 1
+      },
+      "gini_contributors": 0.7297600358824848,
+      "unique_contributors": 49,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.046703296703296704,
+        "hardware_backend": 0.005494505494505495,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.005494505494505495,
+        "performance_scaling": 0.008241758241758242,
+        "pulse_control": 0.16758241758241757,
+        "dependency_version": 0.06318681318681318,
+        "documentation_examples": 0.23351648351648352,
+        "algorithm_convergence": 0.013736263736263736,
+        "sim_vs_hardware": 0.005494505494505495,
+        "reproducibility": 0.03296703296703297
+      },
+      "topic_entropy": 3.6215606904425064,
+      "top_topics": [
+        {
+          "topic_id": 2,
+          "count": 64,
+          "percentage": 41.3
+        },
+        {
+          "topic_id": 22,
+          "count": 16,
+          "percentage": 10.3
+        },
+        {
+          "topic_id": 31,
+          "count": 11,
+          "percentage": 7.1
+        },
+        {
+          "topic_id": 107,
+          "count": 6,
+          "percentage": 3.9
+        },
+        {
+          "topic_id": 108,
+          "count": 5,
+          "percentage": 3.2
+        }
+      ]
+    },
+    {
+      "repo": "pasqal-io/qadence",
+      "total_issues": 271,
+      "open_issues": 18,
+      "closed_issues": 253,
+      "issue_types": {
+        "discussion": 58,
+        "bug": 85,
+        "feature": 124,
+        "question": 4
+      },
+      "median_resolution_days": 62.229178240740744,
+      "resolution_by_type": {
+        "bug": 20.024369212962963,
+        "feature": 100.80241898148148,
+        "question": 34.34303240740741,
+        "discussion": 112.38296296296296,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 228,
+        "not_planned": 25
+      },
+      "gini_contributors": 0.6375153751537516,
+      "unique_contributors": 30,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.01845018450184502,
+        "noise_error_mitigation": 0.055350553505535055,
+        "hardware_backend": 0.0036900369003690036,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.05904059040590406,
+        "performance_scaling": 0.014760147601476014,
+        "pulse_control": 0.04059040590405904,
+        "dependency_version": 0.007380073800738007,
+        "documentation_examples": 0.12915129151291513,
+        "algorithm_convergence": 0.08487084870848709,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": 4.4951101202174755,
+      "top_topics": [
+        {
+          "topic_id": 2,
+          "count": 15,
+          "percentage": 14.4
+        },
+        {
+          "topic_id": 6,
+          "count": 13,
+          "percentage": 12.5
+        },
+        {
+          "topic_id": 22,
+          "count": 10,
+          "percentage": 9.6
+        },
+        {
+          "topic_id": 14,
+          "count": 8,
+          "percentage": 7.7
+        },
+        {
+          "topic_id": 89,
+          "count": 7,
+          "percentage": 6.7
+        }
+      ]
+    },
+    {
+      "repo": "pyrpl-fpga/pyrpl",
+      "total_issues": 480,
+      "open_issues": 89,
+      "closed_issues": 391,
+      "issue_types": {
+        "bug": 172,
+        "discussion": 201,
+        "feature": 82,
+        "question": 25
+      },
+      "median_resolution_days": 42.58122685185185,
+      "resolution_by_type": {
+        "bug": 55.98871527777778,
+        "feature": 53.77766782407407,
+        "question": 116.08006944444443,
+        "discussion": 22.002667824074074,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "not_planned": 16,
+        "completed": 366,
+        "duplicate": 9
+      },
+      "gini_contributors": 0.6787558685446009,
+      "unique_contributors": 142,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.004166666666666667,
+        "hardware_backend": 0.03333333333333333,
+        "qubit_mapping_routing": 0.004166666666666667,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.03333333333333333,
+        "pulse_control": 0.0375,
+        "dependency_version": 0.020833333333333332,
+        "documentation_examples": 0.12083333333333333,
+        "algorithm_convergence": 0.0,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.00625
+      },
+      "topic_entropy": 2.907538681975809,
+      "top_topics": [
+        {
+          "topic_id": 34,
+          "count": 117,
+          "percentage": 38.9
+        },
+        {
+          "topic_id": 78,
+          "count": 68,
+          "percentage": 22.6
+        },
+        {
+          "topic_id": 103,
+          "count": 53,
+          "percentage": 17.6
+        },
+        {
+          "topic_id": 50,
+          "count": 7,
+          "percentage": 2.3
+        },
+        {
+          "topic_id": 141,
+          "count": 6,
+          "percentage": 2.0
+        }
+      ]
+    },
+    {
+      "repo": "qBraid/qBraid",
+      "total_issues": 317,
+      "open_issues": 27,
+      "closed_issues": 290,
+      "issue_types": {
+        "feature": 106,
+        "discussion": 75,
+        "bug": 130,
+        "question": 6
+      },
+      "median_resolution_days": 28.823391203703704,
+      "resolution_by_type": {
+        "bug": 21.599751157407407,
+        "feature": 71.82748263888888,
+        "question": 58.34441550925926,
+        "discussion": 51.9275462962963,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 256,
+        "not_planned": 32,
+        "duplicate": 2
+      },
+      "gini_contributors": 0.8336568793982043,
+      "unique_contributors": 26,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.22082018927444794,
+        "noise_error_mitigation": 0.00946372239747634,
+        "hardware_backend": 0.1608832807570978,
+        "qubit_mapping_routing": 0.028391167192429023,
+        "gradients_autodiff": 0.00946372239747634,
+        "performance_scaling": 0.028391167192429023,
+        "pulse_control": 0.00946372239747634,
+        "dependency_version": 0.031545741324921134,
+        "documentation_examples": 0.12933753943217666,
+        "algorithm_convergence": 0.015772870662460567,
+        "sim_vs_hardware": 0.006309148264984227,
+        "reproducibility": 0.01892744479495268
+      },
+      "topic_entropy": 3.2364527029620276,
+      "top_topics": [
+        {
+          "topic_id": 16,
+          "count": 109,
+          "percentage": 54.5
+        },
+        {
+          "topic_id": 45,
+          "count": 12,
+          "percentage": 6.0
+        },
+        {
+          "topic_id": 26,
+          "count": 10,
+          "percentage": 5.0
+        },
+        {
+          "topic_id": 23,
+          "count": 4,
+          "percentage": 2.0
+        },
+        {
+          "topic_id": 75,
+          "count": 4,
+          "percentage": 2.0
+        }
+      ]
+    },
+    {
+      "repo": "qecsim/qecsim",
+      "total_issues": 1,
+      "open_issues": 1,
+      "closed_issues": 0,
+      "issue_types": {
+        "discussion": 1
+      },
+      "median_resolution_days": null,
+      "resolution_by_type": {
+        "bug": null,
+        "feature": null,
+        "question": null,
+        "discussion": null,
+        "other": null
+      },
+      "resolution_outcomes": {},
+      "gini_contributors": 0.0,
+      "unique_contributors": 1,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.0,
+        "documentation_examples": 0.0,
+        "algorithm_convergence": 0.0,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": 0.0,
+      "top_topics": []
+    },
+    {
+      "repo": "qiboteam/qibo",
+      "total_issues": 607,
+      "open_issues": 53,
+      "closed_issues": 554,
+      "issue_types": {
+        "feature": 260,
+        "discussion": 98,
+        "bug": 225,
+        "question": 24
+      },
+      "median_resolution_days": 18.811296296296298,
+      "resolution_by_type": {
+        "bug": 8.097430555555556,
+        "feature": 41.1971412037037,
+        "question": 5.575648148148148,
+        "discussion": 36.05550347222222,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 548,
+        "duplicate": 1,
+        "not_planned": 5
+      },
+      "gini_contributors": 0.7313111735633298,
+      "unique_contributors": 85,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0642504118616145,
+        "noise_error_mitigation": 0.039538714991762765,
+        "hardware_backend": 0.044481054365733116,
+        "qubit_mapping_routing": 0.008237232289950576,
+        "gradients_autodiff": 0.03459637561779242,
+        "performance_scaling": 0.054365733113673806,
+        "pulse_control": 0.004942339373970346,
+        "dependency_version": 0.016474464579901153,
+        "documentation_examples": 0.17462932454695224,
+        "algorithm_convergence": 0.14991762767710048,
+        "sim_vs_hardware": 0.008237232289950576,
+        "reproducibility": 0.023064250411861616
+      },
+      "topic_entropy": 5.60740116523114,
+      "top_topics": [
+        {
+          "topic_id": 1,
+          "count": 21,
+          "percentage": 8.3
+        },
+        {
+          "topic_id": 18,
+          "count": 15,
+          "percentage": 5.9
+        },
+        {
+          "topic_id": 22,
+          "count": 10,
+          "percentage": 3.9
+        },
+        {
+          "topic_id": 21,
+          "count": 10,
+          "percentage": 3.9
+        },
+        {
+          "topic_id": 44,
+          "count": 9,
+          "percentage": 3.5
+        }
+      ]
+    },
+    {
+      "repo": "qiskit-community/qiskit-experiments",
+      "total_issues": 485,
+      "open_issues": 109,
+      "closed_issues": 376,
+      "issue_types": {
+        "question": 8,
+        "discussion": 92,
+        "feature": 164,
+        "bug": 221
+      },
+      "median_resolution_days": 37.75939236111111,
+      "resolution_by_type": {
+        "bug": 15.111452546296295,
+        "feature": 83.81282986111111,
+        "question": 103.03317708333333,
+        "discussion": 57.39822916666667,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 373,
+        "not_planned": 3
+      },
+      "gini_contributors": 0.7395512431776835,
+      "unique_contributors": 85,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.07835051546391752,
+        "noise_error_mitigation": 0.02268041237113402,
+        "hardware_backend": 0.1154639175257732,
+        "qubit_mapping_routing": 0.020618556701030927,
+        "gradients_autodiff": 0.006185567010309278,
+        "performance_scaling": 0.01443298969072165,
+        "pulse_control": 0.0288659793814433,
+        "dependency_version": 0.08453608247422681,
+        "documentation_examples": 0.1711340206185567,
+        "algorithm_convergence": 0.010309278350515464,
+        "sim_vs_hardware": 0.026804123711340205,
+        "reproducibility": 0.030927835051546393
+      },
+      "topic_entropy": 3.967555723060146,
+      "top_topics": [
+        {
+          "topic_id": 82,
+          "count": 60,
+          "percentage": 33.3
+        },
+        {
+          "topic_id": 26,
+          "count": 17,
+          "percentage": 9.4
+        },
+        {
+          "topic_id": 2,
+          "count": 11,
+          "percentage": 6.1
+        },
+        {
+          "topic_id": 23,
+          "count": 7,
+          "percentage": 3.9
+        },
+        {
+          "topic_id": 24,
+          "count": 7,
+          "percentage": 3.9
+        }
+      ]
+    },
+    {
+      "repo": "qiskit-community/qiskit-metal",
+      "total_issues": 599,
+      "open_issues": 18,
+      "closed_issues": 581,
+      "issue_types": {
+        "question": 3,
+        "bug": 328,
+        "feature": 244,
+        "discussion": 24
+      },
+      "median_resolution_days": 56.69865740740741,
+      "resolution_by_type": {
+        "bug": 22.711041666666667,
+        "feature": 324.4533159722222,
+        "question": 168.60326388888888,
+        "discussion": 1.2490972222222223,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 481,
+        "not_planned": 97,
+        "duplicate": 3
+      },
+      "gini_contributors": 0.759482470784641,
+      "unique_contributors": 100,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.00333889816360601,
+        "hardware_backend": 0.008347245409015025,
+        "qubit_mapping_routing": 0.00667779632721202,
+        "gradients_autodiff": 0.001669449081803005,
+        "performance_scaling": 0.005008347245409015,
+        "pulse_control": 0.00333889816360601,
+        "dependency_version": 0.038397328881469114,
+        "documentation_examples": 0.27378964941569284,
+        "algorithm_convergence": 0.02337228714524207,
+        "sim_vs_hardware": 0.005008347245409015,
+        "reproducibility": 0.008347245409015025
+      },
+      "topic_entropy": 3.286495736589118,
+      "top_topics": [
+        {
+          "topic_id": 33,
+          "count": 111,
+          "percentage": 35.5
+        },
+        {
+          "topic_id": 0,
+          "count": 78,
+          "percentage": 24.9
+        },
+        {
+          "topic_id": 111,
+          "count": 22,
+          "percentage": 7.0
+        },
+        {
+          "topic_id": 97,
+          "count": 16,
+          "percentage": 5.1
+        },
+        {
+          "topic_id": 24,
+          "count": 11,
+          "percentage": 3.5
+        }
+      ]
+    },
+    {
+      "repo": "qiskit-community/qiskit-nature",
+      "total_issues": 439,
+      "open_issues": 54,
+      "closed_issues": 385,
+      "issue_types": {
+        "bug": 181,
+        "discussion": 43,
+        "feature": 187,
+        "question": 28
+      },
+      "median_resolution_days": 28.077395833333334,
+      "resolution_by_type": {
+        "bug": 9.312743055555556,
+        "feature": 52.493483796296296,
+        "question": 11.589479166666667,
+        "discussion": 52.18358796296296,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 363,
+        "not_planned": 22
+      },
+      "gini_contributors": 0.7006789048193309,
+      "unique_contributors": 102,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.009111617312072893,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.01366742596810934,
+        "qubit_mapping_routing": 0.004555808656036446,
+        "gradients_autodiff": 0.01366742596810934,
+        "performance_scaling": 0.00683371298405467,
+        "pulse_control": 0.0,
+        "dependency_version": 0.1662870159453303,
+        "documentation_examples": 0.26879271070615035,
+        "algorithm_convergence": 0.20273348519362186,
+        "sim_vs_hardware": 0.009111617312072893,
+        "reproducibility": 0.00683371298405467
+      },
+      "topic_entropy": 4.175247166328488,
+      "top_topics": [
+        {
+          "topic_id": 93,
+          "count": 32,
+          "percentage": 19.9
+        },
+        {
+          "topic_id": 126,
+          "count": 24,
+          "percentage": 14.9
+        },
+        {
+          "topic_id": 24,
+          "count": 23,
+          "percentage": 14.3
+        },
+        {
+          "topic_id": 89,
+          "count": 11,
+          "percentage": 6.8
+        },
+        {
+          "topic_id": 149,
+          "count": 11,
+          "percentage": 6.8
+        }
+      ]
+    },
+    {
+      "repo": "qojulia/QuantumOptics.jl",
+      "total_issues": 154,
+      "open_issues": 44,
+      "closed_issues": 110,
+      "issue_types": {
+        "bug": 52,
+        "discussion": 59,
+        "question": 6,
+        "feature": 37
+      },
+      "median_resolution_days": 12.44546875,
+      "resolution_by_type": {
+        "bug": 5.142042824074074,
+        "feature": 148.28305555555556,
+        "question": 42.381087962962965,
+        "discussion": 11.83664351851852,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 110
+      },
+      "gini_contributors": 0.44529443159580145,
+      "unique_contributors": 73,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.006493506493506494,
+        "performance_scaling": 0.012987012987012988,
+        "pulse_control": 0.012987012987012988,
+        "dependency_version": 0.006493506493506494,
+        "documentation_examples": 0.2597402597402597,
+        "algorithm_convergence": 0.012987012987012988,
+        "sim_vs_hardware": 0.032467532467532464,
+        "reproducibility": 0.09740259740259741
+      },
+      "topic_entropy": 2.9661614403067142,
+      "top_topics": [
+        {
+          "topic_id": 9,
+          "count": 21,
+          "percentage": 36.2
+        },
+        {
+          "topic_id": 51,
+          "count": 17,
+          "percentage": 29.3
+        },
+        {
+          "topic_id": 81,
+          "count": 2,
+          "percentage": 3.4
+        },
+        {
+          "topic_id": 5,
+          "count": 2,
+          "percentage": 3.4
+        },
+        {
+          "topic_id": 13,
+          "count": 2,
+          "percentage": 3.4
+        }
+      ]
+    },
+    {
+      "repo": "quantastica/quantum-circuit",
+      "total_issues": 51,
+      "open_issues": 8,
+      "closed_issues": 43,
+      "issue_types": {
+        "discussion": 16,
+        "bug": 23,
+        "feature": 10,
+        "question": 2
+      },
+      "median_resolution_days": 3.8937268518518517,
+      "resolution_by_type": {
+        "bug": 2.308709490740741,
+        "feature": 393.1542939814815,
+        "question": 0.6978530092592592,
+        "discussion": 6.598784722222222,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 43
+      },
+      "gini_contributors": 0.2644257703081232,
+      "unique_contributors": 35,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0784313725490196,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0196078431372549,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.0,
+        "documentation_examples": 0.11764705882352941,
+        "algorithm_convergence": 0.0392156862745098,
+        "sim_vs_hardware": 0.058823529411764705,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": 3.219528282299547,
+      "top_topics": [
+        {
+          "topic_id": 28,
+          "count": 4,
+          "percentage": 23.5
+        },
+        {
+          "topic_id": 7,
+          "count": 3,
+          "percentage": 17.6
+        },
+        {
+          "topic_id": 64,
+          "count": 2,
+          "percentage": 11.8
+        },
+        {
+          "topic_id": 135,
+          "count": 1,
+          "percentage": 5.9
+        },
+        {
+          "topic_id": 31,
+          "count": 1,
+          "percentage": 5.9
+        }
+      ]
+    },
+    {
+      "repo": "quantumlib/Cirq",
+      "total_issues": 2505,
+      "open_issues": 99,
+      "closed_issues": 2406,
+      "issue_types": {
+        "discussion": 655,
+        "bug": 1108,
+        "feature": 696,
+        "question": 46
+      },
+      "median_resolution_days": 48.38471643518518,
+      "resolution_by_type": {
+        "bug": 24.07410300925926,
+        "feature": 147.51904513888888,
+        "question": 31.99125,
+        "discussion": 35.839936342592594,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 2320,
+        "not_planned": 84,
+        "duplicate": 2
+      },
+      "gini_contributors": 0.8104968745893792,
+      "unique_contributors": 319,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.008383233532934131,
+        "noise_error_mitigation": 0.029141716566866267,
+        "hardware_backend": 0.04111776447105788,
+        "qubit_mapping_routing": 0.01437125748502994,
+        "gradients_autodiff": 0.006387225548902195,
+        "performance_scaling": 0.020758483033932136,
+        "pulse_control": 0.0027944111776447107,
+        "dependency_version": 0.07944111776447106,
+        "documentation_examples": 0.1660678642714571,
+        "algorithm_convergence": 0.05389221556886228,
+        "sim_vs_hardware": 0.004790419161676647,
+        "reproducibility": 0.02714570858283433
+      },
+      "topic_entropy": 5.89067377551889,
+      "top_topics": [
+        {
+          "topic_id": 62,
+          "count": 59,
+          "percentage": 5.7
+        },
+        {
+          "topic_id": 42,
+          "count": 57,
+          "percentage": 5.5
+        },
+        {
+          "topic_id": 31,
+          "count": 54,
+          "percentage": 5.2
+        },
+        {
+          "topic_id": 134,
+          "count": 34,
+          "percentage": 3.3
+        },
+        {
+          "topic_id": 52,
+          "count": 34,
+          "percentage": 3.3
+        }
+      ]
+    },
+    {
+      "repo": "quantumlib/OpenFermion",
+      "total_issues": 342,
+      "open_issues": 16,
+      "closed_issues": 326,
+      "issue_types": {
+        "discussion": 139,
+        "bug": 132,
+        "feature": 49,
+        "question": 22
+      },
+      "median_resolution_days": 38.668935185185184,
+      "resolution_by_type": {
+        "bug": 30.28357060185185,
+        "feature": 56.14193287037037,
+        "question": 20.61992476851852,
+        "discussion": 47.714988425925924,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 317,
+        "not_planned": 9
+      },
+      "gini_contributors": 0.6362573099415204,
+      "unique_contributors": 100,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0029239766081871343,
+        "hardware_backend": 0.005847953216374269,
+        "qubit_mapping_routing": 0.005847953216374269,
+        "gradients_autodiff": 0.0029239766081871343,
+        "performance_scaling": 0.014619883040935672,
+        "pulse_control": 0.0,
+        "dependency_version": 0.06725146198830409,
+        "documentation_examples": 0.15789473684210525,
+        "algorithm_convergence": 0.05263157894736842,
+        "sim_vs_hardware": 0.014619883040935672,
+        "reproducibility": 0.023391812865497075
+      },
+      "topic_entropy": 4.808744586146512,
+      "top_topics": [
+        {
+          "topic_id": 138,
+          "count": 26,
+          "percentage": 16.6
+        },
+        {
+          "topic_id": 126,
+          "count": 16,
+          "percentage": 10.2
+        },
+        {
+          "topic_id": 149,
+          "count": 14,
+          "percentage": 8.9
+        },
+        {
+          "topic_id": 42,
+          "count": 8,
+          "percentage": 5.1
+        },
+        {
+          "topic_id": 41,
+          "count": 8,
+          "percentage": 5.1
+        }
+      ]
+    },
+    {
+      "repo": "quantumlib/Qualtran",
+      "total_issues": 587,
+      "open_issues": 233,
+      "closed_issues": 354,
+      "issue_types": {
+        "feature": 155,
+        "discussion": 213,
+        "bug": 195,
+        "question": 24
+      },
+      "median_resolution_days": 44.99295717592592,
+      "resolution_by_type": {
+        "bug": 26.22203125,
+        "feature": 105.14280092592593,
+        "question": 28.922233796296297,
+        "discussion": 37.16552083333333,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 336,
+        "not_planned": 18
+      },
+      "gini_contributors": 0.7952814117193275,
+      "unique_contributors": 53,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.008517887563884156,
+        "noise_error_mitigation": 0.0034071550255536627,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0068143100511073255,
+        "gradients_autodiff": 0.020442930153321975,
+        "performance_scaling": 0.049403747870528106,
+        "pulse_control": 0.0,
+        "dependency_version": 0.02555366269165247,
+        "documentation_examples": 0.11925042589437819,
+        "algorithm_convergence": 0.027257240204429302,
+        "sim_vs_hardware": 0.0068143100511073255,
+        "reproducibility": 0.01192504258943782
+      },
+      "topic_entropy": 2.477049108379833,
+      "top_topics": [
+        {
+          "topic_id": 11,
+          "count": 238,
+          "percentage": 69.0
+        },
+        {
+          "topic_id": 152,
+          "count": 13,
+          "percentage": 3.8
+        },
+        {
+          "topic_id": 159,
+          "count": 7,
+          "percentage": 2.0
+        },
+        {
+          "topic_id": 42,
+          "count": 7,
+          "percentage": 2.0
+        },
+        {
+          "topic_id": 18,
+          "count": 6,
+          "percentage": 1.7
+        }
+      ]
+    },
+    {
+      "repo": "quantumlib/ReCirq",
+      "total_issues": 98,
+      "open_issues": 12,
+      "closed_issues": 86,
+      "issue_types": {
+        "feature": 13,
+        "discussion": 52,
+        "bug": 33
+      },
+      "median_resolution_days": 68.17201967592592,
+      "resolution_by_type": {
+        "bug": 47.0765625,
+        "feature": 175.5440451388889,
+        "question": null,
+        "discussion": 76.9456712962963,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 84,
+        "not_planned": 2
+      },
+      "gini_contributors": 0.6489795918367347,
+      "unique_contributors": 20,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.01020408163265306,
+        "qubit_mapping_routing": 0.02040816326530612,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.04081632653061224,
+        "documentation_examples": 0.14285714285714285,
+        "algorithm_convergence": 0.09183673469387756,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.02040816326530612
+      },
+      "topic_entropy": 3.755571750158477,
+      "top_topics": [
+        {
+          "topic_id": 42,
+          "count": 11,
+          "percentage": 28.2
+        },
+        {
+          "topic_id": 17,
+          "count": 5,
+          "percentage": 12.8
+        },
+        {
+          "topic_id": 138,
+          "count": 2,
+          "percentage": 5.1
+        },
+        {
+          "topic_id": 75,
+          "count": 2,
+          "percentage": 5.1
+        },
+        {
+          "topic_id": 53,
+          "count": 2,
+          "percentage": 5.1
+        }
+      ]
+    },
+    {
+      "repo": "quantumlib/Stim",
+      "total_issues": 459,
+      "open_issues": 76,
+      "closed_issues": 383,
+      "issue_types": {
+        "discussion": 173,
+        "bug": 138,
+        "feature": 140,
+        "question": 8
+      },
+      "median_resolution_days": 12.125081018518518,
+      "resolution_by_type": {
+        "bug": 6.892534722222222,
+        "feature": 19.83416087962963,
+        "question": 1.3872511574074073,
+        "discussion": 10.87527199074074,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 382,
+        "not_planned": 1
+      },
+      "gini_contributors": 0.7345445823589375,
+      "unique_contributors": 109,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.023965141612200435,
+        "hardware_backend": 0.002178649237472767,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.013071895424836602,
+        "pulse_control": 0.0,
+        "dependency_version": 0.013071895424836602,
+        "documentation_examples": 0.0915032679738562,
+        "algorithm_convergence": 0.002178649237472767,
+        "sim_vs_hardware": 0.002178649237472767,
+        "reproducibility": 0.037037037037037035
+      },
+      "topic_entropy": 3.422642481329257,
+      "top_topics": [
+        {
+          "topic_id": 54,
+          "count": 84,
+          "percentage": 37.3
+        },
+        {
+          "topic_id": 101,
+          "count": 47,
+          "percentage": 20.9
+        },
+        {
+          "topic_id": 156,
+          "count": 26,
+          "percentage": 11.6
+        },
+        {
+          "topic_id": 111,
+          "count": 4,
+          "percentage": 1.8
+        },
+        {
+          "topic_id": 60,
+          "count": 4,
+          "percentage": 1.8
+        }
+      ]
+    },
+    {
+      "repo": "quantumlib/qsim",
+      "total_issues": 260,
+      "open_issues": 31,
+      "closed_issues": 229,
+      "issue_types": {
+        "feature": 58,
+        "discussion": 81,
+        "bug": 115,
+        "question": 6
+      },
+      "median_resolution_days": 15.968622685185185,
+      "resolution_by_type": {
+        "bug": 14.121689814814815,
+        "feature": 29.084606481481483,
+        "question": 31.22266203703704,
+        "discussion": 17.414971064814814,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 225,
+        "not_planned": 4
+      },
+      "gini_contributors": 0.6781065088757396,
+      "unique_contributors": 65,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.007692307692307693,
+        "noise_error_mitigation": 0.0038461538461538464,
+        "hardware_backend": 0.0038461538461538464,
+        "qubit_mapping_routing": 0.0038461538461538464,
+        "gradients_autodiff": 0.0038461538461538464,
+        "performance_scaling": 0.03461538461538462,
+        "pulse_control": 0.0,
+        "dependency_version": 0.06923076923076923,
+        "documentation_examples": 0.16153846153846155,
+        "algorithm_convergence": 0.0038461538461538464,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.007692307692307693
+      },
+      "topic_entropy": 4.166977279584643,
+      "top_topics": [
+        {
+          "topic_id": 1,
+          "count": 21,
+          "percentage": 22.3
+        },
+        {
+          "topic_id": 98,
+          "count": 9,
+          "percentage": 9.6
+        },
+        {
+          "topic_id": 49,
+          "count": 8,
+          "percentage": 8.5
+        },
+        {
+          "topic_id": 60,
+          "count": 7,
+          "percentage": 7.4
+        },
+        {
+          "topic_id": 77,
+          "count": 7,
+          "percentage": 7.4
+        }
+      ]
+    },
+    {
+      "repo": "quantumlib/tesseract-decoder",
+      "total_issues": 55,
+      "open_issues": 20,
+      "closed_issues": 35,
+      "issue_types": {
+        "discussion": 10,
+        "bug": 28,
+        "feature": 17
+      },
+      "median_resolution_days": 6.114270833333333,
+      "resolution_by_type": {
+        "bug": 5.598113425925926,
+        "feature": 23.68162037037037,
+        "question": null,
+        "discussion": 14.335381944444444,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 35
+      },
+      "gini_contributors": 0.5435406698564593,
+      "unique_contributors": 19,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.01818181818181818,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.01818181818181818,
+        "documentation_examples": 0.14545454545454545,
+        "algorithm_convergence": 0.0,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": 3.149397470347699,
+      "top_topics": [
+        {
+          "topic_id": 60,
+          "count": 5,
+          "percentage": 31.2
+        },
+        {
+          "topic_id": 65,
+          "count": 2,
+          "percentage": 12.5
+        },
+        {
+          "topic_id": 84,
+          "count": 1,
+          "percentage": 6.2
+        },
+        {
+          "topic_id": 63,
+          "count": 1,
+          "percentage": 6.2
+        },
+        {
+          "topic_id": 108,
+          "count": 1,
+          "percentage": 6.2
+        }
+      ]
+    },
+    {
+      "repo": "quil-lang/qvm",
+      "total_issues": 137,
+      "open_issues": 83,
+      "closed_issues": 54,
+      "issue_types": {
+        "bug": 40,
+        "discussion": 56,
+        "feature": 39,
+        "question": 2
+      },
+      "median_resolution_days": 47.451626157407404,
+      "resolution_by_type": {
+        "bug": 9.510381944444445,
+        "feature": 96.27153935185186,
+        "question": null,
+        "discussion": 78.05581018518518,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 54
+      },
+      "gini_contributors": 0.654722406547224,
+      "unique_contributors": 33,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0364963503649635,
+        "hardware_backend": 0.014598540145985401,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.043795620437956206,
+        "pulse_control": 0.0,
+        "dependency_version": 0.014598540145985401,
+        "documentation_examples": 0.058394160583941604,
+        "algorithm_convergence": 0.021897810218978103,
+        "sim_vs_hardware": 0.0072992700729927005,
+        "reproducibility": 0.029197080291970802
+      },
+      "topic_entropy": 3.620253710565654,
+      "top_topics": [
+        {
+          "topic_id": 7,
+          "count": 24,
+          "percentage": 37.5
+        },
+        {
+          "topic_id": 35,
+          "count": 4,
+          "percentage": 6.2
+        },
+        {
+          "topic_id": 112,
+          "count": 4,
+          "percentage": 6.2
+        },
+        {
+          "topic_id": 143,
+          "count": 3,
+          "percentage": 4.7
+        },
+        {
+          "topic_id": 55,
+          "count": 3,
+          "percentage": 4.7
+        }
+      ]
+    },
+    {
+      "repo": "qutech/qupulse",
+      "total_issues": 370,
+      "open_issues": 61,
+      "closed_issues": 309,
+      "issue_types": {
+        "feature": 98,
+        "discussion": 165,
+        "bug": 103,
+        "question": 4
+      },
+      "median_resolution_days": 21.04744212962963,
+      "resolution_by_type": {
+        "bug": 6.694166666666667,
+        "feature": 89.0190162037037,
+        "question": 9.088252314814815,
+        "discussion": 21.22284722222222,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 308,
+        "not_planned": 1
+      },
+      "gini_contributors": 0.7862407862407863,
+      "unique_contributors": 22,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.008108108108108109,
+        "hardware_backend": 0.010810810810810811,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.002702702702702703,
+        "pulse_control": 0.45135135135135135,
+        "dependency_version": 0.04054054054054054,
+        "documentation_examples": 0.11081081081081082,
+        "algorithm_convergence": 0.0,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.010810810810810811
+      },
+      "topic_entropy": 1.948631358391931,
+      "top_topics": [
+        {
+          "topic_id": 2,
+          "count": 185,
+          "percentage": 74.9
+        },
+        {
+          "topic_id": 31,
+          "count": 8,
+          "percentage": 3.2
+        },
+        {
+          "topic_id": 29,
+          "count": 6,
+          "percentage": 2.4
+        },
+        {
+          "topic_id": 23,
+          "count": 6,
+          "percentage": 2.4
+        },
+        {
+          "topic_id": 41,
+          "count": 5,
+          "percentage": 2.0
+        }
+      ]
+    },
+    {
+      "repo": "qutip/QuantumToolbox.jl",
+      "total_issues": 90,
+      "open_issues": 16,
+      "closed_issues": 74,
+      "issue_types": {
+        "bug": 34,
+        "discussion": 9,
+        "feature": 47
+      },
+      "median_resolution_days": 5.10119212962963,
+      "resolution_by_type": {
+        "bug": 1.195300925925926,
+        "feature": 26.725532407407407,
+        "question": null,
+        "discussion": 5.129583333333334,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 74
+      },
+      "gini_contributors": 0.6324786324786325,
+      "unique_contributors": 26,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.022222222222222223,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.022222222222222223,
+        "documentation_examples": 0.15555555555555556,
+        "algorithm_convergence": 0.022222222222222223,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.03333333333333333
+      },
+      "topic_entropy": 2.76879674882741,
+      "top_topics": [
+        {
+          "topic_id": 9,
+          "count": 16,
+          "percentage": 39.0
+        },
+        {
+          "topic_id": 51,
+          "count": 9,
+          "percentage": 22.0
+        },
+        {
+          "topic_id": 1,
+          "count": 5,
+          "percentage": 12.2
+        },
+        {
+          "topic_id": 149,
+          "count": 2,
+          "percentage": 4.9
+        },
+        {
+          "topic_id": 64,
+          "count": 1,
+          "percentage": 2.4
+        }
+      ]
+    },
+    {
+      "repo": "qutip/qutip",
+      "total_issues": 1060,
+      "open_issues": 86,
+      "closed_issues": 974,
+      "issue_types": {
+        "bug": 752,
+        "discussion": 208,
+        "question": 32,
+        "feature": 68
+      },
+      "median_resolution_days": 33.486863425925925,
+      "resolution_by_type": {
+        "bug": 20.751469907407404,
+        "feature": 131.8717361111111,
+        "question": 95.41351851851852,
+        "discussion": 85.27883680555556,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 972,
+        "duplicate": 2
+      },
+      "gini_contributors": 0.4951578947368421,
+      "unique_contributors": 475,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0018867924528301887,
+        "noise_error_mitigation": 0.013207547169811321,
+        "hardware_backend": 0.009433962264150943,
+        "qubit_mapping_routing": 0.0009433962264150943,
+        "gradients_autodiff": 0.01509433962264151,
+        "performance_scaling": 0.014150943396226415,
+        "pulse_control": 0.03207547169811321,
+        "dependency_version": 0.05566037735849057,
+        "documentation_examples": 0.24150943396226415,
+        "algorithm_convergence": 0.014150943396226415,
+        "sim_vs_hardware": 0.013207547169811321,
+        "reproducibility": 0.05660377358490566
+      },
+      "topic_entropy": 3.6335123533655302,
+      "top_topics": [
+        {
+          "topic_id": 9,
+          "count": 178,
+          "percentage": 34.4
+        },
+        {
+          "topic_id": 15,
+          "count": 121,
+          "percentage": 23.4
+        },
+        {
+          "topic_id": 64,
+          "count": 32,
+          "percentage": 6.2
+        },
+        {
+          "topic_id": 144,
+          "count": 30,
+          "percentage": 5.8
+        },
+        {
+          "topic_id": 13,
+          "count": 10,
+          "percentage": 1.9
+        }
+      ]
+    },
+    {
+      "repo": "redfx-quantum/strange",
+      "total_issues": 62,
+      "open_issues": 9,
+      "closed_issues": 53,
+      "issue_types": {
+        "discussion": 37,
+        "feature": 19,
+        "bug": 6
+      },
+      "median_resolution_days": 0.7568287037037037,
+      "resolution_by_type": {
+        "bug": 0.28653935185185186,
+        "feature": 0.3231597222222222,
+        "question": null,
+        "discussion": 0.947974537037037,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 53
+      },
+      "gini_contributors": 0.7511520737327189,
+      "unique_contributors": 7,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.0,
+        "documentation_examples": 0.0,
+        "algorithm_convergence": 0.04838709677419355,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": 4.095795255000934,
+      "top_topics": [
+        {
+          "topic_id": 35,
+          "count": 2,
+          "percentage": 9.1
+        },
+        {
+          "topic_id": 152,
+          "count": 2,
+          "percentage": 9.1
+        },
+        {
+          "topic_id": 114,
+          "count": 2,
+          "percentage": 9.1
+        },
+        {
+          "topic_id": 161,
+          "count": 2,
+          "percentage": 9.1
+        },
+        {
+          "topic_id": 143,
+          "count": 1,
+          "percentage": 4.5
+        }
+      ]
+    },
+    {
+      "repo": "rigetti/pyquil",
+      "total_issues": 804,
+      "open_issues": 217,
+      "closed_issues": 587,
+      "issue_types": {
+        "bug": 402,
+        "discussion": 210,
+        "feature": 179,
+        "question": 13
+      },
+      "median_resolution_days": 20.117743055555554,
+      "resolution_by_type": {
+        "bug": 12.713339120370371,
+        "feature": 34.47789930555555,
+        "question": 28.079212962962963,
+        "discussion": 20.364681712962962,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 581,
+        "not_planned": 5,
+        "duplicate": 1
+      },
+      "gini_contributors": 0.6477563638120079,
+      "unique_contributors": 206,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0024875621890547263,
+        "noise_error_mitigation": 0.053482587064676616,
+        "hardware_backend": 0.12935323383084577,
+        "qubit_mapping_routing": 0.0012437810945273632,
+        "gradients_autodiff": 0.004975124378109453,
+        "performance_scaling": 0.017412935323383085,
+        "pulse_control": 0.008706467661691543,
+        "dependency_version": 0.055970149253731345,
+        "documentation_examples": 0.20398009950248755,
+        "algorithm_convergence": 0.03109452736318408,
+        "sim_vs_hardware": 0.0037313432835820895,
+        "reproducibility": 0.012437810945273632
+      },
+      "topic_entropy": 2.824498586355601,
+      "top_topics": [
+        {
+          "topic_id": 7,
+          "count": 320,
+          "percentage": 64.6
+        },
+        {
+          "topic_id": 22,
+          "count": 22,
+          "percentage": 4.4
+        },
+        {
+          "topic_id": 43,
+          "count": 14,
+          "percentage": 2.8
+        },
+        {
+          "topic_id": 26,
+          "count": 11,
+          "percentage": 2.2
+        },
+        {
+          "topic_id": 107,
+          "count": 8,
+          "percentage": 1.6
+        }
+      ]
+    },
+    {
+      "repo": "scqubits/scqubits",
+      "total_issues": 155,
+      "open_issues": 16,
+      "closed_issues": 139,
+      "issue_types": {
+        "discussion": 29,
+        "bug": 84,
+        "question": 2,
+        "feature": 40
+      },
+      "median_resolution_days": 7.531446759259259,
+      "resolution_by_type": {
+        "bug": 5.5197569444444445,
+        "feature": 27.66241898148148,
+        "question": 14.757957175925926,
+        "discussion": 3.9929456018518517,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 139
+      },
+      "gini_contributors": 0.5435483870967742,
+      "unique_contributors": 52,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.025806451612903226,
+        "hardware_backend": 0.0064516129032258064,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.012903225806451613,
+        "performance_scaling": 0.012903225806451613,
+        "pulse_control": 0.0064516129032258064,
+        "dependency_version": 0.03870967741935484,
+        "documentation_examples": 0.5161290322580645,
+        "algorithm_convergence": 0.025806451612903226,
+        "sim_vs_hardware": 0.01935483870967742,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": 2.9323433956955873,
+      "top_topics": [
+        {
+          "topic_id": 97,
+          "count": 38,
+          "percentage": 54.3
+        },
+        {
+          "topic_id": 23,
+          "count": 5,
+          "percentage": 7.1
+        },
+        {
+          "topic_id": 120,
+          "count": 3,
+          "percentage": 4.3
+        },
+        {
+          "topic_id": 92,
+          "count": 2,
+          "percentage": 2.9
+        },
+        {
+          "topic_id": 95,
+          "count": 2,
+          "percentage": 2.9
+        }
+      ]
+    },
+    {
+      "repo": "silq-lang/silq",
+      "total_issues": 32,
+      "open_issues": 10,
+      "closed_issues": 22,
+      "issue_types": {
+        "feature": 13,
+        "bug": 11,
+        "discussion": 5,
+        "question": 3
+      },
+      "median_resolution_days": 0.7286689814814815,
+      "resolution_by_type": {
+        "bug": 0.5758564814814815,
+        "feature": 32.15866319444444,
+        "question": 0.5585763888888889,
+        "discussion": 0.6069965277777778,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 22
+      },
+      "gini_contributors": 0.22554347826086957,
+      "unique_contributors": 23,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.03125,
+        "noise_error_mitigation": 0.03125,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.0,
+        "documentation_examples": 0.0625,
+        "algorithm_convergence": 0.09375,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.03125
+      },
+      "topic_entropy": 2.521640636343318,
+      "top_topics": [
+        {
+          "topic_id": 125,
+          "count": 2,
+          "percentage": 28.6
+        },
+        {
+          "topic_id": 109,
+          "count": 1,
+          "percentage": 14.3
+        },
+        {
+          "topic_id": 68,
+          "count": 1,
+          "percentage": 14.3
+        },
+        {
+          "topic_id": 98,
+          "count": 1,
+          "percentage": 14.3
+        },
+        {
+          "topic_id": 1,
+          "count": 1,
+          "percentage": 14.3
+        }
+      ]
+    },
+    {
+      "repo": "softwareQinc/qpp",
+      "total_issues": 82,
+      "open_issues": 2,
+      "closed_issues": 80,
+      "issue_types": {
+        "bug": 26,
+        "feature": 20,
+        "discussion": 16,
+        "question": 20
+      },
+      "median_resolution_days": 1.3308796296296297,
+      "resolution_by_type": {
+        "bug": 2.714224537037037,
+        "feature": 18.723813657407405,
+        "question": 0.7951099537037037,
+        "discussion": 1.1274652777777776,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 80
+      },
+      "gini_contributors": 0.6436903499469777,
+      "unique_contributors": 23,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.012195121951219513,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.024390243902439025,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.012195121951219513,
+        "pulse_control": 0.0,
+        "dependency_version": 0.012195121951219513,
+        "documentation_examples": 0.15853658536585366,
+        "algorithm_convergence": 0.07317073170731707,
+        "sim_vs_hardware": 0.06097560975609756,
+        "reproducibility": 0.012195121951219513
+      },
+      "topic_entropy": 4.356558335416673,
+      "top_topics": [
+        {
+          "topic_id": 10,
+          "count": 3,
+          "percentage": 11.1
+        },
+        {
+          "topic_id": 5,
+          "count": 2,
+          "percentage": 7.4
+        },
+        {
+          "topic_id": 86,
+          "count": 2,
+          "percentage": 7.4
+        },
+        {
+          "topic_id": 88,
+          "count": 2,
+          "percentage": 7.4
+        },
+        {
+          "topic_id": 130,
+          "count": 1,
+          "percentage": 3.7
+        }
+      ]
+    },
+    {
+      "repo": "softwareQinc/staq",
+      "total_issues": 49,
+      "open_issues": 7,
+      "closed_issues": 42,
+      "issue_types": {
+        "feature": 7,
+        "bug": 31,
+        "discussion": 8,
+        "question": 3
+      },
+      "median_resolution_days": 3.9022453703703706,
+      "resolution_by_type": {
+        "bug": 4.074201388888889,
+        "feature": 107.80770833333334,
+        "question": 11.054079861111111,
+        "discussion": 2.8708043981481484,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 42
+      },
+      "gini_contributors": 0.5748299319727891,
+      "unique_contributors": 18,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.04081632653061224,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.04081632653061224,
+        "qubit_mapping_routing": 0.10204081632653061,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.02040816326530612,
+        "pulse_control": 0.0,
+        "dependency_version": 0.0,
+        "documentation_examples": 0.02040816326530612,
+        "algorithm_convergence": 0.10204081632653061,
+        "sim_vs_hardware": 0.061224489795918366,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": 2.6535442970305683,
+      "top_topics": [
+        {
+          "topic_id": 10,
+          "count": 5,
+          "percentage": 38.5
+        },
+        {
+          "topic_id": 57,
+          "count": 2,
+          "percentage": 15.4
+        },
+        {
+          "topic_id": 115,
+          "count": 1,
+          "percentage": 7.7
+        },
+        {
+          "topic_id": 68,
+          "count": 1,
+          "percentage": 7.7
+        },
+        {
+          "topic_id": 121,
+          "count": 1,
+          "percentage": 7.7
+        }
+      ]
+    },
+    {
+      "repo": "tencent-quantum-lab/tensorcircuit",
+      "total_issues": 66,
+      "open_issues": 20,
+      "closed_issues": 46,
+      "issue_types": {
+        "feature": 18,
+        "question": 5,
+        "bug": 39,
+        "discussion": 4
+      },
+      "median_resolution_days": 4.679027777777778,
+      "resolution_by_type": {
+        "bug": 2.808240740740741,
+        "feature": 70.82034143518518,
+        "question": 1.7959143518518519,
+        "discussion": 3.6201909722222223,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 46
+      },
+      "gini_contributors": 0.5803030303030303,
+      "unique_contributors": 20,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.06060606060606061,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.07575757575757576,
+        "performance_scaling": 0.030303030303030304,
+        "pulse_control": 0.0,
+        "dependency_version": 0.13636363636363635,
+        "documentation_examples": 0.13636363636363635,
+        "algorithm_convergence": 0.13636363636363635,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.030303030303030304
+      },
+      "topic_entropy": 3.2915625020032113,
+      "top_topics": [
+        {
+          "topic_id": 13,
+          "count": 8,
+          "percentage": 29.6
+        },
+        {
+          "topic_id": 30,
+          "count": 6,
+          "percentage": 22.2
+        },
+        {
+          "topic_id": 150,
+          "count": 1,
+          "percentage": 3.7
+        },
+        {
+          "topic_id": 38,
+          "count": 1,
+          "percentage": 3.7
+        },
+        {
+          "topic_id": 22,
+          "count": 1,
+          "percentage": 3.7
+        }
+      ]
+    },
+    {
+      "repo": "tensorflow/quantum",
+      "total_issues": 377,
+      "open_issues": 33,
+      "closed_issues": 344,
+      "issue_types": {
+        "bug": 152,
+        "discussion": 95,
+        "feature": 87,
+        "question": 43
+      },
+      "median_resolution_days": 68.46673032407408,
+      "resolution_by_type": {
+        "bug": 33.722754629629634,
+        "feature": 143.76113425925925,
+        "question": 897.6516724537037,
+        "discussion": 15.13255787037037,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 313,
+        "not_planned": 17,
+        "duplicate": 14
+      },
+      "gini_contributors": 0.5905245019264652,
+      "unique_contributors": 137,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.005305039787798408,
+        "hardware_backend": 0.029177718832891247,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.11405835543766578,
+        "performance_scaling": 0.023872679045092837,
+        "pulse_control": 0.0,
+        "dependency_version": 0.03713527851458886,
+        "documentation_examples": 0.27320954907161804,
+        "algorithm_convergence": 0.07957559681697612,
+        "sim_vs_hardware": 0.013262599469496022,
+        "reproducibility": 0.023872679045092837
+      },
+      "topic_entropy": 3.8185168183216724,
+      "top_topics": [
+        {
+          "topic_id": 53,
+          "count": 65,
+          "percentage": 33.5
+        },
+        {
+          "topic_id": 30,
+          "count": 29,
+          "percentage": 14.9
+        },
+        {
+          "topic_id": 6,
+          "count": 18,
+          "percentage": 9.3
+        },
+        {
+          "topic_id": 1,
+          "count": 7,
+          "percentage": 3.6
+        },
+        {
+          "topic_id": 13,
+          "count": 7,
+          "percentage": 3.6
+        }
+      ]
+    },
+    {
+      "repo": "tequilahub/tequila",
+      "total_issues": 42,
+      "open_issues": 1,
+      "closed_issues": 41,
+      "issue_types": {
+        "bug": 31,
+        "feature": 3,
+        "discussion": 7,
+        "question": 1
+      },
+      "median_resolution_days": 2.747002314814815,
+      "resolution_by_type": {
+        "bug": 4.1920370370370375,
+        "feature": 43.40157407407408,
+        "question": 0.023530092592592592,
+        "discussion": 1.071087962962963,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 41
+      },
+      "gini_contributors": 0.339047619047619,
+      "unique_contributors": 25,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.023809523809523808,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.023809523809523808,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.07142857142857142,
+        "performance_scaling": 0.023809523809523808,
+        "pulse_control": 0.0,
+        "dependency_version": 0.09523809523809523,
+        "documentation_examples": 0.2619047619047619,
+        "algorithm_convergence": 0.14285714285714285,
+        "sim_vs_hardware": 0.023809523809523808,
+        "reproducibility": 0.023809523809523808
+      },
+      "topic_entropy": 3.9321380397593746,
+      "top_topics": [
+        {
+          "topic_id": 1,
+          "count": 2,
+          "percentage": 10.5
+        },
+        {
+          "topic_id": 21,
+          "count": 2,
+          "percentage": 10.5
+        },
+        {
+          "topic_id": 15,
+          "count": 2,
+          "percentage": 10.5
+        },
+        {
+          "topic_id": 45,
+          "count": 1,
+          "percentage": 5.3
+        },
+        {
+          "topic_id": 74,
+          "count": 1,
+          "percentage": 5.3
+        }
+      ]
+    },
+    {
+      "repo": "terra-quantum-public/tq42-pqc-oss",
+      "total_issues": 2,
+      "open_issues": 0,
+      "closed_issues": 2,
+      "issue_types": {
+        "question": 1,
+        "discussion": 1
+      },
+      "median_resolution_days": 243.70563657407405,
+      "resolution_by_type": {
+        "bug": null,
+        "feature": null,
+        "question": 341.28537037037034,
+        "discussion": 146.12590277777778,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 2
+      },
+      "gini_contributors": 0.0,
+      "unique_contributors": 2,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.0,
+        "documentation_examples": 0.0,
+        "algorithm_convergence": 0.0,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": -0.0,
+      "top_topics": [
+        {
+          "topic_id": 5,
+          "count": 1,
+          "percentage": 100.0
+        }
+      ]
+    },
+    {
+      "repo": "theQRL/QRL",
+      "total_issues": 222,
+      "open_issues": 22,
+      "closed_issues": 200,
+      "issue_types": {
+        "bug": 121,
+        "discussion": 23,
+        "question": 18,
+        "feature": 60
+      },
+      "median_resolution_days": 5.186579861111111,
+      "resolution_by_type": {
+        "bug": 3.405028935185185,
+        "feature": 24.868373842592593,
+        "question": 13.838680555555555,
+        "discussion": 1.6022569444444446,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 200
+      },
+      "gini_contributors": 0.5593419506462985,
+      "unique_contributors": 69,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0045045045045045045,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.009009009009009009,
+        "pulse_control": 0.0,
+        "dependency_version": 0.02252252252252252,
+        "documentation_examples": 0.04954954954954955,
+        "algorithm_convergence": 0.0045045045045045045,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.02702702702702703
+      },
+      "topic_entropy": 2.152378638564551,
+      "top_topics": [
+        {
+          "topic_id": 58,
+          "count": 86,
+          "percentage": 61.9
+        },
+        {
+          "topic_id": 15,
+          "count": 23,
+          "percentage": 16.5
+        },
+        {
+          "topic_id": 7,
+          "count": 7,
+          "percentage": 5.0
+        },
+        {
+          "topic_id": 5,
+          "count": 4,
+          "percentage": 2.9
+        },
+        {
+          "topic_id": 81,
+          "count": 2,
+          "percentage": 1.4
+        }
+      ]
+    },
+    {
+      "repo": "tqsd/QuNetSim",
+      "total_issues": 37,
+      "open_issues": 13,
+      "closed_issues": 24,
+      "issue_types": {
+        "feature": 19,
+        "bug": 15,
+        "question": 1,
+        "discussion": 2
+      },
+      "median_resolution_days": 75.69215277777778,
+      "resolution_by_type": {
+        "bug": 3.8259837962962964,
+        "feature": 168.37974537037036,
+        "question": 66.1009375,
+        "discussion": 0.26697916666666666,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 24
+      },
+      "gini_contributors": 0.553014553014553,
+      "unique_contributors": 13,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.08108108108108109,
+        "hardware_backend": 0.10810810810810811,
+        "qubit_mapping_routing": 0.02702702702702703,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.10810810810810811,
+        "pulse_control": 0.0,
+        "dependency_version": 0.02702702702702703,
+        "documentation_examples": 0.16216216216216217,
+        "algorithm_convergence": 0.0,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": 2.1258145836939115,
+      "top_topics": [
+        {
+          "topic_id": 95,
+          "count": 6,
+          "percentage": 50.0
+        },
+        {
+          "topic_id": 80,
+          "count": 2,
+          "percentage": 16.7
+        },
+        {
+          "topic_id": 7,
+          "count": 1,
+          "percentage": 8.3
+        },
+        {
+          "topic_id": 89,
+          "count": 1,
+          "percentage": 8.3
+        },
+        {
+          "topic_id": 117,
+          "count": 1,
+          "percentage": 8.3
+        }
+      ]
+    },
+    {
+      "repo": "unitaryfoundation/mitiq",
+      "total_issues": 962,
+      "open_issues": 76,
+      "closed_issues": 886,
+      "issue_types": {
+        "discussion": 190,
+        "feature": 325,
+        "bug": 434,
+        "question": 13
+      },
+      "median_resolution_days": 36.651938657407406,
+      "resolution_by_type": {
+        "bug": 36.04357638888889,
+        "feature": 41.698229166666664,
+        "question": 11.917175925925926,
+        "discussion": 34.39,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 838,
+        "not_planned": 47,
+        "duplicate": 1
+      },
+      "gini_contributors": 0.8237006237006237,
+      "unique_contributors": 85,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.011434511434511435,
+        "noise_error_mitigation": 0.16735966735966737,
+        "hardware_backend": 0.07380457380457381,
+        "qubit_mapping_routing": 0.0010395010395010396,
+        "gradients_autodiff": 0.005197505197505198,
+        "performance_scaling": 0.016632016632016633,
+        "pulse_control": 0.011434511434511435,
+        "dependency_version": 0.05093555093555094,
+        "documentation_examples": 0.42515592515592515,
+        "algorithm_convergence": 0.04158004158004158,
+        "sim_vs_hardware": 0.0031185031185031187,
+        "reproducibility": 0.030145530145530147
+      },
+      "topic_entropy": 5.074187580338562,
+      "top_topics": [
+        {
+          "topic_id": 96,
+          "count": 40,
+          "percentage": 10.7
+        },
+        {
+          "topic_id": 61,
+          "count": 33,
+          "percentage": 8.8
+        },
+        {
+          "topic_id": 145,
+          "count": 29,
+          "percentage": 7.8
+        },
+        {
+          "topic_id": 17,
+          "count": 24,
+          "percentage": 6.4
+        },
+        {
+          "topic_id": 3,
+          "count": 19,
+          "percentage": 5.1
+        }
+      ]
+    },
+    {
+      "repo": "unitaryfoundation/qrack",
+      "total_issues": 164,
+      "open_issues": 11,
+      "closed_issues": 153,
+      "issue_types": {
+        "bug": 71,
+        "feature": 55,
+        "discussion": 37,
+        "question": 1
+      },
+      "median_resolution_days": 5.361099537037037,
+      "resolution_by_type": {
+        "bug": 3.3130671296296295,
+        "feature": 12.059618055555557,
+        "question": 0.8451736111111111,
+        "discussion": 6.944305555555555,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 153
+      },
+      "gini_contributors": 0.8320825515947466,
+      "unique_contributors": 13,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.012195121951219513,
+        "noise_error_mitigation": 0.03048780487804878,
+        "hardware_backend": 0.07317073170731707,
+        "qubit_mapping_routing": 0.006097560975609756,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.10365853658536585,
+        "pulse_control": 0.0,
+        "dependency_version": 0.03048780487804878,
+        "documentation_examples": 0.054878048780487805,
+        "algorithm_convergence": 0.06097560975609756,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.03048780487804878
+      },
+      "topic_entropy": 3.9232978646537773,
+      "top_topics": [
+        {
+          "topic_id": 18,
+          "count": 11,
+          "percentage": 22.0
+        },
+        {
+          "topic_id": 1,
+          "count": 10,
+          "percentage": 20.0
+        },
+        {
+          "topic_id": 89,
+          "count": 3,
+          "percentage": 6.0
+        },
+        {
+          "topic_id": 88,
+          "count": 2,
+          "percentage": 4.0
+        },
+        {
+          "topic_id": 50,
+          "count": 2,
+          "percentage": 4.0
+        }
+      ]
+    },
+    {
+      "repo": "unitaryfoundation/ucc",
+      "total_issues": 243,
+      "open_issues": 37,
+      "closed_issues": 206,
+      "issue_types": {
+        "feature": 130,
+        "discussion": 45,
+        "bug": 63,
+        "question": 5
+      },
+      "median_resolution_days": 13.514629629629631,
+      "resolution_by_type": {
+        "bug": 6.33599537037037,
+        "feature": 33.87083912037037,
+        "question": 30.4441724537037,
+        "discussion": 8.950625,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 180,
+        "not_planned": 25,
+        "duplicate": 1
+      },
+      "gini_contributors": 0.7299778410889523,
+      "unique_contributors": 13,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.20164609053497942,
+        "noise_error_mitigation": 0.053497942386831275,
+        "hardware_backend": 0.06584362139917696,
+        "qubit_mapping_routing": 0.06584362139917696,
+        "gradients_autodiff": 0.00823045267489712,
+        "performance_scaling": 0.04526748971193416,
+        "pulse_control": 0.00411522633744856,
+        "dependency_version": 0.037037037037037035,
+        "documentation_examples": 0.21810699588477367,
+        "algorithm_convergence": 0.06172839506172839,
+        "sim_vs_hardware": 0.00411522633744856,
+        "reproducibility": 0.037037037037037035
+      },
+      "topic_entropy": 4.7559974974046115,
+      "top_topics": [
+        {
+          "topic_id": 84,
+          "count": 8,
+          "percentage": 8.5
+        },
+        {
+          "topic_id": 4,
+          "count": 7,
+          "percentage": 7.4
+        },
+        {
+          "topic_id": 61,
+          "count": 7,
+          "percentage": 7.4
+        },
+        {
+          "topic_id": 154,
+          "count": 7,
+          "percentage": 7.4
+        },
+        {
+          "topic_id": 117,
+          "count": 6,
+          "percentage": 6.4
+        }
+      ]
+    },
+    {
+      "repo": "vprusso/toqito",
+      "total_issues": 608,
+      "open_issues": 7,
+      "closed_issues": 601,
+      "issue_types": {
+        "bug": 229,
+        "question": 7,
+        "feature": 254,
+        "discussion": 118
+      },
+      "median_resolution_days": 8.545844907407407,
+      "resolution_by_type": {
+        "bug": 1.954201388888889,
+        "feature": 37.94444444444444,
+        "question": 2.942488425925926,
+        "discussion": 10.293663194444445,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 566,
+        "not_planned": 33,
+        "duplicate": 2
+      },
+      "gini_contributors": 0.8763706140350878,
+      "unique_contributors": 36,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.013157894736842105,
+        "hardware_backend": 0.004934210526315789,
+        "qubit_mapping_routing": 0.001644736842105263,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.001644736842105263,
+        "pulse_control": 0.0,
+        "dependency_version": 0.03289473684210526,
+        "documentation_examples": 0.43256578947368424,
+        "algorithm_convergence": 0.009868421052631578,
+        "sim_vs_hardware": 0.001644736842105263,
+        "reproducibility": 0.024671052631578948
+      },
+      "topic_entropy": 3.7466630908506646,
+      "top_topics": [
+        {
+          "topic_id": 56,
+          "count": 80,
+          "percentage": 25.1
+        },
+        {
+          "topic_id": 44,
+          "count": 62,
+          "percentage": 19.4
+        },
+        {
+          "topic_id": 110,
+          "count": 47,
+          "percentage": 14.7
+        },
+        {
+          "topic_id": 47,
+          "count": 17,
+          "percentage": 5.3
+        },
+        {
+          "topic_id": 29,
+          "count": 14,
+          "percentage": 4.4
+        }
+      ]
+    },
+    {
+      "repo": "watermarkhu/qsurface",
+      "total_issues": 27,
+      "open_issues": 9,
+      "closed_issues": 18,
+      "issue_types": {
+        "feature": 12,
+        "discussion": 4,
+        "bug": 10,
+        "question": 1
+      },
+      "median_resolution_days": 7.200237268518519,
+      "resolution_by_type": {
+        "bug": 4.943877314814815,
+        "feature": 61.519247685185185,
+        "question": null,
+        "discussion": 7.18412037037037,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 18
+      },
+      "gini_contributors": 0.54320987654321,
+      "unique_contributors": 9,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.0,
+        "pulse_control": 0.0,
+        "dependency_version": 0.0,
+        "documentation_examples": 0.07407407407407407,
+        "algorithm_convergence": 0.0,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.0
+      },
+      "topic_entropy": 2.222191575506678,
+      "top_topics": [
+        {
+          "topic_id": 23,
+          "count": 5,
+          "percentage": 45.5
+        },
+        {
+          "topic_id": 37,
+          "count": 2,
+          "percentage": 18.2
+        },
+        {
+          "topic_id": 47,
+          "count": 1,
+          "percentage": 9.1
+        },
+        {
+          "topic_id": 2,
+          "count": 1,
+          "percentage": 9.1
+        },
+        {
+          "topic_id": 52,
+          "count": 1,
+          "percentage": 9.1
+        }
+      ]
+    },
+    {
+      "repo": "zlatko-minev/pyEPR",
+      "total_issues": 76,
+      "open_issues": 11,
+      "closed_issues": 65,
+      "issue_types": {
+        "discussion": 25,
+        "feature": 23,
+        "bug": 27,
+        "question": 1
+      },
+      "median_resolution_days": 232.27869212962963,
+      "resolution_by_type": {
+        "bug": 321.60929976851855,
+        "feature": 1373.6818171296297,
+        "question": 2102.2562152777778,
+        "discussion": 131.26356481481483,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 50,
+        "not_planned": 15
+      },
+      "gini_contributors": 0.5219298245614035,
+      "unique_contributors": 30,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.013157894736842105,
+        "pulse_control": 0.0,
+        "dependency_version": 0.06578947368421052,
+        "documentation_examples": 0.2236842105263158,
+        "algorithm_convergence": 0.06578947368421052,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.02631578947368421
+      },
+      "topic_entropy": 3.0726555637200774,
+      "top_topics": [
+        {
+          "topic_id": 33,
+          "count": 12,
+          "percentage": 41.4
+        },
+        {
+          "topic_id": 15,
+          "count": 3,
+          "percentage": 10.3
+        },
+        {
+          "topic_id": 74,
+          "count": 2,
+          "percentage": 6.9
+        },
+        {
+          "topic_id": 23,
+          "count": 2,
+          "percentage": 6.9
+        },
+        {
+          "topic_id": 52,
+          "count": 1,
+          "percentage": 3.4
+        }
+      ]
+    },
+    {
+      "repo": "zxcalc/pyzx",
+      "total_issues": 233,
+      "open_issues": 19,
+      "closed_issues": 214,
+      "issue_types": {
+        "discussion": 74,
+        "bug": 96,
+        "question": 13,
+        "feature": 50
+      },
+      "median_resolution_days": 26.110920138888886,
+      "resolution_by_type": {
+        "bug": 17.972708333333333,
+        "feature": 290.83736689814816,
+        "question": 31.863483796296297,
+        "discussion": 15.17388888888889,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 212,
+        "not_planned": 1,
+        "duplicate": 1
+      },
+      "gini_contributors": 0.520036649467136,
+      "unique_contributors": 89,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.017167381974248927,
+        "noise_error_mitigation": 0.0,
+        "hardware_backend": 0.004291845493562232,
+        "qubit_mapping_routing": 0.02145922746781116,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.02145922746781116,
+        "pulse_control": 0.0,
+        "dependency_version": 0.05150214592274678,
+        "documentation_examples": 0.15450643776824036,
+        "algorithm_convergence": 0.02575107296137339,
+        "sim_vs_hardware": 0.0,
+        "reproducibility": 0.034334763948497854
+      },
+      "topic_entropy": 3.0574460448698804,
+      "top_topics": [
+        {
+          "topic_id": 8,
+          "count": 58,
+          "percentage": 51.3
+        },
+        {
+          "topic_id": 10,
+          "count": 7,
+          "percentage": 6.2
+        },
+        {
+          "topic_id": 37,
+          "count": 6,
+          "percentage": 5.3
+        },
+        {
+          "topic_id": 136,
+          "count": 4,
+          "percentage": 3.5
+        },
+        {
+          "topic_id": 18,
+          "count": 4,
+          "percentage": 3.5
+        }
+      ]
+    },
+    {
+      "repo": "zxcalc/zxlive",
+      "total_issues": 299,
+      "open_issues": 56,
+      "closed_issues": 243,
+      "issue_types": {
+        "feature": 143,
+        "discussion": 34,
+        "bug": 119,
+        "question": 3
+      },
+      "median_resolution_days": 62.11048611111111,
+      "resolution_by_type": {
+        "bug": 57.08657986111111,
+        "feature": 72.86957175925926,
+        "question": 160.4071064814815,
+        "discussion": 19.76869212962963,
+        "other": null
+      },
+      "resolution_outcomes": {
+        "completed": 240,
+        "not_planned": 2,
+        "duplicate": 1
+      },
+      "gini_contributors": 0.7698780882511598,
+      "unique_contributors": 31,
+      "quantum_keyword_ratios": {
+        "transpilation_compilation": 0.0,
+        "noise_error_mitigation": 0.0033444816053511705,
+        "hardware_backend": 0.0,
+        "qubit_mapping_routing": 0.0,
+        "gradients_autodiff": 0.0,
+        "performance_scaling": 0.0033444816053511705,
+        "pulse_control": 0.0,
+        "dependency_version": 0.006688963210702341,
+        "documentation_examples": 0.04013377926421405,
+        "algorithm_convergence": 0.006688963210702341,
+        "sim_vs_hardware": 0.0033444816053511705,
+        "reproducibility": 0.006688963210702341
+      },
+      "topic_entropy": 0.7492782592451187,
+      "top_topics": [
+        {
+          "topic_id": 8,
+          "count": 209,
+          "percentage": 91.3
+        },
+        {
+          "topic_id": 17,
+          "count": 3,
+          "percentage": 1.3
+        },
+        {
+          "topic_id": 65,
+          "count": 2,
+          "percentage": 0.9
+        },
+        {
+          "topic_id": 37,
+          "count": 2,
+          "percentage": 0.9
+        },
+        {
+          "topic_id": 41,
+          "count": 2,
+          "percentage": 0.9
+        }
+      ]
+    }
+  ],
+  "aggregated": {
+    "total_repos": 105,
+    "total_issues": 35340,
+    "overall_median_resolution_days": 20.117743055555554,
+    "resolution_outcomes": {
+      "completed": 28387,
+      "not_planned": 1082,
+      "duplicate": 84
+    },
+    "overall_gini_contributors": 0.772298944481083,
+    "avg_issues_per_repo": 336.57142857142856,
+    "quantum_pattern_prevalence": {
+      "documentation_examples": 0.17320316921335596,
+      "dependency_version": 0.060384833050367855,
+      "transpilation_compilation": 0.04796264855687606,
+      "algorithm_convergence": 0.04108658743633277,
+      "hardware_backend": 0.028239954725523486,
+      "reproducibility": 0.026966610073571023,
+      "pulse_control": 0.02563667232597623,
+      "gradients_autodiff": 0.025183927560837576,
+      "performance_scaling": 0.020939445387662705,
+      "noise_error_mitigation": 0.020882852292020374,
+      "qubit_mapping_routing": 0.01881720430107527,
+      "sim_vs_hardware": 0.01055461233729485
+    },
+    "category_distribution": {
+      "bug": 17139,
+      "feature": 10377,
+      "discussion": 7008,
+      "question": 816
+    }
+  },
+  "generated_at": "2026-11-12T21:18:40.736304Z"
+}

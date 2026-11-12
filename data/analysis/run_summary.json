@@ -1,0 +1,21 @@
+{
+  "n_documents": 35340,
+  "n_topics": 162,
+  "n_outliers": 17901,
+  "outlier_share": 0.5065365025466892,
+  "outcome": "ok",
+  "noise_topics": [
+    15,
+    50,
+    60,
+    112,
+    158
+  ],
+  "noise_topic_share": 0.030864197530864196,
+  "repo_specific_topics": 44,
+  "reduced": {
+    "n_topics": 162,
+    "n_outliers": 0,
+    "outlier_share": 0.0
+  }
+}
