@@ -2,6 +2,7 @@
 
 import json
 import re
+from collections import Counter, defaultdict
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 from datetime import datetime
@@ -198,10 +199,12 @@ def run_topic_modeling(
     # Extract topic info
     topic_info = topic_model.get_topic_info()
     noise = _noise_summary(config, topic_model)
+    repo_stats = topic_repo_stats(topics, repos, config.bertopic.repo_specific_share)
+    noise["repo_specific_topics"] = sum(s["repo_specific"] for s in repo_stats.values())
     _write_run_summary(output_dir, topics, **noise)
     
     # Save topics.jsonl
-    _save_topics(config, topic_model, topic_info, output_dir)
+    _save_topics(config, topic_model, topic_info, output_dir, repo_stats=repo_stats)
     
     # Save doc_topics.jsonl
     _save_doc_topics(config, issue_ids, topics, probabilities, output_dir)
@@ -212,9 +215,24 @@ def run_topic_modeling(
     _save_temporal_views(config, topic_model, docs, timestamps, repos, output_dir)
 
     if config.bertopic.reduce_outliers:
-        _save_reduced_result(config, topic_model, docs, issue_ids, topics, probabilities, embeddings, output_dir, noise)
+        _save_reduced_result(config, topic_model, docs, issue_ids, topics, probabilities, embeddings, output_dir, noise, repos)
 
     return topic_model
+
+
+def topic_repo_stats(topics: List[int], repos: List[str], threshold: float) -> Dict[int, Dict[str, Any]]:
+    """Per topic: dominant repo, its share, repo count and the repo_specific flag (outliers excluded)."""
+    per_topic: Dict[int, Counter] = defaultdict(Counter)
+    for topic_id, repo in zip(topics, repos):
+        if topic_id != -1:
+            per_topic[int(topic_id)][repo] += 1
+    stats = {}
+    for topic_id, counts in per_topic.items():
+        top_repo, top_n = counts.most_common(1)[0]
+        share = top_n / sum(counts.values())
+        stats[topic_id] = {"top_repo": top_repo, "top_repo_share": share,
+                           "n_repos": len(counts), "repo_specific": share > threshold}
+    return stats
 
 
 def _save_frame(frame: pd.DataFrame, path: Path, rename: Dict[str, str]) -> None:
@@ -235,7 +253,7 @@ def _save_temporal_views(config, topic_model, docs, timestamps, repos, output_di
     _save_frame(per_class, output_dir / "topics_per_class.jsonl", {})
 
 
-def _save_reduced_result(config, topic_model, docs, issue_ids, topics, probabilities, embeddings, output_dir, noise):
+def _save_reduced_result(config, topic_model, docs, issue_ids, topics, probabilities, embeddings, output_dir, noise, repos=None):
     """Second, separate result with outliers reassigned; call only after the primary outputs are saved."""
     if -1 not in topics:
         logger.info("No outliers to reduce; skipping the reduced result")
@@ -249,7 +267,9 @@ def _save_reduced_result(config, topic_model, docs, issue_ids, topics, probabili
         ctfidf_model=topic_model.ctfidf_model,
         representation_model=topic_model.representation_model,
     )
-    _save_topics(config, topic_model, topic_model.get_topic_info(), output_dir, output_dir / "topics_reduced.jsonl")
+    reduced_stats = topic_repo_stats(reduced, repos, config.bertopic.repo_specific_share) if repos else None
+    _save_topics(config, topic_model, topic_model.get_topic_info(), output_dir, output_dir / "topics_reduced.jsonl",
+                 repo_stats=reduced_stats)
     _save_doc_topics(config, issue_ids, reduced, probabilities, output_dir, output_dir / "doc_topics_reduced.jsonl")
     _write_run_summary(output_dir, topics, reduced_topics=reduced, **noise)
 
@@ -308,7 +328,8 @@ def _write_run_summary(
 
 
 def _save_topics(
-    config, topic_model: BERTopic, topic_info: pd.DataFrame, output_dir: Path, output_path: Optional[Path] = None
+    config, topic_model: BERTopic, topic_info: pd.DataFrame, output_dir: Path, output_path: Optional[Path] = None,
+    repo_stats: Optional[Dict[int, Dict[str, Any]]] = None,
 ):
     """Save topic information to JSONL."""
     output_path = output_path or config.paths.topics_output
@@ -334,6 +355,7 @@ def _save_topics(
                 keywords=keywords,
                 count=int(row["Count"]),
                 representative_docs=rep_docs_short,
+                **(repo_stats or {}).get(topic_id, {}),
             )
             f.write(topic.model_dump_json() + "\n")
     

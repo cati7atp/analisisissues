@@ -508,3 +508,36 @@ def test_reduce_outliers_with_no_outliers_finishes_with_an_explicit_outcome(smal
     assert summary["reduced"]["n_outliers"] == 0
     assert not (out / "doc_topics_reduced.jsonl").exists()
     assert small_config.paths.doc_topics_output.exists()
+
+
+def test_topics_report_top_repo_and_flag_repo_specific(small_config, tmp_path):
+    import json
+    from collections import Counter
+    from src.preprocess import IssuePreprocessor
+
+    issues = write_issues()
+    minority = {0: 0, 1: 15, 2: 3, 3: 6}  # per theme: docs given to c/d (of 30)
+    for it in issues:
+        theme, j = divmod(it.issue_number, 1000)
+        it.repo = "c/d" if j < minority[theme] else "a/b"
+    path = tmp_path / "issues_clean.jsonl"
+    IssuePreprocessor(small_config).process_items(issues, path)
+    out = tmp_path / "out"
+    run(small_config, path, out, ThemeEncoder())
+
+    repo_of = {f"{r['repo']}#{r['issue_number']}": r["repo"] for r in _read_jsonl(path)}
+    members = {}
+    for d in _read_jsonl(small_config.paths.doc_topics_output):
+        if d["topic_id"] != -1:
+            members.setdefault(d["topic_id"], []).append(repo_of[d["issue_id"]])
+    topics = _read_jsonl(small_config.paths.topics_output)
+    assert topics
+    for t in topics:
+        counts = Counter(members[t["topic_id"]])
+        repo, n = counts.most_common(1)[0]
+        assert t["top_repo"] == repo and t["n_repos"] == len(counts)
+        assert t["top_repo_share"] == pytest.approx(n / sum(counts.values()))
+        assert t["repo_specific"] == (t["top_repo_share"] > 0.8)
+    assert {t["repo_specific"] for t in topics} == {True, False}
+    summary = json.loads((out / "run_summary.json").read_text(encoding="utf-8"))
+    assert summary["repo_specific_topics"] == sum(t["repo_specific"] for t in topics)

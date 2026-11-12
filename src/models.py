@@ -114,6 +114,10 @@ class TopicInfo(BaseModel):
     count: int
     representative_docs: List[str] = Field(default_factory=list)
     probability: Optional[float] = None
+    top_repo: Optional[str] = None
+    top_repo_share: Optional[float] = None
+    n_repos: Optional[int] = None
+    repo_specific: bool = False  # top_repo_share above the configured threshold (S24)
 
 
 class DocTopic(BaseModel):
