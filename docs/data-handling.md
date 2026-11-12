@@ -49,8 +49,9 @@ Si esta decisión se revisa en el futuro, el cambio va en `HOME_PATH_PATTERN` de
 | `data/cache/` | Embeddings derivados, innecesarios para analizar |
 | `data/analysis/model/` | Modelo BERTopic, solo necesario para re-inferir |
 
-`data/processed/` contiene el corpus ya enmascarado y puede compartirse, pero no es
-necesario para analizar los resultados: para eso alcanza con `issue_index.jsonl`.
+`data/processed/` contiene el corpus ya enmascarado y puede compartirse, pero no se
+versiona: los resultados en `data/analysis/` son autocontenidos y el equipo ya tiene el
+dataset de origen.
 
 ## Verificación antes de compartir
 
