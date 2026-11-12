@@ -12,6 +12,7 @@ import structlog
 
 from .config import get_config
 from .models import MaintainabilityMetrics, QuantumPattern, TopicInfo
+from .taxonomy import load_taxonomy
 
 logger = structlog.get_logger()
 
@@ -95,13 +96,21 @@ Hybrid quantum-classical systems exhibit unique maintainability characteristics 
 """
 
 
+def _taxonomy(config):
+    return load_taxonomy(config.quantum_taxonomy)
+
+
+def _taxonomy_terms(config) -> List[str]:
+    return [t for c in _taxonomy(config).categories.values() for t in c.terms]
+
+
 def generate_methodology(config) -> str:
     """Generate methodology section."""
     return f"""# Methodology
 
 ## Data Collection
 
-Issues and comments were extracted from GitHub repositories identified as using quantum computing frameworks. The dataset includes issues from repositories matching keywords: {", ".join(config.quantum_patterns.hardware_backend[:5])}... (and algorithm, dependency, and other quantum-specific terms).
+Issues and comments were extracted from GitHub repositories identified as using quantum computing frameworks. The dataset includes issues from repositories matching the quantum taxonomy terms (for example: {", ".join(_taxonomy_terms(config)[:5])}).
 
 ## Preprocessing
 
@@ -123,7 +132,7 @@ We employed BERTopic (Grootendorst, 2022) for unsupervised topic discovery:
 
 ## Pattern Extraction
 
-Quantum-specific patterns were identified through keyword matching against a curated taxonomy of {sum(len(v) for v in config.quantum_patterns.model_dump().values())} terms across 8 categories, validated against discovered topics.
+Quantum-specific patterns were identified through keyword matching against a curated taxonomy of {sum(len(c.terms) for c in _taxonomy(config).categories.values())} terms across {len(_taxonomy(config).categories)} categories, validated against discovered topics.
 
 ## Metrics Computation
 

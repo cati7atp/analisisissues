@@ -225,3 +225,25 @@ class TestTaxonomyMatcher:
         for text in ["the circuit", "a gate", "the backend", "memory", "performance"]:
             assert matcher.match(text) == {}, text
         assert "transpilation_compilation" in matcher.match("transpile fails with a coupling map")
+
+
+class TestMetricsParity:
+    def test_metrics_and_patterns_report_the_same_prevalence(self, config, sample_issues):
+        from src.metrics import compute_quantum_keyword_ratios
+
+        matcher = build_keyword_patterns(config)
+        patterns = aggregate_patterns(find_pattern_matches(sample_issues, matcher, config), matcher.names)
+        ratios = compute_quantum_keyword_ratios(sample_issues, config)
+        assert set(ratios) == set(matcher.names)
+        from_patterns = {p.category: p.frequency / len(sample_issues) for p in patterns}
+        assert from_patterns and all(ratios[c] == pytest.approx(r) for c, r in from_patterns.items())
+        assert all(ratios[c] == 0.0 for c in set(ratios) - set(from_patterns))
+
+    def test_metrics_ignore_generic_substrings(self, config):
+        from src.metrics import compute_quantum_keyword_ratios
+
+        issue = CleanedIssue(
+            repo="a/b", issue_number=1, title="investigate", cleaned_body="", state="open",
+            created_at=datetime(2024, 1, 1), author="u", full_text="we should investigate the nonexistent seedling",
+        )
+        assert sum(compute_quantum_keyword_ratios([issue], config).values()) == 0.0

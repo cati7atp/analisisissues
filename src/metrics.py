@@ -127,28 +127,17 @@ def compute_topic_entropy(issues: List[CleanedIssue], doc_topics_path: Path) -> 
     return entropy
 
 
-def compute_quantum_keyword_ratios(issues: List[CleanedIssue], config) -> Dict[str, float]:
-    """Compute ratio of issues mentioning each quantum keyword category."""
-    keyword_patterns = {}
-    quantum_patterns = config.quantum_patterns
-    
-    for category, keywords in quantum_patterns.model_dump().items():
-        keyword_patterns[category] = [kw.lower() for kw in keywords]
-    
-    ratios = {}
+def compute_quantum_keyword_ratios(issues: List[CleanedIssue], config, matcher=None) -> Dict[str, float]:
+    """Share of issues matching each taxonomy category, using the matcher the patterns module uses."""
+    from .patterns import build_keyword_patterns
+
+    matcher = matcher or build_keyword_patterns(config)
+    counts = {category: 0 for category in matcher.names}
+    for issue in issues:
+        for category in matcher.match(issue.full_text):
+            counts[category] += 1
     total = len(issues)
-    if total == 0:
-        return {cat: 0.0 for cat in keyword_patterns}
-    
-    for category, keywords in keyword_patterns.items():
-        count = 0
-        for issue in issues:
-            text = issue.full_text.lower()
-            if any(kw in text for kw in keywords):
-                count += 1
-        ratios[category] = count / total
-    
-    return ratios
+    return {category: (count / total if total else 0.0) for category, count in counts.items()}
 
 
 def get_top_topics_for_repo(issues: List[CleanedIssue], doc_topics_path: Path, top_n: int = 5) -> List[Dict[str, Any]]:
