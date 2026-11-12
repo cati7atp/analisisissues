@@ -7,7 +7,7 @@ from typing import Any, Iterator, List
 from .config import InputConfig
 from .models import RawComment, RawIssue
 
-ITEM_QUERY = "SELECT * FROM items ORDER BY repo, number"
+ITEM_QUERY = "SELECT * FROM items WHERE type IN ({types}) ORDER BY repo, number"
 COMMENT_QUERY = (
     "SELECT kind, author, author_type, created_at, body FROM comments "
     "WHERE repo = ? AND item_number = ? AND kind IN ({kinds}) ORDER BY created_at, id"
@@ -35,8 +35,9 @@ def load_items_sqlite(cfg: InputConfig) -> Iterator[RawIssue]:
     """Yield one RawIssue per item row, streaming from a read-only connection."""
     conn = _connect_readonly(cfg.db_path)
     comment_sql = COMMENT_QUERY.format(kinds=",".join("?" * len(cfg.include_comment_kinds)))
+    item_sql = ITEM_QUERY.format(types=",".join("?" * len(cfg.item_types)))
     try:
-        for row in conn.execute(ITEM_QUERY):
+        for row in conn.execute(item_sql, cfg.item_types):
             comments = [
                 RawComment(**dict(c))
                 for c in conn.execute(

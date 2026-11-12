@@ -63,3 +63,19 @@ def test_labels_and_assignees_parsed_from_json(make_db):
     assert it.assignees == ["alice"]
     assert (it.state_reason, it.author_type, it.comment_count, it.item_type) == \
         ("completed", "Bot", 3, "issue")
+
+
+def _mixed(make_db):
+    return make_db(items=[{"repo": "a/b", "number": 1, "type": "issue"},
+                          {"repo": "a/b", "number": 2, "type": "pr"},
+                          {"repo": "a/b", "number": 3, "type": "discussion"}])
+
+
+def test_default_item_types_yields_only_issues(make_db):
+    items = list(load_items_sqlite(InputConfig(db_path=_mixed(make_db))))
+    assert [(i.issue_number, i.item_type) for i in items] == [(1, "issue")]
+
+
+def test_item_types_configurable(make_db):
+    cfg = InputConfig(db_path=_mixed(make_db), item_types=["pr", "discussion"])
+    assert sorted(i.item_type for i in load_items_sqlite(cfg)) == ["discussion", "pr"]
