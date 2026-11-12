@@ -21,6 +21,13 @@ from .models import (
 
 logger = structlog.get_logger()
 
+PLACEHOLDER_TOKENS = re.compile(r"\[(?:CODE_BLOCK|BUILD_LOG|CODE|URL)\]|@user|#issue")
+
+
+def content_chars(title: str, cleaned_body: str) -> int:
+    """Characters of real content in title plus body, ignoring placeholder markers (S13)."""
+    return sum(len(PLACEHOLDER_TOKENS.sub("", t).strip()) for t in (title or "", cleaned_body or ""))
+
 
 class IssuePreprocessor:
     """Preprocess and clean raw GitHub issues for analysis."""
@@ -168,8 +175,9 @@ class IssuePreprocessor:
         )
         
         # Skip issues with no meaningful content
-        if len(cleaned_body) < self.preprocessing_config.min_body_length and not raw_issue.title.strip():
+        if content_chars(raw_issue.title, cleaned_body) < self.preprocessing_config.min_chars:
             logger.debug("Skipping issue with no content", repo=raw_issue.repo, number=raw_issue.issue_number)
+            self.last_skip_reason = "empty_content"
             return None
         
         # Clean comments
@@ -266,7 +274,8 @@ class IssuePreprocessor:
             raw_issues = raw_issues()
         stats = {"total": 0, "kept": 0, "skipped": 0, "comments_removed": 0, "bot_issues": 0,
                  "repeated_lines": 0, "repeated_line_removals": 0,
-                 "repeated_comments": 0, "repeated_comment_drops": 0, "duplicates": 0}
+                 "repeated_comments": 0, "repeated_comment_drops": 0, "duplicates": 0,
+                 "empty_content": 0}
         seen_documents: Set[int] = set()
         chunk: List[str] = []
         with open(output_path, "w", encoding="utf-8") as f:
@@ -290,6 +299,8 @@ class IssuePreprocessor:
                         chunk.clear()
                 else:
                     stats["skipped"] += 1
+                    if self.last_skip_reason == "empty_content":
+                        stats["empty_content"] += 1
                     if self.last_skip_reason == "bot_issue":
                         stats["bot_issues"] += 1
                     stats["comments_removed"] += original_comments

@@ -139,8 +139,8 @@ class TestIssuePreprocessor:
         issue = {
             "repo": "test/test",
             "issue_number": 2,
-            "title": "Test",
-            "body": "Body",
+            "title": "Duplicate comments are removed",
+            "body": "The same comment is posted twice by two people.",
             "state": "open",
             "labels": [],
             "created_at": "2024-01-15T10:30:00Z",
@@ -187,3 +187,47 @@ class TestIssuePreprocessor:
         rows = [json.loads(line) for line in out.read_text(encoding="utf-8").splitlines()]
         assert [r["issue_number"] for r in rows] == [1, 2, 3]
         assert all(rows[0]["comments"]) and "original_body" not in rows[0]["comments"][0]
+
+
+class TestMinChars:
+    @staticmethod
+    def _issue(n, title, body):
+        return RawIssue(repo="a/b", issue_number=n, title=title, body=body, state="open", labels=[],
+                        created_at="2024-01-01T00:00:00Z", author="human")
+
+    def _run(self, config, issues, tmp_path):
+        out = tmp_path / "clean.jsonl"
+        stats = IssuePreprocessor(config).process_items(iter(issues), out)
+        rows = [json.loads(l) for l in out.read_text(encoding="utf-8").splitlines()]
+        return stats, rows
+
+    def test_short_title_and_body_is_dropped_and_counted(self, config, tmp_path):
+        issues = [self._issue(1, "Bug", "help"), self._issue(2, "Bug", "")]
+        stats, rows = self._run(config, issues, tmp_path)
+        assert rows == [] and stats["empty_content"] == 2 and stats["skipped"] == 2
+
+    def test_title_plus_body_at_threshold_is_kept(self, config, tmp_path):
+        config.preprocessing.min_chars = 30
+        keep = self._issue(1, "x" * 10, "y" * 20)  # 10 + 20 = 30 characters
+        drop = self._issue(2, "x" * 10, "y" * 18)  # 28 characters
+        stats, rows = self._run(config, [keep, drop], tmp_path)
+        assert [r["issue_number"] for r in rows] == [1] and stats["empty_content"] == 1
+
+    def test_placeholder_markers_do_not_count_as_content(self, config, tmp_path):
+        body = "```\nprint(1)\n```\nhttps://example.com/a/very/long/link/here"
+        stats, rows = self._run(config, [self._issue(1, "Crash", body)], tmp_path)
+        assert rows == [] and stats["empty_content"] == 1
+
+    def test_min_chars_zero_disables_the_rule(self, config, tmp_path):
+        config.preprocessing.min_chars = 0
+        stats, rows = self._run(config, [self._issue(1, "Bug", "")], tmp_path)
+        assert len(rows) == 1 and stats["empty_content"] == 0
+
+    def test_empty_content_is_reported_by_the_cli(self, make_db, tmp_path):
+        from tests.test_cli_preprocess import _config, runner
+        from src.cli import app
+
+        db = make_db(items=[{"repo": "a/b", "number": 1, "title": "Bug", "body": "", "author": "u"}])
+        result = runner.invoke(app, ["preprocess", "--config", str(_config(tmp_path, db))])
+        assert result.exit_code == 0, result.output
+        assert "skipped (empty content): 1" in result.output

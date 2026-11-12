@@ -41,6 +41,7 @@ class PreprocessingConfig(BaseModel):
         r"^Thank you for your submission, we really appreciate it\. Like many open source projects.*$",
     ])
     min_body_length: int = 10
+    min_chars: int = 30  # drop items whose cleaned title+body has fewer characters; 0 disables
     max_comment_length: int = 50000
     strip_code_fences: bool = True
     strip_templates: bool = True

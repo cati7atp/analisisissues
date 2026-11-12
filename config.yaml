@@ -32,6 +32,7 @@ preprocessing:
     - '^This issue has been automatically marked as stale\b.*$'
     - '^Thank you for your submission, we really appreciate it\. Like many open source projects.*$'
   min_body_length: 10
+  min_chars: 30                  # drop issues with fewer cleaned title+body characters; 0 disables
   max_comment_length: 50000
   strip_code_fences: true
   strip_templates: true          # HTML comments, template headings, unchecked checklist items
