@@ -88,6 +88,7 @@ class BERTopicConfig(BaseModel):
     reduce_outliers: bool = False  # True also writes a separate reduced result (S18)
     repo_specific_share: float = 0.8  # a topic above this top-repo share is flagged repo_specific
     temporal_nr_bins: int = 20  # time bins for topics_over_time
+    temporal_views: bool = True  # topics_over_time is slow on large corpora; False skips it and topics_per_class
     seed: int = 42  # UMAP random_state
     reproducible: bool = True  # True: seeded, single-threaded UMAP (identical topics across runs); False: parallel, unseeded
     verbose: bool = True
@@ -114,7 +115,7 @@ class MetricsConfig(BaseModel):
 class CrossProjectConfig(BaseModel):
     min_repos: int = 3  # repos that must each hold min_issues_per_repo issues of the topic
     min_issues_per_repo: int = 3
-    max_top_repo_share: float = 0.8  # no single repo may hold more than this share of the topic
+    max_top_repo_share: float = 0.9  # no single repo may hold more than this share of the topic
 
 
 class ReportConfig(BaseModel):

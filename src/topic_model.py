@@ -212,7 +212,8 @@ def run_topic_modeling(
     # Generate visualization
     _generate_visualization(config, topic_model, docs, output_dir)
 
-    _save_temporal_views(config, topic_model, docs, timestamps, repos, output_dir)
+    if config.bertopic.temporal_views:
+        _save_temporal_views(config, topic_model, docs, timestamps, repos, output_dir)
 
     if config.bertopic.reduce_outliers:
         _save_reduced_result(config, topic_model, docs, issue_ids, topics, probabilities, embeddings, output_dir, noise, repos)

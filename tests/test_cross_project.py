@@ -59,11 +59,18 @@ def test_dominated_or_thin_topics_are_not_cross_project():
     assert rows[1]["supporting_repos"] == ["a/x"]
 
 
-def test_repo_specific_topics_are_never_cross_project_and_outliers_are_skipped():
+def test_single_repo_topic_is_not_cross_project_and_outliers_are_skipped():
     issues, dts, topics = _world()
-    rows = _by_id(find_cross_project_topics(topics, dts, issues, min_repos=1, min_issues_per_repo=1, max_top_repo_share=1.0))
-    assert rows[2]["cross_project"] is False
+    rows = _by_id(find_cross_project_topics(topics, dts, issues, min_repos=2, min_issues_per_repo=1, max_top_repo_share=1.0))
+    assert rows[2]["cross_project"] is False and rows[2]["repo_specific"] is True
     assert -1 not in rows
+
+
+def test_dominant_repo_alone_does_not_hide_a_topic_that_recurs_elsewhere():
+    issues, dts, topics = _world()
+    topics[0].repo_specific = True  # flagged by the stricter upstream threshold
+    rows = _by_id(find_cross_project_topics(topics, dts, issues, min_repos=3, min_issues_per_repo=3, max_top_repo_share=0.9))
+    assert rows[0]["cross_project"] is True
 
 
 def test_outputs_are_written_as_jsonl_and_csv(tmp_path):

@@ -32,8 +32,10 @@ def find_cross_project_topics(
     max_top_repo_share: float,
 ) -> List[Dict[str, Any]]:
     """One row per topic. A topic is cross-project when at least ``min_repos`` repos each hold
-    ``min_issues_per_repo`` of its issues, no repo exceeds ``max_top_repo_share`` of it, and it
-    was not flagged repo_specific. Outliers (topic -1) never count."""
+    ``min_issues_per_repo`` of its issues and no repo exceeds ``max_top_repo_share`` of it. The
+    repo_specific flag (a different, stricter threshold) is informational here: one dominant repo
+    does not stop a topic that recurs in many others from being a cross-project pattern.
+    Outliers (topic -1) never count."""
     repo_of = {i.issue_id: i.repo for i in issues}
     repo_size = Counter(repo_of.values())
     per_topic: Dict[int, Counter] = defaultdict(Counter)
@@ -58,8 +60,8 @@ def find_cross_project_topics(
             "topic_id": topic.topic_id,
             "name": topic.name,
             "keywords": topic.keywords,
-            "cross_project": (not topic.repo_specific and len(supporting) >= min_repos
-                              and top_share <= max_top_repo_share),
+            "cross_project": len(supporting) >= min_repos and top_share <= max_top_repo_share,
+            "repo_specific": topic.repo_specific,
             "n_repos": len(counts),
             "supporting_repos": supporting,
             "n_issues": n_issues,

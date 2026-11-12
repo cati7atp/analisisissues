@@ -546,3 +546,12 @@ def test_topics_report_top_repo_and_flag_repo_specific(small_config, tmp_path):
     assert {t["repo_specific"] for t in topics} == {True, False}
     summary = json.loads((out / "run_summary.json").read_text(encoding="utf-8"))
     assert summary["repo_specific_topics"] == sum(t["repo_specific"] for t in topics)
+
+
+def test_temporal_views_can_be_skipped(small_config, issues_file, tmp_path):
+    small_config.bertopic.temporal_views = False
+    out = tmp_path / "out_no_temporal"
+    run(small_config, issues_file, out, ThemeEncoder())
+    assert small_config.paths.topics_output.exists()
+    assert not (out / "topics_over_time.jsonl").exists()
+    assert not (out / "topics_per_class.jsonl").exists()
