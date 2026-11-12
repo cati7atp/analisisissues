@@ -123,7 +123,7 @@ class TestIssuePreprocessor:
         comment = {"author": "helper", "created_at": "2024-01-16T12:00:00Z", "body": "Try increasing shots to 8192."}
         result = preprocessor.clean_comment(comment)
         assert result is not None
-        assert result.author == "helper"
+        assert result.author == preprocessor.pseudonym("Helper")
 
     def test_clean_issue(self, preprocessor, sample_raw_issue):
         raw = RawIssue(**sample_raw_issue)
@@ -133,7 +133,7 @@ class TestIssuePreprocessor:
         assert cleaned.issue_number == 1
         assert cleaned.issue_type == "bug"
         assert len(cleaned.comments) == 1  # bot comment removed
-        assert cleaned.comments[0].author == "helper"
+        assert cleaned.comments[0].author == preprocessor.pseudonym("helper")
 
     def test_clean_issue_removes_duplicates(self, preprocessor):
         issue = {

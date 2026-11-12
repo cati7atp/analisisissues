@@ -107,6 +107,26 @@ All parameters are configurable via `config.yaml`:
 
 Categories and their keywords live in `config/quantum_taxonomy.yaml` (the `quantum_patterns` block of `config.yaml` is legacy and ignored).
 
+## Outputs (`data/analysis/`)
+
+| File | Content |
+|------|---------|
+| `topics.jsonl` | One row per topic: name, keywords, count, representative docs, `top_repo`, `top_repo_share`, `n_repos`, `repo_specific` |
+| `doc_topics.jsonl` | Issue id (`owner/repo#n`) -> topic id (`-1` = outlier) and probability |
+| `doc_topics_reduced.jsonl`, `topics_reduced.jsonl` | Secondary result with outliers reassigned by embedding similarity (more coverage, lower quality) |
+| `cross_project_patterns.{jsonl,csv}` | Per topic: repos holding it, per-repo prevalence, top-repo share, evenness, `cross_project` flag |
+| `quantum_patterns.jsonl`, `pattern_summary.csv`, `candidate_categories.jsonl` | Taxonomy categories and topics the taxonomy does not explain |
+| `topics_over_time.jsonl`, `topics_per_class.jsonl` | Temporal and per-repo views (`bertopic.temporal_views: false` skips them; they take tens of minutes) |
+| `maintainability_metrics.json`, `comparisons.json` | Per-repo/aggregate metrics and per-repo, per-family and capped comparisons |
+| `run_summary.json` | Topic count, outlier share, noise topics, repo-specific topics |
+| `topic_visualization.html` | Interactive BERTopic views |
+
+Runs are reproducible: UMAP is seeded (`bertopic.seed`, `bertopic.reproducible: true`). Setting `reproducible: false` runs UMAP in parallel and unseeded.
+
+## Privacy
+
+`preprocessing.anonymize_authors` (default on) replaces authors, commenters and assignees with salted pseudonyms (`u_<12 hex>`, stable per person, case-insensitive) and masks `@mentions` in titles, bodies and comments. Bot filtering uses the real name before pseudonymizing. Change `author_salt` to make pseudonyms unlinkable to an earlier release. Repository names are public project names and are anonymized only in the report (`report.anonymize`). Inline decorators such as `@njit` also become `@user`.
+
 ## Running Tests
 
 ```bash

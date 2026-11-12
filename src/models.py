@@ -175,7 +175,7 @@ class MaintainabilityMetrics(BaseModel):
 CODE_FENCE_PATTERN = re.compile(r"```[\s\S]*?```", re.MULTILINE)
 INLINE_CODE_PATTERN = re.compile(r"`[^`\n]+`")  # single line: a stray backtick must not pair across lines
 URL_PATTERN = re.compile(r"https?://\S+")
-MENTION_PATTERN = re.compile(r"@\w+")
+MENTION_PATTERN = re.compile(r"@\w[\w-]*")
 ISSUE_REF_PATTERN = re.compile(r"#\d+")
 
 

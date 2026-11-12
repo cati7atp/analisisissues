@@ -40,6 +40,8 @@ preprocessing:
   repeated_comment_min_issues: 5 # drop comments seen in this many distinct issues; 0 disables
   drop_exact_duplicates: true    # keep the first of identical (normalized) title+body documents
   normalize_whitespace: true
+  anonymize_authors: true        # people become salted pseudonyms (u_<12 hex>); bot filtering uses the real name first
+  author_salt: "quantum-issues"  # change it so pseudonyms cannot be linked to a previous release
 
 # BERTopic Configuration
 bertopic:

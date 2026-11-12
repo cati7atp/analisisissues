@@ -7,6 +7,7 @@ from pathlib import Path
 from typing import Any, Callable, Dict, Iterable, Iterator, List, Optional, Set, Union
 from datetime import datetime
 from collections import Counter
+import hashlib
 
 import pandas as pd
 from tqdm import tqdm
@@ -16,7 +17,7 @@ from .config import get_config, load_config
 from .repeated_text import RepeatedTextIndex, document_key
 from .models import (
     RawIssue, CleanedIssue, CleanedComment,
-    clean_text, classify_issue_type, is_bot_user, parse_datetime, structure_text
+    MENTION_PATTERN, clean_text, classify_issue_type, is_bot_user, parse_datetime, structure_text
 )
 
 logger = structlog.get_logger()
@@ -43,6 +44,14 @@ class IssuePreprocessor:
             re.compile(p, re.MULTILINE) for p in self.preprocessing_config.automated_comment_patterns
         ]
     
+    def pseudonym(self, name: str) -> str:
+        """Stable salted pseudonym for a person (case-insensitive); the name itself when disabled."""
+        name = (name or "").lower()
+        if not self.preprocessing_config.anonymize_authors or not name:
+            return name
+        digest = hashlib.sha256(f"{self.preprocessing_config.author_salt}:{name}".encode("utf-8")).hexdigest()
+        return f"u_{digest[:12]}"
+
     def load_raw_issues(self, input_path: Path) -> List[RawIssue]:
         """Load raw issues from JSONL file."""
         issues = []
@@ -148,12 +157,12 @@ class IssuePreprocessor:
         try:
             created_at = parse_datetime(created_at_str)
         except Exception as e:
-            logger.warning("Failed to parse comment datetime", author=author, error=str(e))
+            logger.warning("Failed to parse comment datetime", error=str(e))
             self.datetime_failures += 1
             return None
         
         return CleanedComment(
-            author=author,
+            author=self.pseudonym(author),
             created_at=created_at,
             body=cleaned_body,
         )
@@ -210,7 +219,7 @@ class IssuePreprocessor:
                 self.datetime_failures += 1
         
         # Build full text for topic modeling (title + body + comments)
-        text_parts = [raw_issue.title]
+        text_parts = [MENTION_PATTERN.sub("@user", raw_issue.title)]
         if cleaned_body:
             text_parts.append(cleaned_body)
         for comment in cleaned_comments:
@@ -220,16 +229,16 @@ class IssuePreprocessor:
         return CleanedIssue(
             repo=raw_issue.repo,
             issue_number=raw_issue.issue_number,
-            title=raw_issue.title.strip(),
-            body=raw_issue.body,
+            title=MENTION_PATTERN.sub("@user", raw_issue.title.strip()),
+            body=MENTION_PATTERN.sub("@user", raw_issue.body),
             cleaned_body=cleaned_body,
             state=raw_issue.state,
             labels=[l.lower() for l in raw_issue.labels],
             created_at=created_at,
             closed_at=closed_at,
-            author=raw_issue.author.lower(),
+            author=self.pseudonym(raw_issue.author),
             comments=cleaned_comments,
-            assignees=[a.lower() for a in raw_issue.assignees],
+            assignees=[self.pseudonym(a) for a in raw_issue.assignees],
             milestone=raw_issue.milestone,
             reactions=raw_issue.reactions,
             state_reason=raw_issue.state_reason,

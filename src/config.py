@@ -54,6 +54,8 @@ class PreprocessingConfig(BaseModel):
     repeated_comment_min_issues: int = 5  # a comment in this many distinct issues is automated or templated; 0 disables
     drop_exact_duplicates: bool = True  # keep the first of identical title+body documents
     normalize_whitespace: bool = True
+    anonymize_authors: bool = True  # authors, commenters and assignees become salted pseudonyms (u_<12 hex>)
+    author_salt: str = "quantum-issues"  # change it to make pseudonyms unlinkable to a previous release
 
 
 class BERTopicConfig(BaseModel):
