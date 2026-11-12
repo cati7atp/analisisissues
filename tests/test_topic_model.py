@@ -343,3 +343,54 @@ def test_cli_output_dir_redirects_every_output(tmp_path, monkeypatch):
     assert captured["out"] == out
     for p in (paths.topics_output, paths.doc_topics_output, paths.visualization_html):
         assert p.parent == out
+
+
+class StubClusterer:
+    """HDBSCAN stand-in that forces a fixed number of clusters (0 or 1)."""
+
+    clusters = 0
+
+    def __init__(self, *args, **kwargs):
+        pass
+
+    def fit(self, X, y=None):
+        self.labels_ = np.full(len(X), 0 if self.clusters else -1)
+        self.probabilities_ = np.ones(len(X))
+        return self
+
+
+@pytest.mark.parametrize("clusters", [0, 1])
+def test_too_few_clusters_finish_with_an_explicit_empty_outcome(small_config, issues_file, tmp_path, monkeypatch, clusters):
+    import json
+    import src.topic_model as tm
+
+    StubClusterer.clusters = clusters
+    monkeypatch.setattr(tm.hdbscan, "HDBSCAN", StubClusterer)
+    out = tmp_path / "out"
+    assert run(small_config, issues_file, out, ThemeEncoder()) is None
+    summary = json.loads((out / "run_summary.json").read_text(encoding="utf-8"))
+    assert summary["outcome"] == "no_topics"
+    assert summary["clusters_found"] == clusters
+    assert summary["n_documents"] == 120 and summary["n_topics"] == 0 and summary["outlier_share"] == 1.0
+    assert small_config.paths.topics_output.read_text(encoding="utf-8") == ""
+    rows = [json.loads(l) for l in small_config.paths.doc_topics_output.read_text(encoding="utf-8").splitlines()]
+    assert len(rows) == 120 and {r["topic_id"] for r in rows} == {-1}
+
+
+def test_other_fit_errors_are_not_swallowed(small_config, issues_file, tmp_path, monkeypatch):
+    from bertopic import BERTopic
+
+    def boom(self, *args, **kwargs):
+        raise ValueError("unrelated failure")
+
+    monkeypatch.setattr(BERTopic, "fit_transform", boom)
+    with pytest.raises(ValueError, match="unrelated failure"):
+        run(small_config, issues_file, tmp_path / "out", ThemeEncoder())
+
+
+def test_normal_run_summary_outcome_is_ok(small_config, issues_file, tmp_path):
+    import json
+
+    out = tmp_path / "out"
+    run(small_config, issues_file, out, ThemeEncoder())
+    assert json.loads((out / "run_summary.json").read_text(encoding="utf-8"))["outcome"] == "ok"

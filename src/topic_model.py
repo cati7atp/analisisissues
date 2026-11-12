@@ -165,8 +165,20 @@ def run_topic_modeling(
     )
 
     logger.info("Fitting BERTopic model", n_docs=len(docs))
-    topics, probabilities = topic_model.fit_transform(docs, embeddings=embeddings)
-    
+    try:
+        topics, probabilities = topic_model.fit_transform(docs, embeddings=embeddings)
+    except ValueError:
+        # With 0 or 1 clusters the c-TF-IDF vectorizer fails (max_df counts topics).
+        # Decide from the clusterer's own labels, never from the error message.
+        found = _clusters_found(topic_model)
+        if found is None or found > 1:
+            raise
+        logger.warning("Too few clusters for topic modeling", clusters_found=found, n_docs=len(docs))
+        output_dir.mkdir(parents=True, exist_ok=True)
+        _save_empty_outputs(config, output_dir, issue_ids)
+        _write_run_summary(output_dir, [-1] * len(docs), outcome="no_topics", clusters_found=found)
+        return None
+
     # Save model
     output_dir.mkdir(parents=True, exist_ok=True)
     model_path = output_dir / MODEL_SUBDIR
@@ -222,11 +234,20 @@ def _topic_counts(topics: List[int]) -> Dict[str, Any]:
     }
 
 
+def _clusters_found(topic_model: BERTopic) -> Optional[int]:
+    """Clusters (excluding outliers) in the fitted clusterer's labels, or None if it never fit."""
+    labels = getattr(topic_model.hdbscan_model, "labels_", None)
+    if labels is None:
+        return None
+    return len({int(label) for label in labels if label != -1})
+
+
 def _write_run_summary(
-    output_dir: Path, topics: List[int], reduced_topics: Optional[List[int]] = None
+    output_dir: Path, topics: List[int], reduced_topics: Optional[List[int]] = None,
+    outcome: str = "ok", **extra: Any,
 ) -> Dict[str, Any]:
     """Log and persist document, topic and (unreduced) outlier counts."""
-    summary = {"n_documents": len(topics), **_topic_counts(topics)}
+    summary = {"n_documents": len(topics), **_topic_counts(topics), "outcome": outcome, **extra}
     if reduced_topics is not None:
         summary["reduced"] = _topic_counts(reduced_topics)
     logger.info("Topic modeling complete", **summary)
