@@ -237,6 +237,10 @@ def _save_temporal_views(config, topic_model, docs, timestamps, repos, output_di
 
 def _save_reduced_result(config, topic_model, docs, issue_ids, topics, probabilities, embeddings, output_dir, noise):
     """Second, separate result with outliers reassigned; call only after the primary outputs are saved."""
+    if -1 not in topics:
+        logger.info("No outliers to reduce; skipping the reduced result")
+        _write_run_summary(output_dir, topics, reduced_topics=list(topics), reduced_outcome="no_outliers", **noise)
+        return
     reduced = topic_model.reduce_outliers(docs, topics, strategy="embeddings", embeddings=embeddings)
     topic_model.update_topics(
         docs,

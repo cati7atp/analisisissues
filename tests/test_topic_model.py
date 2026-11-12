@@ -494,3 +494,17 @@ def test_topics_over_time_and_per_class_use_aligned_timestamps_and_repos(small_c
     n_clustered = sum(1 for d in _read_jsonl(small_config.paths.doc_topics_output) if d["topic_id"] != -1)
     assert sum(r["frequency"] for r in over_time) == n_clustered
     assert sum(r["frequency"] for r in per_class) == n_clustered
+
+
+def test_reduce_outliers_with_no_outliers_finishes_with_an_explicit_outcome(small_config, issues_file, tmp_path):
+    import json
+
+    small_config.bertopic.reduce_outliers = True
+    out = tmp_path / "out"
+    run(small_config, issues_file, out, ThemeEncoder())  # must not raise "No outliers to reduce"
+    summary = json.loads((out / "run_summary.json").read_text(encoding="utf-8"))
+    assert summary["n_outliers"] == 0
+    assert summary["reduced_outcome"] == "no_outliers"
+    assert summary["reduced"]["n_outliers"] == 0
+    assert not (out / "doc_topics_reduced.jsonl").exists()
+    assert small_config.paths.doc_topics_output.exists()
