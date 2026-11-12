@@ -145,6 +145,18 @@ def extract_patterns(
     patterns = extract_quantum_patterns(cfg, topics_path, issues_path, output_path)
     console.print(f"[green]Extracted {len(patterns)} patterns -> {output_path}[/green]")
 
+    from .cross_project import find_cross_project_topics, write_cross_project_outputs
+    from .patterns import load_doc_topics, load_issues, load_topics
+
+    cp = cfg.cross_project
+    rows = find_cross_project_topics(
+        load_topics(topics_path), load_doc_topics(cfg.paths.doc_topics_output), load_issues(issues_path),
+        cp.min_repos, cp.min_issues_per_repo, cp.max_top_repo_share)
+    cp_jsonl = output_path.with_name("cross_project_patterns.jsonl")
+    write_cross_project_outputs(rows, cp_jsonl, cp_jsonl.with_suffix(".csv"))
+    n_cross = sum(r["cross_project"] for r in rows)
+    console.print(f"[green]Cross-project topics: {n_cross} of {len(rows)} -> {cp_jsonl}[/green]")
+
 
 @app.command()
 def compute_metrics(

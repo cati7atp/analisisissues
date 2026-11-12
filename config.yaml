@@ -82,3 +82,9 @@ report:
   max_example_quotes: 3
   quote_max_length: 200
   anonymize: true
+
+# Cross-project patterns: a topic that recurs in several distinct repos
+cross_project:
+  min_repos: 3
+  min_issues_per_repo: 3
+  max_top_repo_share: 0.8

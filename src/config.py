@@ -111,6 +111,12 @@ class MetricsConfig(BaseModel):
     comparison_repo_cap: int = 1000  # per-repo document cap for the sensitivity run
 
 
+class CrossProjectConfig(BaseModel):
+    min_repos: int = 3  # repos that must each hold min_issues_per_repo issues of the topic
+    min_issues_per_repo: int = 3
+    max_top_repo_share: float = 0.8  # no single repo may hold more than this share of the topic
+
+
 class ReportConfig(BaseModel):
     include_visualizations: bool = True
     max_example_quotes: int = 3
@@ -127,6 +133,7 @@ class Config(BaseModel):
     quantum_patterns: Optional[QuantumPatternsConfig] = None  # legacy; superseded by the taxonomy
     metrics: MetricsConfig = Field(default_factory=MetricsConfig)
     report: ReportConfig = Field(default_factory=ReportConfig)
+    cross_project: CrossProjectConfig = Field(default_factory=CrossProjectConfig)
 
 
 class Settings(BaseSettings):
