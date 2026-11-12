@@ -65,6 +65,14 @@ def format_number(n: Optional[float], decimals: int = 1) -> str:
     return f"{n:.{decimals}f}"
 
 
+def format_outcomes(outcomes: Dict[str, int]) -> str:
+    """Da formato al desglose por estado de cierre; nunca imprime el dict crudo."""
+    if not outcomes:
+        return "N/A"
+    ordered = sorted(outcomes.items(), key=lambda item: (-item[1], item[0]))
+    return ", ".join(f"{name.replace('_', ' ')}: {count}" for name, count in ordered)
+
+
 def generate_executive_summary(metrics: MaintainabilityMetrics, patterns: List[QuantumPattern]) -> str:
     """Genera la sección de resumen ejecutivo."""
     agg = metrics.aggregated
@@ -79,13 +87,13 @@ This report presents a systematic analysis of GitHub issues from repositories ut
 - **Repositories Analyzed**: {agg.total_repos}
 - **Total Issues**: {agg.total_issues}
 - **Median Resolution Time**: {format_number(agg.overall_median_resolution_days)} days
-- **Resolution Outcomes (closed issues)**: {agg.resolution_outcomes}
+- **Resolution Outcomes (closed issues)**: {format_outcomes(agg.resolution_outcomes)}
 - **Contributor Concentration (Gini)**: {agg.overall_gini_contributors:.2f}
 - **Quantum-Specific Patterns Identified**: {len(patterns)} categories, {total_patterns} total occurrences
 
 ## Quantum Pattern Taxonomy
 
-The analysis revealed eight distinct categories of quantum-specific maintainability challenges:
+The analysis revealed {len(patterns)} distinct categories of quantum-specific maintainability challenges:
 
 | Category | Frequency | Description |
 |----------|-----------|-------------|
@@ -177,7 +185,7 @@ def generate_metrics_section(metrics: MaintainabilityMetrics, anonymize: bool) -
         f"| Total Repositories | {agg.total_repos} |",
         f"| Total Issues | {agg.total_issues} |",
         f"| Median Resolution Time (days) | {format_number(agg.overall_median_resolution_days)} |",
-        f"| Resolution Outcomes (closed) | {agg.resolution_outcomes} |",
+        f"| Resolution Outcomes (closed) | {format_outcomes(agg.resolution_outcomes)} |",
         f"| Contributor Gini Coefficient | {agg.overall_gini_contributors:.3f} |",
         f"| Avg Issues per Repository | {agg.avg_issues_per_repo:.1f} |",
         "",
@@ -194,7 +202,7 @@ def generate_metrics_section(metrics: MaintainabilityMetrics, anonymize: bool) -
             "Open": m.open_issues,
             "Closed": m.closed_issues,
             "Median Resolution (days)": format_number(m.median_resolution_days),
-            "Outcomes": str(m.resolution_outcomes),
+            "Outcomes": format_outcomes(m.resolution_outcomes),
             "Gini": f"{m.gini_contributors:.3f}",
             "Contributors": m.unique_contributors,
             "Topic Entropy": f"{m.topic_entropy:.2f}",
@@ -252,7 +260,7 @@ def generate_cross_project_section(rows: List[dict], anonymize: bool, config, to
     return "\n".join(lines) + "\n"
 
 
-def generate_comparative_discussion(metrics: MaintainabilityMetrics, patterns: List[QuantumPattern]) -> str:
+def generate_comparative_discussion(metrics: MaintainabilityMetrics, patterns: List[QuantumPattern], n_topics: int) -> str:
     """Genera la sección de discusión comparativa."""
     agg = metrics.aggregated
     
@@ -299,7 +307,7 @@ Hybrid quantum-classical gradients require:
 
 ## Topic Model Insights
 
-The BERTopic model discovered {len([m for m in metrics.per_repo if m.top_topics])} dominant thematic clusters across repositories, revealing that quantum issues naturally organize around:
+The BERTopic model discovered {n_topics} topics across {agg.total_repos} repositories ({agg.total_issues} issues in total), revealing that quantum issues naturally organize around:
 - Hardware access and backend management
 - Algorithm implementation and debugging
 - Framework version compatibility
@@ -357,7 +365,7 @@ This analysis of {agg.total_issues} GitHub issues across {agg.total_repos} quant
 
 ## Key Contributions
 
-1. **Quantum Pattern Taxonomy**: Eight categories of quantum-specific issues identified, providing a vocabulary for practitioners and researchers.
+1. **Quantum Pattern Taxonomy**: {len(patterns)} categories of quantum-specific issues identified, providing a vocabulary for practitioners and researchers.
 
 2. **Quantitative Baselines**: First systematic measurement of resolution times, resolution outcomes, and contributor concentration in quantum repositories.
 
@@ -432,7 +440,7 @@ def generate_report(
     sections.append(generate_methodology(config))
     sections.append(generate_pattern_taxonomy(patterns, config))
     sections.append(generate_metrics_section(metrics, anonymize))
-    sections.append(generate_comparative_discussion(metrics, patterns))
+    sections.append(generate_comparative_discussion(metrics, patterns, len(topics)))
     if cross_project:
         sections.append(generate_cross_project_section(cross_project, anonymize, config))
     

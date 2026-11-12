@@ -1,6 +1,6 @@
 # Quantum Software Maintainability Analysis Report
 
-*Generated: 2026-11-12T22:13:46+00:00*
+*Generated: 2026-11-12T22:59:25+00:00*
 *Anonymized: True*
 
 # Executive Summary
@@ -12,13 +12,13 @@ This report presents a systematic analysis of GitHub issues from repositories ut
 - **Repositories Analyzed**: 105
 - **Total Issues**: 35340
 - **Median Resolution Time**: 20.1 days
-- **Resolution Outcomes (closed issues)**: {'completed': 28387, 'not_planned': 1082, 'duplicate': 84}
+- **Resolution Outcomes (closed issues)**: completed: 28387, not planned: 1082, duplicate: 84
 - **Contributor Concentration (Gini)**: 0.77
 - **Quantum-Specific Patterns Identified**: 12 categories, 17665 total occurrences
 
 ## Quantum Pattern Taxonomy
 
-The analysis revealed eight distinct categories of quantum-specific maintainability challenges:
+The analysis revealed 12 distinct categories of quantum-specific maintainability challenges:
 
 | Category | Frequency | Description |
 |----------|-----------|-------------|
@@ -191,119 +191,119 @@ Maintainability metrics were computed per repository and aggregated:
 | Total Repositories | 105 |
 | Total Issues | 35340 |
 | Median Resolution Time (days) | 20.1 |
-| Resolution Outcomes (closed) | {'completed': 28387, 'not_planned': 1082, 'duplicate': 84} |
+| Resolution Outcomes (closed) | completed: 28387, not planned: 1082, duplicate: 84 |
 | Contributor Gini Coefficient | 0.772 |
 | Avg Issues per Repository | 336.6 |
 
 ## Per-Repository Metrics
 
-| Repository    |   Total Issues |   Open |   Closed | Median Resolution (days)   | Outcomes                                                |   Gini |   Contributors |   Topic Entropy |
-|:--------------|---------------:|-------:|---------:|:---------------------------|:--------------------------------------------------------|-------:|---------------:|----------------:|
-| Repo_bf7abf43 |            776 |     68 |      708 | 17.9                       | {'completed': 675, 'not_planned': 33}                   |  0.748 |             52 |            1.8  |
-| Repo_8eec19c3 |            123 |     34 |       89 | 29.8                       | {'completed': 87, 'not_planned': 2}                     |  0.49  |             41 |            3.95 |
-| Repo_923ae80a |             53 |      8 |       45 | 26.7                       | {'completed': 45}                                       |  0.604 |              7 |            2.95 |
-| Repo_bfdaf5f6 |             57 |      4 |       53 | 28.8                       | {'completed': 53}                                       |  0.634 |              8 |            3.88 |
-| Repo_8a2f7eff |             73 |     13 |       60 | 63.6                       | {'completed': 60}                                       |  0.685 |             11 |            3.22 |
-| Repo_0d4c4017 |           1306 |    382 |      924 | 26.1                       | {'completed': 919, 'duplicate': 4, 'not_planned': 1}    |  0.75  |            196 |            2.61 |
-| Repo_edd3c8b9 |             46 |     16 |       30 | 11.1                       | {'completed': 30}                                       |  0.14  |             39 |            0.95 |
-| Repo_a24f6690 |             33 |     24 |        9 | 13.7                       | {'completed': 9}                                        |  0.347 |             20 |            2.06 |
-| Repo_c743ebe8 |            488 |    174 |      314 | 22.0                       | {'completed': 290, 'not_planned': 19, 'duplicate': 5}   |  0.702 |             64 |            3.78 |
-| Repo_3d565e3d |           1674 |    274 |     1400 | 17.1                       | {'completed': 1379, 'not_planned': 21}                  |  0.717 |            345 |            4.27 |
-| Repo_48f701e4 |            125 |     23 |      102 | 14.2                       | {'completed': 101, 'not_planned': 1}                    |  0.53  |             50 |            3.57 |
-| Repo_e33a75f9 |            158 |     31 |      127 | 13.9                       | {'completed': 127}                                      |  0.448 |             78 |            4.75 |
-| Repo_a913fade |              1 |      0 |        1 | 6.8                        | {'completed': 1}                                        |  0     |              1 |            0    |
-| Repo_134614d3 |             21 |      7 |       14 | 19.1                       | {'completed': 14}                                       |  0.286 |              5 |            2.58 |
-| Repo_2587cfac |           5731 |    725 |     5006 | 30.2                       | {'completed': 4728, 'not_planned': 270, 'duplicate': 8} |  0.751 |           1119 |            5.35 |
-| Repo_d94af77b |            978 |    198 |      780 | 20.1                       | {'completed': 770, 'not_planned': 10}                   |  0.539 |            398 |            4.53 |
-| Repo_c1f9dc98 |            309 |     45 |      264 | 67.1                       | {'completed': 263, 'not_planned': 1}                    |  0.772 |             58 |            4.08 |
-| Repo_0546661a |            205 |     63 |      142 | 18.7                       | {'completed': 142}                                      |  0.721 |             31 |            3.91 |
-| Repo_fe688cb1 |             46 |      8 |       38 | 24.5                       | {'completed': 36, 'not_planned': 2}                     |  0.681 |              9 |            2.85 |
-| Repo_e65039e1 |             36 |      0 |       36 | 36.8                       | {'completed': 32, 'not_planned': 4}                     |  0.26  |             25 |            2.73 |
-| Repo_f7804a41 |            545 |     85 |      460 | 11.9                       | {'completed': 455, 'not_planned': 5}                    |  0.8   |             71 |            4.82 |
-| Repo_eea10b59 |            495 |    162 |      333 | 11.2                       | {'completed': 308, 'not_planned': 21, 'duplicate': 4}   |  0.747 |             35 |            3.31 |
-| Repo_a35add70 |            251 |     21 |      230 | 10.8                       | {'completed': 230}                                      |  0.605 |             85 |            4.06 |
-| Repo_b37c7c9c |            207 |     97 |      110 | 90.0                       | {'completed': 110}                                      |  0.747 |             32 |            4.17 |
-| Repo_7de99b4a |             28 |     24 |        4 | 65.4                       | {'completed': 4}                                        |  0.643 |              5 |            3.1  |
-| Repo_416588bf |            115 |     12 |      103 | 13.0                       | {'completed': 103}                                      |  0.584 |             36 |            3.81 |
-| Repo_d2f53349 |            340 |     41 |      299 | 6.7                        | {'completed': 299}                                      |  0.796 |             63 |            3.26 |
-| Repo_b259a373 |            187 |     14 |      173 | 62.1                       | {'completed': 164, 'duplicate': 1, 'not_planned': 8}    |  0.653 |             23 |            4    |
-| Repo_cd9a052d |            176 |     19 |      157 | 26.0                       | {'completed': 153, 'not_planned': 4}                    |  0.478 |             72 |            3.55 |
-| Repo_16a7a8a3 |              3 |      3 |        0 | N/A                        | {}                                                      |  0     |              3 |           -0    |
-| Repo_1f225676 |             43 |      1 |       42 | 113.0                      | {'completed': 42}                                       |  0.66  |              8 |            3.95 |
-| Repo_3583ae5d |             36 |     22 |       14 | 48.1                       | {'completed': 14}                                       |  0.382 |             16 |            3.17 |
-| Repo_80dfc9af |            493 |    153 |      340 | 12.2                       | {'completed': 338, 'not_planned': 2}                    |  0.797 |             68 |            2.33 |
-| Repo_133e4390 |            294 |     77 |      217 | 6.1                        | {'completed': 217}                                      |  0.843 |             32 |            3.01 |
-| Repo_4829e4a9 |             87 |     33 |       54 | 11.5                       | {'completed': 54}                                       |  0.5   |             32 |            2.35 |
-| Repo_321db3b7 |             34 |      5 |       29 | 7.9                        | {'completed': 29}                                       |  0.511 |             13 |            3.32 |
-| Repo_e45f8fb0 |             84 |     25 |       59 | 20.1                       | {'completed': 59}                                       |  0.487 |             38 |            3.43 |
-| Repo_1eaffd16 |            222 |     85 |      137 | 10.6                       | {'completed': 133, 'not_planned': 3, 'duplicate': 1}    |  0.653 |             66 |            2.64 |
-| Repo_1ba02c8e |             82 |     25 |       57 | 6.9                        | {'completed': 55, 'not_planned': 2}                     |  0.471 |             33 |            2.26 |
-| Repo_677e03cf |             80 |      9 |       71 | 13.0                       | {'completed': 69, 'not_planned': 2}                     |  0.419 |             36 |            2.86 |
-| Repo_e3418ccb |            363 |    149 |      214 | 10.9                       | {'completed': 194, 'not_planned': 14, 'duplicate': 6}   |  0.764 |             48 |            3.36 |
-| Repo_be55b9e4 |             58 |     20 |       38 | 29.5                       | {'completed': 37, 'not_planned': 1}                     |  0.474 |             19 |            3.92 |
-| Repo_9e887faf |              2 |      1 |        1 | 1.7                        | {'completed': 1}                                        |  0     |              2 |            0    |
-| Repo_3c0ce5f5 |             27 |      8 |       19 | 154.9                      | {'completed': 15, 'not_planned': 4}                     |  0.265 |             19 |            2.73 |
-| Repo_8ea4b746 |           1038 |     52 |      986 | 5.2                        | {'completed': 910, 'not_planned': 71, 'duplicate': 5}   |  0.716 |            222 |            1.22 |
-| Repo_71d711c0 |             13 |      3 |       10 | 2.9                        | {'completed': 10}                                       |  0.462 |              3 |            2.32 |
-| Repo_888694ad |              2 |      0 |        2 | 75.7                       | {'completed': 2}                                        |  0     |              2 |            1    |
-| Repo_25cf2e0d |             23 |     11 |       12 | 33.7                       | {'completed': 12}                                       |  0.23  |             17 |            2.75 |
-| Repo_6ac7f133 |             15 |      2 |       13 | 6.2                        | {'completed': 12, 'not_planned': 1}                     |  0.453 |              5 |            2.52 |
-| Repo_df6747d9 |            233 |     65 |      168 | 5.9                        | {'completed': 165, 'not_planned': 2, 'duplicate': 1}    |  0.36  |            131 |            3.16 |
-| Repo_cd1cc456 |            641 |    188 |      453 | 23.2                       | {'completed': 451, 'not_planned': 2}                    |  0.696 |            122 |            3.29 |
-| Repo_d3aea5b2 |            880 |    224 |      656 | 20.3                       | {'completed': 610, 'not_planned': 43, 'duplicate': 3}   |  0.781 |             79 |            4.22 |
-| Repo_e64a503d |            114 |      9 |      105 | 36.0                       | {'completed': 99, 'not_planned': 6}                     |  0.625 |             30 |            3.82 |
-| Repo_f8caa4d9 |             46 |      7 |       39 | 9.0                        | {'completed': 39}                                       |  0.386 |             24 |            3.45 |
-| Repo_8fdaa6be |             60 |     16 |       44 | 54.6                       | {'completed': 44}                                       |  0.627 |             10 |            3.83 |
-| Repo_31f898b3 |             54 |      0 |       54 | 23.4                       | {'completed': 54}                                       |  0.539 |             20 |            1.92 |
-| Repo_bd633d70 |             44 |      5 |       39 | 15.9                       | {'completed': 39}                                       |  0.413 |             21 |            3.75 |
-| Repo_de80ceea |             49 |     11 |       38 | 33.2                       | {'completed': 28, 'not_planned': 9, 'duplicate': 1}     |  0.402 |             25 |            2.52 |
-| Repo_d253539f |             34 |      6 |       28 | 43.9                       | {'completed': 27, 'duplicate': 1}                       |  0.654 |              9 |            1.79 |
-| Repo_b148d73c |            889 |    100 |      789 | 15.5                       | {'completed': 741, 'not_planned': 45, 'duplicate': 3}   |  0.674 |            239 |            2.17 |
-| Repo_9ee8f066 |             76 |      8 |       68 | 31.0                       | {'completed': 62, 'not_planned': 5, 'duplicate': 1}     |  0.436 |             28 |            0.83 |
-| Repo_255c3934 |            276 |    103 |      173 | 54.6                       | {'completed': 170, 'not_planned': 3}                    |  0.53  |             86 |            3.36 |
-| Repo_f639e53d |             89 |     22 |       67 | 13.7                       | {'completed': 67}                                       |  0.533 |             38 |            3.14 |
-| Repo_69f2371c |            364 |     37 |      327 | 21.0                       | {'completed': 326, 'not_planned': 1}                    |  0.73  |             49 |            3.62 |
-| Repo_a692b87d |            271 |     18 |      253 | 62.2                       | {'completed': 228, 'not_planned': 25}                   |  0.638 |             30 |            4.5  |
-| Repo_774331b2 |            480 |     89 |      391 | 42.6                       | {'not_planned': 16, 'completed': 366, 'duplicate': 9}   |  0.679 |            142 |            2.91 |
-| Repo_1b815bdf |            317 |     27 |      290 | 28.8                       | {'completed': 256, 'not_planned': 32, 'duplicate': 2}   |  0.834 |             26 |            3.24 |
-| Repo_b74b5c99 |              1 |      1 |        0 | N/A                        | {}                                                      |  0     |              1 |            0    |
-| Repo_11fb04fc |            607 |     53 |      554 | 18.8                       | {'completed': 548, 'duplicate': 1, 'not_planned': 5}    |  0.731 |             85 |            5.61 |
-| Repo_16776d48 |            485 |    109 |      376 | 37.8                       | {'completed': 373, 'not_planned': 3}                    |  0.74  |             85 |            3.97 |
-| Repo_5d59ad4c |            599 |     18 |      581 | 56.7                       | {'completed': 481, 'not_planned': 97, 'duplicate': 3}   |  0.759 |            100 |            3.29 |
-| Repo_f95263fd |            439 |     54 |      385 | 28.1                       | {'completed': 363, 'not_planned': 22}                   |  0.701 |            102 |            4.18 |
-| Repo_3e6a6e7b |            154 |     44 |      110 | 12.4                       | {'completed': 110}                                      |  0.445 |             73 |            2.97 |
-| Repo_944ad850 |             51 |      8 |       43 | 3.9                        | {'completed': 43}                                       |  0.264 |             35 |            3.22 |
-| Repo_6cd3bd0c |           2505 |     99 |     2406 | 48.4                       | {'completed': 2320, 'not_planned': 84, 'duplicate': 2}  |  0.81  |            319 |            5.89 |
-| Repo_7c4f6594 |            342 |     16 |      326 | 38.7                       | {'completed': 317, 'not_planned': 9}                    |  0.636 |            100 |            4.81 |
-| Repo_c181dde8 |            587 |    233 |      354 | 45.0                       | {'completed': 336, 'not_planned': 18}                   |  0.795 |             53 |            2.48 |
-| Repo_a847de82 |             98 |     12 |       86 | 68.2                       | {'completed': 84, 'not_planned': 2}                     |  0.649 |             20 |            3.76 |
-| Repo_28c85552 |            459 |     76 |      383 | 12.1                       | {'completed': 382, 'not_planned': 1}                    |  0.735 |            109 |            3.42 |
-| Repo_37848d4e |            260 |     31 |      229 | 16.0                       | {'completed': 225, 'not_planned': 4}                    |  0.678 |             65 |            4.17 |
-| Repo_18fd2c10 |             55 |     20 |       35 | 6.1                        | {'completed': 35}                                       |  0.544 |             19 |            3.15 |
-| Repo_3c2944e6 |            137 |     83 |       54 | 47.5                       | {'completed': 54}                                       |  0.655 |             33 |            3.62 |
-| Repo_fee9645c |            370 |     61 |      309 | 21.0                       | {'completed': 308, 'not_planned': 1}                    |  0.786 |             22 |            1.95 |
-| Repo_5e8f7f32 |             90 |     16 |       74 | 5.1                        | {'completed': 74}                                       |  0.632 |             26 |            2.77 |
-| Repo_61233351 |           1060 |     86 |      974 | 33.5                       | {'completed': 972, 'duplicate': 2}                      |  0.495 |            475 |            3.63 |
-| Repo_4833c126 |             62 |      9 |       53 | 0.8                        | {'completed': 53}                                       |  0.751 |              7 |            4.1  |
-| Repo_16a98aa8 |            804 |    217 |      587 | 20.1                       | {'completed': 581, 'not_planned': 5, 'duplicate': 1}    |  0.648 |            206 |            2.82 |
-| Repo_f3aca179 |            155 |     16 |      139 | 7.5                        | {'completed': 139}                                      |  0.544 |             52 |            2.93 |
-| Repo_c6ba34ad |             32 |     10 |       22 | 0.7                        | {'completed': 22}                                       |  0.226 |             23 |            2.52 |
-| Repo_549f6999 |             82 |      2 |       80 | 1.3                        | {'completed': 80}                                       |  0.644 |             23 |            4.36 |
-| Repo_31ed59a2 |             49 |      7 |       42 | 3.9                        | {'completed': 42}                                       |  0.575 |             18 |            2.65 |
-| Repo_006bf3c5 |             66 |     20 |       46 | 4.7                        | {'completed': 46}                                       |  0.58  |             20 |            3.29 |
-| Repo_f78c5185 |            377 |     33 |      344 | 68.5                       | {'completed': 313, 'not_planned': 17, 'duplicate': 14}  |  0.591 |            137 |            3.82 |
-| Repo_c289da06 |             42 |      1 |       41 | 2.7                        | {'completed': 41}                                       |  0.339 |             25 |            3.93 |
-| Repo_a046f77d |              2 |      0 |        2 | 243.7                      | {'completed': 2}                                        |  0     |              2 |           -0    |
-| Repo_5345a97e |            222 |     22 |      200 | 5.2                        | {'completed': 200}                                      |  0.559 |             69 |            2.15 |
-| Repo_20659ff4 |             37 |     13 |       24 | 75.7                       | {'completed': 24}                                       |  0.553 |             13 |            2.13 |
-| Repo_e6fad09e |            962 |     76 |      886 | 36.7                       | {'completed': 838, 'not_planned': 47, 'duplicate': 1}   |  0.824 |             85 |            5.07 |
-| Repo_884f5599 |            164 |     11 |      153 | 5.4                        | {'completed': 153}                                      |  0.832 |             13 |            3.92 |
-| Repo_60b2528f |            243 |     37 |      206 | 13.5                       | {'completed': 180, 'not_planned': 25, 'duplicate': 1}   |  0.73  |             13 |            4.76 |
-| Repo_e87623a8 |            608 |      7 |      601 | 8.5                        | {'completed': 566, 'not_planned': 33, 'duplicate': 2}   |  0.876 |             36 |            3.75 |
-| Repo_10d6f79b |             27 |      9 |       18 | 7.2                        | {'completed': 18}                                       |  0.543 |              9 |            2.22 |
-| Repo_89b459fb |             76 |     11 |       65 | 232.3                      | {'completed': 50, 'not_planned': 15}                    |  0.522 |             30 |            3.07 |
-| Repo_8fa7aa18 |            233 |     19 |      214 | 26.1                       | {'completed': 212, 'not_planned': 1, 'duplicate': 1}    |  0.52  |             89 |            3.06 |
-| Repo_7e3af9f2 |            299 |     56 |      243 | 62.1                       | {'completed': 240, 'not_planned': 2, 'duplicate': 1}    |  0.77  |             31 |            0.75 |
+| Repository    |   Total Issues |   Open |   Closed | Median Resolution (days)   | Outcomes                                        |   Gini |   Contributors |   Topic Entropy |
+|:--------------|---------------:|-------:|---------:|:---------------------------|:------------------------------------------------|-------:|---------------:|----------------:|
+| Repo_bf7abf43 |            776 |     68 |      708 | 17.9                       | completed: 675, not planned: 33                 |  0.748 |             52 |            1.8  |
+| Repo_8eec19c3 |            123 |     34 |       89 | 29.8                       | completed: 87, not planned: 2                   |  0.49  |             41 |            3.95 |
+| Repo_923ae80a |             53 |      8 |       45 | 26.7                       | completed: 45                                   |  0.604 |              7 |            2.95 |
+| Repo_bfdaf5f6 |             57 |      4 |       53 | 28.8                       | completed: 53                                   |  0.634 |              8 |            3.88 |
+| Repo_8a2f7eff |             73 |     13 |       60 | 63.6                       | completed: 60                                   |  0.685 |             11 |            3.22 |
+| Repo_0d4c4017 |           1306 |    382 |      924 | 26.1                       | completed: 919, duplicate: 4, not planned: 1    |  0.75  |            196 |            2.61 |
+| Repo_edd3c8b9 |             46 |     16 |       30 | 11.1                       | completed: 30                                   |  0.14  |             39 |            0.95 |
+| Repo_a24f6690 |             33 |     24 |        9 | 13.7                       | completed: 9                                    |  0.347 |             20 |            2.06 |
+| Repo_c743ebe8 |            488 |    174 |      314 | 22.0                       | completed: 290, not planned: 19, duplicate: 5   |  0.702 |             64 |            3.78 |
+| Repo_3d565e3d |           1674 |    274 |     1400 | 17.1                       | completed: 1379, not planned: 21                |  0.717 |            345 |            4.27 |
+| Repo_48f701e4 |            125 |     23 |      102 | 14.2                       | completed: 101, not planned: 1                  |  0.53  |             50 |            3.57 |
+| Repo_e33a75f9 |            158 |     31 |      127 | 13.9                       | completed: 127                                  |  0.448 |             78 |            4.75 |
+| Repo_a913fade |              1 |      0 |        1 | 6.8                        | completed: 1                                    |  0     |              1 |            0    |
+| Repo_134614d3 |             21 |      7 |       14 | 19.1                       | completed: 14                                   |  0.286 |              5 |            2.58 |
+| Repo_2587cfac |           5731 |    725 |     5006 | 30.2                       | completed: 4728, not planned: 270, duplicate: 8 |  0.751 |           1119 |            5.35 |
+| Repo_d94af77b |            978 |    198 |      780 | 20.1                       | completed: 770, not planned: 10                 |  0.539 |            398 |            4.53 |
+| Repo_c1f9dc98 |            309 |     45 |      264 | 67.1                       | completed: 263, not planned: 1                  |  0.772 |             58 |            4.08 |
+| Repo_0546661a |            205 |     63 |      142 | 18.7                       | completed: 142                                  |  0.721 |             31 |            3.91 |
+| Repo_fe688cb1 |             46 |      8 |       38 | 24.5                       | completed: 36, not planned: 2                   |  0.681 |              9 |            2.85 |
+| Repo_e65039e1 |             36 |      0 |       36 | 36.8                       | completed: 32, not planned: 4                   |  0.26  |             25 |            2.73 |
+| Repo_f7804a41 |            545 |     85 |      460 | 11.9                       | completed: 455, not planned: 5                  |  0.8   |             71 |            4.82 |
+| Repo_eea10b59 |            495 |    162 |      333 | 11.2                       | completed: 308, not planned: 21, duplicate: 4   |  0.747 |             35 |            3.31 |
+| Repo_a35add70 |            251 |     21 |      230 | 10.8                       | completed: 230                                  |  0.605 |             85 |            4.06 |
+| Repo_b37c7c9c |            207 |     97 |      110 | 90.0                       | completed: 110                                  |  0.747 |             32 |            4.17 |
+| Repo_7de99b4a |             28 |     24 |        4 | 65.4                       | completed: 4                                    |  0.643 |              5 |            3.1  |
+| Repo_416588bf |            115 |     12 |      103 | 13.0                       | completed: 103                                  |  0.584 |             36 |            3.81 |
+| Repo_d2f53349 |            340 |     41 |      299 | 6.7                        | completed: 299                                  |  0.796 |             63 |            3.26 |
+| Repo_b259a373 |            187 |     14 |      173 | 62.1                       | completed: 164, not planned: 8, duplicate: 1    |  0.653 |             23 |            4    |
+| Repo_cd9a052d |            176 |     19 |      157 | 26.0                       | completed: 153, not planned: 4                  |  0.478 |             72 |            3.55 |
+| Repo_16a7a8a3 |              3 |      3 |        0 | N/A                        | N/A                                             |  0     |              3 |           -0    |
+| Repo_1f225676 |             43 |      1 |       42 | 113.0                      | completed: 42                                   |  0.66  |              8 |            3.95 |
+| Repo_3583ae5d |             36 |     22 |       14 | 48.1                       | completed: 14                                   |  0.382 |             16 |            3.17 |
+| Repo_80dfc9af |            493 |    153 |      340 | 12.2                       | completed: 338, not planned: 2                  |  0.797 |             68 |            2.33 |
+| Repo_133e4390 |            294 |     77 |      217 | 6.1                        | completed: 217                                  |  0.843 |             32 |            3.01 |
+| Repo_4829e4a9 |             87 |     33 |       54 | 11.5                       | completed: 54                                   |  0.5   |             32 |            2.35 |
+| Repo_321db3b7 |             34 |      5 |       29 | 7.9                        | completed: 29                                   |  0.511 |             13 |            3.32 |
+| Repo_e45f8fb0 |             84 |     25 |       59 | 20.1                       | completed: 59                                   |  0.487 |             38 |            3.43 |
+| Repo_1eaffd16 |            222 |     85 |      137 | 10.6                       | completed: 133, not planned: 3, duplicate: 1    |  0.653 |             66 |            2.64 |
+| Repo_1ba02c8e |             82 |     25 |       57 | 6.9                        | completed: 55, not planned: 2                   |  0.471 |             33 |            2.26 |
+| Repo_677e03cf |             80 |      9 |       71 | 13.0                       | completed: 69, not planned: 2                   |  0.419 |             36 |            2.86 |
+| Repo_e3418ccb |            363 |    149 |      214 | 10.9                       | completed: 194, not planned: 14, duplicate: 6   |  0.764 |             48 |            3.36 |
+| Repo_be55b9e4 |             58 |     20 |       38 | 29.5                       | completed: 37, not planned: 1                   |  0.474 |             19 |            3.92 |
+| Repo_9e887faf |              2 |      1 |        1 | 1.7                        | completed: 1                                    |  0     |              2 |            0    |
+| Repo_3c0ce5f5 |             27 |      8 |       19 | 154.9                      | completed: 15, not planned: 4                   |  0.265 |             19 |            2.73 |
+| Repo_8ea4b746 |           1038 |     52 |      986 | 5.2                        | completed: 910, not planned: 71, duplicate: 5   |  0.716 |            222 |            1.22 |
+| Repo_71d711c0 |             13 |      3 |       10 | 2.9                        | completed: 10                                   |  0.462 |              3 |            2.32 |
+| Repo_888694ad |              2 |      0 |        2 | 75.7                       | completed: 2                                    |  0     |              2 |            1    |
+| Repo_25cf2e0d |             23 |     11 |       12 | 33.7                       | completed: 12                                   |  0.23  |             17 |            2.75 |
+| Repo_6ac7f133 |             15 |      2 |       13 | 6.2                        | completed: 12, not planned: 1                   |  0.453 |              5 |            2.52 |
+| Repo_df6747d9 |            233 |     65 |      168 | 5.9                        | completed: 165, not planned: 2, duplicate: 1    |  0.36  |            131 |            3.16 |
+| Repo_cd1cc456 |            641 |    188 |      453 | 23.2                       | completed: 451, not planned: 2                  |  0.696 |            122 |            3.29 |
+| Repo_d3aea5b2 |            880 |    224 |      656 | 20.3                       | completed: 610, not planned: 43, duplicate: 3   |  0.781 |             79 |            4.22 |
+| Repo_e64a503d |            114 |      9 |      105 | 36.0                       | completed: 99, not planned: 6                   |  0.625 |             30 |            3.82 |
+| Repo_f8caa4d9 |             46 |      7 |       39 | 9.0                        | completed: 39                                   |  0.386 |             24 |            3.45 |
+| Repo_8fdaa6be |             60 |     16 |       44 | 54.6                       | completed: 44                                   |  0.627 |             10 |            3.83 |
+| Repo_31f898b3 |             54 |      0 |       54 | 23.4                       | completed: 54                                   |  0.539 |             20 |            1.92 |
+| Repo_bd633d70 |             44 |      5 |       39 | 15.9                       | completed: 39                                   |  0.413 |             21 |            3.75 |
+| Repo_de80ceea |             49 |     11 |       38 | 33.2                       | completed: 28, not planned: 9, duplicate: 1     |  0.402 |             25 |            2.52 |
+| Repo_d253539f |             34 |      6 |       28 | 43.9                       | completed: 27, duplicate: 1                     |  0.654 |              9 |            1.79 |
+| Repo_b148d73c |            889 |    100 |      789 | 15.5                       | completed: 741, not planned: 45, duplicate: 3   |  0.674 |            239 |            2.17 |
+| Repo_9ee8f066 |             76 |      8 |       68 | 31.0                       | completed: 62, not planned: 5, duplicate: 1     |  0.436 |             28 |            0.83 |
+| Repo_255c3934 |            276 |    103 |      173 | 54.6                       | completed: 170, not planned: 3                  |  0.53  |             86 |            3.36 |
+| Repo_f639e53d |             89 |     22 |       67 | 13.7                       | completed: 67                                   |  0.533 |             38 |            3.14 |
+| Repo_69f2371c |            364 |     37 |      327 | 21.0                       | completed: 326, not planned: 1                  |  0.73  |             49 |            3.62 |
+| Repo_a692b87d |            271 |     18 |      253 | 62.2                       | completed: 228, not planned: 25                 |  0.638 |             30 |            4.5  |
+| Repo_774331b2 |            480 |     89 |      391 | 42.6                       | completed: 366, not planned: 16, duplicate: 9   |  0.679 |            142 |            2.91 |
+| Repo_1b815bdf |            317 |     27 |      290 | 28.8                       | completed: 256, not planned: 32, duplicate: 2   |  0.834 |             26 |            3.24 |
+| Repo_b74b5c99 |              1 |      1 |        0 | N/A                        | N/A                                             |  0     |              1 |            0    |
+| Repo_11fb04fc |            607 |     53 |      554 | 18.8                       | completed: 548, not planned: 5, duplicate: 1    |  0.731 |             85 |            5.61 |
+| Repo_16776d48 |            485 |    109 |      376 | 37.8                       | completed: 373, not planned: 3                  |  0.74  |             85 |            3.97 |
+| Repo_5d59ad4c |            599 |     18 |      581 | 56.7                       | completed: 481, not planned: 97, duplicate: 3   |  0.759 |            100 |            3.29 |
+| Repo_f95263fd |            439 |     54 |      385 | 28.1                       | completed: 363, not planned: 22                 |  0.701 |            102 |            4.18 |
+| Repo_3e6a6e7b |            154 |     44 |      110 | 12.4                       | completed: 110                                  |  0.445 |             73 |            2.97 |
+| Repo_944ad850 |             51 |      8 |       43 | 3.9                        | completed: 43                                   |  0.264 |             35 |            3.22 |
+| Repo_6cd3bd0c |           2505 |     99 |     2406 | 48.4                       | completed: 2320, not planned: 84, duplicate: 2  |  0.81  |            319 |            5.89 |
+| Repo_7c4f6594 |            342 |     16 |      326 | 38.7                       | completed: 317, not planned: 9                  |  0.636 |            100 |            4.81 |
+| Repo_c181dde8 |            587 |    233 |      354 | 45.0                       | completed: 336, not planned: 18                 |  0.795 |             53 |            2.48 |
+| Repo_a847de82 |             98 |     12 |       86 | 68.2                       | completed: 84, not planned: 2                   |  0.649 |             20 |            3.76 |
+| Repo_28c85552 |            459 |     76 |      383 | 12.1                       | completed: 382, not planned: 1                  |  0.735 |            109 |            3.42 |
+| Repo_37848d4e |            260 |     31 |      229 | 16.0                       | completed: 225, not planned: 4                  |  0.678 |             65 |            4.17 |
+| Repo_18fd2c10 |             55 |     20 |       35 | 6.1                        | completed: 35                                   |  0.544 |             19 |            3.15 |
+| Repo_3c2944e6 |            137 |     83 |       54 | 47.5                       | completed: 54                                   |  0.655 |             33 |            3.62 |
+| Repo_fee9645c |            370 |     61 |      309 | 21.0                       | completed: 308, not planned: 1                  |  0.786 |             22 |            1.95 |
+| Repo_5e8f7f32 |             90 |     16 |       74 | 5.1                        | completed: 74                                   |  0.632 |             26 |            2.77 |
+| Repo_61233351 |           1060 |     86 |      974 | 33.5                       | completed: 972, duplicate: 2                    |  0.495 |            475 |            3.63 |
+| Repo_4833c126 |             62 |      9 |       53 | 0.8                        | completed: 53                                   |  0.751 |              7 |            4.1  |
+| Repo_16a98aa8 |            804 |    217 |      587 | 20.1                       | completed: 581, not planned: 5, duplicate: 1    |  0.648 |            206 |            2.82 |
+| Repo_f3aca179 |            155 |     16 |      139 | 7.5                        | completed: 139                                  |  0.544 |             52 |            2.93 |
+| Repo_c6ba34ad |             32 |     10 |       22 | 0.7                        | completed: 22                                   |  0.226 |             23 |            2.52 |
+| Repo_549f6999 |             82 |      2 |       80 | 1.3                        | completed: 80                                   |  0.644 |             23 |            4.36 |
+| Repo_31ed59a2 |             49 |      7 |       42 | 3.9                        | completed: 42                                   |  0.575 |             18 |            2.65 |
+| Repo_006bf3c5 |             66 |     20 |       46 | 4.7                        | completed: 46                                   |  0.58  |             20 |            3.29 |
+| Repo_f78c5185 |            377 |     33 |      344 | 68.5                       | completed: 313, not planned: 17, duplicate: 14  |  0.591 |            137 |            3.82 |
+| Repo_c289da06 |             42 |      1 |       41 | 2.7                        | completed: 41                                   |  0.339 |             25 |            3.93 |
+| Repo_a046f77d |              2 |      0 |        2 | 243.7                      | completed: 2                                    |  0     |              2 |           -0    |
+| Repo_5345a97e |            222 |     22 |      200 | 5.2                        | completed: 200                                  |  0.559 |             69 |            2.15 |
+| Repo_20659ff4 |             37 |     13 |       24 | 75.7                       | completed: 24                                   |  0.553 |             13 |            2.13 |
+| Repo_e6fad09e |            962 |     76 |      886 | 36.7                       | completed: 838, not planned: 47, duplicate: 1   |  0.824 |             85 |            5.07 |
+| Repo_884f5599 |            164 |     11 |      153 | 5.4                        | completed: 153                                  |  0.832 |             13 |            3.92 |
+| Repo_60b2528f |            243 |     37 |      206 | 13.5                       | completed: 180, not planned: 25, duplicate: 1   |  0.73  |             13 |            4.76 |
+| Repo_e87623a8 |            608 |      7 |      601 | 8.5                        | completed: 566, not planned: 33, duplicate: 2   |  0.876 |             36 |            3.75 |
+| Repo_10d6f79b |             27 |      9 |       18 | 7.2                        | completed: 18                                   |  0.543 |              9 |            2.22 |
+| Repo_89b459fb |             76 |     11 |       65 | 232.3                      | completed: 50, not planned: 15                  |  0.522 |             30 |            3.07 |
+| Repo_8fa7aa18 |            233 |     19 |      214 | 26.1                       | completed: 212, duplicate: 1, not planned: 1    |  0.52  |             89 |            3.06 |
+| Repo_7e3af9f2 |            299 |     56 |      243 | 62.1                       | completed: 240, not planned: 2, duplicate: 1    |  0.77  |             31 |            0.75 |
 
 ## Issue Type Distribution
 
@@ -374,7 +374,7 @@ Hybrid quantum-classical gradients require:
 
 ## Topic Model Insights
 
-The BERTopic model discovered 102 dominant thematic clusters across repositories, revealing that quantum issues naturally organize around:
+The BERTopic model discovered 162 topics across 105 repositories (35340 issues in total), revealing that quantum issues naturally organize around:
 - Hardware access and backend management
 - Algorithm implementation and debugging
 - Framework version compatibility
@@ -460,7 +460,7 @@ This analysis of 35340 GitHub issues across 105 quantum software repositories re
 
 ## Key Contributions
 
-1. **Quantum Pattern Taxonomy**: Eight categories of quantum-specific issues identified, providing a vocabulary for practitioners and researchers.
+1. **Quantum Pattern Taxonomy**: 12 categories of quantum-specific issues identified, providing a vocabulary for practitioners and researchers.
 
 2. **Quantitative Baselines**: First systematic measurement of resolution times, resolution outcomes, and contributor concentration in quantum repositories.
 
