@@ -49,7 +49,7 @@ bertopic:
   nr_topics: null                    # null = automático, o un entero para reducir
   embed_max_chars: 2000              # texto embebido = título + primeros N caracteres del cuerpo (sin comentarios)
   embed_batch_size: 64
-  embed_device: null                 # null = auto
+  embed_device: null                 # null = automático
   embed_normalize: true
   umap_n_neighbors: 15
   umap_n_components: 5
@@ -62,7 +62,7 @@ bertopic:
   vectorizer_stop_words: "english"
   vectorizer_min_df: 1
   vectorizer_max_df: 0.85            # fracción de temas (c-TF-IDF ajusta un documento por tema)
-  domain_stop_words: ["code", "block", "url", "user", "issue", "code_block", "build_log"]  # tokens marcadores que deja clean_text
+  domain_stop_words: ["code", "block", "url", "user", "issue", "code_block", "build_log", "email"]  # tokens marcadores que deja clean_text
   noise_lexicon: ["macosx", "aarch64", "ranlib", "travis", "dependabot", "tagbot", "appveyor", "manylinux", "x86_64",
                   "ccache", "cmake", "gcc", "wheel", "wheels", "pip", "ubuntu", "circleci", "jenkins", "github actions",
                   "workflow", "linux", "darwin", "msvc", "conda", "toolchain", "distutils", "msvccompiler"]  # S20: si >= 3 de las 10 palabras clave principales de un tema están aquí, se marca como ruido

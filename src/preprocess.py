@@ -1,4 +1,4 @@
-"""Data preprocessing and cleaning for GitHub issues."""
+"""Preprocesamiento y limpieza de datos de issues de GitHub."""
 
 import json
 import re
@@ -17,21 +17,21 @@ from .config import get_config, load_config
 from .repeated_text import RepeatedTextIndex, document_key
 from .models import (
     RawIssue, CleanedIssue, CleanedComment,
-    MENTION_PATTERN, clean_text, classify_issue_type, is_bot_user, parse_datetime, structure_text
+    mask_personal, clean_text, classify_issue_type, is_bot_user, parse_datetime, structure_text
 )
 
 logger = structlog.get_logger()
 
-PLACEHOLDER_TOKENS = re.compile(r"\[(?:CODE_BLOCK|BUILD_LOG|CODE|URL)\]|@user|#issue")
+PLACEHOLDER_TOKENS = re.compile(r"\[(?:CODE_BLOCK|BUILD_LOG|CODE|URL|EMAIL)\]|@user|#issue")
 
 
 def content_chars(title: str, cleaned_body: str) -> int:
-    """Characters of real content in title plus body, ignoring placeholder markers (S13)."""
+    """Caracteres de contenido real en título más cuerpo, sin contar los marcadores (S13)."""
     return sum(len(PLACEHOLDER_TOKENS.sub("", t).strip()) for t in (title or "", cleaned_body or ""))
 
 
 class IssuePreprocessor:
-    """Preprocess and clean raw GitHub issues for analysis."""
+    """Preprocesa y limpia los issues de GitHub sin procesar para el análisis."""
     
     def __init__(self, config=None):
         self.config = config or get_config()
@@ -45,7 +45,7 @@ class IssuePreprocessor:
         ]
     
     def pseudonym(self, name: str) -> str:
-        """Stable salted pseudonym for a person (case-insensitive); the name itself when disabled."""
+        """Seudónimo estable con sal para una persona (sin distinguir mayúsculas); el propio nombre si está desactivado."""
         name = (name or "").lower()
         if not self.preprocessing_config.anonymize_authors or not name:
             return name
@@ -53,7 +53,7 @@ class IssuePreprocessor:
         return f"u_{digest[:12]}"
 
     def load_raw_issues(self, input_path: Path) -> List[RawIssue]:
-        """Load raw issues from JSONL file."""
+        """Carga los issues sin procesar desde un archivo JSONL."""
         issues = []
         logger.info("Loading raw issues", path=str(input_path))
         
@@ -75,7 +75,7 @@ class IssuePreprocessor:
         return self.repeated_index.filter_lines if self.repeated_index else None
 
     def build_repeated_index(self, raw_issues: Iterable[RawIssue]) -> RepeatedTextIndex:
-        """Pass 1: count distinct issues per normalized line (bodies and kept comments)."""
+        """Pasada 1: cuenta los issues distintos por línea normalizada (cuerpos y comentarios conservados)."""
         cfg = self.preprocessing_config
         index = RepeatedTextIndex(cfg.repeated_line_min_issues, cfg.repeated_comment_min_issues)
 
@@ -96,7 +96,7 @@ class IssuePreprocessor:
         return index
 
     def _is_dropped_comment(self, comment) -> bool:
-        """True when clean_comment would drop the comment before cleaning (bot, short, automated)."""
+        """True si clean_comment descartaría el comentario antes de limpiarlo (bot, corto, automático)."""
         if isinstance(comment, dict):
             author, author_type, body = (comment.get("author") or "").lower(), comment.get("author_type"), comment.get("body") or ""
         else:
@@ -108,7 +108,7 @@ class IssuePreprocessor:
         )
 
     def clean_comment(self, comment) -> Optional[CleanedComment]:
-        """Clean a single comment. Accepts dict or RawComment."""
+        """Limpia un solo comentario. Acepta dict o RawComment."""
         if isinstance(comment, dict):
             author = (comment.get("author") or "").lower()
             author_type = comment.get("author_type")
@@ -120,19 +120,19 @@ class IssuePreprocessor:
             body = comment.body or ""
             created_at_str = comment.created_at if isinstance(comment.created_at, str) else str(comment.created_at)
         
-        # Skip bot comments
+        # Omite los comentarios de bots
         if is_bot_user(author, list(self.bot_users), author_type):
             return None
         
-        # Skip empty or very short comments
+        # Omite los comentarios vacíos o muy cortos
         if len(body.strip()) < self.preprocessing_config.min_body_length:
             return None
         
-        # Skip system-like comments
+        # Omite los comentarios tipo sistema
         if any(p.search(body) for p in self.automated_patterns):
             return None
 
-        # Skip comments repeated across many issues (automated or templated, S12)
+        # Omite los comentarios repetidos en muchos issues (automáticos o de plantilla, S12)
         if self.repeated_index and self.repeated_index.min_comment_issues > 0:
             structured = structure_text(
                 body, self.preprocessing_config.strip_code_fences, self.preprocessing_config.strip_templates
@@ -141,7 +141,7 @@ class IssuePreprocessor:
                 self.repeated_index.dropped_comments += 1
                 return None
 
-        # Clean the body
+        # Limpia el cuerpo
         cleaned_body = clean_text(
             body,
             strip_code_fences=self.preprocessing_config.strip_code_fences,
@@ -150,7 +150,7 @@ class IssuePreprocessor:
             normalize_whitespace=self.preprocessing_config.normalize_whitespace
         )
 
-        # Truncate very long comments
+        # Trunca los comentarios muy largos
         if len(cleaned_body) > self.preprocessing_config.max_comment_length:
             cleaned_body = cleaned_body[:self.preprocessing_config.max_comment_length] + "... [truncated]"
         
@@ -168,14 +168,14 @@ class IssuePreprocessor:
         )
     
     def clean_issue(self, raw_issue: RawIssue) -> Optional[CleanedIssue]:
-        """Clean a single issue with all its comments."""
+        """Limpia un issue con todos sus comentarios."""
         if is_bot_user(raw_issue.author, list(self.bot_users), raw_issue.author_type):
             logger.debug("Skipping bot-authored issue", repo=raw_issue.repo, number=raw_issue.issue_number)
             self.last_skip_reason = "bot_issue"
             return None
         self.last_skip_reason = None
 
-        # Clean body
+        # Limpia el cuerpo
         raw_body = raw_issue.body or ""
         cleaned_body = clean_text(
             raw_body,
@@ -185,25 +185,25 @@ class IssuePreprocessor:
             normalize_whitespace=self.preprocessing_config.normalize_whitespace
         )
         
-        # Skip issues with no meaningful content
+        # Omite los issues sin contenido relevante
         if content_chars(raw_issue.title, cleaned_body) < self.preprocessing_config.min_chars:
             logger.debug("Skipping issue with no content", repo=raw_issue.repo, number=raw_issue.issue_number)
             self.last_skip_reason = "empty_content"
             return None
         
-        # Clean comments
+        # Limpia los comentarios
         cleaned_comments = []
-        seen_bodies = set()  # Deduplicate comments
+        seen_bodies = set()  # Elimina comentarios duplicados
         for comment in raw_issue.comments:
             cleaned = self.clean_comment(comment)
             if cleaned and cleaned.body not in seen_bodies:
                 seen_bodies.add(cleaned.body)
                 cleaned_comments.append(cleaned)
         
-        # Classify issue type
+        # Clasifica el tipo de issue
         issue_type = classify_issue_type(raw_issue.title, raw_issue.body, raw_issue.labels)
         
-        # Parse dates
+        # Convierte las fechas
         try:
             created_at = parse_datetime(raw_issue.created_at)
         except Exception:
@@ -218,8 +218,8 @@ class IssuePreprocessor:
             except Exception:
                 self.datetime_failures += 1
         
-        # Build full text for topic modeling (title + body + comments)
-        text_parts = [MENTION_PATTERN.sub("@user", raw_issue.title)]
+        # Arma el texto completo para el modelado de temas (título + cuerpo + comentarios)
+        text_parts = [mask_personal(raw_issue.title)]
         if cleaned_body:
             text_parts.append(cleaned_body)
         for comment in cleaned_comments:
@@ -229,8 +229,8 @@ class IssuePreprocessor:
         return CleanedIssue(
             repo=raw_issue.repo,
             issue_number=raw_issue.issue_number,
-            title=MENTION_PATTERN.sub("@user", raw_issue.title.strip()),
-            body=MENTION_PATTERN.sub("@user", raw_issue.body or ""),
+            title=mask_personal(raw_issue.title.strip()),
+            body=mask_personal(raw_issue.body or ""),
             cleaned_body=cleaned_body,
             state=raw_issue.state,
             labels=[l.lower() for l in raw_issue.labels],
@@ -248,7 +248,7 @@ class IssuePreprocessor:
         )
     
     def iter_raw_issues(self, input_path: Path) -> Iterator[RawIssue]:
-        """Stream raw issues from a legacy JSONL file."""
+        """Lee en flujo los issues sin procesar de un archivo JSONL antiguo."""
         with open(input_path, "r", encoding="utf-8") as f:
             for line_num, line in enumerate(f, 1):
                 line = line.strip()
@@ -275,10 +275,10 @@ class IssuePreprocessor:
         output_path: Optional[Path] = None,
         chunk_size: int = 500,
     ) -> Dict[str, int]:
-        """Clean raw issues as a stream and write JSONL in chunks; return counts.
+        """Limpia los issues en flujo y escribe JSONL por bloques; devuelve los conteos.
 
-        Pass a callable returning a fresh iterable to enable the two-pass repeated-text
-        filters (S12): pass 1 counts lines across issues, pass 2 cleans and writes.
+        Pasa un callable que devuelva un iterable nuevo para activar los filtros de texto
+        repetido en dos pasadas (S12): la pasada 1 cuenta líneas entre issues y la 2 limpia y escribe.
         """
         output_path = output_path or self.config.paths.processed_data
         output_path.parent.mkdir(parents=True, exist_ok=True)
@@ -331,7 +331,7 @@ class IssuePreprocessor:
         return stats
 
     def process(self, input_path: Optional[Path] = None, output_path: Optional[Path] = None) -> Dict[str, int]:
-        """Legacy JSONL entry point: stream input_path through process_items."""
+        """Punto de entrada del JSONL antiguo: pasa input_path por process_items en flujo."""
         input_path = input_path or self.config.paths.raw_data
         logger.info("Loading raw issues", path=str(input_path))
         return self.process_items(self.iter_raw_issues(input_path), output_path)
@@ -342,7 +342,7 @@ def preprocess_cli(
     output_file: str = typer.Option(None, "--output", "-o", help="Output JSONL file"),
     config_file: str = typer.Option("config.yaml", "--config", "-c", help="Config file path"),
 ):
-    """Preprocess raw GitHub issues for analysis."""
+    """Preprocesa los issues de GitHub sin procesar para el análisis."""
     import typer
     from .config import load_config
     

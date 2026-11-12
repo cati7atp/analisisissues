@@ -1,4 +1,4 @@
-"""Scientific report generation for quantum maintainability analysis."""
+"""Generación del informe científico del análisis de mantenibilidad cuántica."""
 
 import json
 import base64
@@ -18,13 +18,13 @@ logger = structlog.get_logger()
 
 
 def load_metrics(metrics_path: Path) -> MaintainabilityMetrics:
-    """Load metrics from JSON."""
+    """Carga las métricas desde JSON."""
     with open(metrics_path, "r", encoding="utf-8") as f:
         return MaintainabilityMetrics.model_validate_json(f.read())
 
 
 def load_topics(topics_path: Path) -> List[TopicInfo]:
-    """Load topics from JSONL."""
+    """Carga los temas desde JSONL."""
     topics = []
     if not topics_path.exists():
         return topics
@@ -38,7 +38,7 @@ def load_topics(topics_path: Path) -> List[TopicInfo]:
 
 
 def load_patterns(patterns_path: Path) -> List[QuantumPattern]:
-    """Load patterns from JSONL."""
+    """Carga los patrones desde JSONL."""
     patterns = []
     if not patterns_path.exists():
         return patterns
@@ -52,20 +52,20 @@ def load_patterns(patterns_path: Path) -> List[QuantumPattern]:
 
 
 def anonymize_repo_name(repo: str, salt: str = "quantum-issues-2024") -> str:
-    """Anonymize repository name with consistent hashing."""
+    """Anonimiza el nombre del repositorio con un hash consistente."""
     hash_obj = hashlib.sha256(f"{salt}{repo}".encode())
     return f"Repo_{hash_obj.hexdigest()[:8]}"
 
 
 def format_number(n: Optional[float], decimals: int = 1) -> str:
-    """Format number for report."""
+    """Da formato a un número para el informe."""
     if n is None:
         return "N/A"
     return f"{n:.{decimals}f}"
 
 
 def generate_executive_summary(metrics: MaintainabilityMetrics, patterns: List[QuantumPattern]) -> str:
-    """Generate executive summary section."""
+    """Genera la sección de resumen ejecutivo."""
     agg = metrics.aggregated
     total_patterns = sum(p.frequency for p in patterns)
     
@@ -105,7 +105,7 @@ def _taxonomy_terms(config) -> List[str]:
 
 
 def generate_methodology(config) -> str:
-    """Generate methodology section."""
+    """Genera la sección de metodología."""
     return f"""# Methodology
 
 ## Data Collection
@@ -146,7 +146,7 @@ Maintainability metrics were computed per repository and aggregated:
 
 
 def generate_pattern_taxonomy(patterns: List[QuantumPattern], config) -> str:
-    """Generate quantum pattern taxonomy section."""
+    """Genera la sección de taxonomía de patrones cuánticos."""
     lines = ["# Quantum Pattern Taxonomy\n"]
     
     for pattern in patterns:
@@ -166,7 +166,7 @@ def generate_pattern_taxonomy(patterns: List[QuantumPattern], config) -> str:
 
 
 def generate_metrics_section(metrics: MaintainabilityMetrics, anonymize: bool) -> str:
-    """Generate maintainability metrics section."""
+    """Genera la sección de métricas de mantenibilidad."""
     agg = metrics.aggregated
     lines = [
         "# Maintainability Metrics\n",
@@ -183,7 +183,7 @@ def generate_metrics_section(metrics: MaintainabilityMetrics, anonymize: bool) -
         "## Per-Repository Metrics\n",
     ]
     
-    # Create summary table
+    # Crea la tabla resumen
     df_data = []
     for m in metrics.per_repo:
         repo_name = anonymize_repo_name(m.repo) if anonymize else m.repo
@@ -203,7 +203,7 @@ def generate_metrics_section(metrics: MaintainabilityMetrics, anonymize: bool) -
     lines.append(df.to_markdown(index=False))
     lines.append("")
     
-    # Issue type distribution
+    # Distribución por tipo de issue
     lines.append("## Issue Type Distribution\n")
     cat_lines = ["| Type | Count | Percentage |", "|------|-------|------------|"]
     total = sum(agg.category_distribution.values())
@@ -212,7 +212,7 @@ def generate_metrics_section(metrics: MaintainabilityMetrics, anonymize: bool) -
     lines.extend(cat_lines)
     lines.append("")
     
-    # Quantum pattern prevalence
+    # Prevalencia de patrones cuánticos
     lines.append("## Quantum Pattern Prevalence\n")
     pattern_lines = ["| Pattern | Prevalence |", "|---------|------------|"]
     for pattern_id, prev in sorted(agg.quantum_pattern_prevalence.items(), key=lambda x: -x[1]):
@@ -224,7 +224,7 @@ def generate_metrics_section(metrics: MaintainabilityMetrics, anonymize: bool) -
 
 
 def load_cross_project(path: Path) -> List[dict]:
-    """Rows written by extract-patterns; [] when the file is absent."""
+    """Filas escritas por extract-patterns; [] si el archivo no existe."""
     if not path.exists():
         return []
     with open(path, "r", encoding="utf-8") as f:
@@ -232,7 +232,7 @@ def load_cross_project(path: Path) -> List[dict]:
 
 
 def generate_cross_project_section(rows: List[dict], anonymize: bool, config, top_n: int = 25) -> str:
-    """Topics that recur across distinct repos, with the thresholds that define them."""
+    """Temas que se repiten en repos distintos, con los umbrales que los definen."""
     cp = config.cross_project
     selected = [r for r in rows if r["cross_project"]]
     lines = ["# Cross-Project Patterns\n",
@@ -252,7 +252,7 @@ def generate_cross_project_section(rows: List[dict], anonymize: bool, config, to
 
 
 def generate_comparative_discussion(metrics: MaintainabilityMetrics, patterns: List[QuantumPattern]) -> str:
-    """Generate comparative discussion section."""
+    """Genera la sección de discusión comparativa."""
     agg = metrics.aggregated
     
     return f"""# Comparative Discussion
@@ -315,7 +315,7 @@ The BERTopic model discovered {len([m for m in metrics.per_repo if m.top_topics]
 
 
 def generate_threats_to_validity(config) -> str:
-    """Generate threats to validity section."""
+    """Genera la sección de amenazas a la validez."""
     return """# Threats to Validity
 
 ## Internal Validity
@@ -347,7 +347,7 @@ def generate_threats_to_validity(config) -> str:
 
 
 def generate_conclusions(metrics: MaintainabilityMetrics, patterns: List[QuantumPattern]) -> str:
-    """Generate conclusions section."""
+    """Genera la sección de conclusiones."""
     agg = metrics.aggregated
     
     return f"""# Conclusions
@@ -391,11 +391,11 @@ This analysis of {agg.total_issues} GitHub issues across {agg.total_repos} quant
 
 
 def embed_visualization(visualization_path: Path) -> str:
-    """Embed visualization as base64 or return link."""
+    """Incrusta la visualización en base64 o devuelve un enlace."""
     if not visualization_path.exists():
         return "*Visualization not available*"
     
-    # Return a link to the file (more practical than embedding large HTML)
+    # Devuelve un enlace al archivo (más práctico que incrustar un HTML grande)
     return f"[Interactive Topic Visualization]({visualization_path.name})"
 
 
@@ -407,16 +407,16 @@ def generate_report(
     output_path: Path,
     anonymize: bool = True,
 ) -> str:
-    """Generate the full scientific report."""
+    """Genera el informe científico completo."""
     logger.info("Generating report", output=str(output_path))
     
-    # Load data
+    # Carga los datos
     metrics = load_metrics(metrics_path)
     topics = load_topics(topics_path)
     patterns = load_patterns(patterns_path)
     cross_project = load_cross_project(patterns_path.with_name("cross_project_patterns.jsonl"))
     
-    # Build report sections
+    # Arma las secciones del informe
     sections = []
     
     sections.append("# Quantum Software Maintainability Analysis Report\n")
@@ -431,7 +431,7 @@ def generate_report(
     if cross_project:
         sections.append(generate_cross_project_section(cross_project, anonymize, config))
     
-    # Visualization reference
+    # Referencia a la visualización
     sections.append("# Topic Model Visualization\n")
     sections.append(embed_visualization(config.paths.visualization_html))
     sections.append("")
@@ -439,7 +439,7 @@ def generate_report(
     sections.append(generate_threats_to_validity(config))
     sections.append(generate_conclusions(metrics, patterns))
     
-    # References
+    # Referencias
     sections.append("""# References
 
 1. Grootendorst, M. (2022). BERTopic: Neural topic modeling with a class-based TF-IDF procedure. *arXiv preprint arXiv:2203.05794*.
@@ -447,7 +447,7 @@ def generate_report(
 3. Pedregosa, F. et al. (2011). Scikit-learn: Machine Learning in Python. *Journal of Machine Learning Research*.
 """)
     
-    # Write report
+    # Escribe el informe
     output_path.parent.mkdir(parents=True, exist_ok=True)
     report_content = "\n".join(sections)
     with open(output_path, "w", encoding="utf-8") as f:

@@ -1,4 +1,4 @@
-"""Maintainability metrics computation for quantum GitHub issues."""
+"""Cálculo de métricas de mantenibilidad para issues cuánticos de GitHub."""
 
 import json
 from pathlib import Path
@@ -22,7 +22,7 @@ logger = structlog.get_logger()
 
 
 def load_issues(issues_path: Path) -> List[CleanedIssue]:
-    """Load cleaned issues from JSONL."""
+    """Carga los issues limpios desde JSONL."""
     issues = []
     with open(issues_path, "r", encoding="utf-8") as f:
         for line in f:
@@ -40,7 +40,7 @@ def load_issues(issues_path: Path) -> List[CleanedIssue]:
 
 
 def load_patterns(patterns_path: Path) -> List[QuantumPattern]:
-    """Load patterns from JSONL."""
+    """Carga los patrones desde JSONL."""
     patterns = []
     if not patterns_path.exists():
         return patterns
@@ -54,7 +54,7 @@ def load_patterns(patterns_path: Path) -> List[QuantumPattern]:
 
 
 def compute_gini(values: List[float]) -> float:
-    """Compute Gini coefficient."""
+    """Calcula el coeficiente de Gini."""
     if not values or len(values) == 1:
         return 0.0
     sorted_values = sorted(values)
@@ -64,7 +64,7 @@ def compute_gini(values: List[float]) -> float:
 
 
 def compute_resolution_time(issue: CleanedIssue) -> Optional[float]:
-    """Compute resolution time in days."""
+    """Calcula el tiempo de resolución en días."""
     if issue.closed_at and issue.created_at:
         delta = to_utc(issue.closed_at) - to_utc(issue.created_at)
         return delta.total_seconds() / 86400.0
@@ -72,19 +72,19 @@ def compute_resolution_time(issue: CleanedIssue) -> Optional[float]:
 
 
 def compute_resolution_outcomes(issues: List[CleanedIssue]) -> Dict[str, int]:
-    """Closed issues by ``state_reason`` (completed, not_planned, duplicate, ...)."""
+    """Issues cerrados por ``state_reason`` (completed, not_planned, duplicate, ...)."""
     return dict(Counter(i.state_reason or "unspecified" for i in issues if i.state == "closed"))
 
 
 def compute_contributor_gini(issues: List[CleanedIssue]) -> float:
-    """Compute Gini coefficient of issue authorship."""
+    """Calcula el coeficiente de Gini de la autoría de los issues."""
     author_counts = Counter(issue.author for issue in issues)
     counts = list(author_counts.values())
     return compute_gini(counts)
 
 
 def load_doc_topic_map(doc_topics_path: Path) -> Dict[str, int]:
-    """issue_id -> topic_id for clustered documents (outliers omitted), read once as UTF-8."""
+    """issue_id -> topic_id de los documentos agrupados (sin outliers), leído una vez como UTF-8."""
     mapping: Dict[str, int] = {}
     if doc_topics_path.exists():
         with open(doc_topics_path, "r", encoding="utf-8") as f:
@@ -100,7 +100,7 @@ def _topic_map(source) -> Dict[str, int]:
 
 
 def compute_topic_entropy(issues: List[CleanedIssue], doc_topics) -> float:
-    """Entropy of the topic distribution of this repo's own issues (doc_topics: path or issue->topic map)."""
+    """Entropía de la distribución de temas de los issues de este repo (doc_topics: ruta o mapa issue->tema)."""
     issue_to_topic = _topic_map(doc_topics)
     topic_counts = Counter(issue_to_topic[i.issue_id] for i in issues if i.issue_id in issue_to_topic)
     if not topic_counts:
@@ -111,7 +111,7 @@ def compute_topic_entropy(issues: List[CleanedIssue], doc_topics) -> float:
 
 
 def compute_quantum_keyword_ratios(issues: List[CleanedIssue], config, matcher=None) -> Dict[str, float]:
-    """Share of issues matching each taxonomy category, using the matcher the patterns module uses."""
+    """Proporción de issues que coinciden con cada categoría de la taxonomía, con el mismo matcher del módulo de patrones."""
     from .patterns import build_keyword_patterns
 
     matcher = matcher or build_keyword_patterns(config)
@@ -124,10 +124,10 @@ def compute_quantum_keyword_ratios(issues: List[CleanedIssue], config, matcher=N
 
 
 def get_top_topics_for_repo(issues: List[CleanedIssue], doc_topics, top_n: int = 5) -> List[Dict[str, Any]]:
-    """Get top topics for a repository (doc_topics: path or issue->topic map)."""
+    """Obtiene los temas principales de un repositorio (doc_topics: ruta o mapa issue->tema)."""
     issue_to_topic = _topic_map(doc_topics)
 
-    # Count topics for this repo's issues
+    # Cuenta los temas de los issues de este repo
     repo_issue_ids = {issue.issue_id for issue in issues}
     topic_counts = Counter()
     for issue_id in repo_issue_ids:
@@ -152,24 +152,24 @@ def compute_repo_metrics(
     doc_topics,
     config,
 ) -> RepoMetrics:
-    """Compute metrics for a single repository."""
+    """Calcula las métricas de un solo repositorio."""
     if not issues:
         return RepoMetrics(repo=repo, total_issues=0, open_issues=0, closed_issues=0, issue_types={})
     
-    # Basic counts
+    # Conteos básicos
     total = len(issues)
     open_count = sum(1 for i in issues if i.state == "open")
     closed_count = total - open_count
     
-    # Issue type distribution
+    # Distribución por tipo de issue
     type_counts = Counter(i.issue_type for i in issues)
     
-    # Resolution time
+    # Tiempo de resolución
     resolution_times = [compute_resolution_time(i) for i in issues if i.state == "closed"]
     resolution_times = [t for t in resolution_times if t is not None]
     median_resolution = np.median(resolution_times) if resolution_times else None
     
-    # Resolution by type
+    # Resolución por tipo
     resolution_by_type = {}
     for issue_type in ["bug", "feature", "question", "discussion", "other"]:
         type_times = [
@@ -179,17 +179,17 @@ def compute_repo_metrics(
         type_times = [t for t in type_times if t is not None]
         resolution_by_type[issue_type] = np.median(type_times) if type_times else None
     
-    # Contributor Gini
+    # Gini de contribuyentes
     gini = compute_contributor_gini(issues)
     unique_contributors = len(set(i.author for i in issues))
     
-    # Quantum keyword ratios
+    # Proporciones de palabras clave cuánticas
     quantum_ratios = compute_quantum_keyword_ratios(issues, config)
     
-    # Topic entropy
+    # Entropía de temas
     topic_entropy = compute_topic_entropy(issues, doc_topics)
     
-    # Top topics
+    # Temas principales
     top_topics = get_top_topics_for_repo(issues, doc_topics)
     
     return RepoMetrics(
@@ -214,35 +214,35 @@ def compute_aggregated_metrics(
     patterns: List[QuantumPattern],
     all_issues: List[CleanedIssue],
 ) -> AggregatedMetrics:
-    """Compute aggregated metrics across all repositories."""
+    """Calcula las métricas agregadas de todos los repositorios."""
     if not repo_metrics:
         return AggregatedMetrics(total_repos=0, total_issues=0)
     
     total_repos = len(repo_metrics)
     total_issues = sum(m.total_issues for m in repo_metrics)
     
-    # Overall resolution time
+    # Tiempo de resolución global
     all_resolution_times = []
     for m in repo_metrics:
         if m.median_resolution_days is not None:
             all_resolution_times.append(m.median_resolution_days)
     overall_median = np.median(all_resolution_times) if all_resolution_times else None
     
-    # Resolution outcomes pooled across repos
+    # Resultados de resolución agrupados entre repos
     outcomes: Counter = Counter()
     for m in repo_metrics:
         outcomes.update(m.resolution_outcomes)
 
-    # Gini of authorship on the pooled data (not the mean of per-repo Ginis)
+    # Gini de autoría sobre los datos agrupados (no el promedio de los Gini por repo)
     overall_gini = compute_contributor_gini(all_issues) if all_issues else 0.0
     
-    # Average issues per repo
+    # Promedio de issues por repo
     avg_issues = total_issues / total_repos if total_repos > 0 else 0.0
     
-    # Quantum pattern prevalence
+    # Prevalencia de patrones cuánticos
     pattern_prevalence = {p.pattern_id: (p.frequency / total_issues if total_issues else 0.0) for p in patterns}
     
-    # Category distribution (issue types)
+    # Distribución por categoría (tipos de issue)
     category_dist = Counter()
     for m in repo_metrics:
         for cat, count in m.issue_types.items():
@@ -267,20 +267,20 @@ def compute_maintainability_metrics(
     output_json: Path,
     output_csv: Path,
 ) -> MaintainabilityMetrics:
-    """Compute maintainability metrics from issues and patterns."""
+    """Calcula las métricas de mantenibilidad a partir de los issues y los patrones."""
     logger.info("Loading data for metrics computation")
     
     issues = load_issues(issues_path)
     patterns = load_patterns(patterns_path)
     
-    # Group issues by repo
+    # Agrupa los issues por repo
     issues_by_repo: Dict[str, List[CleanedIssue]] = defaultdict(list)
     for issue in issues:
         issues_by_repo[issue.repo].append(issue)
     
-    doc_topic_map = load_doc_topic_map(config.paths.doc_topics_output)  # single read
+    doc_topic_map = load_doc_topic_map(config.paths.doc_topics_output)  # una sola lectura
 
-    # Compute per-repo metrics
+    # Calcula las métricas por repo
     logger.info("Computing per-repo metrics", n_repos=len(issues_by_repo))
     repo_metrics = []
     for repo, repo_issues in tqdm(issues_by_repo.items(), desc="Computing repo metrics"):
@@ -289,7 +289,7 @@ def compute_maintainability_metrics(
         )
         repo_metrics.append(metrics)
     
-    # Per-repo, per-family and capped comparison views
+    # Vistas de comparación por repo, por familia y con tope
     from .comparisons import compare_groups, load_repo_families
     from .patterns import build_keyword_patterns
 
@@ -302,22 +302,22 @@ def compute_maintainability_metrics(
     with open(comparisons_path, "w", encoding="utf-8") as f:
         json.dump(comparisons, f, ensure_ascii=False, indent=2)
 
-    # Compute aggregated metrics
+    # Calcula las métricas agregadas
     aggregated = compute_aggregated_metrics(repo_metrics, patterns, issues)
     
-    # Create full metrics object
+    # Crea el objeto de métricas completo
     metrics = MaintainabilityMetrics(
         per_repo=repo_metrics,
         aggregated=aggregated,
     )
     
-    # Save JSON
+    # Guarda el JSON
     output_json.parent.mkdir(parents=True, exist_ok=True)
     with open(output_json, "w", encoding="utf-8") as f:
         f.write(metrics.model_dump_json(indent=2))
     logger.info("Saved metrics JSON", path=str(output_json))
     
-    # Save CSV summary
+    # Guarda el resumen en CSV
     output_csv.parent.mkdir(parents=True, exist_ok=True)
     df = pd.DataFrame([{
         "repo": m.repo,

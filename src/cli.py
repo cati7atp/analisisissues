@@ -1,4 +1,4 @@
-"""Main CLI entry point for quantum issues analysis."""
+"""Punto de entrada principal del CLI para el análisis de issues cuánticos."""
 
 import typer
 from pathlib import Path
@@ -24,7 +24,7 @@ def preprocess(
     output_file: str = typer.Option(None, "--output", "-o", help="Output JSONL file for cleaned issues"),
     config_file: str = typer.Option("config.yaml", "--config", "-c", help="Config file path"),
 ):
-    """Preprocess GitHub issues from the SQLite dataset (or a legacy JSONL) for analysis."""
+    """Preprocesa los issues de GitHub del dataset SQLite (o de un JSONL antiguo) para el análisis."""
     cfg = load_config(Path(config_file))
     preprocessor = IssuePreprocessor(cfg)
     output_path = Path(output_file) if output_file else cfg.paths.processed_data
@@ -49,7 +49,7 @@ def preprocess(
     passes = {"count": 0}
 
     def items():
-        # pass 1 (counting) uses throwaway stats so loaded/rejection counts are not doubled
+        # la pasada 1 (conteo) usa estadísticas descartables para no duplicar los conteos de cargados y rechazados
         passes["count"] += 1
         if passes["count"] == 1 and (cfg.preprocessing.repeated_line_min_issues > 0 or cfg.preprocessing.repeated_comment_min_issues > 0):
             return load_items_sqlite(cfg.input, LoadStats())
@@ -83,7 +83,7 @@ def topic_model(
     embedding_model: str = typer.Option(None, "--embedding-model", help="Sentence transformer model"),
     config_file: str = typer.Option("config.yaml", "--config", "-c", help="Config file path"),
 ):
-    """Run BERTopic topic modeling on cleaned issues."""
+    """Ejecuta el modelado de temas con BERTopic sobre los issues limpios."""
     from .topic_model import run_topic_modeling
     
     cfg = load_config(Path(config_file))
@@ -96,12 +96,12 @@ def topic_model(
         raise typer.Exit(1)
     
     if output_dir:
-        # --output-dir redirects the model and every result file together
+        # --output-dir redirige juntos el modelo y todos los archivos de resultados
         cfg.paths.topics_output = output_path / cfg.paths.topics_output.name
         cfg.paths.doc_topics_output = output_path / cfg.paths.doc_topics_output.name
         cfg.paths.visualization_html = output_path / cfg.paths.visualization_html.name
 
-    # Override config with CLI args
+    # Sobrescribe la configuración con los argumentos del CLI
     if min_topic_size is not None:
         cfg.bertopic.hdbscan_min_cluster_size = min_topic_size
     if n_topics is not None:
@@ -121,13 +121,13 @@ def extract_patterns(
     output_dir: str = typer.Option(None, "--output-dir", help="Directory holding the topic results; patterns, summary CSV and candidate categories are written there too"),
     config_file: str = typer.Option("config.yaml", "--config", "-c", help="Config file path"),
 ):
-    """Extract quantum-specific patterns from topics and issues."""
+    """Extrae patrones propios de lo cuántico a partir de los temas y los issues."""
     from .patterns import extract_quantum_patterns
     
     cfg = load_config(Path(config_file))
     
     if output_dir:
-        # --output-dir redirects topic inputs and every pattern output together
+        # --output-dir redirige juntos las entradas de temas y todas las salidas de patrones
         base = Path(output_dir)
         for name in ("topics_output", "doc_topics_output", "patterns_output", "pattern_summary_csv"):
             setattr(cfg.paths, name, base / getattr(cfg.paths, name).name)
@@ -167,7 +167,7 @@ def compute_metrics(
     output_dir: str = typer.Option(None, "--output-dir", help="Directory holding the topic and pattern results; metrics JSON, CSV and comparisons are written there too"),
     config_file: str = typer.Option("config.yaml", "--config", "-c", help="Config file path"),
 ):
-    """Compute maintainability metrics from issues and patterns."""
+    """Calcula métricas de mantenibilidad a partir de los issues y los patrones."""
     from .metrics import compute_maintainability_metrics
     
     cfg = load_config(Path(config_file))
@@ -198,7 +198,7 @@ def generate_report(
     anonymize: bool = typer.Option(True, "--anonymize/--no-anonymize", help="Anonymize repo names"),
     config_file: str = typer.Option("config.yaml", "--config", "-c", help="Config file path"),
 ):
-    """Generate scientific report from analysis results."""
+    """Genera el informe científico a partir de los resultados del análisis."""
     from .report import generate_report
     
     cfg = load_config(Path(config_file))
@@ -223,7 +223,7 @@ def run_pipeline(
     output_dir: str = typer.Option(None, "--output-dir", help="Directory for every analysis output (default: the folder of paths.topics_output)"),
     skip_preprocess: bool = typer.Option(False, "--skip-preprocess", help="Skip preprocessing step"),
 ):
-    """Run the full pipeline end-to-end by chaining the individual commands."""
+    """Ejecuta el pipeline completo encadenando los comandos individuales."""
     cfg = load_config(Path(config_file))
     out = Path(output_dir) if output_dir else cfg.paths.topics_output.parent
     cfg_arg = str(config_file)
@@ -259,7 +259,7 @@ def run_pipeline(
 
 @app.command()
 def info():
-    """Show configuration and paths."""
+    """Muestra la configuración y las rutas."""
     cfg = get_config()
     
     table = Table(title="Configuration")

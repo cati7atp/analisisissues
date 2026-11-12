@@ -60,3 +60,17 @@ def test_anonymization_can_be_disabled(config):
 def test_issue_with_null_body_is_cleaned(pre):
     issue = pre.clean_issue(_raw(body=None, title="Optimizer fails to converge on hardware backends"))
     assert issue is None or issue.body == ""
+
+
+def test_emails_are_masked_with_their_local_part():
+    text = clean_text("Contact itoko@ibm.com or jane.doe+qa@users.noreply.github.com about it")
+    assert "itoko" not in text and "jane" not in text and "ibm.com" not in text
+    assert text.count("[EMAIL]") == 2
+
+
+def test_emails_do_not_survive_in_the_cleaned_issue(pre):
+    raw = _raw(title="Ping itoko@ibm.com", body="Reach me at talexander@example.com about optimizer convergence on hardware.",
+               comments=[{"author": "h", "created_at": "2024-01-16T12:00:00Z", "body": "cc knzwnao@ibm.com please"}])
+    dumped = pre.clean_issue(raw).model_dump_json().lower()
+    for leaked in ("itoko", "talexander", "knzwnao", "example.com", "ibm.com"):
+        assert leaked not in dumped, leaked

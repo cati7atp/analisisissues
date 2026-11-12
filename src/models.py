@@ -1,4 +1,4 @@
-"""Pydantic models for quantum issues analysis."""
+"""Modelos Pydantic para el análisis de issues cuánticos."""
 
 from datetime import datetime, timezone
 from typing import Any, Callable, Dict, List, Optional, Literal
@@ -19,7 +19,7 @@ def _none_to_empty(value: Any) -> Any:
 
 class RawComment(BaseModel):
     author: str = ""
-    created_at: str  # ISO8601 string
+    created_at: str  # cadena ISO8601
     body: str = ""
     kind: Optional[str] = None
     author_type: Optional[str] = None
@@ -28,7 +28,7 @@ class RawComment(BaseModel):
 
 
 class RawIssue(BaseModel):
-    repo: str  # "owner/repo"
+    repo: str  # "propietario/repo"
     issue_number: int
     title: str
     body: Optional[str] = None
@@ -59,7 +59,7 @@ class RawIssue(BaseModel):
 
 
 class RejectionCounter:
-    """Counts rejected input rows by reason and keeps a bounded sample."""
+    """Cuenta las filas de entrada rechazadas por motivo y guarda una muestra acotada."""
 
     def __init__(self, max_samples: int = 1000) -> None:
         self.by_reason: Counter = Counter()
@@ -98,9 +98,9 @@ class CleanedIssue(BaseModel):
     milestone: Optional[str] = None
     reactions: Dict[str, int] = Field(default_factory=dict)
     state_reason: Optional[str] = None
-    item_type: str = "issue"  # dataset `type` column (authoritative)
-    issue_type: IssueType = "other"  # secondary keyword classification
-    full_text: str = ""  # Combined text for topic modeling
+    item_type: str = "issue"  # columna `type` del dataset (fuente de verdad)
+    issue_type: IssueType = "other"  # clasificación secundaria por palabras clave
+    full_text: str = ""  # Texto combinado para el modelado de temas
 
     @property
     def issue_id(self) -> str:
@@ -117,7 +117,7 @@ class TopicInfo(BaseModel):
     top_repo: Optional[str] = None
     top_repo_share: Optional[float] = None
     n_repos: Optional[int] = None
-    repo_specific: bool = False  # top_repo_share above the configured threshold (S24)
+    repo_specific: bool = False  # top_repo_share por encima del umbral configurado (S24)
 
 
 class DocTopic(BaseModel):
@@ -135,7 +135,7 @@ class QuantumPattern(BaseModel):
     frequency: int
     example_quotes: List[str] = Field(default_factory=list)
     keywords_matched: List[str] = Field(default_factory=list)
-    topic_share: Optional[float] = None  # share of supporting issues that fall in a discovered topic
+    topic_share: Optional[float] = None  # proporción de issues de soporte que caen en un tema descubierto
 
 
 class RepoMetrics(BaseModel):
@@ -146,7 +146,7 @@ class RepoMetrics(BaseModel):
     issue_types: Dict[str, int]
     median_resolution_days: Optional[float] = None
     resolution_by_type: Dict[str, Optional[float]] = Field(default_factory=dict)
-    resolution_outcomes: Dict[str, int] = Field(default_factory=dict)  # closed issues by state_reason
+    resolution_outcomes: Dict[str, int] = Field(default_factory=dict)  # issues cerrados por state_reason
     gini_contributors: float = 0.0
     unique_contributors: int = 0
     quantum_keyword_ratios: Dict[str, float] = Field(default_factory=dict)
@@ -171,16 +171,22 @@ class MaintainabilityMetrics(BaseModel):
     generated_at: datetime = Field(default_factory=lambda: datetime.now(timezone.utc))
 
 
-# Regex patterns for cleaning
+# Patrones regex para la limpieza
 CODE_FENCE_PATTERN = re.compile(r"```[\s\S]*?```", re.MULTILINE)
-INLINE_CODE_PATTERN = re.compile(r"`[^`\n]+`")  # single line: a stray backtick must not pair across lines
+INLINE_CODE_PATTERN = re.compile(r"`[^`\n]+`")  # una sola línea: un acento grave suelto no debe emparejarse entre líneas
 URL_PATTERN = re.compile(r"https?://\S+")
 MENTION_PATTERN = re.compile(r"@\w[\w-]*")
+EMAIL_PATTERN = re.compile(r"[\w.+-]+@[\w-]+(?:\.[\w-]+)+")
+
+
+def mask_personal(text: str) -> str:
+    """Enmascara correos y @menciones (los correos primero, para no dejar el nombre antes de la @)."""
+    return MENTION_PATTERN.sub("@user", EMAIL_PATTERN.sub("[EMAIL]", text))
 ISSUE_REF_PATTERN = re.compile(r"#\d+")
 
 
 def structure_text(text: str, strip_code_fences: bool = True, strip_templates: bool = True) -> str:
-    """Line-preserving cleaning steps (code summaries, build logs, templates)."""
+    """Pasos de limpieza que conservan las líneas (resúmenes de código, logs de compilación, plantillas)."""
     result = text or ""
     if strip_code_fences:
         result = summarize_fenced_code(result)
@@ -199,10 +205,10 @@ def clean_text(
     strip_templates: bool = True,
     line_filter: Optional[Callable[[str], str]] = None,
 ) -> str:
-    """Clean markdown text for analysis.
+    """Limpia texto markdown para el análisis.
 
-    `line_filter` runs after the structural steps and before placeholders and
-    whitespace collapsing, while line boundaries still exist.
+    `line_filter` se ejecuta después de los pasos estructurales y antes de los
+    marcadores y de colapsar los espacios, mientras aún existen los saltos de línea.
     """
     if not text:
         return ""
@@ -212,7 +218,7 @@ def clean_text(
         result = line_filter(result)
 
     result = URL_PATTERN.sub("[URL]", result)
-    result = MENTION_PATTERN.sub("@user", result)
+    result = mask_personal(result)
     result = ISSUE_REF_PATTERN.sub("#issue", result)
     
     if normalize_whitespace:
@@ -222,12 +228,12 @@ def clean_text(
 
 
 def _has_word(keywords: List[str], text: str) -> bool:
-    """True when any keyword occurs in ``text`` as a whole word or phrase."""
+    """True si alguna palabra clave aparece en ``text`` como palabra o frase completa."""
     return any(re.search(r"\b" + re.escape(kw) + r"\b", text) for kw in keywords)
 
 
 def classify_issue_type(title: str, body: Optional[str], labels: List[str]) -> IssueType:
-    """Secondary keyword classification from labels, then title and body (whole words only)."""
+    """Clasificación secundaria por palabras clave: primero etiquetas, luego título y cuerpo (solo palabras completas)."""
     text = f"{title} {body or ''}".lower()
     label_text = " ".join(labels).lower()
 
@@ -255,7 +261,7 @@ def classify_issue_type(title: str, body: Optional[str], labels: List[str]) -> I
 
 
 def is_bot_user(username: Optional[str], bot_users: List[str], author_type: Optional[str] = None) -> bool:
-    """Check if an author is a bot: type Bot, a `[bot]` suffix or an exact listed name."""
+    """Indica si un autor es un bot: tipo Bot, sufijo `[bot]` o un nombre exacto de la lista."""
     if author_type and author_type.strip().lower() == "bot":
         return True
     if not username:
@@ -265,14 +271,14 @@ def is_bot_user(username: Optional[str], bot_users: List[str], author_type: Opti
 
 
 def to_utc(dt: datetime) -> datetime:
-    """Return ``dt`` as timezone-aware UTC (naive values are taken as UTC)."""
+    """Devuelve ``dt`` como UTC con zona horaria (los valores sin zona se toman como UTC)."""
     if dt.tzinfo is None:
         return dt.replace(tzinfo=timezone.utc)
     return dt.astimezone(timezone.utc)
 
 
 def parse_datetime(dt_str: str) -> datetime:
-    """Parse an ISO8601 datetime string into a timezone-aware UTC datetime."""
+    """Convierte una cadena de fecha ISO8601 en un datetime UTC con zona horaria."""
     for fmt in [
         "%Y-%m-%dT%H:%M:%SZ",
         "%Y-%m-%dT%H:%M:%S.%fZ",

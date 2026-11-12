@@ -1,4 +1,4 @@
-"""Read-only loader for the miner.db SQLite dataset."""
+"""Cargador de solo lectura del dataset SQLite miner.db."""
 
 import sqlite3
 import json
@@ -13,7 +13,7 @@ ITEM_QUERY = "SELECT * FROM items WHERE type IN ({types}) ORDER BY repo, number"
 
 
 class RejectionRatioExceeded(RuntimeError):
-    """Raised when rejected rows exceed ``input.max_reject_ratio``."""
+    """Se lanza cuando las filas rechazadas superan ``input.max_reject_ratio``."""
 
 
 @dataclass
@@ -71,11 +71,11 @@ def load_items_sqlite(
     stats: Optional[LoadStats] = None,
     rejections_path: Optional[Path] = None,
 ) -> Iterator[RawIssue]:
-    """Yield one RawIssue per usable item row, streaming from a read-only connection.
+    """Entrega un RawIssue por cada fila utilizable, leyendo en flujo desde una conexión de solo lectura.
 
-    Rows from ``exclude_repos`` are skipped and counted; rows with an unusable
-    repo, number or created_at are rejected by reason. After the last row the
-    rejections are written (when a path is given) and the reject ratio checked.
+    Las filas de ``exclude_repos`` se omiten y se cuentan; las filas con repo,
+    número o created_at inutilizables se rechazan según el motivo. Tras la última
+    fila se escriben los rechazos (si hay ruta) y se revisa la proporción de rechazos.
     """
     stats = stats if stats is not None else LoadStats()
     conn = _connect_readonly(cfg.db_path)

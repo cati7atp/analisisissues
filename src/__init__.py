@@ -1,4 +1,4 @@
-"""Quantum GitHub Issues Analysis package."""
+"""Paquete de análisis de issues cuánticos de GitHub."""
 
 from .config import get_config, load_config, get_settings
 from .models import (
