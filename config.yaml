@@ -35,6 +35,7 @@ preprocessing:
   max_comment_length: 50000
   strip_code_fences: true
   strip_templates: true          # HTML comments, template headings, unchecked checklist items
+  repeated_line_min_issues: 20   # remove lines seen in this many distinct issues (two-pass); 0 disables
   normalize_whitespace: true
 
 # BERTopic Configuration

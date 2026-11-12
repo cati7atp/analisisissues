@@ -44,6 +44,7 @@ class PreprocessingConfig(BaseModel):
     max_comment_length: int = 50000
     strip_code_fences: bool = True
     strip_templates: bool = True
+    repeated_line_min_issues: int = 20  # a line in this many distinct issues is boilerplate; 0 disables
     normalize_whitespace: bool = True
 
 

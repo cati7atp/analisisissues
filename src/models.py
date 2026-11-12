@@ -1,7 +1,7 @@
 """Pydantic models for quantum issues analysis."""
 
 from datetime import datetime
-from typing import Any, Dict, List, Optional, Literal
+from typing import Any, Callable, Dict, List, Optional, Literal
 from pydantic import BaseModel, Field, field_validator
 from collections import Counter
 import re
@@ -173,26 +173,37 @@ MENTION_PATTERN = re.compile(r"@\w+")
 ISSUE_REF_PATTERN = re.compile(r"#\d+")
 
 
-def clean_text(
-    text: str,
-    strip_code_fences: bool = True,
-    normalize_whitespace: bool = True,
-    strip_templates: bool = True,
-) -> str:
-    """Clean markdown text for analysis."""
-    if not text:
-        return ""
-    
-    result = text
-    
+def structure_text(text: str, strip_code_fences: bool = True, strip_templates: bool = True) -> str:
+    """Line-preserving cleaning steps (code summaries, build logs, templates)."""
+    result = text or ""
     if strip_code_fences:
         result = summarize_fenced_code(result)
         result = summarize_tracebacks(result)
         result = summarize_build_logs(result)
         result = INLINE_CODE_PATTERN.sub("[CODE]", result)
-
     if strip_templates:
         result = remove_templates(result)
+    return result
+
+
+def clean_text(
+    text: str,
+    strip_code_fences: bool = True,
+    normalize_whitespace: bool = True,
+    strip_templates: bool = True,
+    line_filter: Optional[Callable[[str], str]] = None,
+) -> str:
+    """Clean markdown text for analysis.
+
+    `line_filter` runs after the structural steps and before placeholders and
+    whitespace collapsing, while line boundaries still exist.
+    """
+    if not text:
+        return ""
+
+    result = structure_text(text, strip_code_fences, strip_templates)
+    if line_filter:
+        result = line_filter(result)
 
     result = URL_PATTERN.sub("[URL]", result)
     result = MENTION_PATTERN.sub("@user", result)

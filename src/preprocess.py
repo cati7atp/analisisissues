@@ -4,7 +4,7 @@ import json
 import re
 import typer
 from pathlib import Path
-from typing import Any, Dict, Iterable, Iterator, List, Optional
+from typing import Any, Callable, Dict, Iterable, Iterator, List, Optional, Union
 from datetime import datetime
 from collections import Counter
 
@@ -13,9 +13,10 @@ from tqdm import tqdm
 import structlog
 
 from .config import get_config, load_config
+from .repeated_text import RepeatedTextIndex
 from .models import (
     RawIssue, CleanedIssue, CleanedComment,
-    clean_text, classify_issue_type, is_bot_user, parse_datetime
+    clean_text, classify_issue_type, is_bot_user, parse_datetime, structure_text
 )
 
 logger = structlog.get_logger()
@@ -29,6 +30,7 @@ class IssuePreprocessor:
         self.preprocessing_config = self.config.preprocessing
         self.bot_users = set(u.lower() for u in self.preprocessing_config.bot_users)
         self.last_skip_reason: Optional[str] = None
+        self.repeated_index: Optional[RepeatedTextIndex] = None
         self.automated_patterns = [
             re.compile(p, re.MULTILINE) for p in self.preprocessing_config.automated_comment_patterns
         ]
@@ -52,6 +54,39 @@ class IssuePreprocessor:
         logger.info("Loaded raw issues", count=len(issues))
         return issues
     
+    def _line_filter(self) -> Optional[Callable[[str], str]]:
+        return self.repeated_index.filter_lines if self.repeated_index else None
+
+    def build_repeated_index(self, raw_issues: Iterable[RawIssue]) -> RepeatedTextIndex:
+        """Pass 1: count distinct issues per normalized line (bodies and kept comments)."""
+        cfg = self.preprocessing_config
+        index = RepeatedTextIndex(cfg.repeated_line_min_issues)
+        for raw_issue in raw_issues:
+            if is_bot_user(raw_issue.author, list(self.bot_users), raw_issue.author_type):
+                continue
+            texts = [raw_issue.body or ""]
+            texts += [c.get("body") if isinstance(c, dict) else c.body for c in raw_issue.comments
+                      if not self._is_dropped_comment(c)]
+            lines: List[str] = []
+            for text in texts:
+                lines += structure_text(
+                    text or "", cfg.strip_code_fences, cfg.strip_templates
+                ).split("\n")
+            index.add_issue(lines)
+        return index
+
+    def _is_dropped_comment(self, comment) -> bool:
+        """True when clean_comment would drop the comment before cleaning (bot, short, automated)."""
+        if isinstance(comment, dict):
+            author, author_type, body = (comment.get("author") or "").lower(), comment.get("author_type"), comment.get("body") or ""
+        else:
+            author, author_type, body = comment.author.lower(), comment.author_type, comment.body or ""
+        return (
+            is_bot_user(author, list(self.bot_users), author_type)
+            or len(body.strip()) < self.preprocessing_config.min_body_length
+            or any(p.search(body) for p in self.automated_patterns)
+        )
+
     def clean_comment(self, comment) -> Optional[CleanedComment]:
         """Clean a single comment. Accepts dict or RawComment."""
         if isinstance(comment, dict):
@@ -82,6 +117,7 @@ class IssuePreprocessor:
             body,
             strip_code_fences=self.preprocessing_config.strip_code_fences,
             strip_templates=self.preprocessing_config.strip_templates,
+            line_filter=self._line_filter(),
             normalize_whitespace=self.preprocessing_config.normalize_whitespace
         )
         
@@ -115,6 +151,7 @@ class IssuePreprocessor:
             raw_body,
             strip_code_fences=self.preprocessing_config.strip_code_fences,
             strip_templates=self.preprocessing_config.strip_templates,
+            line_filter=self._line_filter(),
             normalize_whitespace=self.preprocessing_config.normalize_whitespace
         )
         
@@ -198,12 +235,25 @@ class IssuePreprocessor:
         return json.dumps(data, ensure_ascii=False) + "\n"
 
     def process_items(
-        self, raw_issues: Iterable[RawIssue], output_path: Optional[Path] = None, chunk_size: int = 500
+        self,
+        raw_issues: Union[Iterable[RawIssue], Callable[[], Iterable[RawIssue]]],
+        output_path: Optional[Path] = None,
+        chunk_size: int = 500,
     ) -> Dict[str, int]:
-        """Clean raw issues as a stream and write JSONL in chunks; return counts."""
+        """Clean raw issues as a stream and write JSONL in chunks; return counts.
+
+        Pass a callable returning a fresh iterable to enable the two-pass repeated-text
+        filters (S12): pass 1 counts lines across issues, pass 2 cleans and writes.
+        """
         output_path = output_path or self.config.paths.processed_data
         output_path.parent.mkdir(parents=True, exist_ok=True)
-        stats = {"total": 0, "kept": 0, "skipped": 0, "comments_removed": 0, "bot_issues": 0}
+        self.repeated_index = None
+        if callable(raw_issues):
+            if self.preprocessing_config.repeated_line_min_issues > 0:
+                self.repeated_index = self.build_repeated_index(raw_issues())
+            raw_issues = raw_issues()
+        stats = {"total": 0, "kept": 0, "skipped": 0, "comments_removed": 0, "bot_issues": 0,
+                 "repeated_lines": 0, "repeated_line_removals": 0}
         chunk: List[str] = []
         with open(output_path, "w", encoding="utf-8") as f:
             for raw_issue in tqdm(raw_issues, desc="Preprocessing issues"):
@@ -223,6 +273,9 @@ class IssuePreprocessor:
                         stats["bot_issues"] += 1
                     stats["comments_removed"] += original_comments
             f.writelines(chunk)
+        if self.repeated_index:
+            stats["repeated_lines"] = self.repeated_index.repeated_lines
+            stats["repeated_line_removals"] = self.repeated_index.removed_line_occurrences
         logger.info("Preprocessing complete", output=str(output_path), **stats)
         return stats
 

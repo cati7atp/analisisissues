@@ -46,10 +46,17 @@ def preprocess(
 
     load_stats = LoadStats()
     rejections_path = output_path.parent / "rejections.jsonl"
+    passes = {"count": 0}
+
+    def items():
+        # pass 1 (counting) uses throwaway stats so loaded/rejection counts are not doubled
+        passes["count"] += 1
+        if passes["count"] == 1 and cfg.preprocessing.repeated_line_min_issues > 0:
+            return load_items_sqlite(cfg.input, LoadStats())
+        return load_items_sqlite(cfg.input, load_stats, rejections_path)
+
     try:
-        stats = preprocessor.process_items(
-            load_items_sqlite(cfg.input, load_stats, rejections_path), output_path
-        )
+        stats = preprocessor.process_items(items, output_path)
     except RejectionRatioExceeded as exc:
         console.print(f"[red]Too many rows rejected: {exc}[/red]")
         raise typer.Exit(1)
@@ -59,6 +66,7 @@ def preprocess(
     console.print(f"rejected: {load_stats.rejections.total} {dict(load_stats.rejections.by_reason)}")
     console.print(f"skipped (bot-authored issues): {stats['bot_issues']}")
     console.print(f"skipped (empty content): {stats['skipped'] - stats['bot_issues']}")
+    console.print(f"repeated lines: {stats['repeated_lines']} distinct, {stats['repeated_line_removals']} removed")
     console.print(f"[green]Processed {stats['kept']} issues -> {output_path}[/green]")
 
 
