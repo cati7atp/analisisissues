@@ -63,14 +63,14 @@ def test_issue_with_null_body_is_cleaned(pre):
 
 
 def test_emails_are_masked_with_their_local_part():
-    text = clean_text("Contact itoko@ibm.com or jane.doe+qa@users.noreply.github.com about it")
-    assert "itoko" not in text and "jane" not in text and "ibm.com" not in text
+    text = clean_text("Contact ana.lopez@example.com or jane.doe+qa@mail.example.org about it")
+    assert "ana.lopez" not in text and "jane.doe" not in text and "example.com" not in text
     assert text.count("[EMAIL]") == 2
 
 
 def test_emails_do_not_survive_in_the_cleaned_issue(pre):
-    raw = _raw(title="Ping itoko@ibm.com", body="Reach me at talexander@example.com about optimizer convergence on hardware.",
-               comments=[{"author": "h", "created_at": "2024-01-16T12:00:00Z", "body": "cc knzwnao@ibm.com please"}])
+    raw = _raw(title="Ping ana.lopez@example.com", body="Reach me at b.mendez@example.org about optimizer convergence on hardware.",
+               comments=[{"author": "h", "created_at": "2024-01-16T12:00:00Z", "body": "cc c.ferrer@example.net please"}])
     dumped = pre.clean_issue(raw).model_dump_json().lower()
-    for leaked in ("itoko", "talexander", "knzwnao", "example.com", "ibm.com"):
+    for leaked in ("ana.lopez", "jane.doe", "b.mendez", "c.ferrer", "example.com", "example.org", "example.net"):
         assert leaked not in dumped, leaked
