@@ -259,13 +259,15 @@ def enhance_with_topic_analysis(
     
     # Map topic_id -> topic info
     topic_map = {t.topic_id: t for t in topics}
-    
+    # Single-project topics are not evidence of a cross-project pattern (S24).
+    repo_specific = {t.topic_id for t in topics if t.repo_specific}
+
     # For each pattern, find associated topics
     for pattern in patterns:
         topic_counts = Counter()
         for issue_id in pattern.supporting_issue_ids:
             topic_id = issue_to_topic.get(issue_id, -1)
-            if topic_id != -1:
+            if topic_id != -1 and topic_id not in repo_specific:
                 topic_counts[topic_id] += 1
         pattern.topic_share = (
             sum(topic_counts.values()) / len(pattern.supporting_issue_ids)
@@ -295,6 +297,8 @@ def find_candidate_categories(
             members[dt.topic_id].append(dt.issue_id)
     candidates = []
     for topic in topics:
+        if topic.repo_specific:
+            continue  # a single-project topic is not a cross-project category candidate (S24)
         ids = members.get(topic.topic_id, [])
         share = sum(1 for i in ids if i in matched_issue_ids) / len(ids) if ids else 0.0
         if share < min_share:

@@ -268,8 +268,9 @@ class TestTopicIntegration:
             for i, t in zip(issues, assignments)) + "\n", encoding="utf-8")
         topics_file = tmp_path / "topics.jsonl"
         topics_file.write_text("\n".join(
-            json.dumps({"topic_id": tid, "name": f"{tid}_x", "keywords": kw, "count": c})
-            for tid, kw, c in topics) + "\n", encoding="utf-8")
+            json.dumps({"topic_id": tid, "name": f"{tid}_x", "keywords": kw, "count": c,
+                        "repo_specific": bool(rest and rest[0])})
+            for tid, kw, c, *rest in topics) + "\n", encoding="utf-8")
         return issues_file, topics_file, doc_topics
 
     def test_patterns_report_topic_share_and_uncovered_topics_are_candidates(self, config, tmp_path):
@@ -286,6 +287,18 @@ class TestTopicIntegration:
         candidates = [json.loads(l) for l in (tmp_path / "candidate_categories.jsonl").read_text(encoding="utf-8").splitlines()]
         assert [c["topic_id"] for c in candidates] == [1]
         assert candidates[0]["keywords"] == ["recipe", "menu"] and candidates[0]["matched_share"] == 0.0
+
+    def test_repo_specific_topics_are_not_cross_project_evidence(self, config, tmp_path):
+        issues = [_issue(1, "transpile fails"), _issue(2, "transpiler crash"), _issue(3, "transpile slow"),
+                  _issue(4, "pyrpl lockbox"), _issue(5, "pyrpl scope"), _issue(6, "pyrpl asg")]
+        files = self._write(tmp_path, issues, [0, 0, 1, 2, 2, 2],
+                            [(0, ["transpile"], 2, True), (1, ["transpile", "slow"], 1), (2, ["pyrpl"], 3, True)])
+        patterns = extract_quantum_patterns(config, files[1], files[0], tmp_path / "p.jsonl", doc_topics_path=files[2])
+        pattern = {p.category: p for p in patterns}["transpilation_compilation"]
+        assert pattern.topic_share == pytest.approx(1 / 3)  # only topic 1 is cross-project
+        assert "0_x" not in pattern.description and "1_x" in pattern.description
+        candidates = [json.loads(l) for l in (tmp_path / "candidate_categories.jsonl").read_text(encoding="utf-8").splitlines()]
+        assert 2 not in [c["topic_id"] for c in candidates]  # a single-project topic is no new category
 
     def test_without_doc_topics_patterns_still_run(self, config, tmp_path):
         files = self._write(tmp_path, [_issue(1, "transpile fails")], [0], [(0, ["transpile"], 1)])
