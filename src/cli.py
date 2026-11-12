@@ -118,6 +118,7 @@ def extract_patterns(
     topics_file: str = typer.Option(None, "--topics", help="Topics JSONL file"),
     issues_file: str = typer.Option(None, "--issues", help="Cleaned issues JSONL file"),
     output_file: str = typer.Option(None, "--output", "-o", help="Output patterns JSONL"),
+    output_dir: str = typer.Option(None, "--output-dir", help="Directory holding the topic results; patterns, summary CSV and candidate categories are written there too"),
     config_file: str = typer.Option("config.yaml", "--config", "-c", help="Config file path"),
 ):
     """Extract quantum-specific patterns from topics and issues."""
@@ -125,6 +126,11 @@ def extract_patterns(
     
     cfg = load_config(Path(config_file))
     
+    if output_dir:
+        # --output-dir redirects topic inputs and every pattern output together
+        base = Path(output_dir)
+        for name in ("topics_output", "doc_topics_output", "patterns_output", "pattern_summary_csv"):
+            setattr(cfg.paths, name, base / getattr(cfg.paths, name).name)
     topics_path = Path(topics_file) if topics_file else cfg.paths.topics_output
     issues_path = Path(issues_file) if issues_file else cfg.paths.processed_data
     output_path = Path(output_file) if output_file else cfg.paths.patterns_output
@@ -146,6 +152,7 @@ def compute_metrics(
     patterns_file: str = typer.Option(None, "--patterns", help="Patterns JSONL file"),
     output_json: str = typer.Option(None, "--output-json", help="Output metrics JSON"),
     output_csv: str = typer.Option(None, "--output-csv", help="Output metrics CSV"),
+    output_dir: str = typer.Option(None, "--output-dir", help="Directory holding the topic and pattern results; metrics JSON, CSV and comparisons are written there too"),
     config_file: str = typer.Option("config.yaml", "--config", "-c", help="Config file path"),
 ):
     """Compute maintainability metrics from issues and patterns."""
@@ -153,6 +160,10 @@ def compute_metrics(
     
     cfg = load_config(Path(config_file))
     
+    if output_dir:
+        base = Path(output_dir)
+        for name in ("doc_topics_output", "patterns_output", "metrics_output", "metrics_csv"):
+            setattr(cfg.paths, name, base / getattr(cfg.paths, name).name)
     issues_path = Path(issues_file) if issues_file else cfg.paths.processed_data
     patterns_path = Path(patterns_file) if patterns_file else cfg.paths.patterns_output
     json_path = Path(output_json) if output_json else cfg.paths.metrics_output

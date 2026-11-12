@@ -57,8 +57,8 @@ python -m src.cli run-pipeline --input data/raw/issues.jsonl
 # Or step by step:
 python -m src.cli preprocess   # reads input.db_path (miner.db); --input still accepts a legacy JSONL
 python -m src.cli topic-model
-python -m src.cli extract-patterns
-python -m src.cli compute-metrics
+python -m src.cli extract-patterns   # --output-dir DIR reads the topic results from DIR and writes patterns there
+python -m src.cli compute-metrics   # --output-dir DIR writes metrics, CSV and comparisons.json there
 python -m src.cli generate-report
 ```
 
