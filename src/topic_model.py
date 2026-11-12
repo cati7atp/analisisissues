@@ -21,6 +21,7 @@ import plotly.graph_objects as go
 from plotly.subplots import make_subplots
 
 from .config import get_config
+from .embeddings import build_embedding_text, compute_embeddings
 from .models import CleanedIssue, TopicInfo, DocTopic
 
 logger = structlog.get_logger()
@@ -49,20 +50,24 @@ def load_cleaned_issues(input_path: Path) -> List[CleanedIssue]:
     return issues
 
 
-def prepare_documents(issues: List[CleanedIssue]) -> List[str]:
-    """Prepare documents for topic modeling (one per issue)."""
+def prepare_documents(issues: List[CleanedIssue], embed_max_chars: int = 2000):
+    """Prepare aligned lists, one entry per issue.
+
+    docs: title + body + comments (c-TF-IDF text); embed_texts: title + start of body (S17).
+    """
     docs = []
+    embed_texts = []
     issue_ids = []
-    
+
     for issue in issues:
-        # Use full_text which combines title + body + comments
         text = issue.full_text.strip()
         if text:
             docs.append(text)
+            embed_texts.append(build_embedding_text(issue.title, issue.cleaned_body, embed_max_chars))
             issue_ids.append(issue.issue_id)
-    
+
     logger.info("Prepared documents", count=len(docs))
-    return docs, issue_ids
+    return docs, embed_texts, issue_ids
 
 
 def build_vectorizer(config) -> CountVectorizer:
@@ -123,13 +128,15 @@ def create_bertopic_model(config, embedding_model=None, umap_model=None) -> BERT
     )
 
 
-def run_topic_modeling(config, input_path: Path, output_dir: Path) -> BERTopic:
-    """Run the full topic modeling pipeline."""
+def run_topic_modeling(
+    config, input_path: Path, output_dir: Path, embedding_model=None, umap_model=None, encoder=None
+) -> BERTopic:
+    """Run the full topic modeling pipeline (injectable models are for tests)."""
     # Load issues
     issues = load_cleaned_issues(input_path)
     
     # Prepare documents
-    docs, issue_ids = prepare_documents(issues)
+    docs, embed_texts, issue_ids = prepare_documents(issues, config.bertopic.embed_max_chars)
     
     if len(docs) < config.bertopic.hdbscan_min_cluster_size * 2:
         logger.warning("Too few documents for topic modeling", count=len(docs))
@@ -140,10 +147,20 @@ def run_topic_modeling(config, input_path: Path, output_dir: Path) -> BERTopic:
     
     # Create and fit model
     logger.info("Creating BERTopic model")
-    topic_model = create_bertopic_model(config)
-    
+    topic_model = create_bertopic_model(config, embedding_model=embedding_model, umap_model=umap_model)
+
+    embeddings = compute_embeddings(
+        embed_texts,
+        config.bertopic.embedding_model,
+        config.paths.cache_dir,
+        encoder=encoder,
+        batch_size=config.bertopic.embed_batch_size,
+        device=config.bertopic.embed_device,
+        normalize=config.bertopic.embed_normalize,
+    )
+
     logger.info("Fitting BERTopic model", n_docs=len(docs))
-    topics, probabilities = topic_model.fit_transform(docs)
+    topics, probabilities = topic_model.fit_transform(docs, embeddings=embeddings)
     
     # Save model
     output_dir.mkdir(parents=True, exist_ok=True)
@@ -154,7 +171,7 @@ def run_topic_modeling(config, input_path: Path, output_dir: Path) -> BERTopic:
     
     # Extract topic info
     topic_info = topic_model.get_topic_info()
-    logger.info("Topic modeling complete", n_topics=len(topic_info) - 1)  # Exclude outlier topic -1
+    _write_run_summary(output_dir, topics)
     
     # Save topics.jsonl
     _save_topics(config, topic_model, topic_info, output_dir)
@@ -166,6 +183,21 @@ def run_topic_modeling(config, input_path: Path, output_dir: Path) -> BERTopic:
     _generate_visualization(config, topic_model, docs, output_dir)
     
     return topic_model
+
+
+def _write_run_summary(output_dir: Path, topics: List[int]) -> Dict[str, Any]:
+    """Log and persist document, topic and (unreduced) outlier counts."""
+    n_docs = len(topics)
+    n_outliers = sum(1 for t in topics if t == -1)
+    summary = {
+        "n_documents": n_docs,
+        "n_topics": len({t for t in topics if t != -1}),
+        "n_outliers": n_outliers,
+        "outlier_share": n_outliers / n_docs if n_docs else 0.0,
+    }
+    logger.info("Topic modeling complete", **summary)
+    (output_dir / "run_summary.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
+    return summary
 
 
 def _save_topics(config, topic_model: BERTopic, topic_info: pd.DataFrame, output_dir: Path):

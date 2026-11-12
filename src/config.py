@@ -19,6 +19,7 @@ class PathsConfig(BaseModel):
     visualization_html: Path = Path("reports/topic_visualization.html")
     report_md: Path = Path("reports/quantum_maintainability_report.md")
     pattern_summary_csv: Path = Path("reports/pattern_summary.csv")
+    cache_dir: Path = Path("data/cache")
 
 
 class InputConfig(BaseModel):
@@ -48,6 +49,10 @@ class PreprocessingConfig(BaseModel):
 class BERTopicConfig(BaseModel):
     embedding_model: str = "all-MiniLM-L6-v2"
     nr_topics: Optional[int] = None
+    embed_max_chars: int = 2000  # title + first N chars of body are embedded (comments are not)
+    embed_batch_size: int = 64
+    embed_device: Optional[str] = None
+    embed_normalize: bool = True
     umap_n_neighbors: int = 15
     umap_n_components: int = 5
     umap_min_dist: float = 0.0

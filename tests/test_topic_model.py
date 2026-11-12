@@ -145,3 +145,85 @@ def test_doc_topic_probabilities_come_from_hdbscan(small_config, tmp_path):
     rows = [json.loads(line) for line in small_config.paths.doc_topics_output.read_text(encoding="utf-8").splitlines()]
     assert all(0.0 <= r["probability"] <= 1.0 for r in rows)
     assert any(r["probability"] > 0 for r in rows)
+
+
+class ThemeEncoder:
+    """Sentence-encoder stand-in: one cluster centre per theme plus per-text noise."""
+
+    def __init__(self):
+        self.calls = 0
+        self.texts = []
+        centres = np.random.default_rng(0).normal(scale=10, size=(len(THEMES), 16))
+        self.centres = dict(zip(THEMES, centres))
+
+    def encode(self, texts, **kwargs):
+        self.calls += 1
+        self.texts.extend(texts)
+        rows = []
+        for text in texts:
+            theme = next(k for k, words in THEMES.items() if words.split()[0] in text)
+            noise = np.random.default_rng(sum(map(ord, text))).normal(scale=0.3, size=16)
+            rows.append(self.centres[theme] + noise)
+        return np.asarray(rows, dtype="float32")
+
+
+def write_issues(per_theme=30):
+    from src.models import RawIssue
+
+    issues = []
+    for i, (theme, words) in enumerate(THEMES.items()):
+        vocab = words.split()
+        for j in range(per_theme):
+            body = " ".join(vocab[(j + k) % len(vocab)] for k in range(8))
+            issues.append(RawIssue(
+                repo="a/b", issue_number=i * 1000 + j, title=f"{vocab[0]} problem {j}", body=body, state="open",
+                created_at="2024-01-01T00:00:00Z", author="human",
+                comments=[{"author": "h", "created_at": "2024-01-02T00:00:00Z",
+                           "body": f"COMMENTMARKER{theme} {body}"}],
+            ))
+    return issues
+
+
+@pytest.fixture
+def issues_file(small_config, tmp_path):
+    from src.preprocess import IssuePreprocessor
+
+    path = tmp_path / "issues_clean.jsonl"
+    IssuePreprocessor(small_config).process_items(write_issues(), path)
+    return path
+
+
+def run(config, input_path, out, encoder):
+    from src.topic_model import run_topic_modeling
+
+    return run_topic_modeling(
+        config, input_path, out, embedding_model=FakeEmbedder(),
+        umap_model=BaseDimensionalityReduction(), encoder=encoder,
+    )
+
+
+def test_run_uses_cached_embeddings_and_decoupled_texts(small_config, issues_file, tmp_path):
+    enc = ThemeEncoder()
+    model = run(small_config, issues_file, tmp_path / "out", enc)
+    assert model is not None
+    assert len(list(small_config.paths.cache_dir.glob("*.npy"))) == 1
+    # embedding text excludes comments; c-TF-IDF text includes them
+    assert not any("COMMENTMARKER" in t for t in enc.texts)
+    assert any("commentmarker" in w for w in model.vectorizer_model.get_feature_names_out())
+    calls = enc.calls
+    run(small_config, issues_file, tmp_path / "out2", enc)
+    assert enc.calls == calls
+
+
+def test_run_summary_reports_unreduced_outlier_share(small_config, issues_file, tmp_path):
+    import json
+
+    out = tmp_path / "out"
+    run(small_config, issues_file, out, ThemeEncoder())
+    summary = json.loads((out / "run_summary.json").read_text(encoding="utf-8"))
+    rows = [json.loads(line) for line in small_config.paths.doc_topics_output.read_text(encoding="utf-8").splitlines()]
+    outliers = sum(1 for r in rows if r["topic_id"] == -1)
+    assert summary["n_documents"] == len(rows) == 120
+    assert summary["n_outliers"] == outliers
+    assert summary["outlier_share"] == pytest.approx(outliers / len(rows))
+    assert summary["n_topics"] == 4

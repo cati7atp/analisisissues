@@ -13,6 +13,7 @@ paths:
   visualization_html: "reports/topic_visualization.html"
   report_md: "reports/quantum_maintainability_report.md"
   pattern_summary_csv: "reports/pattern_summary.csv"
+  cache_dir: "data/cache"                     # embeddings .npy cache
 
 # Input (read-only SQLite dataset)
 input:
@@ -39,6 +40,10 @@ preprocessing:
 bertopic:
   embedding_model: "all-MiniLM-L6-v2"
   nr_topics: null                    # null = auto, or integer to reduce
+  embed_max_chars: 2000              # embedded text = title + first N chars of body (no comments)
+  embed_batch_size: 64
+  embed_device: null                 # null = auto
+  embed_normalize: true
   umap_n_neighbors: 15
   umap_n_components: 5
   umap_min_dist: 0.0
