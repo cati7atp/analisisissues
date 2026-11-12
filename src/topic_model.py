@@ -112,7 +112,7 @@ def create_bertopic_model(config, embedding_model=None, umap_model=None) -> BERT
         vectorizer_model=build_vectorizer(config),
         ctfidf_model=ctfidf_model,
         representation_model=representation_model,
-        min_topic_size=config.bertopic.min_topic_size,
+        min_topic_size=config.bertopic.hdbscan_min_cluster_size,
         nr_topics=config.bertopic.nr_topics,
         calculate_probabilities=config.bertopic.calculate_probabilities,
         verbose=config.bertopic.verbose,
@@ -127,7 +127,7 @@ def run_topic_modeling(config, input_path: Path, output_dir: Path) -> BERTopic:
     # Prepare documents
     docs, issue_ids = prepare_documents(issues)
     
-    if len(docs) < config.bertopic.min_topic_size * 2:
+    if len(docs) < config.bertopic.hdbscan_min_cluster_size * 2:
         logger.warning("Too few documents for topic modeling", count=len(docs))
         # Create minimal outputs
         output_dir.mkdir(parents=True, exist_ok=True)

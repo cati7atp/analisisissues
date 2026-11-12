@@ -66,7 +66,7 @@ def preprocess(
 def topic_model(
     input_file: str = typer.Option(None, "--input", "-i", help="Input cleaned issues JSONL"),
     output_dir: str = typer.Option(None, "--output-dir", "-o", help="Output directory for model and results"),
-    min_topic_size: int = typer.Option(None, "--min-topic-size", help="Minimum topic size"),
+    min_topic_size: int = typer.Option(None, "--min-topic-size", help="Minimum topic size (sets bertopic.hdbscan_min_cluster_size)"),
     n_topics: int = typer.Option(None, "--n-topics", help="Target number of topics (None=auto)"),
     embedding_model: str = typer.Option(None, "--embedding-model", help="Sentence transformer model"),
     config_file: str = typer.Option("config.yaml", "--config", "-c", help="Config file path"),
@@ -85,7 +85,7 @@ def topic_model(
     
     # Override config with CLI args
     if min_topic_size is not None:
-        cfg.bertopic.min_topic_size = min_topic_size
+        cfg.bertopic.hdbscan_min_cluster_size = min_topic_size
     if n_topics is not None:
         cfg.bertopic.nr_topics = n_topics
     if embedding_model is not None:
@@ -242,7 +242,7 @@ def info():
     table.add_row("Model dir", str(cfg.paths.model_dir))
     table.add_row("Report", str(cfg.paths.report_md))
     table.add_row("Embedding model", cfg.bertopic.embedding_model)
-    table.add_row("Min topic size", str(cfg.bertopic.min_topic_size))
+    table.add_row("Min topic size", str(cfg.bertopic.hdbscan_min_cluster_size))
     
     console.print(table)
 

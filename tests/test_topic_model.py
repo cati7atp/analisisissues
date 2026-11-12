@@ -29,13 +29,13 @@ class FakeEmbedder(BaseEmbedder):
         return np.asarray(out, dtype="float32")
 
 
-def make_corpus(per_theme=30, seed=0):
+def make_corpus(sizes=(30, 30, 30, 30), seed=0):
     rng = np.random.default_rng(seed)
     centers = rng.normal(scale=10, size=(len(THEMES), 16))
     docs, embeddings = [], []
-    for i, words in enumerate(THEMES.values()):
+    for i, (words, size) in enumerate(zip(THEMES.values(), sizes)):
         vocab = words.split()
-        for j in range(per_theme):
+        for j in range(size):
             picked = " ".join(rng.choice(vocab, size=6))
             extra = f" {UNIQUE_WORD}" if (i == 0 and j == 0) else ""
             docs.append(clean_text(f"{picked}{extra} {NOISY_TAIL}"))
@@ -76,3 +76,34 @@ def test_vocabulary_has_no_placeholders_and_keeps_topic_specific_words(small_con
     for token in ["code", "block", "url", "user", "issue", "code_block"]:
         assert token not in vocab
     assert UNIQUE_WORD in vocab
+
+
+def test_hdbscan_min_cluster_size_changes_topic_count(small_config):
+    docs, embeddings = make_corpus(sizes=(8, 30, 30, 30))
+    small_config.bertopic.hdbscan_min_cluster_size = 5
+    _, low = fit(small_config, docs, embeddings)
+    small_config.bertopic.hdbscan_min_cluster_size = 15
+    _, high = fit(small_config, docs, embeddings)
+    assert len(set(low) - {-1}) == 4
+    assert len(set(high) - {-1}) == 3
+
+
+def test_cli_min_topic_size_maps_to_hdbscan(tmp_path, monkeypatch):
+    from pathlib import Path
+
+    from typer.testing import CliRunner
+
+    import src.topic_model as tm
+    from src.cli import app
+
+    captured = {}
+    monkeypatch.setattr(tm, "run_topic_modeling", lambda cfg, inp, out: captured.setdefault("cfg", cfg))
+    inp = tmp_path / "issues.jsonl"
+    inp.write_text("", encoding="utf-8")
+    config_path = Path(__file__).resolve().parent.parent / "config.yaml"
+    result = CliRunner().invoke(
+        app, ["topic-model", "--input", str(inp), "--output-dir", str(tmp_path / "o"),
+              "--min-topic-size", "7", "--config", str(config_path)],
+    )
+    assert result.exit_code == 0, result.output
+    assert captured["cfg"].bertopic.hdbscan_min_cluster_size == 7

@@ -47,7 +47,6 @@ class PreprocessingConfig(BaseModel):
 
 class BERTopicConfig(BaseModel):
     embedding_model: str = "all-MiniLM-L6-v2"
-    min_topic_size: int = 10
     nr_topics: Optional[int] = None
     umap_n_neighbors: int = 15
     umap_n_components: int = 5

@@ -119,7 +119,7 @@ We employed BERTopic (Grootendorst, 2022) for unsupervised topic discovery:
 - **Dimensionality Reduction**: UMAP (n_neighbors={config.bertopic.umap_n_neighbors}, n_components={config.bertopic.umap_n_components})
 - **Clustering**: HDBSCAN (min_cluster_size={config.bertopic.hdbscan_min_cluster_size})
 - **Topic Representation**: c-TF-IDF with KeyBERT-inspired representation
-- **Minimum Topic Size**: {config.bertopic.min_topic_size}
+- **Minimum Topic Size**: {config.bertopic.hdbscan_min_cluster_size}
 
 ## Pattern Extraction
 
