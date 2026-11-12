@@ -16,11 +16,6 @@ from src.config import load_config
 
 
 @pytest.fixture
-def config():
-    return load_config(Path("config.yaml"))
-
-
-@pytest.fixture
 def preprocessor(config):
     return IssuePreprocessor(config)
 

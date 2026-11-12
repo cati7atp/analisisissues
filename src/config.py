@@ -92,7 +92,10 @@ class Settings(BaseSettings):
     log_level: str = "INFO"
 
 
-def load_config(config_path: Path = Path("config.yaml")) -> Config:
+DEFAULT_CONFIG_PATH = Path(__file__).resolve().parent.parent / "config.yaml"
+
+
+def load_config(config_path: Path = DEFAULT_CONFIG_PATH) -> Config:
     """Load configuration from YAML file."""
     with open(config_path, "r", encoding="utf-8") as f:
         data = yaml.safe_load(f)

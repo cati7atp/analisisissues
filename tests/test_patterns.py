@@ -16,11 +16,6 @@ from src.patterns import (
 
 
 @pytest.fixture
-def config():
-    return load_config(Path("config.yaml"))
-
-
-@pytest.fixture
 def sample_issues():
     """Sample issues for pattern testing."""
     issues = []
