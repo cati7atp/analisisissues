@@ -37,3 +37,29 @@ def test_db_opened_read_only(make_db, tmp_path):
     before = db.read_bytes()
     list(load_items_sqlite(InputConfig(db_path=db)))
     assert db.read_bytes() == before
+
+
+def test_comments_joined_by_repo_and_number(make_db):
+    db = make_db(
+        items=[{"repo": "a/b", "number": 1}, {"repo": "a/c", "number": 1}],
+        comments=[
+            {"repo": "a/b", "item_number": 1, "author": "u1", "body": "first", "author_type": "User"},
+            {"repo": "a/c", "item_number": 1, "author": "u2", "body": "other repo"},
+            {"repo": "a/b", "item_number": 1, "kind": "review_comment", "author": "u3", "body": "skip"},
+        ],
+    )
+    items = {i.repo: i for i in load_items_sqlite(InputConfig(db_path=db))}
+    assert [(c.author, c.body, c.kind, c.author_type) for c in items["a/b"].comments] == \
+        [("u1", "first", "issue_comment", "User")]
+    assert [c.body for c in items["a/c"].comments] == ["other repo"]
+
+
+def test_labels_and_assignees_parsed_from_json(make_db):
+    db = make_db(items=[{"repo": "a/b", "number": 1, "labels": '["bug", "prio: high"]',
+                         "assignees": '["alice"]', "state_reason": "completed",
+                         "author_type": "Bot", "comment_count": 3, "merged_at": None}])
+    it = next(load_items_sqlite(InputConfig(db_path=db)))
+    assert it.labels == ["bug", "prio: high"]
+    assert it.assignees == ["alice"]
+    assert (it.state_reason, it.author_type, it.comment_count, it.item_type) == \
+        ("completed", "Bot", 3, "issue")

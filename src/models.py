@@ -18,6 +18,8 @@ class RawComment(BaseModel):
     author: str = ""
     created_at: str  # ISO8601 string
     body: str = ""
+    kind: Optional[str] = None
+    author_type: Optional[str] = None
 
     _null_text = field_validator("author", "body", mode="before")(_none_to_empty)
 
@@ -36,6 +38,14 @@ class RawIssue(BaseModel):
     assignees: List[str] = Field(default_factory=list)
     milestone: Optional[str] = None
     reactions: Dict[str, int] = Field(default_factory=dict)
+    item_type: str = "issue"
+    state_reason: Optional[str] = None
+    author_type: Optional[str] = None
+    merged_at: Optional[str] = None
+    comment_count: Optional[int] = None
+    complete: Optional[int] = None
+    draft: Optional[int] = None
+    category: Optional[str] = None
 
     _null_author = field_validator("author", mode="before")(_none_to_empty)
 
