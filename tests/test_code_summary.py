@@ -88,3 +88,19 @@ def test_two_separate_runs_become_two_markers():
 def test_build_log_marker_is_a_default_stop_word():
     from src.config import BERTopicConfig
     assert "build_log" in BERTopicConfig().domain_stop_words
+
+
+def test_stray_backtick_does_not_swallow_the_exception_summary():
+    # shape of Qiskit/qiskit#5143: an unbalanced backtick before the fence, double-backtick code after it
+    text = ("The transpiler doesn't handle `negative indices\n"
+            "```\nTraceback (most recent call last):\n  File \"a.py\", line 1, in f\n    x()\n"
+            "TranspilerError: bad layout\n```\n"
+            "the culprit is ``len(layout)`` here")
+    result = clean_text(text)
+    assert "TranspilerError: bad layout" in result
+    assert "The transpiler doesn't handle" in result and "the culprit is" in result
+
+
+def test_well_formed_inline_code_is_still_replaced():
+    result = clean_text("Call `transpile(qc)` and then `run()` on the backend.")
+    assert result == "Call [CODE] and then [CODE] on the backend."
