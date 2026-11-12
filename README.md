@@ -55,7 +55,7 @@ Place your GitHub issues data as a JSONL file at `data/raw/issues.jsonl`. Each l
 python -m src.cli run-pipeline --input data/raw/issues.jsonl
 
 # Or step by step:
-python -m src.cli preprocess --input data/raw/issues.jsonl
+python -m src.cli preprocess   # reads input.db_path (miner.db); --input still accepts a legacy JSONL
 python -m src.cli topic-model
 python -m src.cli extract-patterns
 python -m src.cli compute-metrics

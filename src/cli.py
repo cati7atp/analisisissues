@@ -6,6 +6,7 @@ from rich.console import Console
 from rich.table import Table
 
 from .config import load_config, get_config
+from .loader import LoadStats, RejectionRatioExceeded, load_items_sqlite
 from .preprocess import IssuePreprocessor
 
 app = typer.Typer(
@@ -18,23 +19,45 @@ console = Console()
 
 @app.command()
 def preprocess(
-    input_file: str = typer.Option(None, "--input", "-i", help="Input JSONL file with raw issues"),
+    input_file: str = typer.Option(None, "--input", "-i", help="Legacy raw issues JSONL (default: read the SQLite dataset)"),
+    db_file: str = typer.Option(None, "--db", help="miner.db path (overrides input.db_path)"),
     output_file: str = typer.Option(None, "--output", "-o", help="Output JSONL file for cleaned issues"),
     config_file: str = typer.Option("config.yaml", "--config", "-c", help="Config file path"),
 ):
-    """Preprocess raw GitHub issues for analysis."""
+    """Preprocess GitHub issues from the SQLite dataset (or a legacy JSONL) for analysis."""
     cfg = load_config(Path(config_file))
     preprocessor = IssuePreprocessor(cfg)
-    
-    input_path = Path(input_file) if input_file else cfg.paths.raw_data
     output_path = Path(output_file) if output_file else cfg.paths.processed_data
-    
-    if not input_path.exists():
-        console.print(f"[red]Input file not found: {input_path}[/red]")
+
+    if input_file:
+        input_path = Path(input_file)
+        if not input_path.exists():
+            console.print(f"[red]Input file not found: {input_path}[/red]")
+            raise typer.Exit(1)
+        stats = preprocessor.process(input_path, output_path)
+        console.print(f"[green]Processed {stats['kept']} issues -> {output_path}[/green]")
+        return
+
+    if db_file:
+        cfg.input.db_path = Path(db_file)
+    if not cfg.input.db_path.exists():
+        console.print(f"[red]Dataset not found: {cfg.input.db_path}[/red]")
         raise typer.Exit(1)
-    
-    stats = preprocessor.process(input_path, output_path)
-    
+
+    load_stats = LoadStats()
+    rejections_path = output_path.parent / "rejections.jsonl"
+    try:
+        stats = preprocessor.process_items(
+            load_items_sqlite(cfg.input, load_stats, rejections_path), output_path
+        )
+    except RejectionRatioExceeded as exc:
+        console.print(f"[red]Too many rows rejected: {exc}[/red]")
+        raise typer.Exit(1)
+
+    console.print(f"loaded: {load_stats.loaded}")
+    console.print(f"excluded (repos): {load_stats.excluded}")
+    console.print(f"rejected: {load_stats.rejections.total} {dict(load_stats.rejections.by_reason)}")
+    console.print(f"skipped (empty content): {stats['skipped']}")
     console.print(f"[green]Processed {stats['kept']} issues -> {output_path}[/green]")
 
 
